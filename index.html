@@ -606,11 +606,12 @@ h2 {
 .hero .btn:nth-child(1) { animation-delay: 0.6s; }
 .hero .btn:nth-child(2) { animation-delay: 0.8s; }
 
-@keyframes fadeUp {
+  @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
 
   .reveal {
   opacity: 0;
@@ -916,58 +917,54 @@ h2 {
   <h2>Build a Sports Culture</h2>
 </section>
   
-  <script>
-    lucide.createIcons();
-  </script>
+  <div class="cursor-glow"></div>
+  
+ <script>
+  lucide.createIcons();
 
-  <script>
+  // PROCESS ANIMATION
   const steps = document.querySelectorAll('.step');
   const processLine = document.querySelector('.process-line');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
-
-        // animate line
         processLine.classList.add('animate');
 
-        // stagger steps
         steps.forEach((step, index) => {
           setTimeout(() => {
             step.classList.add('show');
           }, index * 200);
         });
-
       }
     });
   }, { threshold: 0.3 });
 
   observer.observe(processLine);
-    <script>
-const reveals = document.querySelectorAll('.section');
 
-const observer2 = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
+  // SECTION REVEAL
+  const reveals = document.querySelectorAll('.section');
+
+  const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(sec => {
+    sec.classList.add('reveal');
+    observer2.observe(sec);
   });
-}, { threshold: 0.15 });
 
-reveals.forEach(sec => {
-  sec.classList.add('reveal');
-  observer2.observe(sec);
-});
+  // CURSOR GLOW
+  const glow = document.querySelector('.cursor-glow');
+
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
 </script>
-  <div class="cursor-glow"></div>
-  <script>
-const glow = document.querySelector('.cursor-glow');
-
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
-</script>
-
 </body>
 </html>
