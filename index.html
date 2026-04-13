@@ -345,37 +345,44 @@ h2 {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  transition: 0.4s;
   cursor: pointer;
+  transition: 0.4s;
 }
 
 .tile img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  transition: 0.4s;
+  transition: 0.5s ease;
 }
 
-/* DARK OVERLAY */
+/* DARK PREMIUM OVERLAY */
 .tile::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
-  opacity: 0.8;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.2),
+    transparent
+  );
+  opacity: 0.9;
   transition: 0.4s;
 }
 
-/* TEXT OVER IMAGE */
+/* TITLE */
 .tile p {
   position: absolute;
   bottom: 20px;
   left: 20px;
   color: white;
   font-weight: 600;
+  font-size: 18px;
   z-index: 2;
 }
 
+/* SUBTEXT */
 .tile span {
   position: absolute;
   bottom: 50px;
@@ -383,12 +390,9 @@ h2 {
   color: white;
   font-size: 13px;
   opacity: 0;
-  transition: 0.3s;
+  transform: translateY(10px);
+  transition: 0.4s ease;
   z-index: 2;
-}
-
-.tile:hover span {
-  opacity: 1;
 }
 
 /* HOVER EFFECT */
@@ -396,8 +400,9 @@ h2 {
   transform: scale(1.08);
 }
 
-.tile:hover::after {
+.tile:hover span {
   opacity: 1;
+  transform: translateY(0);
 }
   
 .icon {
@@ -456,6 +461,14 @@ h2 {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+  .tile:hover::after {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    transparent
+  );
+}
   /* FINAL PROCESS (ONLY ONE VERSION) */
 
 .process-line {
