@@ -581,6 +581,48 @@ h2 {
 .bottom-left { bottom: 0; left: 0; }
 .bottom-right { bottom: 0; right: 0; }
 
+  /* ===== ANIMATION SYSTEM ===== */
+
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger effect */
+.step {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.step.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* line animation */
+.process-line::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s ease;
+}
+
+.process-line.animate::before {
+  transform: scaleX(1);
+}
+
+/* hover glow */
+.step:hover .step-icon {
+  box-shadow: 0 15px 40px rgba(255,106,0,0.7);
+  transform: scale(1.1);
+}
+
 </style>
 </head>
 
@@ -785,6 +827,31 @@ h2 {
   <script>
     lucide.createIcons();
   </script>
+
+  <script>
+  const steps = document.querySelectorAll('.step');
+  const processLine = document.querySelector('.process-line');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+
+        // animate line
+        processLine.classList.add('animate');
+
+        // stagger steps
+        steps.forEach((step, index) => {
+          setTimeout(() => {
+            step.classList.add('show');
+          }, index * 200);
+        });
+
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(processLine);
+</script>
 
 </body>
 </html>
