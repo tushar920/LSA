@@ -32,7 +32,6 @@ body {
   position: absolute;
   width: 100%;
   padding: 20px 0;
-  z-index: 10;
   color: white;
 }
 
@@ -45,7 +44,6 @@ body {
   color: white;
   margin-left: 30px;
   text-decoration: none;
-  font-size: 14px;
 }
 
 /* HERO */
@@ -75,7 +73,6 @@ body {
 
 .hero p {
   margin-bottom: 30px;
-  opacity: 0.9;
 }
 
 .hero-right {
@@ -93,7 +90,6 @@ body {
   border-radius: 8px;
   border: none;
   margin-right: 10px;
-  cursor: pointer;
 }
 
 .btn-primary {
@@ -103,7 +99,6 @@ body {
 
 .btn-secondary {
   background: white;
-  color: black;
 }
 
 /* SECTION */
@@ -113,30 +108,44 @@ body {
 
 h2 {
   font-size: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
-/* CARDS */
-.cards {
+/* PROBLEM SECTION */
+.problem-layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+.problem-left p {
+  margin: 20px 0;
+  color: #555;
+}
+
+.problem-list li {
+  margin-bottom: 10px;
+}
+
+.problem-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-.card {
+.problem-card {
   background: white;
   padding: 25px;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  text-align: left;
 }
 
-.card-icon {
+.problem-icon {
   width: 40px;
   height: 40px;
   background: #ff6a00;
-  border-radius: 50%;
-  margin-bottom: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* DARK SECTION */
@@ -151,21 +160,28 @@ h2 {
   text-align: center;
 }
 
-.feature {
-  flex: 1;
-}
-
-/* SPORTS GRID */
-.grid {
+/* SPORTS */
+.sports-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-.tile {
+.sport-card {
   background: white;
-  padding: 30px;
   border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.sport-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.sport-card p {
+  padding: 15px;
   text-align: center;
 }
 
@@ -190,7 +206,11 @@ h2 {
     flex-direction: column;
   }
 
-  .cards, .grid {
+  .problem-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -199,130 +219,7 @@ h2 {
     gap: 20px;
   }
 }
-/* ===== NEW PROBLEM SECTION ===== */
-.problem-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: center;
-}
 
-.problem-left p {
-  margin: 20px 0;
-  color: #555;
-}
-
-.problem-list li {
-  margin-bottom: 10px;
-}
-
-.problem-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.problem-card {
-  background: white;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.problem-icon {
-  width: 40px;
-  height: 40px;
-  background: #ff6a00;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* ===== SPORTS ===== */
-.sports-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.sport-card {
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.sport-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
-
-.sport-card p {
-  padding: 15px;
-  text-align: center;
-}
-  /* ===== NEW PROBLEM SECTION ===== */
-.problem-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.problem-left p {
-  margin: 20px 0;
-  color: #555;
-}
-
-.problem-list li {
-  margin-bottom: 10px;
-}
-
-.problem-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.problem-card {
-  background: white;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.problem-icon {
-  width: 40px;
-  height: 40px;
-  background: #ff6a00;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* ===== SPORTS ===== */
-.sports-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.sport-card {
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.sport-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
-
-.sport-card p {
-  padding: 15px;
-  text-align: center;
-}
 </style>
 </head>
 
@@ -346,7 +243,7 @@ h2 {
 
     <div class="hero-left">
       <h1>Where School Sports Become a System</h1>
-      <p>A structured, outcome-driven sports program that transforms physical education.</p>
+      <p>A structured, outcome-driven sports program.</p>
 
       <button class="btn btn-primary">Explore Program</button>
       <button class="btn btn-secondary">Partner With Us</button>
@@ -375,7 +272,7 @@ h2 {
           <li>✔ Structured Curriculum</li>
           <li>✔ Professional Coaching</li>
           <li>✔ Performance Tracking</li>
-          <li>✔ Minimal engagement & visibility</li>
+          <li>✔ Low engagement</li>
         </ul>
 
         <p style="margin-top:20px;color:#ff6a00;">
@@ -388,25 +285,21 @@ h2 {
         <div class="problem-card">
           <div class="problem-icon"></div>
           <h4>Structured Curriculum</h4>
-          <p>No measurable progress</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-icon"></div>
           <h4>Coaching Gap</h4>
-          <p>General instruction lacks depth</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-icon"></div>
           <h4>No Pathway</h4>
-          <p>No growth structure</p>
         </div>
 
         <div class="problem-card">
           <div class="problem-icon"></div>
           <h4>Low Engagement</h4>
-          <p>Students lose interest</p>
         </div>
 
       </div>
@@ -415,17 +308,17 @@ h2 {
 
   </div>
 </section>
-  
+
 <!-- FEATURES -->
 <section class="section dark">
   <div class="container">
     <h2>We Build Sports Systems</h2>
 
     <div class="features">
-      <div class="feature">Curriculum</div>
-      <div class="feature">Coaching</div>
-      <div class="feature">Tracking</div>
-      <div class="feature">Exposure</div>
+      <div>Curriculum</div>
+      <div>Coaching</div>
+      <div>Tracking</div>
+      <div>Exposure</div>
     </div>
   </div>
 </section>
@@ -433,7 +326,6 @@ h2 {
 <!-- SPORTS -->
 <section class="section">
   <div class="container">
-
     <h2>Explore. Learn. Grow.</h2>
 
     <div class="sports-grid">
@@ -459,10 +351,9 @@ h2 {
       </div>
 
     </div>
-
   </div>
 </section>
-  
+
 <!-- PROCESS -->
 <section class="section">
   <div class="container">
