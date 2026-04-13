@@ -35,23 +35,22 @@ body {
   position: fixed;
   width: 100%;
   padding: 16px 0;
-  color: white;
   z-index: 1000;
 
-  background: rgba(13, 27, 42, 0.4);
+  background: rgba(0,0,0,0.2);
   backdrop-filter: blur(12px);
-  transition: 0.3s;
-}
-
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
 }
 
 .navbar a {
   color: white;
   margin-left: 30px;
   text-decoration: none;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 1;
 }
 
 /* HERO */
@@ -652,6 +651,24 @@ h2 {
   z-index: 2000;
 }
   
+  .logo {
+  height: 32px;
+  object-fit: contain;
+}
+  
+  .logo {
+  height: 32px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
+}
+
+  .hero {
+  padding-top: 60px; /* pushes content down slightly */
+}
+
+.hero-left {
+  max-width: 550px; /* controls width for better balance */
+}
+  
 /* RESPONSIVE */
 @media(max-width: 900px){
   .hero-inner {
@@ -742,7 +759,7 @@ h2 {
 <!-- NAVBAR -->
 <div class="navbar">
   <div class="container nav-inner">
-    <b>LEGAXY</b>
+    <img src="legaxy-logo.png" class="logo" alt="Legaxy Logo">
     <div>
       <a href="#">Home</a>
       <a href="#">About</a>
