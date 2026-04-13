@@ -33,12 +33,14 @@ body {
 /* NAVBAR */
 .navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 16px 0;
   z-index: 1000;
 
-  background: rgba(0,0,0,0.2);
-  backdrop-filter: blur(12px);
+  padding: 20px 0;
+
+  background: transparent; /* IMPORTANT */
 }
 
 .navbar a {
@@ -47,6 +49,10 @@ body {
   text-decoration: none;
   opacity: 0.8;
   transition: 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 1;
 }
 
 .navbar a:hover {
@@ -652,8 +658,10 @@ h2 {
 }
   
   .logo {
-  height: 32px;
+  height: 40px;
   object-fit: contain;
+
+  filter: brightness(0) invert(1); /* makes it white */
 }
   
   .logo {
@@ -662,7 +670,7 @@ h2 {
 }
 
   .hero {
-  padding-top: 60px; /* pushes content down slightly */
+  padding-top: 100px; /* pushes content down slightly */
 }
 
 .hero-left {
