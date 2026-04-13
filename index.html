@@ -494,6 +494,11 @@ h2 {
   background: linear-gradient(to right, #ff6a00, #ff8c42);
 }
   
+  .process-line {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+  
 /* RESPONSIVE */
 @media(max-width: 900px){
   .hero-inner {
@@ -506,11 +511,6 @@ h2 {
 
   .sports-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .features, .process {
-    flex-direction: column;
-    gap: 20px;
   }
 
   h2 {
