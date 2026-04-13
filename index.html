@@ -100,19 +100,31 @@ body {
   background: linear-gradient(135deg, #ff6a00, #ff8c42);
   color: white;
   box-shadow: 0 10px 25px rgba(255,106,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform: translateX(-100%);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
+  transition: 0.6s;
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(255,106,0,0.6);
-}
-
-.btn-secondary {
-  background: white;
-}
-
-.btn-secondary:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(255,106,0,0.6);
 }
 
 /* SECTION */
@@ -349,6 +361,28 @@ h2 {
   transition: 0.4s;
 }
 
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,106,0,0.3), transparent 70%);
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.tile:hover::before {
+  opacity: 1;
+}
+
+.tile img {
+  transition: 0.6s ease;
+}
+
+.tile:hover img {
+  transform: scale(1.1);
+}
+
 .tile img {
   width: 100%;
   height: 220px;
@@ -558,6 +592,45 @@ h2 {
 .step:hover .step-icon {
   box-shadow: 0 15px 40px rgba(255,106,0,0.7);
   transform: scale(1.1);
+}
+  .hero h1,
+.hero p,
+.hero .btn {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero h1 { animation-delay: 0.2s; }
+.hero p { animation-delay: 0.4s; }
+.hero .btn:nth-child(1) { animation-delay: 0.6s; }
+.hero .btn:nth-child(2) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  .cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,106,0,0.25), transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
 }
   
 /* RESPONSIVE */
@@ -870,6 +943,30 @@ h2 {
   }, { threshold: 0.3 });
 
   observer.observe(processLine);
+    <script>
+const reveals = document.querySelectorAll('.section');
+
+const observer2 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(sec => {
+  sec.classList.add('reveal');
+  observer2.observe(sec);
+});
+</script>
+  <div class="cursor-glow"></div>
+  <script>
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
 </script>
 
 </body>
