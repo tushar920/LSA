@@ -24,7 +24,7 @@ body {
   
 /* CONTAINER */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
   padding: 0 20px;
 }
@@ -88,19 +88,31 @@ body {
 
 /* BUTTONS */
 .btn {
-  padding: 14px 24px;
-  border-radius: 8px;
+  padding: 14px 28px;
+  border-radius: 10px;
   border: none;
-  margin-right: 10px;
+  margin-right: 12px;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
 .btn-primary {
-  background: #ff6a00;
+  background: linear-gradient(135deg, #ff6a00, #ff8c42);
   color: white;
+  box-shadow: 0 10px 25px rgba(255,106,0,0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(255,106,0,0.6);
 }
 
 .btn-secondary {
   background: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
 }
 
 /* SECTION */
@@ -117,8 +129,9 @@ body {
 }
 
 h2 {
-  font-size: 32px;
-  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 /* PROBLEM SECTION */
@@ -335,24 +348,49 @@ h2 {
 }
 
 /* SPORTS GRID */
+.tile {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
 .tile img {
   width: 100%;
-  height: 150px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 10px;
+  transition: 0.4s;
 }
 
-.tile {
-  background: white;
-  padding: 15px;
-  border-radius: 16px;
-  transition: 0.3s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+/* DARK OVERLAY */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
+  opacity: 0.8;
+  transition: 0.4s;
 }
 
-.tile:hover {
-  transform: translateY(-6px);
+/* TEXT OVER IMAGE */
+.tile p {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  z-index: 2;
+}
+
+/* HOVER EFFECT */
+.tile:hover img {
+  transform: scale(1.08);
+}
+
+.tile:hover::after {
+  opacity: 1;
 }
 
 /* PROCESS */
@@ -392,8 +430,8 @@ h2 {
   .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  margin-top: 40px;
+  gap: 40px;
+  margin-top: 50px;
 }
 
 .tile {
@@ -406,7 +444,7 @@ h2 {
 
 .tile img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
 }
 
@@ -463,6 +501,18 @@ h2 {
   .grid {
   grid-template-columns: repeat(2, 1fr);
 }
+  
+  .sports {
+  background: radial-gradient(circle at top, rgba(255,106,0,0.15), transparent 60%);
+}
+  
+  .tile {
+  transform: translateY(0);
+}
+
+.tile:hover {
+  transform: translateY(-12px);
+}
 
 </style>
 </head>
@@ -501,7 +551,7 @@ h2 {
 </section>
 
 <!-- PROBLEM -->
-<section class="section">
+<section class="section sports">
   <div class="container">
 
     <div class="problem-layout">
