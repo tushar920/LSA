@@ -261,6 +261,25 @@ h2 {
   gap: 40px;
   text-align: center;
 }
+  
+  .feature {
+  position: relative;
+}
+
+.feature::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50px;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+}
+
+.feature:last-child::after {
+  display: none;
+}
 
 .feature-icon {
   width: 42px;
