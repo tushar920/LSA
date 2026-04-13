@@ -228,32 +228,6 @@ h2 {
   color: white;
   padding: 80px 20px;
 }
-
-/* RESPONSIVE */
-@media(max-width: 900px){
-  .hero-inner {
-    flex-direction: column;
-  }
-
-  .problem-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sports-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .features, .process {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  h2 {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-/* ===== GLOW SECTION FIX ===== */
 .dark {
   background: linear-gradient(90deg, #0d1b2a 0%, #ff6a00 100%);
   color: white;
@@ -350,8 +324,30 @@ h2 {
   height: 40px;
   color: #ff6a00;
   margin-bottom: 15px;
-}
+  
+/* RESPONSIVE */
+@media(max-width: 900px){
+  .hero-inner {
+    flex-direction: column;
+  }
 
+  .problem-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features, .process {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
 
 </style>
 </head>
@@ -450,26 +446,32 @@ h2 {
 <section class="section dark">
   <div class="container">
     <h2>We Build Sports Systems</h2>
+    </div>
+</section>
+  
+    <div class="features">
 
-    <div class="feature">
-  <i data-lucide="clipboard-list" class="feature-icon"></i>
-  <p>Structured Curriculum</p>
-</div>
-
-<div class="feature">
-  <i data-lucide="users" class="feature-icon"></i>
-  <p>Professional Coaching</p>
-</div>
-
-<div class="feature">
-  <i data-lucide="bar-chart-3" class="feature-icon"></i>
-  <p>Performance Tracking</p>
-</div>
-
-<div class="feature">
-  <i data-lucide="activity" class="feature-icon"></i>
-  <p>Multi-Sport Exposure</p>
+  <div class="feature">
+    <i data-lucide="clipboard-list" class="feature-icon"></i>
+    <p>Structured Curriculum</p>
   </div>
+
+  <div class="feature">
+    <i data-lucide="users" class="feature-icon"></i>
+    <p>Professional Coaching</p>
+  </div>
+
+  <div class="feature">
+    <i data-lucide="bar-chart-3" class="feature-icon"></i>
+    <p>Performance Tracking</p>
+  </div>
+
+  <div class="feature">
+    <i data-lucide="activity" class="feature-icon"></i>
+    <p>Multi-Sport Exposure</p>
+  </div>
+
+</div>
 </section>
 
 <!-- SPORTS -->
