@@ -380,8 +380,22 @@ h2 {
   left: 20px;
   color: white;
   font-weight: 600;
-  font-size: 18px;
   z-index: 2;
+}
+
+.tile span {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  color: white;
+  font-size: 13px;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 2;
+}
+
+.tile:hover span {
+  opacity: 1;
 }
 
 /* HOVER EFFECT */
@@ -513,6 +527,37 @@ h2 {
 .tile:hover {
   transform: translateY(-12px);
 }
+
+  .system-box {
+  position: relative;
+  margin-top: 60px;
+  height: 300px;
+}
+
+.system-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff6a00;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.system-item {
+  position: absolute;
+  background: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.top-left { top: 0; left: 0; }
+.top-right { top: 0; right: 0; }
+.bottom-left { bottom: 0; left: 0; }
+.bottom-right { bottom: 0; right: 0; }
 
 </style>
 </head>
@@ -649,21 +694,25 @@ h2 {
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
+    <span>Skill + Coordination + Game IQ</span>
     <p>Cricket</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377">
+    <span>Skill + Coordination + Game IQ</span>
     <p>Football</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc">
+    <span>Skill + Coordination + Game IQ</span>
     <p>Basketball</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d">
+    <span>Skill + Coordination + Game IQ</span>
     <p>Badminton</p>
   </div>
 
@@ -672,19 +721,40 @@ h2 {
 </section>
 
 <!-- PROCESS -->
-<section class="section">
+<section class="process">
   <div class="container">
     <h2>A System, Not Sessions</h2>
 
-    <div class="process">
-      <div>Assess</div>
-      <div>Train</div>
-      <div>Track</div>
-      <div>Compete</div>
+    <div class="process-line">
+
+      <div class="step">
+        <div class="step-icon">01</div>
+        <h3>Assess</h3>
+        <p>Baseline evaluation of student fitness and skill levels.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-icon">02</div>
+        <h3>Train</h3>
+        <p>Structured sessions led by expert coaches.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-icon">03</div>
+        <h3>Track</h3>
+        <p>Continuous performance tracking and reports.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-icon">04</div>
+        <h3>Compete</h3>
+        <p>Inter-school exposure and competition opportunities.</p>
+      </div>
+
     </div>
   </div>
 </section>
-
+  
 <!-- CTA -->
 <section class="cta">
   <h2>Build a Sports Culture</h2>
