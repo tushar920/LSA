@@ -150,13 +150,36 @@ h2 {
 
 /* DARK SECTION */
 .dark {
-  background: linear-gradient(90deg, #0d1b2a, #ff6a00);
+  background: linear-gradient(90deg, #0d1b2a 0%, #ff6a00 100%);
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* GLOW OVERLAY */
+.dark::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,106,0,0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.dark .container {
+  position: relative;
+  z-index: 2;
 }
 
 .features {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 60px;
+  gap: 40px;
   text-align: center;
 }
 
@@ -230,14 +253,96 @@ h2 {
   font-weight: 700;
 }
 
-p {
-  font-size: 16px;
-  line-height: 1.6;
+/* ===== GLOW SECTION FIX ===== */
+.dark {
+  background: linear-gradient(90deg, #0d1b2a 0%, #ff6a00 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-left p {
-  font-size: 18px;
+.dark::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,106,0,0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.dark .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 60px;
+  gap: 40px;
+  text-align: center;
+}
+
+.feature-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 12px;
+  color: #ff6a00;
+  filter: drop-shadow(0 0 10px rgba(255,106,0,0.6));
+}
+
+.feature p {
+  font-size: 15px;
   opacity: 0.9;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  transition: 0.3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+/* SPORTS GRID */
+.tile img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.tile {
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  transition: 0.3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.tile:hover {
+  transform: translateY(-6px);
+}
+
+/* PROCESS */
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 40px;
+  gap: 40px;
+  text-align: center;
 }
   
 .icon {
@@ -346,12 +451,24 @@ p {
   <div class="container">
     <h2>We Build Sports Systems</h2>
 
-    <div class="features">
-      <div>Curriculum</div>
-      <div>Coaching</div>
-      <div>Tracking</div>
-      <div>Exposure</div>
-    </div>
+    <div class="feature">
+  <i data-lucide="clipboard-list" class="feature-icon"></i>
+  <p>Structured Curriculum</p>
+</div>
+
+<div class="feature">
+  <i data-lucide="users" class="feature-icon"></i>
+  <p>Professional Coaching</p>
+</div>
+
+<div class="feature">
+  <i data-lucide="bar-chart-3" class="feature-icon"></i>
+  <p>Performance Tracking</p>
+</div>
+
+<div class="feature">
+  <i data-lucide="activity" class="feature-icon"></i>
+  <p>Multi-Sport Exposure</p>
   </div>
 </section>
 
