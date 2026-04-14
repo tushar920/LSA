@@ -339,32 +339,9 @@ h2 {
 /* SPORTS GRID */
 .tile {
   position: relative;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.4s;
-}
-
-.tile::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(255,106,0,0.3), transparent 70%);
-  opacity: 0;
-  transition: 0.4s;
-  z-index: 1;
-}
-
-.tile:hover::before {
-  opacity: 1;
-}
-
-.tile img {
-  transition: 0.6s ease;
-}
-
-.tile:hover img {
-  transform: scale(1.1);
 }
 
 .tile img {
@@ -374,46 +351,41 @@ h2 {
   transition: 0.5s ease;
 }
 
-/* DARK PREMIUM OVERLAY */
 .tile::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.75),
     rgba(0,0,0,0.2),
     transparent
   );
-  opacity: 0.9;
-  transition: 0.4s;
 }
 
-/* TITLE */
 .tile p {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 18px;
+  left: 18px;
   color: white;
   font-weight: 600;
   font-size: 18px;
   z-index: 2;
+  transition: 0.3s;
 }
 
-/* SUBTEXT */
 .tile span {
   position: absolute;
   bottom: 50px;
-  left: 20px;
+  left: 18px;
   color: white;
   font-size: 13px;
   opacity: 0;
   transform: translateY(10px);
-  transition: 0.4s ease;
+  transition: 0.3s;
   z-index: 2;
 }
 
-/* HOVER EFFECT */
 .tile:hover img {
   transform: scale(1.08);
 }
@@ -421,6 +393,10 @@ h2 {
 .tile:hover span {
   opacity: 1;
   transform: translateY(0);
+}
+
+.tile:hover p {
+  transform: translateY(-4px);
 }
   
 .icon {
@@ -624,11 +600,12 @@ h2 {
 }
   
 .logo {
-  height: 125px;
-  transform: scale(1.1);
+  height: 60px;
+  width: auto;
   object-fit: contain;
+
   filter: brightness(0) invert(1)
-          drop-shadow(0 0 12px rgba(255,255,255,0.35));
+          drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
   
   .hero {
@@ -656,6 +633,7 @@ h2 {
 }
 
  .navbar {
+  padding: 12px 0;
   backdrop-filter: blur(10px);
   background: rgba(20, 30, 40, 0.85);
 }
@@ -1301,11 +1279,6 @@ document.addEventListener('mousemove', e => {
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('.navbar');
 
-  if (window.scrollY > 50) {
-    nav.style.background = "rgba(13,27,42,0.85)";
-  } else {
-    nav.style.background = "transparent";
-  }
 });
 
 // SCROLL BAR
