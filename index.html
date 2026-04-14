@@ -917,6 +917,7 @@ section::before {
 </head>
 
 <body>
+  <div class="scroll-bar"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -1042,7 +1043,7 @@ section::before {
 </section>
 
 <!-- SPORTS -->
-<section class="section">
+<section class="section fade-in">
   <div class="container">
     <h2>Explore. Learn. Grow.</h2>
 
@@ -1077,11 +1078,12 @@ section::before {
 </section>
 
 <!-- PROCESS -->
-<section class="section">
+<section class="section fade-in">
   <div class="container">
-    <h2>A System, Not Sessions</h2>  
-    <div class="process-line">
-
+    <h2>A System, Not Sessions</h2>
+      <div class="process-bar"></div>
+      <div class="process-line">
+        
       <div class="step">
         <div class="step-icon">01</div>
         <h3>Assess</h3>
@@ -1104,9 +1106,7 @@ section::before {
         <div class="step-icon">04</div>
         <h3>Compete</h3>
         <p>Inter-school exposure and competition opportunities.</p>
-      </div>
-      <div class="process-bar"></div>
-
+      
     </div>
   </div>
 </section>
@@ -1138,10 +1138,6 @@ const processObserver = new IntersectionObserver((entries) => {
           step.classList.add('show');
         }, index * 200);
       });
-
-    }
-  });
-}, { threshold: 0.3 });
 
 processObserver.observe(processBar);
     }
