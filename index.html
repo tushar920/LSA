@@ -1079,10 +1079,7 @@ section::before {
 <!-- PROCESS -->
 <section class="section">
   <div class="container">
-    <h2>A System, Not Sessions</h2>
-
-    <div class="process-bar"></div>
-    
+    <h2>A System, Not Sessions</h2>  
     <div class="process-line">
 
       <div class="step">
@@ -1124,17 +1121,16 @@ section::before {
  <script>
   lucide.createIcons();
 
-  // PROCESS ANIMATION (CLEAN)
+ // PROCESS ANIMATION (FINAL CLEAN)
 const steps = document.querySelectorAll('.step');
-const processLine = document.querySelector('.process-line');
-const processLine = document.querySelector('.process-bar');
+const processBar = document.querySelector('.process-bar');
 
 const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
 
       // animate line
-      processLine.style.width = "100%";
+      processBar.style.width = "100%";
 
       // animate steps
       steps.forEach((step, index) => {
@@ -1147,9 +1143,10 @@ const processObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-processObserver.observe(processLine);
-
-  observer.observe(processLine);
+processObserver.observe(processBar);
+    }
+  });
+}, { threshold: 0.3 });
 
   // SECTION REVEAL
   const reveals = document.querySelectorAll('.section');
