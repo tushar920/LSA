@@ -1129,7 +1129,7 @@ h2 {
  <script>
   lucide.createIcons();
 
-// PROCESS ANIMATION (FIXED CLEAN)
+// PROCESS ANIMATION (FINAL CLEAN WORKING)
 const steps = document.querySelectorAll('.step');
 const processBar = document.querySelector('.process-bar');
 
@@ -1137,7 +1137,9 @@ const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
 
-      processBar.style.width = "100%";
+      if (processBar) {
+        processBar.style.width = "100%";
+      }
 
       steps.forEach((step, index) => {
         setTimeout(() => {
@@ -1149,12 +1151,10 @@ const processObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-processObserver.observe(processBar);
+if (processBar) {
+  processObserver.observe(processBar);
+}
    
-    }
-  });
-}, { threshold: 0.3 });
-
   // SECTION REVEAL
   const reveals = document.querySelectorAll('.section');
 
