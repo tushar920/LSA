@@ -624,7 +624,7 @@ h2 {
 }
   
 .logo {
-  height: 95px;
+  height: 125px;
   transform: scale(1.1);
   object-fit: contain;
   filter: brightness(0) invert(1)
@@ -655,8 +655,15 @@ h2 {
   letter-spacing: 0.3px;
 }
 
-  .navbar {
-  padding: 24px 0; /* increase from 20 */
+ .navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(20, 30, 40, 0.85);
+}
+
+  .nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
   .hero-right img {
@@ -920,6 +927,39 @@ h2 {
   margin-bottom: 12px;
   text-transform: uppercase;
   opacity: 0.8;
+}
+
+  .sport-card span {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  opacity: 0.9;
+}
+
+  .sport-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  border-radius: inherit;
+}
+
+  .sport-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.sport-card:hover span {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+  .sport-card span {
+  transition: all 0.3s ease;
+}
+
+  .sport-card {
+  cursor: pointer;
 }
   
 /* RESPONSIVE */
