@@ -201,10 +201,6 @@ h2 {
 }
 
 /* GLOW OVERLAY */
-.dark::before {
-  display: none;
-}
-
 .dark .container {
   position: relative;
   z-index: 2;
@@ -272,19 +268,6 @@ h2 {
   color: white;
   position: relative;
   overflow: hidden;
-}
-
-.dark::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,106,0,0.4) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  filter: blur(80px);
-  z-index: 0;
 }
 
 .dark .container {
@@ -865,7 +848,15 @@ h2 {
   background: linear-gradient(to right, #ff6a00, #ff8c42);
   transition: width 1s ease;
 }
-  
+
+  .dark.section {
+  background: linear-gradient(120deg, #0d1b2a 0%, #ff6a00 100%) !important;
+  color: white;
+}
+
+  .section:not(.dark) {
+  background: linear-gradient(to bottom, #f1f3f7, #ffffff);
+}
   
 /* RESPONSIVE */
 @media(max-width: 900px){
