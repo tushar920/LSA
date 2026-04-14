@@ -847,11 +847,6 @@ h2 {
   margin: auto;
 }
 
-  .step {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
 .features .feature {
   opacity: 1 !important;
   transform: none !important;
@@ -860,6 +855,17 @@ h2 {
 .dark h2 {
   opacity: 1 !important;
 }
+
+  .process-bar {
+  position: absolute;
+  top: 35px;
+  left: 5%;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(to right, #ff6a00, #ff8c42);
+  transition: width 1s ease;
+}
+  
   
 /* RESPONSIVE */
 @media(max-width: 900px){
@@ -1112,6 +1118,7 @@ h2 {
   <div class="container">
     <h2>A System, Not Sessions</h2>
       <div class="process-line">
+       <div class="process-bar"></div>
         
       <div class="step">
         <div class="step-icon">01</div>
@@ -1174,7 +1181,10 @@ const processObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 if (processBar) {
-  processObserver.observe(processBar);
+const processLine = document.querySelector('.process-line');
+
+if (processLine) {
+  processObserver.observe(processLine);
 }
    
   // SECTION REVEAL
