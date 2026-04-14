@@ -180,24 +180,26 @@ h2 {
 
 .problem-card {
   background: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-  transition: 0.4s;
-  transform-style: preserve-3d;
+  padding: 26px;
+  border-radius: 14px;
+
+  border: 1px solid #eee;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+
+  transition: 0.3s;
 }
 
 .problem-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
-
+  
 /* DARK SECTION */
-.dark {
-  background: linear-gradient(90deg, #0d1b2a 0%, #ff6a00 100%);
+.dark.section {
+  background: linear-gradient(120deg, #0d1b2a 0%, #ff6a00 100%);
   color: white;
   position: relative;
-  overflow: hidden;
 }
 
 /* GLOW OVERLAY */
@@ -263,11 +265,10 @@ h2 {
   color: white;
   padding: 80px 20px;
 }
-.dark {
-  background: linear-gradient(90deg, #0d1b2a 0%, #ff6a00 100%);
+.dark.section {
+  background: linear-gradient(120deg, #0d1b2a 0%, #ff6a00 100%);
   color: white;
   position: relative;
-  overflow: hidden;
 }
 
 .dark .container {
@@ -449,19 +450,26 @@ h2 {
 .dark h2 {
   margin-bottom: 50px;
 }
-  .grid {
+ .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin-top: 50px;
+  gap: 24px;
+  margin-top: 40px;
 }
 
 .tile {
   background: white;
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
+
+  border: 1px solid #eee;
+
   transition: 0.3s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .tile img {
@@ -499,11 +507,17 @@ h2 {
 }
 
 .step {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+
+  border: 1px solid #eee;
+
   text-align: center;
-  max-width: 250px;
+
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s ease;
+  transition: 0.6s;
 }
 
 .step.show {
@@ -512,17 +526,14 @@ h2 {
 }
 
 .step-icon {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  color: white;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  box-shadow: 0 10px 25px rgba(255,106,0,0.4);
+  width: 50px;
+  height: 50px;
+
+  font-size: 16px;
+
+  margin-bottom: 14px;
+
+  box-shadow: none;
 }
 
 .process-line::before {
@@ -687,7 +698,6 @@ h2 {
   inset: -40px;
   background: radial-gradient(circle, rgba(255,106,0,0.25), transparent 70%);
   filter: blur(60px);
-  z-index: 0;
 }
 
 .hero-right img {
@@ -852,12 +862,33 @@ h2 {
   color: white;
 }
 
-  .section:not(.dark) {
-  background: linear-gradient(to bottom, #f1f3f7, #ffffff);
+ .section:not(.dark) {
+  background: #f1f3f7;
 }
 
   .hero {
   margin-bottom: 0;
+}
+
+  .result-bar {
+  margin-top: 25px;
+  padding: 14px 20px;
+  border-radius: 10px;
+
+  background: #fff5ef;
+  border: 1px solid #ffd2b8;
+
+  color: #ff6a00;
+  font-weight: 500;
+}
+  
+  .dark.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.05;
 }
   
 /* RESPONSIVE */
@@ -1000,9 +1031,9 @@ h2 {
           <li>✔ Low engagement</li>
         </ul>
 
-        <p style="margin-top:20px;color:#ff6a00;">
-          → Result: Sports become a routine, not an opportunity.
-        </p>
+        <div class="result-bar">
+        → Result: Sports become a routine, not an opportunity.
+        </div>
       </div>
 
       <div class="problem-cards">
