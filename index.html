@@ -210,7 +210,8 @@ h2 {
   height: 600px;
   background: radial-gradient(circle, rgba(255,106,0,0.4) 0%, transparent 70%);
   transform: translate(-50%, -50%);
-  filter: blur(80px);
+  filter: blur(40px);
+  opacity: 0.5;
   z-index: 0;
 }
 
@@ -651,7 +652,8 @@ h2 {
 }
   
 .logo {
-  height: 70px;
+  height: 95px;
+  transform: scale(1.1);
   object-fit: contain;
   filter: brightness(0) invert(1)
           drop-shadow(0 0 12px rgba(255,255,255,0.35));
@@ -836,6 +838,14 @@ h2 {
   
   .section {
   box-shadow: 0 -20px 60px rgba(0,0,0,0.08);
+}
+
+  .section {
+  background: linear-gradient(to bottom, #f1f3f7, #ffffff);
+}
+
+  .hero {
+  background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
 }
   
 /* RESPONSIVE */
@@ -1183,14 +1193,14 @@ if (processBar) {
   const nav = document.querySelector('.navbar');
 
   if (window.scrollY > 50) {
-    nav.style.background = "rgba(13,27,42,0.6)";
-    nav.style.backdropFilter = "blur(12px)";
+    nav.style.background = "rgba(13,27,42,0.8)";
+    nav.style.backdropFilter = "blur(10px)";
   } else {
     nav.style.background = "transparent";
     nav.style.backdropFilter = "none";
   }
 });
-
+   
    window.addEventListener('scroll', () => {
   const scrollBar = document.querySelector('.scroll-bar');
 
