@@ -624,12 +624,6 @@ h2 {
   }
 }
 
-  .reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.8s ease;
-}
-
 .reveal.show {
   opacity: 1;
   transform: translateY(0);
@@ -656,10 +650,11 @@ h2 {
   z-index: 2000;
 }
   
-  .logo {
-  height: 100px;
+.logo {
+  height: 70px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1)
+          drop-shadow(0 0 12px rgba(255,255,255,0.35));
 }
   
   .hero {
@@ -829,6 +824,10 @@ section::before {
   width: 0%;
   background: linear-gradient(90deg, #ff6a00, #ff8c42);
   transition: width 1.2s ease;
+}
+  
+  .navbar {
+  padding: 30px 0;
 }
   
 /* RESPONSIVE */
@@ -1106,7 +1105,8 @@ section::before {
         <div class="step-icon">04</div>
         <h3>Compete</h3>
         <p>Inter-school exposure and competition opportunities.</p>
-      
+      </div>
+        
     </div>
   </div>
 </section>
@@ -1129,17 +1129,20 @@ const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
 
-      // animate line
       processBar.style.width = "100%";
 
-      // animate steps
       steps.forEach((step, index) => {
         setTimeout(() => {
           step.classList.add('show');
         }, index * 200);
       });
 
+    }
+  });
+}, { threshold: 0.3 });
+
 processObserver.observe(processBar);
+   
     }
   });
 }, { threshold: 0.3 });
@@ -1190,15 +1193,6 @@ processObserver.observe(processBar);
   scrollBar.style.width = progress + "%";
 });
    
-   window.addEventListener('mousemove', (e) => {
-  const img = document.querySelector('.hero-right img');
-
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-  img.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
-});
-
    window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
