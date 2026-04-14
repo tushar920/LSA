@@ -342,6 +342,8 @@ h2 {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
+
+  display: block; /* ADD THIS */
 }
 
 .tile img {
@@ -355,15 +357,19 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     to top,
     rgba(0,0,0,0.75),
-    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.3),
     transparent
   );
+
+  z-index: 1; /* ADD THIS */
 }
 
 .tile p {
+  z-index: 2
   position: absolute;
   bottom: 18px;
   left: 18px;
@@ -374,15 +380,23 @@ h2 {
 }
 
 .tile span {
+  z-index: 2
   position: absolute;
-  bottom: 50px;
+  bottom: 48px;
   left: 18px;
-  color: white;
+
+  color: rgba(255,255,255,0.85); /* FIXED */
   font-size: 13px;
+
   opacity: 0;
   transform: translateY(10px);
   transition: 0.3s;
+
   z-index: 2;
+}
+
+.tile:hover p {
+  transform: translateY(-4px);
 }
 
 .tile:hover span {
