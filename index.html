@@ -824,7 +824,7 @@ section::before {
   background: linear-gradient(to bottom, transparent, #f5f5f5);
 }
 
-  .process-line {
+.process-bar {
   height: 3px;
   width: 0%;
   background: linear-gradient(90deg, #ff6a00, #ff8c42);
@@ -1081,6 +1081,8 @@ section::before {
   <div class="container">
     <h2>A System, Not Sessions</h2>
 
+    <div class="process-bar"></div>
+    
     <div class="process-line">
 
       <div class="step">
@@ -1106,6 +1108,7 @@ section::before {
         <h3>Compete</h3>
         <p>Inter-school exposure and competition opportunities.</p>
       </div>
+      <div class="process-bar"></div>
 
     </div>
   </div>
@@ -1121,31 +1124,30 @@ section::before {
  <script>
   lucide.createIcons();
 
-  // PROCESS ANIMATION
-  const steps = document.querySelectorAll('.step');
-  const processLine = document.querySelector('.process-line');
-
-  const steps = document.querySelectorAll('.step');
+  // PROCESS ANIMATION (CLEAN)
+const steps = document.querySelectorAll('.step');
 const processLine = document.querySelector('.process-line');
+const processLine = document.querySelector('.process-bar');
 
-const observer = new IntersectionObserver((entries) => {
+const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+
+      // animate line
       processLine.style.width = "100%";
+
+      // animate steps
+      steps.forEach((step, index) => {
+        setTimeout(() => {
+          step.classList.add('show');
+        }, index * 200);
+      });
+
     }
   });
-});
+}, { threshold: 0.3 });
 
-steps.forEach(step => observer.observe(step));
-
-        steps.forEach((step, index) => {
-          setTimeout(() => {
-            step.classList.add('show');
-          }, index * 200);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
+processObserver.observe(processLine);
 
   observer.observe(processLine);
 
