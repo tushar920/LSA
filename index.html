@@ -781,6 +781,55 @@ h2 {
 .hero-left {
   padding-right: 40px;
 }
+
+  .fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  .card {
+  transition: 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+  .card img {
+  transition: 0.6s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+  section {
+  position: relative;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, #f5f5f5);
+}
+
+  .process-line {
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6a00, #ff8c42);
+  transition: width 1.2s ease;
+}
   
 /* RESPONSIVE */
 @media(max-width: 900px){
@@ -1076,10 +1125,18 @@ h2 {
   const steps = document.querySelectorAll('.step');
   const processLine = document.querySelector('.process-line');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        processLine.classList.add('animate');
+  const steps = document.querySelectorAll('.step');
+const processLine = document.querySelector('.process-line');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      processLine.style.width = "100%";
+    }
+  });
+});
+
+steps.forEach(step => observer.observe(step));
 
         steps.forEach((step, index) => {
           setTimeout(() => {
@@ -1146,6 +1203,32 @@ h2 {
 
   img.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
 });
+
+   window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  const heroImage = document.querySelector(".hero-right img");
+  const heroText = document.querySelector(".hero-left");
+
+  if (heroImage && heroText) {
+    heroImage.style.transform = `translateY(${scrollY * 0.1}px) scale(1.02)`;
+    heroText.style.transform = `translateY(${scrollY * 0.05}px)`;
+  }
+});
+
+   const faders = document.querySelectorAll(".fade-in");
+
+const appear = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+   
+
+faders.forEach(el => appear.observe(el));
    
 </script>
 </body>
