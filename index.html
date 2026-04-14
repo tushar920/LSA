@@ -809,14 +809,18 @@ h2 {
   position: relative;
 }
 
-section::before {
-  content: "";
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(to bottom, transparent, #f5f5f5);
+  .hero {
+  margin-bottom: -60px; /* overlaps next section slightly */
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+  background: #f1f3f7;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
 }
 
 .process-bar {
@@ -828,6 +832,10 @@ section::before {
   
   .navbar {
   padding: 30px 0;
+}
+  
+  .section {
+  box-shadow: 0 -20px 60px rgba(0,0,0,0.08);
 }
   
 /* RESPONSIVE */
