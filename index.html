@@ -28,8 +28,7 @@ body {
   margin: auto;
   padding: 0 20px;
 }
-  <div class="scroll-bar"></div>
-
+ 
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -664,19 +663,29 @@ h2 {
   filter: brightness(0) invert(1); /* makes it white */
 }
   
-  .logo {
-  height: 32px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
-}
-
   .hero {
   padding-top: 100px; /* pushes content down slightly */
 }
 
-.hero-left {
+  .hero-left {
   max-width: 550px; /* controls width for better balance */
 }
   
+  .nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+  .nav-right {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-right a {
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
 /* RESPONSIVE */
 @media(max-width: 900px){
   .hero-inner {
@@ -768,10 +777,12 @@ h2 {
 <div class="navbar">
   <div class="container nav-inner">
     <img src="legaxy-logo.png" class="logo" alt="Legaxy Logo">
-    <div>
+    <div class="nav-right">
       <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Program</a>
+      <a href="#">In-School Program</a>
+      <a href="#">After School Program</a>
+      <a href="#">Centre of Excellence</a>
+      <a href="#">Pay n Play</a>
     </div>
   </div>
 </div>
@@ -1013,10 +1024,11 @@ h2 {
   const nav = document.querySelector('.navbar');
 
   if (window.scrollY > 50) {
-    nav.style.background = "rgba(13,27,42,0.7)";
-    nav.style.backdropFilter = "blur(16px)";
+    nav.style.background = "rgba(13,27,42,0.6)";
+    nav.style.backdropFilter = "blur(12px)";
   } else {
-    nav.style.background = "rgba(13,27,42,0.4)";
+    nav.style.background = "transparent";
+    nav.style.backdropFilter = "none";
   }
 });
 
