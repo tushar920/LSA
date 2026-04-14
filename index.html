@@ -1156,11 +1156,12 @@ h2 {
   <div class="cursor-glow"></div>
   
  <script>
-  lucide.createIcons();
+lucide.createIcons();
 
-// PROCESS ANIMATION (FINAL CLEAN WORKING)
+// PROCESS ANIMATION
 const steps = document.querySelectorAll('.step');
 const processBar = document.querySelector('.process-bar');
+const processLine = document.querySelector('.process-line');
 
 const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1180,38 +1181,36 @@ const processObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-if (processBar) {
-const processLine = document.querySelector('.process-line');
-
 if (processLine) {
   processObserver.observe(processLine);
 }
-   
-  // SECTION REVEAL
-  const reveals = document.querySelectorAll('.section');
 
-  const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.15 });
+// SECTION REVEAL
+const reveals = document.querySelectorAll('.section');
 
-  reveals.forEach(sec => {
-    sec.classList.add('reveal');
-    observer2.observe(sec);
+const observer2 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
   });
+}, { threshold: 0.15 });
 
-  // CURSOR GLOW
-  const glow = document.querySelector('.cursor-glow');
+reveals.forEach(sec => {
+  sec.classList.add('reveal');
+  observer2.observe(sec);
+});
 
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-   
-  window.addEventListener('scroll', () => {
+// CURSOR GLOW
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+// NAV SCROLL BG
+window.addEventListener('scroll', () => {
   const nav = document.querySelector('.navbar');
 
   if (window.scrollY > 50) {
@@ -1220,8 +1219,9 @@ if (processLine) {
     nav.style.background = "transparent";
   }
 });
-   
-   window.addEventListener('scroll', () => {
+
+// SCROLL BAR
+window.addEventListener('scroll', () => {
   const scrollBar = document.querySelector('.scroll-bar');
 
   const scroll = window.scrollY;
@@ -1230,8 +1230,9 @@ if (processLine) {
   const progress = (scroll / height) * 100;
   scrollBar.style.width = progress + "%";
 });
-   
-   window.addEventListener("scroll", () => {
+
+// HERO PARALLAX
+window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
 
   const heroImage = document.querySelector(".hero-right img");
@@ -1243,7 +1244,8 @@ if (processLine) {
   }
 });
 
-   const faders = document.querySelectorAll(".fade-in");
+// FADE IN
+const faders = document.querySelectorAll(".fade-in");
 
 const appear = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1253,10 +1255,7 @@ const appear = new IntersectionObserver((entries) => {
   });
 });
 
-   
-
 faders.forEach(el => appear.observe(el));
-   
 </script>
 </body>
 </html>
