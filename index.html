@@ -72,13 +72,18 @@ body {
 
 /* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  background: linear-gradient(90deg, #ff6a00 40%, #0d1b2a 100%);
+  gap: 60px;
+
+  padding: 120px 80px 80px;
+  min-height: 100vh;
+
+  background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
   color: white;
 }
-
+  
 .hero h1 {
   font-size: 58px;
   line-height: 1.1;
@@ -97,15 +102,6 @@ body {
   width: 100%;
   border-radius: 20px;
   object-fit: cover;
-}
-
-  border-radius: 24px;
-
-  box-shadow: 
-    0 50px 120px rgba(0,0,0,0.5),
-    0 20px 60px rgba(255,106,0,0.25);
-
-  transform: scale(1.05);
 }
 
 /* BUTTONS */
@@ -215,11 +211,6 @@ h2 {
 }
 
 /* GLOW OVERLAY */
-.dark 
-  position: relative;
-  z-index: 2;
-}
-
 .features {
   display: flex;
   justify-content: center;
@@ -374,6 +365,7 @@ h2 {
     rgba(0,0,0,0.65),
     rgba(0,0,0,0.15),
     transparent
+   }
   );
 }
 
@@ -664,14 +656,6 @@ h2 {
   position: relative;
 }
 
-.hero-right::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(circle, rgba(255,106,0,0.25), transparent 70%);
-  filter: blur(60px);
-}
-
 .hero-right img {
   position: relative;
   z-index: 2;
@@ -734,10 +718,6 @@ h2 {
   background-image: url("https://www.transparenttextures.com/patterns/noise.png");
   opacity: 0.04;
   pointer-events: none;
-}
-
-  .hero-inner {
-  align-items: center;
 }
 
 .hero-left {
@@ -921,10 +901,6 @@ h2 {
   transition: all 0.3s ease;
 }
 
-  .sport-card {
-  cursor: pointer;
-}
-
   .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1015,12 +991,33 @@ h2 {
 
   box-shadow: 0 15px 40px rgba(255,106,0,0.4);
 }
+
+  .system-item {
+  transition: all 0.3s ease;
+}
+
+.system-item:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.2);
+}
+
+.system-core {
+  transform: scale(1.05);
+}
+
+  .section {
+  padding: 120px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}  
+  
 /* RESPONSIVE */
 @media(max-width: 900px){
-  .hero-inner {
-    flex-direction: column;
-  }
-
+ 
   .problem-layout {
     grid-template-columns: 1fr;
   }
@@ -1043,18 +1040,6 @@ h2 {
   
   .sports {
   background: radial-gradient(circle at top, rgba(255,106,0,0.15), transparent 60%);
-}
-
-.system-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ff6a00;
-  color: white;
-  padding: 14px 24px;
-  border-radius: 12px;
-  font-weight: 600;
 }
 
   </style>
@@ -1085,8 +1070,8 @@ h2 {
     <p>A structured, outcome-driven sports program.</p>
 
     <div class="hero-buttons">
-      <button>Explore Program</button>
-      <button>Partner With Us</button>
+      <button class="btn btn-primary">Explore Program</button>
+      <button class="btn btn-secondary">Partner With Us</button>
     </div>
   </div>
 
