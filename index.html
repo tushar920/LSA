@@ -11,6 +11,30 @@
   
 <style>
 
+  /* GLOBAL STYLES */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 44px;
+}
+
+p {
+  line-height: 1.6;
+  color: #555;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -55,16 +79,6 @@ body {
   color: white;
 }
 
-.hero-inner {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
-
-.hero-left {
-  flex: 1;
-}
-
 .hero h1 {
   font-size: 58px;
   line-height: 1.1;
@@ -81,8 +95,9 @@ body {
 
 .hero-right img {
   width: 100%;
-  height: 420px;
+  border-radius: 20px;
   object-fit: cover;
+}
 
   border-radius: 24px;
 
@@ -91,17 +106,6 @@ body {
     0 20px 60px rgba(255,106,0,0.25);
 
   transform: scale(1.05);
-}
-
-/* glow */
-.hero-right::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-
-  background: radial-gradient(circle, rgba(255,106,0,0.25), transparent 70%);
-  filter: blur(60px);
-  z-index: 1;
 }
 
 /* BUTTONS */
@@ -347,16 +351,7 @@ h2 {
 /* SPORTS GRID */
 .tile {
   position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-/* IMAGE */
-.tile {
-  position: relative;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -364,44 +359,51 @@ h2 {
 
 .tile img {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
   transition: 0.6s ease;
 }
 
+/* premium gradient overlay */
 .tile::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.7),
-    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.15),
     transparent
   );
 }
 
+/* sport name */
 .tile p {
   position: absolute;
-  bottom: 18px;
-  left: 18px;
+  bottom: 20px;
+  left: 20px;
+
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
+/* sub text */
 .tile span {
   position: absolute;
-  bottom: 50px;
-  left: 18px;
+  bottom: 52px;
+  left: 20px;
+
   color: rgba(255,255,255,0.75);
-  font-size: 12px;
+  font-size: 13px;
+
   opacity: 0;
   transition: 0.3s;
 }
 
 .tile:hover {
-  transform: translateY(-10px) scale(1.04);
+  transform: translateY(-10px) scale(1.03);
 }
 
 .tile:hover img {
@@ -451,36 +453,38 @@ h2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  margin-top: 40px;
 }
 
 .step {
   background: white;
-  border-radius: 16px;
-  padding: 30px;
-  text-align: center;
-  transition: 0.3s;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: left;
+
+  transition: 0.3s ease;
 }
 
 .step:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }
 
 .step-icon {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #ff6a00;
 
   background: rgba(255,106,0,0.1);
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: 10px;
+  margin-bottom: 16px;
 }
   /* ===== ANIMATION SYSTEM ===== */
 
@@ -578,8 +582,13 @@ h2 {
           drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
   
-  .hero {
-  padding-top: 100px; /* pushes content down slightly */
+ .hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 60px;
+
+  padding: 100px 80px 60px;
 }
 
   .hero-left {
@@ -667,13 +676,17 @@ h2 {
   position: relative;
   z-index: 2;
 }
-  .hero h1 {
-  letter-spacing: -1.5px;
+  
+ .hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -1px;
 }
 
 .hero p {
+  margin-top: 20px;
   font-size: 18px;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
   .btn-secondary {
@@ -1065,23 +1078,23 @@ h2 {
 </div>
 
 <!-- HERO -->
-<section class="hero fade-in">
-  <div class="container hero-inner">
+<div class="hero">
 
-    <div class="hero-left">
-      <h1>Where School Sports Become a System</h1>
-      <p>A structured, outcome-driven sports program.</p>
+  <div class="hero-left">
+    <h1>Where School Sports Become a System</h1>
+    <p>A structured, outcome-driven sports program.</p>
 
-      <button class="btn btn-primary">Explore Program</button>
-      <button class="btn btn-secondary">Partner With Us</button>
+    <div class="hero-buttons">
+      <button>Explore Program</button>
+      <button>Partner With Us</button>
     </div>
-
-    <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
-    </div>
-
   </div>
-</section>
+
+  <div class="hero-right">
+    <img src="your-image.jpg" />
+  </div>
+
+</div>
 
 <!-- PROBLEM -->
 <section class="section sports fade-in">
@@ -1177,25 +1190,25 @@ h2 {
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
-    <span>Skill + Coordination + Game IQ</span>
+    <span>Batting • Bowling • Match Awareness</span>
     <p>Cricket</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377">
-    <span>Skill + Coordination + Game IQ</span>
+    <span>Dribbling • Passing • Decision Making</span>
     <p>Football</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc">
-    <span>Skill + Coordination + Game IQ</span>
+    <span>Shooting • Footwork • Court Vision</span>
     <p>Basketball</p>
   </div>
 
   <div class="tile">
     <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d">
-    <span>Skill + Coordination + Game IQ</span>
+    <span>Agility • Reflex • Shot Control</span>
     <p>Badminton</p>
   </div>
 
