@@ -65,63 +65,17 @@ h2, p {
 
   /* --- HERO SECTION (SIDE BY SIDE) --- */
 .hero {
-  background: linear-gradient(135deg, #0d1b2a 0%, #16213e 100%);
+  background: linear-gradient(135deg, #010b14 0%, #0a192f 100%);
   color: white;
-  min-height: 80vh; /* Keeps it within one screen */
+  min-height: 80vh;
   display: flex;
-  align-items: center; /* Centers everything vertically */
-  padding: 60px 0;
+  align-items: center;
+  padding: 100px 0 60px; /* Accounts for the fixed navbar */
+  position: relative;
   overflow: hidden;
 }
 
-/* THIS IS THE MAGIC THAT PUTS THEM SIDE-BY-SIDE */
-.hero .container {
-  display: flex; 
-  flex-direction: row; /* Forces left-to-right */
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px; /* Space between text and image */
-  width: 100%;
-}
-
-/* LEFT SIDE (TEXT) */
-.hero-left {
-  flex: 1; /* Takes up half the space */
-  max-width: 550px;
-  background: rgba(255, 255, 255, 0.05); /* Glass effect */
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hero-left h1 {
-  font-size: 48px;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-.hero-left p {
-  font-size: 16px;
-  color: #e2e8f0;
-  margin-bottom: 30px;
-}
-
-/* RIGHT SIDE (IMAGE) */
-.hero-right {
-  flex: 1; /* Takes up the other half */
-  display: flex;
-  justify-content: flex-end; /* Pushes image to the right edge */
-}
-
-.hero-right img {
-  max-width: 100%;
-  height: auto;
-  max-height: 550px; /* Stops the image from getting too huge */
-  object-fit: contain; /* Keeps the image proportions perfect */
-}
-
-/* This adds the subtle orange glow in the corner */
+/* Orange Glow Effect */
 .hero::after {
   content: "";
   position: absolute;
@@ -134,25 +88,55 @@ h2, p {
 }
 
 .hero .container {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px; 
+  width: 100%;
   position: relative;
-  z-index: 2; /* Ensures text stays above the glow */
+  z-index: 2; /* Keeps text above the glow */
 }
 
-/* 2. BOLD TYPOGRAPHY */
-.hero h1 {
-  font-size: 64px; /* Big and impactful */
-  line-height: 1.1; /* Keeps lines close together */
+/* LEFT SIDE (GLASS TEXT BOX) */
+.hero-left {
+  flex: 1;
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-left h1 {
+  font-size: clamp(40px, 5vw, 56px); /* Responsive sizing */
+  line-height: 1.15;
   margin-bottom: 20px;
   letter-spacing: -1px;
 }
 
-.hero p {
-  font-size: 18px;
-  color: #cbd5e1; /* Soft grey text so it's readable on dark background */
-  max-width: 600px;
-  margin-bottom: 30px;
+.hero-left p.hero-sub {
+  font-size: 16px;
+  color: #cbd5e1;
 }
-  
+
+/* RIGHT SIDE (IMAGE) */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 500px; /* Keeps the image from taking over */
+  height: auto;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.4), 0 10px 40px rgba(255,106,0,0.2);
+}
 /* BUTTONS */
 .btn {
   padding: 14px 28px;
@@ -580,33 +564,7 @@ h2 {
   font-weight: 500;
   letter-spacing: 0.5px;
 }
-  
-.hero-right img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 24px;
-
-  box-shadow: 
-    0 40px 100px rgba(0,0,0,0.4),
-    0 10px 40px rgba(255,106,0,0.2);
-
-  transition: 0.6s ease;
-}
-
-.hero-right img:hover {
-  transform: scale(1.03);
-}
-
-  .hero-right {
-  position: relative;
-}
-
-.hero-right img {
-  position: relative;
-  z-index: 2;
-}
- 
+   
 .hero p {
   margin-top: 20px;
   font-size: 18px;
@@ -1022,21 +980,15 @@ h2 {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="container hero-grid">
+  <div class="container">
 
     <div class="hero-left">
-      <p class="section-tag">SCHOOL SPORTS REDEFINED</p>
-
-      <h1>
-        Where School Sports <br>
-        Become a System
-      </h1>
-
-      <p class="hero-sub">
+      <p class="section-tag" style="margin-bottom: 10px;">SCHOOL SPORTS REDEFINED</p>
+      <h1>Where School Sports <br> Become a System</h1>
+      <p class="hero-sub" style="margin-bottom: 30px;">
         A structured, outcome-driven sports program designed
         to build skill, discipline, and performance.
       </p>
-
       <div class="hero-buttons">
         <button class="btn btn-primary">Explore Program</button>
         <button class="btn btn-secondary">Partner With Us</button>
@@ -1044,7 +996,7 @@ h2 {
     </div>
 
     <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b" />
+      <img src="image_af24aa.jpg" alt="Sports Player">
     </div>
 
   </div>
