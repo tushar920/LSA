@@ -69,8 +69,12 @@ body {
 .hero {
   padding: 140px 0 100px;
   background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
-  position: absolute;
+  position: relative;   /* ✅ replace absolute */
   color: white;
+}
+
+.hero {
+  margin-top: 80px;
 }
 
 .hero-grid {
@@ -560,12 +564,6 @@ h2 {
   padding: 18px 0;
 
   background: rgba(13, 27, 42, 0.85);
-    to bottom,
-    rgba(13, 27, 42, 0.95),
-    rgba(13, 27, 42, 0.7),
-    transparent
-}
-
   backdrop-filter: blur(10px);
 }
 
