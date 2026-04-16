@@ -63,18 +63,62 @@ h2, p {
   transition: 0.3s;
 }
 
-/* 1. DARK BACKGROUND & NEW COLORS */
-:root {
-  --primary-orange: #ff6a00;
-  --dark-navy: #010b14; /* Deep dark blue like your reference */
+  /* --- HERO SECTION (SIDE BY SIDE) --- */
+.hero {
+  background: linear-gradient(135deg, #0d1b2a 0%, #16213e 100%);
+  color: white;
+  min-height: 80vh; /* Keeps it within one screen */
+  display: flex;
+  align-items: center; /* Centers everything vertically */
+  padding: 60px 0;
+  overflow: hidden;
 }
 
-.hero {
-  padding: 160px 0 100px;
-  background: linear-gradient(135deg, #010b14 0%, #0a192f 100%);
-  color: white; /* Makes all text in hero white */
-  position: relative;
-  overflow: hidden;
+/* THIS IS THE MAGIC THAT PUTS THEM SIDE-BY-SIDE */
+.hero .container {
+  display: flex; 
+  flex-direction: row; /* Forces left-to-right */
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px; /* Space between text and image */
+  width: 100%;
+}
+
+/* LEFT SIDE (TEXT) */
+.hero-left {
+  flex: 1; /* Takes up half the space */
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-left h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  font-size: 16px;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+}
+
+/* RIGHT SIDE (IMAGE) */
+.hero-right {
+  flex: 1; /* Takes up the other half */
+  display: flex;
+  justify-content: flex-end; /* Pushes image to the right edge */
+}
+
+.hero-right img {
+  max-width: 100%;
+  height: auto;
+  max-height: 550px; /* Stops the image from getting too huge */
+  object-fit: contain; /* Keeps the image proportions perfect */
 }
 
 /* This adds the subtle orange glow in the corner */
