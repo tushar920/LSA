@@ -844,111 +844,121 @@ h2 {
   border: 1px solid rgba(255,255,255,0.15);
 }
 
-  /* ===== SYSTEM SECTION FINAL CLEAN ===== */
-
-.system-wrapper {
-  margin-top: 80px;
-  display: flex;
-  justify-content: center;
-}
-
-.system-grid {
+  .system-diagram {
   display: grid;
-  grid-template-columns: repeat(3, 220px);
+  grid-template-columns: 1fr 220px 1fr;
   grid-template-rows: auto auto auto;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  margin-top: 80px;
   position: relative;
 }
 
-/* POSITION */
-.system-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-.system-item:nth-child(2) { grid-column: 3; grid-row: 1; }
-.system-core              { grid-column: 2; grid-row: 2; }
-.system-item:nth-child(4) { grid-column: 1; grid-row: 3; }
-.system-item:nth-child(5) { grid-column: 3; grid-row: 3; }
+/* nodes */
+.system-node {
+  padding: 16px 22px;
+  border-radius: 12px;
 
-/* ITEMS */
-.system-item {
-  padding: 14px 18px;
-  border-radius: 10px;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+
   color: white;
   font-size: 14px;
-  text-align: center;
-  backdrop-filter: blur(8px);
+  font-weight: 500;
+
+  backdrop-filter: blur(10px);
   transition: 0.3s ease;
-  position: relative;
 }
 
-/* CORE (ONLY ONE EXISTS IN HTML) */
-.system-core {
-  padding: 22px 32px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  color: white;
-  font-weight: 700;
-  font-size: 18px;
-  box-shadow:
-    0 30px 100px rgba(255,106,0,0.6),
-    inset 0 0 30px rgba(255,255,255,0.25);
-  transform: scale(1.12);
-  z-index: 2;
-}
-
-/* HOVER */
-.system-item:hover {
+.system-node:hover {
   transform: translateY(-6px) scale(1.05);
 }
 
-/* CENTER LINE */
-.system-grid::before {
+/* positions */
+.system-node:nth-child(1) { grid-column: 1; grid-row: 1; }
+.system-node:nth-child(2) { grid-column: 3; grid-row: 1; }
+.system-node:nth-child(4) { grid-column: 1; grid-row: 3; }
+.system-node:nth-child(5) { grid-column: 3; grid-row: 3; }
+
+/* core */
+.system-core {
+  grid-column: 2;
+  grid-row: 2;
+
+  padding: 24px 34px;
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #ff6a00, #ff8c42);
+  color: white;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow:
+    0 30px 100px rgba(255,106,0,0.6),
+    inset 0 0 30px rgba(255,255,255,0.25);
+}
+
+/* connector lines */
+.system-diagram::before {
   content: "";
   position: absolute;
-  top: 10%;
-  bottom: 10%;
-  left: 50%;
   width: 2px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.5),
-    rgba(255,255,255,0.05)
-  );
+  height: 160px;
+  background: rgba(255,255,255,0.3);
 }
 
-/* SIDE CONNECTORS */
-.system-item:nth-child(1)::after,
-.system-item:nth-child(4)::after {
+.system-diagram::after {
   content: "";
   position: absolute;
-  top: 50%;
-  right: -20px;
-  width: 20px;
+  width: 240px;
   height: 2px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.3);
 }
 
-.system-item:nth-child(2)::after,
-.system-item:nth-child(5)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -20px;
-  width: 20px;
-  height: 2px;
-  background: rgba(255,255,255,0.4);
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
 }
 
-  .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
+.outcome-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
+.outcome-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.program-card {
+  padding: 30px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+
+  color: white;
+  transition: 0.3s;
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+}
 /* RESPONSIVE */
 @media(max-width: 900px){
  
@@ -1101,20 +1111,19 @@ h2 {
 
    <div class="system-wrapper">
 
-  <div class="system-grid">
-    
-    <div class="system-item">Structured Curriculum</div>
-    <div class="system-item">Professional Coaching</div>
+  <div class="system-diagram">
+
+    <div class="system-node">Structured Curriculum</div>
+    <div class="system-node">Professional Coaching</div>
 
     <div class="system-core">Classes 1–10</div>
 
-    <div class="system-item">Performance Tracking</div>
-    <div class="system-item">Multi-Sport Exposure</div>
+    <div class="system-node">Performance Tracking</div>
+    <div class="system-node">Multi-Sport Exposure</div>
 
   </div>
 
 </div>
-  </div>
 </section>
 
 <!-- SPORTS -->
@@ -1185,6 +1194,69 @@ h2 {
       </div>
         
     </div>
+  </div>
+</section>
+
+      <!-- Section -->
+
+<section class="section">
+  <div class="container">
+
+    <p class="section-tag">OUTCOMES</p>
+    <h2>What Students Actually Gain</h2>
+
+    <div class="outcome-grid">
+
+      <div class="outcome-card">
+        <h3>Physical Development</h3>
+        <p>Strength, agility, endurance, and coordination.</p>
+      </div>
+
+      <div class="outcome-card">
+        <h3>Skill Mastery</h3>
+        <p>Sport-specific techniques and real gameplay intelligence.</p>
+      </div>
+
+      <div class="outcome-card">
+        <h3>Discipline & Routine</h3>
+        <p>Consistency, structure, and performance mindset.</p>
+      </div>
+
+      <div class="outcome-card">
+        <h3>Competitive Exposure</h3>
+        <p>Match play, tournaments, and real pressure environments.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <section class="section dark">
+  <div class="container">
+
+    <p class="section-tag">PROGRAM STRUCTURE</p>
+    <h2>Designed for Every Stage</h2>
+
+    <div class="program-grid">
+
+      <div class="program-card">
+        <h3>Foundation (Classes 1–3)</h3>
+        <p>Movement, coordination, and basic motor skills.</p>
+      </div>
+
+      <div class="program-card">
+        <h3>Development (Classes 4–7)</h3>
+        <p>Sport introduction, technique, and gameplay basics.</p>
+      </div>
+
+      <div class="program-card">
+        <h3>Performance (Classes 8–10)</h3>
+        <p>Advanced skills, competition, and specialization.</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
   
