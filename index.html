@@ -64,28 +64,20 @@ h2, p {
 }
 
   /* --- HERO SECTION (SIDE BY SIDE) --- */
+/* --- HERO SECTION (SIDE BY SIDE) --- */
 .hero {
-  background: linear-gradient(135deg, #010b14 0%, #0a192f 100%);
+  /* This brings back the rich blue gradient */
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
   color: white;
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: 100px 0 60px; /* Accounts for the fixed navbar */
+  padding: 100px 0 60px; 
   position: relative;
   overflow: hidden;
 }
 
-/* Orange Glow Effect */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: -10%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255, 106, 0, 0.15) 0%, transparent 70%);
-  z-index: 1;
-}
+/* NOTE: We completely removed the .hero::after "glow" to fix the weird background issue */
 
 .hero .container {
   display: flex; 
@@ -95,23 +87,24 @@ h2, p {
   gap: 40px; 
   width: 100%;
   position: relative;
-  z-index: 2; /* Keeps text above the glow */
+  z-index: 2; 
 }
 
-/* LEFT SIDE (GLASS TEXT BOX) */
+/* LEFT SIDE (CLEAN GLASS TEXT BOX) */
 .hero-left {
   flex: 1;
   max-width: 550px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05); /* Faint transparency */
+  backdrop-filter: blur(12px); /* Makes the background underneath blurry */
+  -webkit-backdrop-filter: blur(12px);
   padding: 40px;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly brighter border for crispness */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Adds depth so it pops off the background */
 }
 
 .hero-left h1 {
-  font-size: clamp(40px, 5vw, 56px); /* Responsive sizing */
+  font-size: clamp(40px, 5vw, 56px); 
   line-height: 1.15;
   margin-bottom: 20px;
   letter-spacing: -1px;
@@ -131,11 +124,12 @@ h2, p {
 
 .hero-right img {
   width: 100%;
-  max-width: 500px; /* Keeps the image from taking over */
+  max-width: 500px; 
   height: auto;
   object-fit: contain;
   border-radius: 24px;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.4), 0 10px 40px rgba(255,106,0,0.2);
+  /* Adds a nice shadow to the image to match the premium feel */
+  box-shadow: 0 40px 100px rgba(0,0,0,0.4), 0 10px 40px rgba(255,106,0,0.1);
 }
 /* BUTTONS */
 .btn {
@@ -996,7 +990,7 @@ h2 {
     </div>
 
     <div class="hero-right">
-      <img src="image_af24aa.jpg" alt="Sports Player">
+      <img src="https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?q=80&w=800&auto=format&fit=crop" alt="Happy school children running and playing sports">
     </div>
 
   </div>
