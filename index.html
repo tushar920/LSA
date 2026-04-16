@@ -71,6 +71,7 @@ body {
 
 .hero-left {
   max-width: 520px;
+  padding-right: 40px;
 }
 
 .hero h1 {
@@ -530,11 +531,7 @@ h2 {
   filter: brightness(0) invert(1)
           drop-shadow(0 0 10px rgba(255,255,255,0.25));
 }
-  
-  .hero-left {
-  max-width: 550px; /* controls width for better balance */
-}
-  
+    
   .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -567,14 +564,14 @@ h2 {
 
   padding: 18px 0;
 
-  background: linear-gradient(
+  background: rgba(13, 27, 42, 0.85);
     to bottom,
     rgba(13, 27, 42, 0.95),
     rgba(13, 27, 42, 0.7),
     transparent
   );
 
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
 }
 
   .nav-links a {
@@ -660,11 +657,6 @@ h2 {
   background-image: url("https://www.transparenttextures.com/patterns/noise.png");
   opacity: 0.04;
   pointer-events: none;
-}
-
-.hero-left {
-  padding-right: 40px;
-  max-width: 480px;
 }
 
   .fade-in {
@@ -949,6 +941,12 @@ h2 {
   width: 20px;
   height: 2px;
   background: rgba(255,255,255,0.4);
+}
+
+  .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 /* RESPONSIVE */
