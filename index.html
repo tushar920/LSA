@@ -86,10 +86,11 @@ h2, p {
 .hero-left::before {
   content: "";
   position: absolute;
-  left: -40px;
-  top: 20px;
+  left: 0px;
+  top: 10px;
   width: 6px;
-  height: 120px;
+  height: 100px;
+  opacity: 0.6;
   background: linear-gradient(#ff6a00, transparent);
 }
 
@@ -280,18 +281,13 @@ h2 {
 
 /* premium gradient overlay */
 .tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     to top,
     rgba(0,0,0,0.85),
     rgba(0,0,0,0.4),
-    transparent
-  );
-}
-
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.7),
-    rgba(0,0,0,0.2),
     transparent
   );
 }
@@ -366,7 +362,7 @@ h2 {
   
  .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 32px;
   margin-top: 40px;
 }
@@ -810,8 +806,8 @@ h2 {
 .system-node {
   padding: 16px 22px;
   border-radius: 12px;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
 
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
