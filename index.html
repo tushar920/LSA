@@ -22,7 +22,7 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 24px;
 }
   
 h1, h2, h3 {
@@ -69,6 +69,7 @@ h2, p {
   background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
   position: relative;   /* ✅ replace absolute */
   color: white;
+  overflow: hidden;
 }
 
 .hero-grid {
@@ -79,7 +80,17 @@ h2, p {
 }
 
 .hero-left {
-  max-width: 520px;
+  position: relative;
+}
+
+.hero-left::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  width: 6px;
+  height: 120px;
+  background: linear-gradient(#ff6a00, transparent);
 }
 
 .hero h1 {
@@ -269,9 +280,13 @@ h2 {
 
 /* premium gradient overlay */
 .tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.4),
+    transparent
+  );
+}
 
   background: linear-gradient(
     to top,
@@ -518,6 +533,7 @@ h2 {
 
   background: rgba(13, 27, 42, 0.85);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
   .nav-links a {
@@ -720,15 +736,8 @@ h2 {
   opacity: 0.8;
 }
 
-  .section::before {
-  content: "";
-  position: absolute;
-  top: -200px;
-  left: -200px;   /* ADD THIS */
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255,106,0,0.15), transparent 70%);
-  filter: blur(80px);
+.section::before {
+  display: none;
 }
 
   .section::after {
@@ -801,6 +810,8 @@ h2 {
 .system-node {
   padding: 16px 22px;
   border-radius: 12px;
+  opacity: 0;
+  transform: translateY(30px);
 
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
@@ -810,7 +821,12 @@ h2 {
   font-weight: 500;
 
   backdrop-filter: blur(10px);
-  transition: 0.3s ease;
+  transition: 0.5s ease;
+}
+
+  .system-diagram.show .system-node {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .system-node:hover {
