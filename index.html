@@ -15,12 +15,14 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: #f1f3f7;
+  overflow-x: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 40px;
 }
   
 h1, h2, h3 {
@@ -51,10 +53,6 @@ h2, p {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
-body {
-  background: #f1f3f7;
-}
  
 /* NAVBAR */
 .navbar a {
@@ -73,10 +71,6 @@ body {
   color: white;
 }
 
-.hero {
-  margin-top: 80px;
-}
-
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -86,7 +80,6 @@ body {
 
 .hero-left {
   max-width: 520px;
-  padding-right: 40px;
 }
 
 .hero h1 {
@@ -771,7 +764,6 @@ h2 {
   content: "";
   position: absolute;
   top: -200px;
-  left: -200px;
   width: 400px;
   height: 400px;
 
@@ -786,6 +778,7 @@ h2 {
   right: -200px;
   width: 400px;
   height: 400px;
+  display: none;
 
   background: radial-gradient(circle, rgba(13,27,42,0.2), transparent 70%);
   filter: blur(100px);
@@ -893,6 +886,10 @@ h2 {
 .system-diagram::before {
   content: "";
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   width: 2px;
   height: 160px;
   background: rgba(255,255,255,0.3);
@@ -901,6 +898,10 @@ h2 {
 .system-diagram::after {
   content: "";
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   width: 240px;
   height: 2px;
   background: rgba(255,255,255,0.3);
