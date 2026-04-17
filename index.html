@@ -23,8 +23,8 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
   width: 100%;
+  padding: 0 40px;
 }
   
 h1, h2, h3 {
@@ -650,8 +650,10 @@ section {
   position: relative;
 }
 
-.section {
-  padding: 0 80px;   /* ❌ REMOVE vertical padding */
+section {
+  height: 100vh;              /* not min-height */
+  scroll-snap-align: start;
+
   display: flex;
   align-items: center;
 }
@@ -959,6 +961,10 @@ section {
   html {
   scroll-behavior: smooth;
 }
+  
+html, body {
+  height: 100%;
+}
 
 body {
   scroll-snap-type: y mandatory;
@@ -1252,7 +1258,7 @@ body {
   </div>
 </section>
 
-<section class="section">
+<section>
   <div class="container">
 
     <p class="section-tag">WHO THIS IS FOR</p>
@@ -1285,7 +1291,7 @@ body {
   </div>
 </section>
 
-      <section class="section">
+      <section>
   <div class="container">
 
     <p class="section-tag">WHY LEGAXY</p>
@@ -1318,7 +1324,7 @@ body {
   </div>
 </section>
 
-      <section class="section">
+      <section>
   <div class="container">
 
     <p class="section-tag">IMPLEMENTATION</p>
@@ -1355,7 +1361,7 @@ body {
   </div>
 </section>
 
-      <section class="section">
+      <section>
   <div class="container">
 
     <p class="section-tag">FOR SCHOOLS</p>
