@@ -24,6 +24,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
 }
   
 h1, h2, h3 {
@@ -69,10 +70,9 @@ h2, p {
 .hero {
   background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
   color: white;
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
   position: relative;
   overflow: hidden;
 }
@@ -651,7 +651,9 @@ section {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 0 80px;   /* ❌ REMOVE vertical padding */
+  display: flex;
+  align-items: center;
 }
 
 .section:first-of-type {
@@ -952,6 +954,15 @@ section {
 
 .program-section .grid {
   justify-content: center;
+}
+
+  html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
   
 /* RESPONSIVE */
