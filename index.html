@@ -38,6 +38,7 @@ h1 {
 h2 {
   font-weight: 600;
   font-size: 44px;
+  margin-bottom: 16px;  
 }
 
 p {
@@ -75,6 +76,7 @@ h2, p {
   align-items: center;
   position: relative;
   overflow: hidden;
+  margin-bottom: -40px;
 }
 
 /* NOTE: We completely removed the .hero::after "glow" to fix the weird background issue */
@@ -231,15 +233,24 @@ h2 {
 }
 
 .problem-card {
-  background: #ffffff;
-  padding: 26px;
-  border-radius: 14px;
+  background: linear-gradient(145deg, #ffffff, #f8f9fb);
+  padding: 28px;
+  border-radius: 18px;
 
-  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,0.04);
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.6);
 
-  transition: 0.3s;
+  transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.1),
+    0 0 40px rgba(255,106,0,0.08);
 }
 
 .problem-card:hover {
@@ -397,7 +408,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 32px;
-  margin-top: 40px;
+  margin-top: 24px;
 }
   
   /* FINAL PROCESS (ONLY ONE VERSION) */
@@ -406,7 +417,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 40px;
+  margin-top: 24px;
 }
 
 .step {
@@ -651,7 +662,7 @@ section {
 }
 
 section {
-  height: 100vh;              /* not min-height */
+  height: 90vh;              /* not min-height */
   scroll-snap-align: start;
 
   display: flex;
@@ -861,6 +872,19 @@ section {
     inset 0 0 30px rgba(255,255,255,0.25);
 }
 
+  .system-core {
+  position: relative;
+}
+
+.system-core::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle, rgba(255,106,0,0.4), transparent 70%);
+  z-index: -1;
+  filter: blur(40px);
+}
+
 /* connector lines */
 .system-diagram::before {
   content: "";
@@ -933,13 +957,13 @@ section {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
   /* PROGRAM SECTION FIX */
 .program-section {
   text-align: center;
-  color: white;
+  color: #111;
 }
 
 .program-section h2 {
@@ -969,6 +993,23 @@ html, body {
 body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+}
+
+  .icon {
+  width: 40px;
+  height: 40px;
+
+  background: rgba(255,106,0,0.1);
+  padding: 8px;
+  border-radius: 10px;
+
+  color: #ff6a00;
+  margin-bottom: 12px;
+}
+
+  .system-node:hover {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
 }
   
 /* RESPONSIVE */
