@@ -76,7 +76,6 @@ h2, p {
   align-items: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: -40px;
 }
 
 /* NOTE: We completely removed the .hero::after "glow" to fix the weird background issue */
@@ -287,10 +286,25 @@ h2 {
 
 /* CTA */
 .cta {
-  text-align: center;
-  background: linear-gradient(90deg, #ff6a00, #0d1b2a);
+  background: linear-gradient(120deg, #ff6a00, #0d1b2a);
   color: white;
-  padding: 80px 20px;
+  padding: 100px 0;
+}
+
+.cta .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.cta h2 {
+  max-width: 600px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
 }
 
 .dark .container {
@@ -318,7 +332,7 @@ h2 {
 
 .tile img {
   width: 100%;
-  height: 240px;
+  height: 220px;
   object-fit: cover;
   transition: 0.6s ease;
 }
@@ -395,7 +409,7 @@ h2 {
 }
 
 .features {
-  margin-top: 60px;
+  margin-top: 32px;
   display: flex;
   justify-content: center;
 }
@@ -407,7 +421,7 @@ h2 {
  .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 32px;
+  gap: 24px;
   margin-top: 24px;
 }
   
@@ -572,11 +586,11 @@ h2 {
 
   background: linear-gradient(
     to bottom,
-    rgba(13,27,42,0.95),
+    rgbargba(13,27,42,0.85),
     rgba(13,27,42,0.6)
   );
 
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
@@ -662,7 +676,7 @@ section {
 }
 
 section {
-  height: 90vh;              /* not min-height */
+  padding: 80px 0;             
   scroll-snap-align: start;
 
   display: flex;
@@ -816,7 +830,7 @@ section {
   gap: 40px;
   align-items: center;
   justify-items: center;
-  margin-top: 80px;
+  margin-top: 32px;
   position: relative;
 }
 
@@ -918,12 +932,25 @@ section {
 }
 
 .outcome-card {
-  background: white;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
   padding: 28px;
   border-radius: 16px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   transition: 0.3s;
+  position: relative;
+  padding-top: 50px;
+}
+
+  .outcome-card::before {
+  content: "●";
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-size: 18px;
+  color: #ff6a00;
 }
 
 .outcome-card:hover {
@@ -962,8 +989,9 @@ section {
 
   /* PROGRAM SECTION FIX */
 .program-section {
+  background: linear-gradient(120deg, #ff6a00, #0d1b2a);
+  color: white;
   text-align: center;
-  color: #111;
 }
 
 .program-section h2 {
@@ -991,7 +1019,6 @@ html, body {
 }
 
 body {
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
 
@@ -1011,6 +1038,18 @@ body {
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.3);
 }
+
+  .section {
+  padding: 80px 0;
+}
+
+.section.small {
+  padding: 60px 0;
+}
+
+.section.large {
+  padding: 120px 0;
+}
   
 /* RESPONSIVE */
 @media(max-width: 900px){
@@ -1027,6 +1066,7 @@ body {
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -1.5px;
+  margin-bottom: 12px;
 }
 
 .section-tag {
@@ -1437,15 +1477,21 @@ body {
   
 <!-- CTA -->
 <section class="cta">
-  <p class="section-tag">NEXT STEP</p>
-  <h2>Let’s Build a Sports System in Your School</h2>
-  <p style="margin-top: 10px; opacity: 0.85;">
-    Partner with us to transform your sports program into a structured ecosystem.
-  </p>
+  <div class="container">
 
-  <div style="margin-top: 20px;">
-    <button class="btn btn-primary">Book a Demo</button>
-    <button class="btn btn-secondary">Download Proposal</button>
+    <div>
+      <p class="section-tag">NEXT STEP</p>
+      <h2>Let’s Build a Sports System in Your School</h2>
+      <p style="margin-top: 10px; opacity: 0.85;">
+        Partner with us to transform your sports program into a structured ecosystem.
+      </p>
+    </div>
+
+    <div class="cta-buttons">
+      <button class="btn btn-primary">Book a Demo</button>
+      <button class="btn btn-secondary">Download Proposal</button>
+    </div>
+
   </div>
 </section>
 
