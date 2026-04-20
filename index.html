@@ -3,1528 +3,905 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSEP Landing</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-<script src="https://unpkg.com/lucide@latest"></script>
-  
+<title>LegaXy — Where School Sports Become a System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
-  /* ===== GLOBAL SPACING SYSTEM ===== */
-
+/* ═══════════════════════════════
+   ROOT
+═══════════════════════════════ */
 :root {
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 32px;
-  --space-lg: 64px;
-  --space-xl: 100px;
+  --orange: #ff6a00;
+  --navy: #0d1b2a;
+  --cream: #faf8f5;
+  --warm: #f2ede7;
+  --text: #111;
+  --muted: #6b7280;
+  --border: rgba(0,0,0,0.07);
+  --fd: 'Barlow Condensed', sans-serif;
+  --fb: 'Plus Jakarta Sans', sans-serif;
 }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--fb); background:var(--cream); color:var(--text); overflow-x:hidden; padding-top:68px; }
 
-  
-/* First section (hero) tighter */
+/* ═══ SCROLL BAR ═══ */
+#scrollBar { position:fixed; top:0; left:0; height:3px; width:0%; background:linear-gradient(90deg,var(--orange),#ffb347); z-index:9999; pointer-events:none; }
+
+/* ═══════════════════════════════
+   NAVBAR
+═══════════════════════════════ */
+.navbar {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  height:68px; padding:0 40px;
+  display:flex; align-items:center;
+  background:rgba(13,27,42,0.55);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.07); transition:background 0.4s;
+}
+.navbar.scrolled { background:rgba(13,27,42,0.97); }
+.nav-inner { max-width:1200px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
+.nav-logo { text-decoration:none; }
+.nav-logo-text { font-family:var(--fd); font-size:30px; font-weight:900; letter-spacing:-0.5px; color:white; line-height:1; }
+.nav-logo-text .x { color:var(--orange); }
+.nav-logo-sub { font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+.nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.72); text-decoration:none; font-size:13px; font-weight:500; padding:7px 13px; border-radius:8px; transition:all 0.2s; }
+.nav-links a:hover { color:white; background:rgba(255,255,255,0.09); }
+.nav-links .nav-cta { background:var(--orange); color:white !important; padding:8px 20px !important; box-shadow:0 4px 16px rgba(255,106,0,0.35); }
+.nav-links .nav-cta:hover { background:#ff7d1a; transform:translateY(-1px); }
+
+/* ═══════════════════════════════
+   HERO — ORIGINAL GRADIENT + GLASS
+═══════════════════════════════ */
 .hero {
- padding: 120px 0 80px;
+  min-height:100vh;
+  background:linear-gradient(120deg, #ff6a00 0%, #c94a00 28%, #0d1b2a 68%, #08111e 100%);
+  color:white; display:flex; align-items:center;
+  position:relative; overflow:hidden;
 }
 
-  /* GLOBAL STYLES */
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f1f3f7;
-  overflow-x: hidden;
-  padding-top: 70px;
+/* Noise grain overlay */
+.hero::before {
+  content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.055; mix-blend-mode:overlay;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 40px;
-}
+/* Glowing orbs */
+.hero-orb1 { position:absolute; top:-15%; left:-8%; width:55%; height:110%; background:radial-gradient(ellipse, rgba(255,140,0,0.25) 0%, transparent 65%); z-index:0; pointer-events:none; }
+.hero-orb2 { position:absolute; bottom:-30%; right:0; width:45%; height:90%; background:radial-gradient(ellipse, rgba(255,106,0,0.1) 0%, transparent 65%); z-index:0; pointer-events:none; }
 
-h1, h2 {
-  letter-spacing: -0.5px;
+/* Dot particle grid */
+.hero-dots {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,0.13) 1px, transparent 1px);
+  background-size:38px 38px;
+  mask-image:radial-gradient(ellipse 70% 80% at 75% 50%, black 0%, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 75% 50%, black 0%, transparent 80%);
 }
-  
-h1, h2, h3 {
-  margin: 0;
-}
-
-h1 {
-  font-weight: 700;
-}
-
-h2 {
-  font-weight: 600;
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 16px;  
-}
-
-p {
-  line-height: 1.6;
-  color: #555;
-}
-
-h2, p {
-  max-width: 800px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
- 
-/* NAVBAR */
-.navbar a {
-  color: white;
-  margin-left: 30px;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-
-
-/* --- HERO SECTION (SIDE BY SIDE) --- */
-.hero {
-  background: linear-gradient(120deg, #ff6a00 30%, #0d1b2a 100%);
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: -20px;
-}
-
-/* NOTE: We completely removed the .hero::after "glow" to fix the weird background issue */
 
 .hero .container {
-  display: flex; 
-  flex-direction: row; 
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px; 
-  width: 100%;
-  position: relative;
-  z-index: 2; 
+  position:relative; z-index:2;
+  max-width:1200px; margin:0 auto; width:100%;
+  padding:100px 40px;
+  display:flex; align-items:center; justify-content:space-between; gap:48px;
 }
 
-/* LEFT SIDE (CLEAN GLASS TEXT BOX) */
-.hero-left {
-  flex: 1;
-  max-width: 520px;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  padding-left: 20px;
-}
+/* ── LEFT ── */
+.hero-left { flex:1; max-width:540px; }
 
-.hero-left h1 {
-  font-size: clamp(40px, 5vw, 56px); 
-  line-height: 1.15;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color:rgba(255,255,255,0.75); margin-bottom:24px;
 }
+.hero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.8); box-shadow:0 0 8px rgba(255,255,255,0.5); flex-shrink:0; }
 
-.hero-left p.hero-sub {
-  font-size: 18px;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.6;
-}
+.hero h1 { font-family:var(--fd); font-size:clamp(48px,5.5vw,72px); font-weight:900; line-height:1.05; letter-spacing:-1px; margin-bottom:22px; }
+.hero h1 em { color:rgba(255,255,255,0.92); font-style:normal; display:block; }
 
-/* RIGHT SIDE (IMAGE) */
-.hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
+.hero-sub { font-size:17px; color:rgba(255,255,255,0.82); line-height:1.7; max-width:460px; margin-bottom:38px; }
 
-.hero-right img {
-  width: 100%;
-  max-width: 700px;
-  height: 460px;
-  object-fit: cover;
-  border-radius: 28px;
+.hero-buttons { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px; }
 
-  box-shadow:
-    0 60px 120px rgba(0,0,0,0.5),
-    0 20px 60px rgba(255,106,0,0.2);
-}
-
-  .hero-buttons {
-  margin-top: 30px;
-}
-  
-/* BUTTONS */
 .btn {
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  color: white;
-  box-shadow: 0 8px 20px rgba(255,106,0,0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: rgba(255,255,255,0.8);
-}
-  
-.btn-primary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.4),
-    transparent
-  );
-
-  transform: translateX(-100%);
-  transition: 0.6s;
-}
-
-.btn-primary:hover::after {
-  transform: translateX(100%);
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(255,106,0,0.6);
-}
-
-/* SECTION */
-
- section {
-  padding: 60px 0;
-}
-
-  .section:first-of-type {
-  padding-top: 80px;
-}
-
-.section + .section {
-  border-top: 1px solid #eee;
-}
-
-h2 {
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: -1px;
-}
-
-  section + section {
-  margin-top: 0; /* no stacking gaps */
-}
-  
-/* PROBLEM SECTION */
-.problem-layout {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-}
-
-.problem-left p {
-  margin: 20px 0;
-  color: #555;
-}
-
-.problem-list li {
-  margin-bottom: 10px;
-}
-
-.problem-cards {
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.problem-card:nth-child(1) {
-  transform: translateY(20px);
-}
-
-.problem-card:nth-child(3) {
-  transform: translateY(20px);
-}
-
-.problem-card {
-  background: linear-gradient(145deg, #ffffff, #f8f9fb);
-  padding: 28px;
-  border-radius: 18px;
-
-  border: 1px solid rgba(0,0,0,0.04);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.05),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-
-  transition: all 0.3s ease;
-}
-
-.problem-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow:
-    0 25px 60px rgba(0,0,0,0.1),
-    0 0 40px rgba(255,106,0,0.08);
-}
-
-.problem-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-  
-/* DARK SECTION */
-.dark.section {
-  background: linear-gradient(120deg, #0d1b2a 0%, #ff6a00 100%);
-  color: white;
-  position: relative;
-}
-
-/* SPORTS */
-.sport-card {
-  border-radius: 20px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  transition: 0.3s;
-}
-
-.sport-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-}
-
-.sport-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-/* CTA */
-.cta {
-  background: linear-gradient(120deg, #ff6a00, #0d1b2a);
-  color: white;
-  padding: 100px 0;
-}
-
-.cta .container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-}
-
-.cta h2 {
-  max-width: 500px;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-
-.dark .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* CARDS */
-.card {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
-
-  border-radius: 16px;
-  padding: 24px;
-
-  border: 1px solid rgba(0,0,0,0.05);
-
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-/* SPORTS GRID */
-.tile {
-  position: relative;
-  border-radius: 20px;
-  height: 280px; /* 🔥 FORCE HEIGHT */
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  scroll-snap-align: start;  /* 🔥 */
-  display: block;
-
-  min-width: 260px;   /* 🔥 ADD THIS */
-  flex-shrink: 0;     /* 🔥 ADD THIS */
-}
-
-/* premium gradient overlay */
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.85),
-    rgba(0,0,0,0.4),
-    transparent
-  );
-}
-
-/* sport name */
-/* TITLE (Cricket, Football, etc.) */
-.tile:hover img {
-  transform: scale(1.1);
-}
-  
-.icon {
-  width: 36px;
-  height: 36px;
-  color: #ff6a00;
-  margin-bottom: 12px;
-}
-
-.features {
-  margin-top: 32px;
-  display: flex;
-  justify-content: center;
-}
-
-.dark h2 {
-  margin-bottom: 50px;
-}
-  
- .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-  
-  /* FINAL PROCESS (ONLY ONE VERSION) */
-
-.process-line {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 24px;
-}
-
-.step {
-  background: white;
-  border-radius: 20px;
-  padding: 32px 24px;
-  text-align: left;
-
-  transition: 0.3s ease;
-}
-
-.step:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-}
-
-.step-icon {
-  font-size: 14px;
-  font-weight: 700;
-  color: #ff6a00;
-
-  background: rgba(255,106,0,0.1);
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-  margin-bottom: 16px;
-}
-  /* ===== ANIMATION SYSTEM ===== */
-
-.hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* stagger effect */
-.step {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
-}
-
-.step.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* line animation */
-.process-line::before {
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s ease;
-}
-
-.process-line.animate::before {
-  transform: scaleX(1);
-}
-
-/* hover glow */
-.step:hover .step-icon {
-  box-shadow: 0 15px 40px rgba(255,106,0,0.7);
-  transform: scale(1.1);
-}
-
-.hero h1 { animation-delay: 0.2s; }
-.hero p { animation-delay: 0.4s; }
-.hero .btn:nth-child(1) { animation-delay: 0.6s; }
-.hero .btn:nth-child(2) { animation-delay: 0.8s; }
-
-  @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-  .cursor-glow {
-  position: fixed;
-  width: 180px; /* reduced from 300 */
-  height: 180px;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  filter: blur(40px); /* softer */
-}
-
-  .scroll-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  width: 0%;
-  background: linear-gradient(90deg, #ff6a00, #ff8c42);
-  z-index: 2000;
-}
-  
-.logo {
-  height: 100px;
-  width: auto;
-  object-fit: contain;
-
-  filter: brightness(0) invert(1)
-          drop-shadow(0 0 10px rgba(255,255,255,0.25));
-}
-    
-  .nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-}
-  
-  .nav-right {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-right a {
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0.85;
-}
-
-.nav-right a:hover {
-  opacity: 1;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-
-  padding: 14px 0; /* tighter */
-
-  background: rgba(13, 27, 42, 0.6);
-  backdrop-filter: blur(12px);
-}
-
-/* prevent content going under navbar */
-body {
-  padding-top: 70px;
-}
-
-  .nav-links a {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-   
-.hero p {
-  margin-top: 20px;
-  font-size: 18px;
-  opacity: 0.85;
-}
-
-  .btn-secondary {
-  background: rgba(255,255,255,0.9);
-  color: #111;
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  transform: translateY(-3px);
-  background: white;
-}
-
-  .btn {
-  cursor: pointer;
-}
-
-.btn:active {
-  transform: scale(0.96);
-}
-
-  .nav-right a {
-  position: relative;
-}
-
-.nav-right a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #ff6a00;
-  transition: 0.3s;
-}
-
-.nav-right a:hover::after {
-  width: 100%;
-}
-    .fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card img {
-  transition: 0.6s ease;
-}
-
-.card:hover img {
-  transform: scale(1.08);
-}
-
-section {
-  position: relative;
-}
-
-.section:first-of-type {
-  padding-top: 120px;
-}
-  
-  .step h3 {
-  margin-bottom: 8px;
-}
-
-.step p {
-  font-size: 14px;
-  color: #666;
-  max-width: 220px;
-  margin: auto;
-}
-
-.features .feature {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-.dark h2 {
-  opacity: 1 !important;
-}
-
- .section:not(.dark) {
-  background: #f1f3f7;
-  position: relative;
-}
-  
- .result-bar {
-  margin-top: 25px;
-  padding: 14px 20px;
-  border-radius: 10px;
-
-  background: #fff5ef;
-  border: 1px solid #ffd2b8;
-
-  color: #ff6a00;
-  font-weight: 500;
-}
-  
-  .dark.section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
-  opacity: 0.05;
-}
-
-  .problem-card {
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.problem-card.active {
-  border: 1px solid #ff6a00;
-  box-shadow: 0 20px 40px rgba(255,106,0,0.15);
-  transform: translateY(-4px);
-}
-  .section-tag {
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #ff6a00;
-  font-weight: 600;
-  margin-bottom: 10px;
-} 
-
-  .section-tag {
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  color: #ff6a00;
-  font-weight: 600;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  opacity: 0.8;
-}
-
-  .section::after {
-  content: "";
-  position: absolute;
-  bottom: -200px;
-  right: -200px;
-  width: 400px;
-  height: 400px;
-  display: none;
-  filter: blur(100px);
-}
-
-  .sport-card span {
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-  opacity: 0.9;
-}
-
-  .sport-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-  border-radius: inherit;
-}
-
-  .sport-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  transition: all 0.3s ease;
-}
-
-.sport-card:hover span {
-  opacity: 1;
-  transform: translateY(-4px);
-}
-
-  .sport-card span {
-  transition: all 0.3s ease;
-}
-
-.feature-card.main {
-  background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  font-weight: 600;
-}
-
-/* GRID */
-
-.glass {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.15);
-}
-
- .system-diagram {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 60px;
-  gap: 40px;
-}
-
-  .system-side {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* nodes */
-.system-node {
-  padding: 14px 20px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-  .system-diagram.show .system-node {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.system-node:hover {
-  transform: translateY(-6px) scale(1.05);
-}
-
-/* core */
-.system-core {
-  padding: 24px 40px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  font-weight: 700;
-}
-
-  .system-core {
-  position: relative;
-}
-
-.system-core::after {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  z-index: -1;
-  filter: blur(40px);
-}
-.outcome-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.outcome-card {
-  padding: 20px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.06);
-}
-
-  .outcome-card h3 {
-  margin-bottom: 8px;
-}
-  
-  .outcome-card::before {
-  content: "●";
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 18px;
-  color: #ff6a00;
-}
-
-.outcome-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-}
-
-.program-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.program-card {
-  padding: 30px;
-  border-radius: 16px;
-
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-
-  color: white;
-  transition: 0.3s;
-}
-
-.program-card:hover {
-  transform: translateY(-6px);
-}
-
-.system-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-  /* PROGRAM SECTION FIX */
-.program-section {
-  background: linear-gradient(120deg, #ff6a00, #0d1b2a);
-  color: white;
-  text-align: center;
-}
-
-.program-section h2 {
-  color: white;
-}
-
-.program-section p {
-  color: rgba(255,255,255,0.8);
-}
-
-.program-section .container {
-  text-align: center;
-}
-
-.program-section .grid {
-  justify-content: center;
-}
-
-  html {
-  scroll-behavior: smooth;
-}
-  
-html, body {
-  height: 100%;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  color: #ff6a00;
-  margin-bottom: 12px;
-}
-
-  .system-node:hover {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-}
-
-.carousel {
-  overflow-x: auto;
-  margin-top: 40px;
-  overflow-y: hidden; /* 🔥 IMPORTANT */
-  scroll-snap-type: x mandatory;   /* 🔥 */
-  padding-bottom: 10px;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  align-items: stretch; /* 🔥 FIX HEIGHT */
-}
-
-.carousel-card {
-  min-width: 260px;
-  height: 160px;
-  border-radius: 16px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-}
-
- .tile-overlay {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  z-index: 2;
-  color: white;
-}
-
-.tile-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.tile-tags {
-  font-size: 12px;
-  opacity: 0.85;
-  display: block;
-  margin-bottom: 6px;
-}
-
-  .section {
-  padding: 80px 0;
-}
-
-  .tile img {
-  width: 100%;
-  height: 280px; /* 🔥 FORCE HEIGHT */
-  object-fit: cover;
-  height: 100%;
-}
-  
-/* RESPONSIVE */
-@media(max-width: 900px){
- 
-  .problem-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sports-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  h2 {
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  margin-bottom: 12px;
-}
-
-.section-tag {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
-  </style>
+  display:inline-flex; align-items:center; gap:8px;
+  padding:14px 28px; border-radius:10px;
+  font-size:14px; font-weight:600; cursor:pointer; border:none;
+  transition:all 0.25s ease; text-decoration:none; font-family:var(--fb);
+  position:relative; overflow:hidden;
+}
+.btn::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent); transform:translateX(-100%); transition:0.55s; }
+.btn:hover::after { transform:translateX(100%); }
+
+.btn-primary { background:white; color:var(--orange); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,0.3); }
+
+.btn-glass { background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.28); backdrop-filter:blur(12px); }
+.btn-glass:hover { background:rgba(255,255,255,0.2); transform:translateY(-2px); }
+
+/* Glass stats */
+.hero-stats {
+  display:flex;
+  background:rgba(255,255,255,0.09);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.18); border-radius:16px; overflow:hidden;
+}
+.hero-stat { flex:1; padding:18px 20px; text-align:center; border-right:1px solid rgba(255,255,255,0.1); }
+.hero-stat:last-child { border-right:none; }
+.hero-stat-num { font-family:var(--fd); font-size:32px; font-weight:800; color:white; line-height:1; }
+.hero-stat-num .acc { color:rgba(255,255,255,0.7); }
+.hero-stat-label { font-size:11px; color:rgba(255,255,255,0.48); font-weight:500; margin-top:4px; }
+
+/* ── RIGHT ── */
+.hero-right { flex:1; display:flex; justify-content:flex-end; position:relative; }
+
+.hero-img-wrap { position:relative; width:100%; max-width:570px; }
+
+.hero-img-wrap img {
+  width:100%; height:480px; object-fit:cover;
+  border-radius:28px; display:block; position:relative; z-index:1;
+  box-shadow:0 60px 120px rgba(0,0,0,0.55), 0 20px 60px rgba(255,106,0,0.15);
+}
+
+/* Glassy frame border */
+.hero-img-wrap::before {
+  content:''; position:absolute; inset:-1px; border-radius:29px; z-index:2; pointer-events:none;
+  background:linear-gradient(140deg, rgba(255,255,255,0.28) 0%, rgba(255,106,0,0.15) 50%, rgba(255,255,255,0.05) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; padding:1px;
+}
+
+/* Glass overlay on image bottom */
+.hero-img-glass {
+  position:absolute; bottom:0; left:0; right:0; height:50%; z-index:2; border-radius:0 0 28px 28px;
+  background:linear-gradient(to top, rgba(13,27,42,0.55) 0%, transparent 100%);
+  pointer-events:none;
+}
+
+/* Floating glass badges */
+.hero-badge {
+  position:absolute; z-index:4;
+  background:rgba(13,27,42,0.6);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.2); border-radius:16px;
+  padding:14px 18px; display:flex; align-items:center; gap:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+}
+.hero-badge-1 { bottom:32px; left:-48px; animation:hb1 4.5s ease-in-out infinite; }
+.hero-badge-2 { top:28px; right:-16px; animation:hb2 5s ease-in-out infinite; }
+@keyframes hb1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes hb2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+.hb-icon { font-size:24px; }
+.hb-text strong { display:block; color:white; font-size:13px; font-weight:700; }
+.hb-text span { color:rgba(255,255,255,0.55); font-size:11.5px; }
+
+/* ═══════════════════════════════
+   TRUST STRIP
+═══════════════════════════════ */
+.trust-strip { background:white; border-bottom:1px solid var(--border); padding:18px 0; }
+.trust-strip .container { max-width:1200px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:36px; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:500; color:var(--muted); white-space:nowrap; }
+.trust-tick { width:22px; height:22px; border-radius:50%; background:rgba(255,106,0,0.1); color:var(--orange); display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+
+/* ═══════════════════════════════
+   SHARED
+═══════════════════════════════ */
+.container { max-width:1200px; margin:0 auto; padding:0 40px; }
+section { position:relative; }
+.section-tag { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--orange); margin-bottom:14px; }
+.tag-line { width:20px; height:2px; background:var(--orange); display:inline-block; }
+.section-h2 { font-family:var(--fd); font-size:clamp(36px,4.5vw,56px); font-weight:800; line-height:1.05; letter-spacing:-0.5px; margin-bottom:14px; }
+.section-sub { font-size:16.5px; color:var(--muted); line-height:1.72; max-width:560px; }
+
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.rd1{transition-delay:0.08s}.rd2{transition-delay:0.16s}.rd3{transition-delay:0.24s}.rd4{transition-delay:0.32s}
+
+/* ═══════════════════════════════
+   PROBLEM SECTION
+═══════════════════════════════ */
+.problem-section { padding:100px 0; background:var(--cream); }
+.problem-layout { display:grid; grid-template-columns:1fr 1.55fr; gap:80px; align-items:start; margin-top:56px; }
+.result-callout { display:flex; align-items:flex-start; gap:12px; padding:18px 22px; background:rgba(255,106,0,0.07); border:1px solid rgba(255,106,0,0.22); border-left:4px solid var(--orange); border-radius:12px; margin-top:28px; }
+.result-callout p { font-size:14px; color:var(--orange); font-weight:600; line-height:1.5; }
+.problem-cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.p-card { background:white; border-radius:18px; padding:28px 24px; border:1px solid var(--border); transition:all 0.3s ease; position:relative; overflow:hidden; cursor:default; }
+.p-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--orange), #ffaa60); transform:scaleX(0); transform-origin:left; transition:transform 0.35s; }
+.p-card:hover { transform:translateY(-7px); box-shadow:0 24px 56px rgba(0,0,0,0.09); border-color:transparent; }
+.p-card:hover::before { transform:scaleX(1); }
+.p-card.offset { margin-top:22px; }
+.p-card-icon { font-size:28px; margin-bottom:14px; display:block; }
+.p-card h4 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px; }
+.p-card p { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+/* ═══════════════════════════════
+   APPROACH DARK
+═══════════════════════════════ */
+.approach-section { padding:100px 0; background:var(--navy); overflow:hidden; position:relative; }
+.approach-section::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle, rgba(255,106,0,0.1) 0%, transparent 70%); pointer-events:none; }
+.approach-layout { display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:center; margin-top:56px; }
+.approach-features { display:flex; flex-direction:column; gap:14px; margin-top:36px; }
+.a-feat { display:flex; align-items:flex-start; gap:16px; padding:20px 22px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); transition:all 0.3s; cursor:pointer; }
+.a-feat:hover, .a-feat.active { background:rgba(255,255,255,0.09); border-color:rgba(255,106,0,0.3); transform:translateX(5px); }
+.a-feat-icon { width:44px; height:44px; flex-shrink:0; background:linear-gradient(135deg, var(--orange), #ff8c42); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+.a-feat-text h4 { font-size:15px; font-weight:700; color:white; margin-bottom:4px; }
+.a-feat-text p { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.55; }
+.sys-center { width:120px; height:120px; border-radius:50%; background:linear-gradient(135deg, var(--orange), #ff8c42); display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; margin:0 auto; box-shadow:0 0 0 18px rgba(255,106,0,0.08), 0 0 0 36px rgba(255,106,0,0.04); animation:pRing 3s ease-in-out infinite; }
+@keyframes pRing { 0%,100%{box-shadow:0 0 0 18px rgba(255,106,0,0.08),0 0 0 36px rgba(255,106,0,0.04)} 50%{box-shadow:0 0 0 26px rgba(255,106,0,0.05),0 0 0 52px rgba(255,106,0,0.02)} }
+.sys-center span { font-family:var(--fd); font-size:14px; font-weight:800; color:white; line-height:1.3; }
+.sys-nodes { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+.sys-node { padding:16px; border-radius:13px; text-align:center; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); font-size:13px; font-weight:600; color:rgba(255,255,255,0.8); transition:all 0.3s; cursor:default; line-height:1.4; }
+.sys-node:hover { background:rgba(255,106,0,0.13); border-color:rgba(255,106,0,0.35); transform:translateY(-3px); }
+
+/* ═══════════════════════════════
+   COVERFLOW CAROUSEL
+═══════════════════════════════ */
+.cf-section { padding:100px 0 80px; background:white; }
+.cf-section.alt-bg { background:var(--warm); }
+.cf-header { text-align:center; margin-bottom:56px; }
+.cf-header .section-tag { justify-content:center; }
+.cf-header .section-sub { margin:0 auto; text-align:center; }
+
+.cf-outer { position:relative; }
+.cf-wrap { position:relative; width:100%; height:440px; overflow:hidden; }
+.cf-track { position:relative; width:100%; height:100%; }
+
+.cf-item {
+  position:absolute; top:50%; left:50%;
+  width:50%; max-width:640px;
+  border-radius:22px; overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.18);
+  transition:transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.5s ease, filter 0.5s ease;
+  cursor:pointer; will-change:transform;
+}
+.cf-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; pointer-events:none; }
+.cf-item.is-active img { transform:scale(1.04); }
+.cf-item:hover img { transform:scale(1.07); }
+
+.cf-body {
+  position:absolute; bottom:0; left:0; right:0; padding:28px;
+  background:linear-gradient(to top, rgba(13,27,42,0.97) 0%, rgba(13,27,42,0.6) 60%, transparent 100%);
+  transition:opacity 0.4s;
+}
+.cf-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); display:block; margin-bottom:6px; }
+.cf-title { font-family:var(--fd); font-size:30px; font-weight:800; color:white; letter-spacing:0.5px; display:block; margin-bottom:5px; }
+.cf-sub { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.5; }
+
+/* positions */
+.cf-item[data-pos="-2"] { transform:translate(-170%,-50%) scale(0.6); opacity:0; pointer-events:none; filter:brightness(0.4); }
+.cf-item[data-pos="-1"] { transform:translate(-108%,-50%) scale(0.79); opacity:0.7; filter:brightness(0.58); z-index:5; }
+.cf-item[data-pos="0"]  { transform:translate(-50%,-50%) scale(1); opacity:1; filter:none; z-index:10; }
+.cf-item[data-pos="1"]  { transform:translate(8%,-50%) scale(0.79); opacity:0.7; filter:brightness(0.58); z-index:5; }
+.cf-item[data-pos="2"]  { transform:translate(70%,-50%) scale(0.6); opacity:0; pointer-events:none; filter:brightness(0.4); }
+.cf-item[data-pos="-1"] .cf-body,
+.cf-item[data-pos="1"] .cf-body { opacity:0; }
+.cf-item[data-pos="0"] .cf-body { opacity:1; }
+
+.cf-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:20; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); box-shadow:0 4px 20px rgba(0,0,0,0.14); font-size:20px; color:var(--navy); transition:all 0.25s; display:flex; align-items:center; justify-content:center; }
+.cf-nav:hover { background:white; transform:translateY(-50%) scale(1.08); box-shadow:0 8px 28px rgba(0,0,0,0.2); }
+.cf-nav:active { transform:translateY(-50%) scale(0.96); }
+.cf-prev { left:16px; }
+.cf-next { right:16px; }
+.cf-nav.dn { background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.18); }
+.cf-nav.dn:hover { background:rgba(255,255,255,0.22); }
+
+.cf-dots { display:flex; justify-content:center; gap:8px; margin-top:20px; }
+.cf-dot { width:8px; height:8px; border-radius:50%; background:rgba(0,0,0,0.15); cursor:pointer; transition:all 0.3s; border:none; padding:0; }
+.cf-dot.active { background:var(--orange); width:24px; border-radius:4px; }
+.dn-dots .cf-dot { background:rgba(255,255,255,0.2); }
+.dn-dots .cf-dot.active { background:var(--orange); }
+
+/* ═══════════════════════════════
+   PROCESS
+═══════════════════════════════ */
+.process-section { padding:100px 0; background:var(--warm); }
+.proc-header { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; margin-bottom:64px; }
+.proc-timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+.proc-timeline::before { content:''; position:absolute; top:38px; left:80px; right:80px; height:2px; background:linear-gradient(90deg, var(--orange), #ffaa60); z-index:0; }
+.proc-step { position:relative; z-index:1; text-align:center; padding:0 14px; cursor:pointer; }
+.proc-num { width:76px; height:76px; border-radius:50%; background:white; border:3px solid var(--orange); margin:0 auto 20px; display:flex; align-items:center; justify-content:center; flex-direction:column; box-shadow:0 6px 20px rgba(255,106,0,0.18); transition:all 0.3s; }
+.proc-step.active .proc-num, .proc-step:hover .proc-num { background:var(--orange); transform:scale(1.1); box-shadow:0 12px 32px rgba(255,106,0,0.38); }
+.n-label { font-family:var(--fd); font-size:10px; font-weight:800; color:var(--orange); letter-spacing:1px; line-height:1; transition:color 0.3s; }
+.proc-step.active .n-label, .proc-step:hover .n-label { color:white; }
+.n-icon { font-size:22px; line-height:1; }
+.proc-step h3 { font-family:var(--fd); font-size:22px; font-weight:800; margin-bottom:10px; color:var(--text); }
+.proc-step p { font-size:13.5px; color:var(--muted); line-height:1.6; max-width:170px; margin:0 auto; }
+.proc-detail { margin-top:40px; padding:36px 40px; background:white; border-radius:20px; border:1px solid var(--border); display:none; animation:fadeSlide 0.4s ease; }
+.proc-detail.show { display:flex; align-items:center; gap:40px; }
+@keyframes fadeSlide { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.proc-detail-img { width:260px; height:180px; border-radius:14px; object-fit:cover; flex-shrink:0; }
+.proc-detail h4 { font-family:var(--fd); font-size:28px; font-weight:800; margin-bottom:12px; }
+.proc-detail p { font-size:15px; color:var(--muted); line-height:1.72; }
+
+/* ═══════════════════════════════
+   PROGRAM STRUCTURE
+═══════════════════════════════ */
+.program-section { padding:100px 0; background:var(--navy); position:relative; overflow:hidden; }
+.program-section::after { content:''; position:absolute; bottom:-100px; left:-100px; width:500px; height:500px; background:radial-gradient(circle, rgba(255,106,0,0.09) 0%, transparent 70%); pointer-events:none; }
+.program-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:56px; }
+.prog-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:20px; overflow:hidden; transition:all 0.35s; cursor:default; }
+.prog-card:hover { background:rgba(255,255,255,0.09); transform:translateY(-8px); border-color:rgba(255,255,255,0.18); }
+.prog-card-img { width:100%; height:180px; object-fit:cover; display:block; }
+.prog-card-body { padding:26px 24px; }
+.prog-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px; border-radius:6px; margin-bottom:14px; }
+.foundation .prog-badge { background:rgba(74,222,128,0.15); color:#4ade80; }
+.development .prog-badge { background:rgba(255,106,0,0.15); color:var(--orange); }
+.performance .prog-badge { background:rgba(167,139,250,0.15); color:#a78bfa; }
+.prog-card h3 { font-family:var(--fd); font-size:24px; font-weight:800; color:white; margin-bottom:4px; }
+.prog-classes { font-size:11px; color:rgba(255,255,255,0.38); font-weight:600; letter-spacing:1px; text-transform:uppercase; display:block; margin-bottom:12px; }
+.prog-card p { font-size:13.5px; color:rgba(255,255,255,0.56); line-height:1.65; margin-bottom:16px; }
+.prog-skills { display:flex; flex-wrap:wrap; gap:6px; }
+.prog-skill { font-size:11.5px; padding:4px 10px; background:rgba(255,255,255,0.07); border-radius:100px; color:rgba(255,255,255,0.6); font-weight:500; }
+
+/* ═══════════════════════════════
+   OUTCOMES
+═══════════════════════════════ */
+.outcomes-section { padding:100px 0; background:white; }
+.outcomes-layout { display:grid; grid-template-columns:1fr 1.35fr; gap:80px; align-items:center; margin-top:56px; }
+.outcomes-left p { font-size:16px; color:var(--muted); line-height:1.75; margin-bottom:28px; }
+.out-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.out-card { padding:26px; border-radius:18px; background:var(--cream); border:1px solid var(--border); transition:all 0.3s; cursor:default; }
+.out-card:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(0,0,0,0.08); border-color:rgba(255,106,0,0.2); }
+.out-icon { font-size:28px; margin-bottom:12px; display:block; }
+.out-card h4 { font-size:15px; font-weight:700; margin-bottom:6px; color:var(--text); }
+.out-card p { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+/* ═══════════════════════════════
+   PARTNER GRID
+═══════════════════════════════ */
+.partner-section { padding:100px 0; background:var(--cream); }
+.partner-header { text-align:center; margin-bottom:56px; }
+.partner-header .section-tag { justify-content:center; }
+.partner-header .section-sub { margin:0 auto; text-align:center; }
+.partner-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.part-card { background:white; border-radius:18px; padding:30px 22px; border:1px solid var(--border); transition:all 0.3s; text-align:center; cursor:default; }
+.part-card:hover { transform:translateY(-6px); box-shadow:0 24px 52px rgba(0,0,0,0.09); border-color:rgba(255,106,0,0.2); }
+.part-icon { width:58px; height:58px; border-radius:16px; background:rgba(255,106,0,0.09); display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 18px; }
+.part-card h4 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:8px; }
+.part-card p { font-size:13.5px; color:var(--muted); line-height:1.65; }
+
+/* ═══════════════════════════════
+   TEAM
+═══════════════════════════════ */
+.team-section { padding:100px 0; background:white; }
+.team-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.team-left .section-h2 { margin-bottom:18px; }
+.team-left p { font-size:16px; color:var(--muted); line-height:1.75; margin-bottom:14px; }
+.team-img-wrap { position:relative; border-radius:24px; overflow:hidden; box-shadow:0 32px 64px rgba(0,0,0,0.12); }
+.team-img-wrap img { width:100%; height:440px; object-fit:cover; display:block; }
+.team-badge { position:absolute; bottom:24px; left:24px; right:24px; background:rgba(13,27,42,0.88); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:16px 20px; display:flex; align-items:center; gap:14px; }
+.team-badge-icon { font-size:26px; }
+.team-badge-text strong { display:block; color:white; font-size:14px; font-weight:700; }
+.team-badge-text span { color:rgba(255,255,255,0.5); font-size:12px; }
+
+/* ═══════════════════════════════
+   CTA
+═══════════════════════════════ */
+.cta-section { padding:100px 0; background:var(--navy); position:relative; overflow:hidden; text-align:center; }
+.cta-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 50%, rgba(255,106,0,0.16) 0%, transparent 70%), radial-gradient(ellipse 50% 60% at 80% 50%, rgba(255,106,0,0.07) 0%, transparent 70%); pointer-events:none; }
+.cta-section .container { position:relative; z-index:2; }
+.cta-section .section-tag { justify-content:center; }
+.cta-section .section-h2 { color:white; max-width:700px; margin:0 auto 14px; }
+.cta-section .section-sub { color:rgba(255,255,255,0.5); margin:0 auto 44px; text-align:center; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-orange { background:var(--orange); color:white; box-shadow:0 8px 24px rgba(255,106,0,0.38); }
+.btn-orange:hover { background:#ff7a1a; transform:translateY(-2px); box-shadow:0 14px 36px rgba(255,106,0,0.48); }
+.btn-outline-w { background:transparent; color:white; border:1.5px solid rgba(255,255,255,0.28); }
+.btn-outline-w:hover { background:rgba(255,255,255,0.09); transform:translateY(-2px); }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer { background:#060e18; padding:60px 0 32px; border-top:1px solid rgba(255,255,255,0.05); }
+.footer-inner { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+.footer-brand .logo-text { font-family:var(--fd); font-size:34px; font-weight:900; color:white; letter-spacing:-0.5px; margin-bottom:12px; }
+.footer-brand .logo-text span { color:var(--orange); }
+.footer-brand p { font-size:13.5px; color:rgba(255,255,255,0.38); line-height:1.7; max-width:260px; }
+.footer-col h5 { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:16px; }
+.footer-col a { display:block; color:rgba(255,255,255,0.5); text-decoration:none; font-size:13.5px; margin-bottom:10px; transition:color 0.2s; }
+.footer-col a:hover { color:white; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.05); padding-top:24px; display:flex; justify-content:space-between; align-items:center; }
+.footer-bottom p { font-size:12px; color:rgba(255,255,255,0.25); }
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:1024px){
+  .hero .container { flex-direction:column; padding:80px 40px; }
+  .hero-right { display:none; }
+  .problem-layout { grid-template-columns:1fr; gap:40px; }
+  .approach-layout { grid-template-columns:1fr; }
+  .sys-nodes, .sys-center { display:none; }
+  .program-cards { grid-template-columns:1fr; }
+  .outcomes-layout { grid-template-columns:1fr; }
+  .partner-grid { grid-template-columns:1fr 1fr; }
+  .team-layout { grid-template-columns:1fr; }
+  .footer-inner { grid-template-columns:1fr 1fr; }
+  .proc-timeline { grid-template-columns:1fr 1fr; gap:24px; }
+  .proc-timeline::before { display:none; }
+  .proc-header { grid-template-columns:1fr; }
+}
+@media(max-width:768px){
+  .navbar { padding:0 20px; }
+  .nav-links { display:none; }
+  .container { padding:0 20px; }
+  .hero .container { padding:60px 20px; }
+  .hero h1 { font-size:44px; }
+  .section-h2 { font-size:34px; }
+  .problem-cards { grid-template-columns:1fr; }
+  .out-grid { grid-template-columns:1fr; }
+  .partner-grid { grid-template-columns:1fr 1fr; }
+  .hero-stats { flex-direction:column; }
+  .hero-stat { border-right:none; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .hero-stat:last-child { border-bottom:none; }
+  .cf-wrap { height:320px; }
+  .cf-item { width:76%; }
+  .cf-item[data-pos="-1"] { transform:translate(-116%,-50%) scale(0.79); }
+  .cf-item[data-pos="1"] { transform:translate(16%,-50%) scale(0.79); }
+  .footer-inner { grid-template-columns:1fr; }
+  .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
+}
+
+</style>
 </head>
-
 <body>
-  <div class="scroll-bar"></div>
+
+<div id="scrollBar"></div>
 
 <!-- NAVBAR -->
-<div class="navbar">
-  <div class="container nav-inner">
-    <img src="legaxy-logo.png" class="logo" alt="Legaxy Logo">
-    <div class="nav-right">
-      <a href="#">Home</a>
-      <a href="#">In-School Program</a>
-      <a href="#">After School Program</a>
-      <a href="#">Centre of Excellence</a>
-      <a href="#">Pay n Play</a>
-    </div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-text">LEGA<span class="x">X</span>Y</div>
+      <div class="nav-logo-sub">Next-Gen Sports Education</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sports">Sports</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#schools">For Schools</a></li>
+      <li><a href="#contact" class="nav-cta">Get In Touch →</a></li>
+    </ul>
   </div>
-</div>
+</nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="container">
+<div class="hero" id="home">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-dots"></div>
 
-    <div class="hero-left">
-      <p class="section-tag" style="margin-bottom: 10px;">SCHOOL SPORTS REDEFINED</p>
-      <h1>Where School Sports <br> Become a System</h1>
-      <p class="hero-sub" style="margin-bottom: 30px;">
-        A structured, outcome-driven sports program designed
-        to build skill, discipline, and performance.
-      </p>
+  <div class="container">
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow"><span class="dot"></span> School Sports Education Program (SSEP)</div>
+      <h1>Where School Sports<em>Become a System</em></h1>
+      <p class="hero-sub">A structured, outcome-driven sports program that transforms physical education into measurable growth, competitive excellence, and a thriving sports culture.</p>
       <div class="hero-buttons">
-        <button class="btn btn-primary">Explore Program</button>
-        <button class="btn btn-secondary">Partner With Us</button>
+        <a href="#program" class="btn btn-primary">Explore Program →</a>
+        <a href="#schools" class="btn btn-glass">Partner With Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">8<span class="acc">+</span></div><div class="hero-stat-label">Sports Offered</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">1<span class="acc">–10</span></div><div class="hero-stat-label">All Classes</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">100<span class="acc">%</span></div><div class="hero-stat-label">Fully Managed</div></div>
       </div>
     </div>
 
     <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?q=80&w=800&auto=format&fit=crop" alt="Happy school children running and playing sports">
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=900&auto=format&fit=crop" alt="School sports">
+        <div class="hero-img-glass"></div>
+        <div class="hero-badge hero-badge-1">
+          <div class="hb-icon">🏆</div>
+          <div class="hb-text"><strong>Compete & Grow</strong><span>Inter-school tournaments</span></div>
+        </div>
+        <div class="hero-badge hero-badge-2">
+          <div class="hb-icon">📊</div>
+          <div class="hb-text"><strong>Track Progress</strong><span>Data-driven reports</span></div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item"><div class="trust-tick">✓</div> End-to-End Management</div>
+    <div class="trust-item"><div class="trust-tick">✓</div> Certified Professional Coaches</div>
+    <div class="trust-item"><div class="trust-tick">✓</div> Curriculum for Classes 1–10</div>
+    <div class="trust-item"><div class="trust-tick">✓</div> Performance Tracking & Reports</div>
+    <div class="trust-item"><div class="trust-tick">✓</div> Multi-Sport Exposure</div>
   </div>
 </div>
 
 <!-- PROBLEM -->
-<section class="section sports fade-in">
+<section class="problem-section" id="about">
   <div class="container">
-
     <div class="problem-layout">
-
-      <div class="problem-left">
-        <p class="section-tag">THE PROBLEM</p>
-        <h2>Why Most School Sports Don’t Work</h2>
-        <p>
-          A fully managed, curriculum-based sports education program designed for Classes 1–10.
-        </p>
-
-        <ul class="problem-list">
-          <li>✔ Structured Curriculum</li>
-          <li>✔ Professional Coaching</li>
-          <li>✔ Performance Tracking</li>
-          <li>✔ Low engagement</li>
-        </ul>
-
-        <div class="result-bar">
-        → Result: Sports become a routine, not an opportunity.
+      <div class="reveal">
+        <div class="section-tag"><span class="tag-line"></span> The Problem</div>
+        <h2 class="section-h2">Why Most School Sports Don't Work</h2>
+        <p class="section-sub">Despite good intentions, traditional school sports fail to create lasting impact. Students cycle through sessions with no goals, no growth, no pathway forward.</p>
+        <div class="result-callout">
+          <p>→ &nbsp;Result: Sports become a routine, not an opportunity.</p>
         </div>
       </div>
-
       <div class="problem-cards">
-
-        <div class="problem-card">
-          <i data-lucide="clipboard-list" class="icon"></i>
-          <h4>Structured Curriculum</h4>
-          <p>No clear goals or measurable progress for students.</p>
-        </div>
-
-        <div class="problem-card">
-          <i data-lucide="users" class="icon"></i>
-          <h4>Coaching Gap</h4>
-          <p>General instruction doesn’t build real athletic skills.</p>
-        </div>
-
-        <div class="problem-card">
-          <i data-lucide="trending-up" class="icon"></i>
-          <h4>No Pathway</h4>
-          <p>Students don’t get structured opportunities to grow.</p>
-        </div>
-
-        <div class="problem-card">
-          <i data-lucide="eye" class="icon"></i>
-          <h4>Low Engagement</h4>
-          <p>Low motivation, consistency, and overall participation.</p>
-        </div>
-
+        <div class="p-card reveal rd1"><span class="p-card-icon">🗓️</span><h4>Unstructured PE Periods</h4><p>No clear goals, no measurable progress, no system behind the sessions.</p></div>
+        <div class="p-card offset reveal rd2"><span class="p-card-icon">👥</span><h4>No Qualified Coaching</h4><p>General instruction doesn't build real sport-specific athletic skills.</p></div>
+        <div class="p-card reveal rd3"><span class="p-card-icon">📈</span><h4>No Pathway to Performance</h4><p>Students don't get structured exposure to identify and nurture their talent.</p></div>
+        <div class="p-card offset reveal rd4"><span class="p-card-icon">🔴</span><h4>Minimal Engagement</h4><p>Low motivation and consistency leads to low impact for everyone.</p></div>
       </div>
-
     </div>
-
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section dark fade-in">
+<!-- APPROACH DARK -->
+<section class="approach-section">
   <div class="container">
-    <p class="section-tag">THE LEGAXY APPROACH</p>
-    <h2>We Build Sports Systems</h2>
-
-   <div class="system-wrapper">
-
-  <div class="system-diagram">
-
-  <div class="system-side">
-    <div class="system-node">Structured Curriculum</div>
-    <div class="system-node">Performance Tracking</div>
+    <div class="approach-layout">
+      <div class="reveal">
+        <div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> The LegaXy Approach</div>
+        <h2 class="section-h2" style="color:white;">We Don't Run PE Classes.<br>We Build Sports Systems.</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.5)">A fully managed, curriculum-based program for Classes 1–10 that integrates everything a school needs.</p>
+        <div class="approach-features">
+          <div class="a-feat"><div class="a-feat-icon">📋</div><div class="a-feat-text"><h4>Structured Curriculum</h4><p>Age-appropriate progressions designed sport-by-sport for each grade level.</p></div></div>
+          <div class="a-feat"><div class="a-feat-icon">🎯</div><div class="a-feat-text"><h4>Professional Coaching</h4><p>Certified coaches who know how to teach, engage, and inspire young athletes.</p></div></div>
+          <div class="a-feat"><div class="a-feat-icon">📊</div><div class="a-feat-text"><h4>Performance Tracking</h4><p>Continuous monitoring with reports for students, parents, and schools.</p></div></div>
+          <div class="a-feat"><div class="a-feat-icon">🏅</div><div class="a-feat-text"><h4>Multi-Sport Exposure</h4><p>Students explore 8+ sports before specializing — building complete athletes.</p></div></div>
+        </div>
+      </div>
+      <div class="reveal rd2" style="display:flex;flex-direction:column;align-items:center;">
+        <div class="sys-center"><span>Classes<br>1 — 10</span></div>
+        <div class="sys-nodes">
+          <div class="sys-node">📋 Structured<br>Curriculum</div>
+          <div class="sys-node">🎯 Professional<br>Coaching</div>
+          <div class="sys-node">📊 Performance<br>Tracking</div>
+          <div class="sys-node">🏅 Multi-Sport<br>Exposure</div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="system-core">
-    Classes 1–10
-  </div>
-
-  <div class="system-side">
-    <div class="system-node">Professional Coaching</div>
-    <div class="system-node">Multi-Sport Exposure</div>
-  </div>
-
-</div>
-
-</div> <!-- system-wrapper -->
-</div> <!-- container -->
 </section>
 
-<!-- SPORTS -->
-<section class="section fade-in">
+<!-- SPORTS CAROUSEL -->
+<section class="cf-section" id="sports">
   <div class="container">
-    <p class="section-tag">A COMPLETE FOUNDATION</p>
-    <h2>Explore. Learn. Grow.</h2>
-
-    <div class="carousel">
-  <div class="carousel-track">
-
- <div class="tile">
-      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
-      <div class="tile-overlay">
-        <span class="tile-tags">Batting • Bowling • Match Awareness</span>
-        <p class="tile-title">Cricket</p>
+    <div class="cf-header reveal">
+      <div class="section-tag"><span class="tag-line"></span> A Complete Sporting Foundation</div>
+      <h2 class="section-h2">Explore. Learn. Grow.</h2>
+      <p class="section-sub">Sports rotated across the year to build all-round athletic intelligence and well-rounded development.</p>
+    </div>
+  </div>
+  <div class="cf-outer" style="margin-top:20px;">
+    <div class="cf-wrap" id="sportsCF">
+      <div class="cf-track" id="sportsTrack">
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=900&auto=format&fit=crop" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?q=80&w=900&auto=format&fit=crop" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=900&auto=format&fit=crop" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=900&auto=format&fit=crop" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=900&auto=format&fit=crop" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1617296538902-887900d9b592?q=80&w=900&auto=format&fit=crop" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=900&auto=format&fit=crop" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=900&auto=format&fit=crop" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
       </div>
     </div>
-
-  <div class="tile">
-      <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a">
-      <div class="tile-overlay">
-        <span class="tile-tags">Passing • Dribbling • Game IQ</span>
-        <p class="tile-title">Football</p>
-      </div>
-    </div>
-
- <div class="tile">
-      <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf">
-      <div class="tile-overlay">
-        <span class="tile-tags">Shooting • Defense • Court Vision</span>
-        <p class="tile-title">Basketball</p>
-      </div>
-    </div>
-
-  <div class="tile">
-      <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d">
-      <div class="tile-overlay">
-        <span class="tile-tags">Agility • Reflex • Shot Control</span>
-        <p class="tile-title">Badminton</p>
-      </div>
-    </div>
-   </div> <!-- ✅ CLOSE TRACK -->
- </div> <!-- ✅ CLOSE CAROUSEL -->
-
+    <button class="cf-nav cf-prev" id="sP">‹</button>
+    <button class="cf-nav cf-next" id="sN">›</button>
+  </div>
+  <div class="cf-dots" id="sDots"></div>
 </section>
 
 <!-- PROCESS -->
-<section class="section fade-in">
+<section class="process-section" id="process">
   <div class="container">
-    <p class="section-tag">HOW IT WORKS</p>
-    <h2>A System, Not Sessions</h2>
-      <div class="process-line">
-        
-      <div class="step">
-        <div class="step-icon">01</div>
-        <h3>Assess</h3>
-        <p>Baseline evaluation of student fitness and skill levels.</p>
+    <div class="proc-header">
+      <div class="reveal"><div class="section-tag"><span class="tag-line"></span> How It Works</div><h2 class="section-h2">A System, Not Sessions</h2></div>
+      <div class="reveal rd1"><p class="section-sub">A clear, proven process that ensures every student progresses — regardless of their starting point.</p></div>
+    </div>
+    <div class="proc-timeline" id="procTL">
+      <div class="proc-step active reveal rd1" data-step="0">
+        <div class="proc-num"><div class="n-label">01</div><div class="n-icon">🔍</div></div>
+        <h3>Assess</h3><p>Baseline evaluation of each student's fitness and skill levels.</p>
       </div>
-
-      <div class="step">
-        <div class="step-icon">02</div>
-        <h3>Train</h3>
-        <p>Structured sessions led by expert coaches.</p>
+      <div class="proc-step reveal rd2" data-step="1">
+        <div class="proc-num"><div class="n-label">02</div><div class="n-icon">💪</div></div>
+        <h3>Train</h3><p>Structured sessions led by expert sport-specific coaches.</p>
       </div>
-
-      <div class="step">
-        <div class="step-icon">03</div>
-        <h3>Track</h3>
-        <p>Continuous performance tracking and reports.</p>
+      <div class="proc-step reveal rd3" data-step="2">
+        <div class="proc-num"><div class="n-label">03</div><div class="n-icon">📈</div></div>
+        <h3>Track</h3><p>Continuous performance monitoring with detailed progress reports.</p>
       </div>
-
-      <div class="step">
-        <div class="step-icon">04</div>
-        <h3>Compete</h3>
-        <p>Inter-school exposure and competition opportunities.</p>
+      <div class="proc-step reveal rd4" data-step="3">
+        <div class="proc-num"><div class="n-label">04</div><div class="n-icon">🏆</div></div>
+        <h3>Compete</h3><p>Inter-school exposure and real competitive opportunities.</p>
       </div>
-        
+    </div>
+    <div class="proc-detail show" id="pd0">
+      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=600&auto=format&fit=crop" alt="Assessment">
+      <div><h4>Assess — Know Where Every Student Stands</h4><p>Before anything else, we run a thorough baseline evaluation of each student's fitness, coordination, and sport skill levels. This data powers everything that comes next — ensuring no student is left behind and every plan is personalised.</p></div>
+    </div>
+    <div class="proc-detail" id="pd1">
+      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=600&auto=format&fit=crop" alt="Training">
+      <div><h4>Train — Structured Sessions, Expert Coaches</h4><p>Age-appropriate, curriculum-aligned sessions led by qualified coaches. Every session has a clear objective, a skill block, a game-play segment, and a cool-down. Students build real technique, not just burn energy.</p></div>
+    </div>
+    <div class="proc-detail" id="pd2">
+      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=600&auto=format&fit=crop" alt="Tracking">
+      <div><h4>Track — Data That Actually Means Something</h4><p>We continuously measure student progress against their own baselines. Schools get periodic reports, parents get visibility, and coaches use data to refine sessions. Growth becomes visible, concrete, and shareable.</p></div>
+    </div>
+    <div class="proc-detail" id="pd3">
+      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=600&auto=format&fit=crop" alt="Competition">
+      <div><h4>Compete — Where Growth Becomes Real</h4><p>Students get inter-school exposure and competitive opportunities to apply everything they've learned. Tournaments build character, confidence, and the discipline that comes from performing under pressure.</p></div>
     </div>
   </div>
 </section>
 
-      <!-- Section -->
-<section class="section program-section">
+<!-- PROGRAM STRUCTURE -->
+<section class="program-section" id="program">
   <div class="container">
-
-    <p class="section-tag">OUTCOMES</p>
-    <h2>What Students Actually Gain</h2>
-
-    <div class="outcome-grid">
-
-      <div class="outcome-card">
-        <h3>Physical Development</h3>
-        <p>Strength, agility, endurance, and coordination.</p>
-      </div>
-
-      <div class="outcome-card">
-        <h3>Skill Mastery</h3>
-        <p>Sport-specific techniques and real gameplay intelligence.</p>
-      </div>
-
-      <div class="outcome-card">
-        <h3>Discipline & Routine</h3>
-        <p>Consistency, structure, and performance mindset.</p>
-      </div>
-
-      <div class="outcome-card">
-        <h3>Competitive Exposure</h3>
-        <p>Match play, tournaments, and real pressure environments.</p>
-      </div>
-      
+    <div class="reveal">
+      <div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> Program Structure</div>
+      <h2 class="section-h2" style="color:white;">Designed for Every Stage</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5)">Every student, every class — a curriculum built to match where they are and take them further.</p>
     </div>
-    
+    <div class="program-cards">
+      <div class="prog-card foundation reveal rd1">
+        <img class="prog-card-img" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=700&auto=format&fit=crop" alt="Foundation">
+        <div class="prog-card-body"><div class="prog-badge">Foundation</div><h3>Movement First</h3><span class="prog-classes">Classes 1 – 3</span><p>Building fundamental movement patterns, coordination, and motor skills through playful multi-sport exploration.</p><div class="prog-skills"><span class="prog-skill">Balance</span><span class="prog-skill">Coordination</span><span class="prog-skill">Motor Skills</span><span class="prog-skill">Fun & Exploration</span></div></div>
+      </div>
+      <div class="prog-card development reveal rd2">
+        <img class="prog-card-img" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=700&auto=format&fit=crop" alt="Development">
+        <div class="prog-card-body"><div class="prog-badge">Development</div><h3>Skill Building</h3><span class="prog-classes">Classes 4 – 7</span><p>Sport-specific techniques, gameplay basics, and the habits of a consistent, disciplined athlete.</p><div class="prog-skills"><span class="prog-skill">Technique</span><span class="prog-skill">Sport Rules</span><span class="prog-skill">Team Play</span><span class="prog-skill">Consistency</span></div></div>
+      </div>
+      <div class="prog-card performance reveal rd3">
+        <img class="prog-card-img" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=700&auto=format&fit=crop" alt="Performance">
+        <div class="prog-card-body"><div class="prog-badge">Performance</div><h3>Excel & Compete</h3><span class="prog-classes">Classes 8 – 10</span><p>Advanced skills, competitive exposure, and pathways to specialize in a chosen sport.</p><div class="prog-skills"><span class="prog-skill">Specialization</span><span class="prog-skill">Competitions</span><span class="prog-skill">Analytics</span><span class="prog-skill">Pathways</span></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-  <section class="section dark">
+<!-- OUTCOMES -->
+<section class="outcomes-section">
   <div class="container">
-
-    <p class="section-tag">PROGRAM STRUCTURE</p>
-    <h2>Designed for Every Stage</h2>
-
-    <div class="program-grid">
-
-      <div class="program-card">
-        <h3>Foundation (Classes 1–3)</h3>
-        <p>Movement, coordination, and basic motor skills.</p>
+    <div class="outcomes-layout">
+      <div class="reveal outcomes-left">
+        <div class="section-tag"><span class="tag-line"></span> What Students Gain</div>
+        <h2 class="section-h2" style="font-size:clamp(38px,5vw,60px);">Stronger Students.<br>Stronger Schools.</h2>
+        <p>Every student who goes through LegaXy leaves with more than sport skills — they develop the character to succeed anywhere.</p>
+        <a href="#contact" class="btn btn-orange">See the Full Program →</a>
       </div>
-
-      <div class="program-card">
-        <h3>Development (Classes 4–7)</h3>
-        <p>Sport introduction, technique, and gameplay basics.</p>
+      <div class="out-grid">
+        <div class="out-card reveal rd1"><span class="out-icon">🏃</span><h4>Physical Development</h4><p>Strength, agility, endurance, and coordination built progressively over years.</p></div>
+        <div class="out-card reveal rd2"><span class="out-icon">🧠</span><h4>Sport Intelligence</h4><p>Sport-specific technique and real in-game decision making ability.</p></div>
+        <div class="out-card reveal rd3"><span class="out-icon">⏰</span><h4>Discipline & Routine</h4><p>Consistency, structure, and a performance mindset that goes beyond sports.</p></div>
+        <div class="out-card reveal rd4"><span class="out-icon">🥇</span><h4>Competitive Exposure</h4><p>Real tournaments, match play, and high-pressure environments that build character.</p></div>
       </div>
-
-      <div class="program-card">
-        <h3>Performance (Classes 8–10)</h3>
-        <p>Advanced skills, competition, and specialization.</p>
-      </div>
-
     </div>
-
   </div>
 </section>
 
-      <section>
+<!-- WHAT SCHOOLS GET — CAROUSEL -->
+<section class="cf-section alt-bg" id="schools" style="padding-bottom:20px;">
   <div class="container">
-
-    <p class="section-tag">WHY LEGAXY</p>
-    <h2>Not Coaching. Not Curriculum. A Complete System.</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>End-to-End Management</h3>
-        <p>We don’t assist. We own and run the entire sports program.</p>
-      </div>
-
-      <div class="card">
-        <h3>Data-Driven Tracking</h3>
-        <p>Every student’s progress is measured, tracked, and improved.</p>
-      </div>
-
-      <div class="card">
-        <h3>Professional Coaches</h3>
-        <p>Certified, trained, and aligned to a structured system.</p>
-      </div>
-
-      <div class="card">
-        <h3>Multi-Sport Exposure</h3>
-        <p>Students explore before specializing.</p>
-      </div>
-
+    <div class="cf-header reveal">
+      <div class="section-tag"><span class="tag-line"></span> For Schools</div>
+      <h2 class="section-h2">End-to-End Program Management</h2>
+      <p class="section-sub">We make implementation simple, seamless, and effective — for schools, students, and parents.</p>
     </div>
+  </div>
+  <div class="cf-outer" style="margin-top:20px;">
+    <div class="cf-wrap" id="schoolsCF" style="height:380px;">
+      <div class="cf-track" id="schoolsTrack">
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1593810451137-5dc55105dace?q=80&w=900&auto=format&fit=crop" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches + Lesson Plans</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student.</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=900&auto=format&fit=crop" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Session Design</span><span class="cf-sub">Everything planned and delivered professionally. Zero operational burden.</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=900&auto=format&fit=crop" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Assessment & Reporting Systems</span><span class="cf-sub">Track progress, celebrate growth, and make data-driven decisions with regular reports.</span></div></div>
+        <div class="cf-item"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=900&auto=format&fit=crop" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Seamless School Integration</span><span class="cf-sub">We work with your existing timetable for a smooth, hassle-free experience year-round.</span></div></div>
+      </div>
+    </div>
+    <button class="cf-nav cf-prev" id="scP">‹</button>
+    <button class="cf-nav cf-next" id="scN">›</button>
+  </div>
+  <div class="cf-dots" id="scDots"></div>
+</section>
 
+<!-- PARTNER GRID -->
+<section class="partner-section">
+  <div class="container">
+    <div class="partner-header reveal">
+      <div class="section-tag"><span class="tag-line"></span> Why Schools Choose LegaXy</div>
+      <h2 class="section-h2">Not Coaching. Not Curriculum.<br>A Complete System.</h2>
+      <p class="section-sub">We don't assist — we own and run your entire sports program.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="part-card reveal rd1"><div class="part-icon">🎓</div><h4>No Operational Burden</h4><p>We manage everything — from coaches to session plans to equipment. Your school just says yes.</p></div>
+      <div class="part-card reveal rd2"><div class="part-icon">📋</div><h4>Structured Curriculum</h4><p>Age-appropriate, sport-specific curriculum designed for Classes 1–10 with clear outcomes.</p></div>
+      <div class="part-card reveal rd3"><div class="part-icon">📈</div><h4>Measurable Results</h4><p>Documented improvement in student fitness, skill, participation, and discipline over time.</p></div>
+      <div class="part-card reveal rd4"><div class="part-icon">🏫</div><h4>Better School Reputation</h4><p>Stand out as a school that invests in holistic development, not just academic results.</p></div>
+    </div>
   </div>
 </section>
 
-      <section>
+<!-- TEAM -->
+<section class="team-section">
   <div class="container">
-
-    <p class="section-tag">IMPLEMENTATION</p>
-    <h2>How It Works Inside Your School</h2>
-
-    <div class="process-line">
-
-      <div class="step">
-        <div class="step-icon">01</div>
-        <h3>Setup</h3>
-        <p>Infrastructure, planning, and onboarding.</p>
+    <div class="team-layout">
+      <div class="reveal">
+        <div class="section-tag"><span class="tag-line"></span> Designed by Athletes</div>
+        <h2 class="section-h2">Built by People Who've Played the Game</h2>
+        <p>Our programs are designed by elite athletes and implemented by trained professionals — ensuring real-world relevance, expert guidance, and an inspiring experience.</p>
+        <p>We don't just understand sports. We've lived it.</p>
+        <a href="#contact" class="btn btn-orange" style="margin-top:14px;">Meet the Team →</a>
       </div>
-
-      <div class="step">
-        <div class="step-icon">02</div>
-        <h3>Execution</h3>
-        <p>Daily sessions run by trained coaches.</p>
+      <div class="team-img-wrap reveal rd2">
+        <img src="https://images.unsplash.com/photo-1544724107-6d5e338e9b79?q=80&w=800&auto=format&fit=crop" alt="LegaXy coaching team">
+        <div class="team-badge">
+          <div class="team-badge-icon">🏅</div>
+          <div class="team-badge-text"><strong>Elite Athlete Founders</strong><span>Every coach trained to deliver results</span></div>
+        </div>
       </div>
-
-      <div class="step">
-        <div class="step-icon">03</div>
-        <h3>Tracking</h3>
-        <p>Data, reports, and student performance.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-icon">04</div>
-        <h3>Growth</h3>
-        <p>Competitions, pathways, and development.</p>
-      </div>
-
     </div>
-
   </div>
 </section>
 
-      <section>
-  <div class="container">
-
-    <p class="section-tag">FOR SCHOOLS</p>
-    <h2>Why Schools Partner With Legaxy</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>No Operational Burden</h3>
-        <p>We manage everything — from coaches to execution.</p>
-      </div>
-
-      <div class="card">
-        <h3>Structured Curriculum</h3>
-        <p>Designed age-wise for Classes 1–10.</p>
-      </div>
-
-      <div class="card">
-        <h3>Measurable Results</h3>
-        <p>Clear improvement in fitness and skill levels.</p>
-      </div>
-
-      <div class="card">
-        <h3>Better School Reputation</h3>
-        <p>Stand out with a professional sports ecosystem.</p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-  
 <!-- CTA -->
-<section class="cta">
+<section class="cta-section" id="contact">
   <div class="container">
-
-    <div>
-      <p class="section-tag">NEXT STEP</p>
-      <h2>Let’s Build a Sports System in Your School</h2>
-      <p style="margin-top: 10px; opacity: 0.85;">
-        Partner with us to transform your sports program into a structured ecosystem.
-      </p>
+    <div class="section-tag" style="justify-content:center; color:rgba(255,106,0,0.75);"><span class="tag-line" style="background:rgba(255,106,0,0.5)"></span> Next Step</div>
+    <h2 class="section-h2" style="color:white; max-width:700px; margin:0 auto 14px;">Build a Sports Culture,<br>Not Just a Timetable</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.5); margin:0 auto 44px; text-align:center;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@legaxy.in" class="btn btn-orange">Book a Demo →</a>
+      <a href="#" class="btn btn-outline-w">Download Program Overview</a>
     </div>
-
-    <div class="cta-buttons">
-      <button class="btn btn-primary">Book a Demo</button>
-      <button class="btn btn-secondary">Download Proposal</button>
-    </div>
-
   </div>
 </section>
 
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo-text">LEGA<span>X</span>Y</div>
+        <p>Next-gen sports entertainment ecosystem. Building stronger students, one school at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a href="#">In-School Program (SSEP)</a>
+        <a href="#">After School Program</a>
+        <a href="#">Academy Program</a>
+        <a href="#">Centre of Excellence</a>
+        <a href="#">Pay N Play</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">About LegaXy</a>
+        <a href="#">Our Team</a>
+        <a href="#">Partner With Us</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:hello@legaxy.in">hello@legaxy.in</a>
+        <a href="#">Book a Demo</a>
+        <a href="#">Download Brochure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 LegaXy. All rights reserved.</p>
+      <p>Transforming school sports, one system at a time.</p>
+    </div>
+  </div>
+</footer>
 
-  <script>
-const steps = document.querySelectorAll('.step');
-const processBar = document.querySelector('.process-bar');
-const processLine = document.querySelector('.process-line');
+<script>
 
-const processObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
+/* ── Scroll & Navbar ── */
+window.addEventListener('scroll', () => {
+  const s = window.scrollY, h = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('scrollBar').style.width = (s / h * 100) + '%';
+  document.getElementById('navbar').classList.toggle('scrolled', s > 60);
+});
 
-      if (processBar) {
-        processBar.style.width = "100%";
-      }
+/* ── Reveal ── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-      steps.forEach((step, index) => {
-        setTimeout(() => {
-          step.classList.add('show');
-        }, index * 200);
+/* ══════════════════════════════
+   COVERFLOW CLASS
+══════════════════════════════ */
+class CF {
+  constructor(trackId, prevId, nextId, dotsId) {
+    this.track = document.getElementById(trackId);
+    this.items = Array.from(this.track.children);
+    this.total = this.items.length;
+    this.cur = 0;
+    this.timer = null;
+
+    document.getElementById(prevId).addEventListener('click', () => this.go(this.cur - 1));
+    document.getElementById(nextId).addEventListener('click', () => this.go(this.cur + 1));
+
+    // Build dots
+    const dc = document.getElementById(dotsId);
+    this.dots = [];
+    this.items.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'cf-dot';
+      d.addEventListener('click', () => this.go(i));
+      dc.appendChild(d);
+      this.dots.push(d);
+    });
+
+    // Click side items
+    this.items.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        const pos = parseInt(item.dataset.pos);
+        if (pos === -1) this.go(this.cur - 1);
+        else if (pos === 1) this.go(this.cur + 1);
       });
+    });
 
-    }
-  });
-}, { threshold: 0.3 });
+    this.update();
+    this.auto();
+  }
 
-if (processLine) {
-  processObserver.observe(processLine);
+  update() {
+    this.items.forEach((item, i) => {
+      let d = i - this.cur;
+      if (d > this.total / 2) d -= this.total;
+      if (d < -this.total / 2) d += this.total;
+      const c = Math.max(-2, Math.min(2, Math.round(d)));
+      item.dataset.pos = c;
+      item.classList.toggle('is-active', c === 0);
+    });
+    this.dots.forEach((d, i) => d.classList.toggle('active', i === this.cur));
+  }
+
+  go(idx) {
+    this.cur = ((idx % this.total) + this.total) % this.total;
+    this.update();
+    clearInterval(this.timer);
+    this.auto();
+  }
+
+  auto() { this.timer = setInterval(() => this.go(this.cur + 1), 4200); }
 }
 
-// SECTION REVEAL
-const reveals = document.querySelectorAll('.section');
+/* Init */
+new CF('sportsTrack', 'sP', 'sN', 'sDots');
+new CF('schoolsTrack', 'scP', 'scN', 'scDots');
 
-const observer2 = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.15 });
-
-reveals.forEach(sec => {
-  sec.classList.add('reveal');
-  observer2.observe(sec);
-});
-
-// CURSOR GLOW
-const glow = document.querySelector('.cursor-glow');
-
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
-
-// NAV SCROLL BG
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('.navbar');
-
-});
-
-// SCROLL BAR
-window.addEventListener('scroll', () => {
-  const scrollBar = document.querySelector('.scroll-bar');
-
-  const scroll = window.scrollY;
-  const height = document.body.scrollHeight - window.innerHeight;
-
-  const progress = (scroll / height) * 100;
-  scrollBar.style.width = progress + "%";
-});
-
-// HERO PARALLAX
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  const heroImage = document.querySelector(".hero-right img");
-  const heroText = document.querySelector(".hero-left");
-
-  if (heroImage && heroText) {
-    heroImage.style.transform = `translateY(${scrollY * 0.1}px) scale(1.02)`;
-    heroText.style.transform = `translateY(${scrollY * 0.05}px)`;
-  }
-});
-
-// FADE IN
-const faders = document.querySelectorAll(".fade-in");
-
-const appear = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
+/* ── Process steps ── */
+document.querySelectorAll('.proc-step').forEach(step => {
+  step.addEventListener('click', () => {
+    const idx = step.dataset.step;
+    document.querySelectorAll('.proc-step').forEach(s => s.classList.remove('active'));
+    step.classList.add('active');
+    document.querySelectorAll('.proc-detail').forEach(d => d.classList.remove('show'));
+    const pd = document.getElementById('pd' + idx);
+    if (pd) pd.classList.add('show');
   });
 });
 
-lucide.createIcons();
+/* ── Approach feature hover highlight ── */
+document.querySelectorAll('.a-feat').forEach(f => {
+  f.addEventListener('mouseenter', () => { document.querySelectorAll('.a-feat').forEach(x => x.classList.remove('active')); f.classList.add('active'); });
+});
 
-faders.forEach(el => appear.observe(el));
-   
+/* ── Problem card dim siblings ── */
+const pcards = document.querySelectorAll('.p-card');
+pcards.forEach(c => {
+  c.addEventListener('mouseenter', () => { pcards.forEach(x => { if (x !== c) x.style.opacity = '0.55'; }); });
+  c.addEventListener('mouseleave', () => { pcards.forEach(x => x.style.opacity = '1'); });
+});
+
 </script>
 </body>
 </html>
