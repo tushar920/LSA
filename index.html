@@ -11,6 +11,32 @@
   
 <style>
 
+  /* ===== GLOBAL SPACING SYSTEM ===== */
+
+:root {
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 100px;
+}
+
+/* Section spacing */
+section {
+  padding: var(--space-lg) 0;
+}
+
+/* First section (hero) tighter */
+.hero {
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+/* Consistent spacing inside sections */
+.container > * + * {
+  margin-top: var(--space-md);
+}
+
   /* GLOBAL STYLES */
 
 body {
@@ -21,10 +47,14 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
   padding: 0 40px;
+}
+
+h1, h2 {
+  letter-spacing: -0.5px;
 }
   
 h1, h2, h3 {
@@ -37,7 +67,8 @@ h1 {
 
 h2 {
   font-weight: 600;
-  font-size: 44px;
+  font-size: 42px;
+  line-height: 1.2;
   margin-bottom: 16px;  
 }
 
@@ -141,31 +172,24 @@ h2, p {
   
 /* BUTTONS */
 .btn {
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 10px;
-  border: none;
-  margin-right: 12px;
   font-weight: 500;
-  transition: 0.3s;
+  transition: all 0.25s ease;
 }
 
-/* 3. THE ORANGE ACTION BUTTON */
 .btn-primary {
-  position: relative;   /* ✅ FIX */
-  overflow: hidden;     /* ✅ CONTAIN GLOW */
-
-  background: #ff6a00;
+  background: linear-gradient(135deg, #ff6a00, #ff8c42);
   color: white;
-  padding: 16px 32px;
-  border-radius: 10px;
-  font-weight: 600;
-  border: none;
-
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255,106,0,0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px); /* Lifts up slightly when you point at it */
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.8);
 }
   
 .btn-primary::after {
@@ -313,12 +337,21 @@ h2 {
 }
 
 /* CARDS */
-.card {
-  background: white;
-  padding: 28px;
+..card {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+
   border-radius: 16px;
-  transition: 0.3s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 24px;
+
+  border: 1px solid rgba(0,0,0,0.05);
+
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 /* SPORTS GRID */
@@ -582,16 +615,21 @@ h2 {
   width: 100%;
   z-index: 1000;
 
-  padding: 12px 0;
+  padding: 14px 0; /* tighter */
 
   background: linear-gradient(
     to bottom,
-    rgbargba(13,27,42,0.85),
-    rgba(13,27,42,0.6)
+    rgba(13, 27, 42, 0.85),
+    rgba(13, 27, 42, 0.4),
+    transparent
   );
 
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* prevent content going under navbar */
+body {
+  padding-top: 70px;
 }
 
   .nav-links a {
@@ -654,16 +692,7 @@ h2 {
   transform: translateY(0);
 }
 
-  .card {
-  transition: 0.4s ease;
-}
-
-.card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-}
-
-  .card img {
+.card img {
   transition: 0.6s ease;
 }
 
@@ -764,8 +793,16 @@ section {
   opacity: 0.8;
 }
 
-.section::before {
-  display: none;
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(255,106,0,0.08),
+    transparent 40%
+  );
+  pointer-events: none;
 }
 
   .section::after {
