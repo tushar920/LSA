@@ -123,6 +123,7 @@ h2, p {
   padding: 0;
   border: none;
   box-shadow: none;
+  padding-left: 20px;
 }
 
 .hero-left h1 {
@@ -444,10 +445,10 @@ h2 {
 }
   
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   color: #ff6a00;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .features {
@@ -569,7 +570,6 @@ h2 {
   position: fixed;
   width: 180px; /* reduced from 300 */
   height: 180px;
-  background: radial-gradient(circle, rgba(255,106,0,0.15), transparent 70%);
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 0;
@@ -735,18 +735,7 @@ section {
   background: #f1f3f7;
   position: relative;
 }
-
-.section:not(.dark)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 10% 10%,
-    rgba(255,106,0,0.05),
-    transparent 40%
-  );
-}
-
+  
  .result-bar {
   margin-top: 25px;
   padding: 14px 20px;
@@ -804,8 +793,6 @@ section {
   width: 400px;
   height: 400px;
   display: none;
-
-  background: radial-gradient(circle, rgba(13,27,42,0.2), transparent 70%);
   filter: blur(100px);
 }
 
@@ -851,33 +838,26 @@ section {
   border: 1px solid rgba(255,255,255,0.15);
 }
 
-  .system-diagram {
-  display: grid;
-  grid-template-columns: 1fr 220px 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 40px;
+ .system-diagram {
+  display: flex;
   align-items: center;
-  justify-items: center;
-  margin-top: 32px;
-  position: relative;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 40px;
+}
+
+  .system-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* nodes */
 .system-node {
-  padding: 16px 22px;
+  padding: 14px 20px;
   border-radius: 12px;
-  opacity: 1;
-  transform: none;
-
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
-
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-
-  backdrop-filter: blur(10px);
-  transition: 0.5s ease;
 }
 
   .system-diagram.show .system-node {
@@ -897,21 +877,10 @@ section {
 
 /* core */
 .system-core {
-  grid-column: 2;
-  grid-row: 2;
-
-  padding: 24px 34px;
+  padding: 24px 40px;
   border-radius: 16px;
-
   background: linear-gradient(135deg, #ff6a00, #ff8c42);
-  color: white;
-
-  font-size: 18px;
   font-weight: 700;
-
-  box-shadow:
-    0 30px 100px rgba(255,106,0,0.6),
-    inset 0 0 30px rgba(255,255,255,0.25);
 }
 
   .system-core {
@@ -922,7 +891,6 @@ section {
   content: "";
   position: absolute;
   inset: -40px;
-  background: radial-gradient(circle, rgba(255,106,0,0.4), transparent 70%);
   z-index: -1;
   filter: blur(40px);
 }
@@ -1050,8 +1018,6 @@ body {
   .icon {
   width: 40px;
   height: 40px;
-
-  background: rgba(255,106,0,0.1);
   padding: 8px;
   border-radius: 10px;
 
@@ -1062,6 +1028,27 @@ body {
   .system-node:hover {
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.3);
+}
+
+  .carousel {
+  overflow-x: auto;
+  margin-top: 40px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+}
+
+.carousel-card {
+  min-width: 260px;
+  height: 160px;
+  border-radius: 16px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
   
@@ -1088,10 +1075,6 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   opacity: 0.6;
-}
-     
-  .sports {
-  background: radial-gradient(circle at top, rgba(255,106,0,0.15), transparent 60%);
 }
 
   </style>
@@ -1206,15 +1189,21 @@ body {
 
   <div class="system-diagram">
 
+  <div class="system-side">
     <div class="system-node">Structured Curriculum</div>
-    <div class="system-node">Professional Coaching</div>
-
-    <div class="system-core">Classes 1–10</div>
-
     <div class="system-node">Performance Tracking</div>
-    <div class="system-node">Multi-Sport Exposure</div>
-
   </div>
+
+  <div class="system-core">
+    Classes 1–10
+  </div>
+
+  <div class="system-side">
+    <div class="system-node">Professional Coaching</div>
+    <div class="system-node">Multi-Sport Exposure</div>
+  </div>
+
+</div>
 
 </div> <!-- system-wrapper -->
 </div> <!-- container -->
@@ -1226,31 +1215,39 @@ body {
     <p class="section-tag">A COMPLETE FOUNDATION</p>
     <h2>Explore. Learn. Grow.</h2>
 
-    <div class="grid">
+    <div class="carousel">
+  <div class="carousel-track">
+
+ <div class="tile">
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
+      <div class="tile-overlay">
+        <span class="tile-tags">Batting • Bowling • Match Awareness</span>
+        <p class="tile-title">Cricket</p>
+      </div>
+    </div>
 
   <div class="tile">
-    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
-    <span>Batting • Bowling • Match Awareness</span>
-    <p>Cricket</p>
-  </div>
+      <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a">
+      <div class="tile-overlay">
+        <span class="tile-tags">Passing • Dribbling • Game IQ</span>
+        <p class="tile-title">Football</p>
+      </div>
+    </div>
+
+ <div class="tile">
+      <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf">
+      <div class="tile-overlay">
+        <span class="tile-tags">Shooting • Defense • Court Vision</span>
+        <p class="tile-title">Basketball</p>
+      </div>
+    </div>
 
   <div class="tile">
-    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377">
-    <span>Dribbling • Passing • Decision Making</span>
-    <p>Football</p>
-  </div>
-
-  <div class="tile">
-    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc">
-    <span>Shooting • Footwork • Court Vision</span>
-    <p>Basketball</p>
-  </div>
-
-  <div class="tile">
-    <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d">
-    <span>Agility • Reflex • Shot Control</span>
-    <p>Badminton</p>
-  </div>
+      <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d">
+      <div class="tile-overlay">
+        <span class="tile-tags">Agility • Reflex • Shot Control</span>
+        <p class="tile-title">Badminton</p>
+      </div>
 
 </div>
   </div>
@@ -1601,6 +1598,8 @@ const appear = new IntersectionObserver((entries) => {
     }
   });
 });
+
+lucide.createIcons();
 
 faders.forEach(el => appear.observe(el));
    
