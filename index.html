@@ -40,7 +40,7 @@ body { font-family:var(--fb); background:var(--cream); color:var(--text); overfl
   backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.07); transition:background 0.4s;
 }
-
+.navbar.scrolled { background:rgba(13,27,42,0.97); }
 .nav-inner { max-width:1200px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; }
 .nav-logo { text-decoration:none; }
 .nav-logo-text { font-family:var(--fd); font-size:30px; font-weight:900; letter-spacing:-0.5px; color:white; line-height:1; }
@@ -406,29 +406,6 @@ footer { background:#060e18; padding:60px 0 32px; border-top:1px solid rgba(255,
 .footer-bottom { border-top:1px solid rgba(255,255,255,0.05); padding-top:24px; display:flex; justify-content:space-between; align-items:center; }
 .footer-bottom p { font-size:12px; color:rgba(255,255,255,0.25); }
 
-.logo-img {
-  height: 72px;
-  background: transparent;
-  mix-blend-mode: multiply;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-
-  background: linear-gradient(90deg, #0b1d2a, #0f2a3f);
-  backdrop-filter: blur(10px);
-
-  padding: 18px 60px;
-  transition: none; /* IMPORTANT — removes color change */
-}
-
-.navbar a {
-  color: #111;
-}
-
 /* ═══════════════════════════════
    RESPONSIVE
 ═══════════════════════════════ */
@@ -478,7 +455,7 @@ footer { background:#060e18; padding:60px 0 32px; border-top:1px solid rgba(255,
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <img src="lsa-logo.png" alt="LegaXy Logo" class="logo-img">
+      <div class="nav-logo-text">LEGA<span class="x">X</span>Y</div>
       <div class="nav-logo-sub">Next-Gen Sports Education</div>
     </a>
     <ul class="nav-links">
