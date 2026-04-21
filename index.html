@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --orange:#ff6a00; --navy:#0d1b2a; --cream:#faf8f5; --warm:#f2ede7;
-  --text:#111; --muted:#6b7280; --border:rgba(0,0,0,0.07);
-  --fd:'Barlow Condensed',sans-serif; --fb:'Plus Jakarta Sans',sans-serif;
+--orange:#ff6a00; --navy:#0d1b2a; --cream:#faf8f5; --warm:#f2ede7;
+--text:#111; --muted:#6b7280; --border:rgba(0,0,0,0.07);
+--fd:'Barlow Condensed',sans-serif; --fb:'Plus Jakarta Sans',sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-snap-type:y mandatory;}
@@ -250,8 +250,8 @@ section{position:relative;}
 .ath-track-wrap{overflow:hidden;border-radius:20px;}
 .ath-track{display:flex;transition:transform 0.5s cubic-bezier(.4,0,.2,1);}
 .ath-card{min-width:100%;position:relative;border-radius:20px;overflow:hidden;background:var(--navy);}
-.ath-card img{width:100%;height:380px;object-fit:cover;display:block;object-position: 60% center;opacity:0.80;}
-.ath-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px;background: linear-gradient(to top,rgba(13,27,42,0.85) 0%,rgba(13,27,42,0.5) 40%,rgba(13,27,42,0.15) 70%,transparent 100%);
+.ath-card img{width:100%;height:380px;object-fit:cover;display:block;opacity:0.75;}
+.ath-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(to top,rgba(13,27,42,0.97) 0%,rgba(13,27,42,0.6) 60%,transparent 100%);}
 .ath-sport{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:6px;}
 .ath-name{font-family:var(--fd);font-size:28px;font-weight:900;color:white;display:block;margin-bottom:8px;}
 .ath-bio{font-size:13.5px;color:rgba(255,255,255,0.65);line-height:1.65;}
@@ -262,11 +262,6 @@ section{position:relative;}
 .ath-btns{display:flex;gap:8px;}
 .ath-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--navy);transition:all 0.25s;}
 .ath-btn:hover{background:var(--orange);color:white;border-color:var(--orange);}
-.player-img {
-  width: 180px;
-  height: auto;
-  object-fit: contain; /* prevents distortion */
-}
 
 /* ══════════ CTA ══════════ */
 .cta-section{padding:100px 0;background:var(--navy);position:relative;overflow:hidden;text-align:center;}
@@ -290,39 +285,39 @@ footer{background:#060e18;padding:60px 0 32px;border-top:1px solid rgba(255,255,
 
 /* ══════════ RESPONSIVE ══════════ */
 @media(max-width:1024px){
-  html{scroll-snap-type:none;}
-  .hero .container{flex-direction:column;padding:80px 40px;}
-  .hero-right{display:none;}
-  .problem-layout{grid-template-columns:1fr;gap:40px;}
-  .approach-layout{grid-template-columns:1fr;}
-  .programs-grid{grid-template-columns:1fr;}
-  .outcomes-layout{grid-template-columns:1fr;}
-  .partner-grid{grid-template-columns:1fr 1fr;}
-  .athletes-layout{grid-template-columns:1fr;}
-  .footer-inner{grid-template-columns:1fr 1fr;}
-  .proc-timeline{grid-template-columns:1fr 1fr;gap:24px;}
-  .proc-timeline::before{display:none;}
-  .proc-header{grid-template-columns:1fr;}
+html{scroll-snap-type:none;}
+.hero .container{flex-direction:column;padding:80px 40px;}
+.hero-right{display:none;}
+.problem-layout{grid-template-columns:1fr;gap:40px;}
+.approach-layout{grid-template-columns:1fr;}
+.programs-grid{grid-template-columns:1fr;}
+.outcomes-layout{grid-template-columns:1fr;}
+.partner-grid{grid-template-columns:1fr 1fr;}
+.athletes-layout{grid-template-columns:1fr;}
+.footer-inner{grid-template-columns:1fr 1fr;}
+.proc-timeline{grid-template-columns:1fr 1fr;gap:24px;}
+.proc-timeline::before{display:none;}
+.proc-header{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
-  .navbar{padding:0 20px;}
-  .nav-links{display:none;}
-  .container{padding:0 20px;}
-  .hero .container{padding:60px 20px;}
-  .hero h1{font-size:44px;}
-  .section-h2{font-size:34px;}
-  .problem-cards{grid-template-columns:1fr;}
-  .out-grid{grid-template-columns:1fr;}
-  .partner-grid{grid-template-columns:1fr 1fr;}
-  .hero-stats{flex-direction:column;}
-  .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
-  .hero-stat:last-child{border-bottom:none;}
-  .cf-wrap{height:320px;}
-  .cf-item{width:76%;}
-  .cf-item[data-pos="-1"]{transform:translate(-116%,-50%) scale(0.79);}
-  .cf-item[data-pos="1"]{transform:translate(16%,-50%) scale(0.79);}
-  .footer-inner{grid-template-columns:1fr;}
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+.navbar{padding:0 20px;}
+.nav-links{display:none;}
+.container{padding:0 20px;}
+.hero .container{padding:60px 20px;}
+.hero h1{font-size:44px;}
+.section-h2{font-size:34px;}
+.problem-cards{grid-template-columns:1fr;}
+.out-grid{grid-template-columns:1fr;}
+.partner-grid{grid-template-columns:1fr 1fr;}
+.hero-stats{flex-direction:column;}
+.hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+.hero-stat:last-child{border-bottom:none;}
+.cf-wrap{height:320px;}
+.cf-item{width:76%;}
+.cf-item[data-pos="-1"]{transform:translate(-116%,-50%) scale(0.79);}
+.cf-item[data-pos="1"]{transform:translate(16%,-50%) scale(0.79);}
+.footer-inner{grid-template-columns:1fr;}
+.footer-bottom{flex-direction:column;gap:8px;text-align:center;}
 }
 </style>
 </head>
@@ -332,652 +327,652 @@ footer{background:#060e18;padding:60px 0 32px;border-top:1px solid rgba(255,255,
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#sports">Sports</a></li>
-      <li><a href="#process">How It Works</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#athletes">Our Athletes</a></li>
-      <li><a href="#schools">For Schools</a></li>
-      <li><a href="#contact" class="nav-cta">Get In Touch →</a></li>
-    </ul>
-  </div>
+<div class="nav-inner">
+<a href="#" class="nav-logo">
+<img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+</a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#sports">Sports</a></li>
+<li><a href="#process">How It Works</a></li>
+<li><a href="#programs">Programs</a></li>
+<li><a href="#athletes">Our Athletes</a></li>
+<li><a href="#schools">For Schools</a></li>
+<li><a href="#contact" class="nav-cta">Get In Touch →</a></li>
+</ul>
+</div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <div class="hero snap" id="home">
-  <div class="hero-orb1"></div>
-  <div class="hero-orb2"></div>
-  <div class="hero-dots"></div>
-  <div class="container">
-    <div class="hero-left reveal">
-      <div class="hero-eyebrow"><span class="dot"></span> School Sports Education Program (SSEP)</div>
-      <h1>Where School Sports<em>Become a System</em></h1>
-      <p class="hero-sub">A structured, outcome-driven sports program that transforms physical education into measurable growth, competitive excellence, and a thriving sports culture.</p>
-      <div class="hero-buttons">
-        <a href="#programs" class="btn btn-primary">Explore Programs →</a>
-        <a href="#schools" class="btn btn-glass">Partner With Us</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num">8<span class="acc">+</span></div><div class="hero-stat-label">Sports Offered</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">1<span class="acc">–10</span></div><div class="hero-stat-label">All Classes</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">100<span class="acc">%</span></div><div class="hero-stat-label">Fully Managed</div></div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-img-wrap">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=900&auto=format&fit=crop" alt="School sports">
-        <div class="hero-img-glass"></div>
-        <div class="hero-badge hero-badge-1">
-          <div class="hb-icon">🏆</div>
-          <div class="hb-text"><strong>Compete & Grow</strong><span>Inter-school tournaments</span></div>
-        </div>
-        <div class="hero-badge hero-badge-2">
-          <div class="hb-icon">📊</div>
-          <div class="hb-text"><strong>Track Progress</strong><span>Data-driven reports</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="hero-orb1"></div>
+<div class="hero-orb2"></div>
+<div class="hero-dots"></div>
+<div class="container">
+<div class="hero-left reveal">
+<div class="hero-eyebrow"><span class="dot"></span> School Sports Education Program (SSEP)</div>
+<h1>Where School Sports<em>Become a System</em></h1>
+<p class="hero-sub">A structured, outcome-driven sports program that transforms physical education into measurable growth, competitive excellence, and a thriving sports culture.</p>
+<div class="hero-buttons">
+<a href="#programs" class="btn btn-primary">Explore Programs →</a>
+<a href="#schools" class="btn btn-glass">Partner With Us</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hero-stat-num">8<span class="acc">+</span></div><div class="hero-stat-label">Sports Offered</div></div>
+<div class="hero-stat"><div class="hero-stat-num">1<span class="acc">–10</span></div><div class="hero-stat-label">All Classes</div></div>
+<div class="hero-stat"><div class="hero-stat-num">100<span class="acc">%</span></div><div class="hero-stat-label">Fully Managed</div></div>
+</div>
+</div>
+<div class="hero-right">
+<div class="hero-img-wrap">
+<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=900&auto=format&fit=crop" alt="School sports">
+<div class="hero-img-glass"></div>
+<div class="hero-badge hero-badge-1">
+<div class="hb-icon">🏆</div>
+<div class="hb-text"><strong>Compete & Grow</strong><span>Inter-school tournaments</span></div>
+</div>
+<div class="hero-badge hero-badge-2">
+<div class="hb-icon">📊</div>
+<div class="hb-text"><strong>Track Progress</strong><span>Data-driven reports</span></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- TRUST STRIP -->
 <div class="trust-strip snap">
-  <div class="container">
-    <img src="lsa-logo-dark.png" alt="LegaXy" class="trust-logo">
-    <div class="trust-item"><div class="trust-tick">✓</div> NEP 2020 & NCF 2023 Aligned</div>
-    <div class="trust-item"><div class="trust-tick">✓</div> Certified Professional Coaches</div>
-    <div class="trust-item"><div class="trust-tick">✓</div> Classes 1–10 Curriculum</div>
-    <div class="trust-item"><div class="trust-tick">✓</div> Performance Tracking & Reports</div>
-    <div class="trust-item"><div class="trust-tick">✓</div> Designed by Elite Athletes</div>
-  </div>
+<div class="container">
+<img src="lsa-logo-dark.png" alt="LegaXy" class="trust-logo">
+<div class="trust-item"><div class="trust-tick">✓</div> NEP 2020 & NCF 2023 Aligned</div>
+<div class="trust-item"><div class="trust-tick">✓</div> Certified Professional Coaches</div>
+<div class="trust-item"><div class="trust-tick">✓</div> Classes 1–10 Curriculum</div>
+<div class="trust-item"><div class="trust-tick">✓</div> Performance Tracking & Reports</div>
+<div class="trust-item"><div class="trust-tick">✓</div> Designed by Elite Athletes</div>
+</div>
 </div>
 
 <!-- ═══ PROBLEM ═══ -->
 <section class="problem-section snap" id="about">
-  <div class="container">
-    <div class="problem-layout">
-      <div class="reveal">
-        <div class="section-tag"><span class="tag-line"></span> The Problem</div>
-        <h2 class="section-h2">Why Most School Sports Don't Work</h2>
-        <p class="section-sub">Despite good intentions, traditional school sports fail to create lasting impact. Students cycle through sessions with no goals, no growth, no pathway forward.</p>
-        <div class="result-callout">
-          <p>→ &nbsp;Result: Sports become a routine, not an opportunity.</p>
-        </div>
-      </div>
-      <div class="problem-cards">
-        <div class="p-card reveal rd1"><span class="p-card-icon">🗓️</span><h4>Unstructured PE Periods</h4><p>No clear goals, no measurable progress, no system behind the sessions.</p></div>
-        <div class="p-card offset reveal rd2"><span class="p-card-icon">👥</span><h4>No Qualified Coaching</h4><p>General instruction doesn't build real sport-specific athletic skills.</p></div>
-        <div class="p-card reveal rd3"><span class="p-card-icon">📈</span><h4>No Pathway to Performance</h4><p>Students don't get structured exposure to identify and nurture their talent.</p></div>
-        <div class="p-card offset reveal rd4"><span class="p-card-icon">🔴</span><h4>Minimal Engagement</h4><p>Low motivation and consistency leads to low impact for everyone involved.</p></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="problem-layout">
+<div class="reveal">
+<div class="section-tag"><span class="tag-line"></span> The Problem</div>
+<h2 class="section-h2">Why Most School Sports Don't Work</h2>
+<p class="section-sub">Despite good intentions, traditional school sports fail to create lasting impact. Students cycle through sessions with no goals, no growth, no pathway forward.</p>
+<div class="result-callout">
+<p>→ &nbsp;Result: Sports become a routine, not an opportunity.</p>
+</div>
+</div>
+<div class="problem-cards">
+<div class="p-card reveal rd1"><span class="p-card-icon">🗓️</span><h4>Unstructured PE Periods</h4><p>No clear goals, no measurable progress, no system behind the sessions.</p></div>
+<div class="p-card offset reveal rd2"><span class="p-card-icon">👥</span><h4>No Qualified Coaching</h4><p>General instruction doesn't build real sport-specific athletic skills.</p></div>
+<div class="p-card reveal rd3"><span class="p-card-icon">📈</span><h4>No Pathway to Performance</h4><p>Students don't get structured exposure to identify and nurture their talent.</p></div>
+<div class="p-card offset reveal rd4"><span class="p-card-icon">🔴</span><h4>Minimal Engagement</h4><p>Low motivation and consistency leads to low impact for everyone involved.</p></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ═══ APPROACH — CURRICULUM BY CLASS ═══ -->
 <section class="approach-section snap">
-  <div class="container">
-    <div class="approach-layout">
-      <div class="reveal">
-        <div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> The LegaXy Approach</div>
-        <h2 class="section-h2" style="color:white;">We Don't Run PE Classes.<br>We Build Sports Systems.</h2>
-        <p class="section-sub" style="color:rgba(255,255,255,0.5);margin-bottom:36px;">A fully managed, curriculum-based program for Classes 1–10, integrating everything a school needs — aligned with NEP 2020, NCF 2023, CBSE Physical Education strands, and Fit India School Rating requirements.</p>
-        <div class="approach-features">
-          <div class="a-feat"><div class="a-feat-icon">📋</div><div class="a-feat-text"><h4>Structured Curriculum</h4><p>Age-appropriate progressions designed sport-by-sport, 36-week annual curriculum per class.</p></div></div>
-          <div class="a-feat"><div class="a-feat-icon">🎯</div><div class="a-feat-text"><h4>Professional Coaching</h4><p>Certified coaches delivering 80-minute integrated sports periods with measurable objectives.</p></div></div>
-          <div class="a-feat"><div class="a-feat-icon">📊</div><div class="a-feat-text"><h4>Performance Tracking</h4><p>Data-driven monitoring via our app — attendance, skill scores, fitness benchmarks, parent dashboards.</p></div></div>
-          <div class="a-feat"><div class="a-feat-icon">🏅</div><div class="a-feat-text"><h4>Multi-Sport Exposure</h4><p>Students rotate across 8+ sports before specializing — building complete, all-round athletes.</p></div></div>
-        </div>
-      </div>
-      <!-- Curriculum Tabs -->
-      <div class="reveal rd2">
-        <div class="curriculum-panel">
-          <div class="curr-tabs">
-            <div class="curr-tab active" data-tab="foundation">Classes 1–3</div>
-            <div class="curr-tab" data-tab="development">Classes 4–7</div>
-            <div class="curr-tab" data-tab="performance">Classes 8–10</div>
-          </div>
-          <div class="curr-content active" id="tab-foundation">
-            <div class="curr-badge foundation-badge">Foundation Stage</div>
-            <h4>Movement First</h4>
-            <span class="curr-classes">Ages 6 – 9 Years</span>
-            <p>At this stage, we focus entirely on building physical literacy. Children explore movement, develop coordination, balance, and flexibility — all through fun, play-based sport sessions. No pressure, just joy in movement.</p>
-            <div class="curr-skills">
-              <span class="curr-skill">Balance & Coordination</span>
-              <span class="curr-skill">Motor Skills</span>
-              <span class="curr-skill">Spatial Awareness</span>
-              <span class="curr-skill">Multi-Sport Play</span>
-              <span class="curr-skill">Team Behavior</span>
-              <span class="curr-skill">Flexibility</span>
-            </div>
-          </div>
-          <div class="curr-content" id="tab-development">
-            <div class="curr-badge development-badge">Development Stage</div>
-            <h4>Skill Building</h4>
-            <span class="curr-classes">Ages 9 – 12 Years</span>
-            <p>Students begin rotating across multiple sports — sampling cricket, football, basketball, badminton and more. Each sport is introduced with structured technique, rules, and gameplay. Teamwork and discipline are core pillars at this stage.</p>
-            <div class="curr-skills">
-              <span class="curr-skill">Technique Introduction</span>
-              <span class="curr-skill">Sport Rules & IQ</span>
-              <span class="curr-skill">Fitness Fundamentals</span>
-              <span class="curr-skill">Team Play</span>
-              <span class="curr-skill">Multi-Sport Sampling</span>
-              <span class="curr-skill">Competitive Exposure</span>
-            </div>
-          </div>
-          <div class="curr-content" id="tab-performance">
-            <div class="curr-badge performance-badge">Performance Stage</div>
-            <h4>Excel & Compete</h4>
-            <span class="curr-classes">Ages 12 – 16 Years</span>
-            <p>Advanced skill refinement, sport-specific tactics, and formal competitive exposure. Students are assessed for talent identification, given pathways to school teams and inter-school tournaments, and prepared for high-performance tracks.</p>
-            <div class="curr-skills">
-              <span class="curr-skill">Advanced Technique</span>
-              <span class="curr-skill">Tactical Play</span>
-              <span class="curr-skill">S&C Integration</span>
-              <span class="curr-skill">Inter-School Competitions</span>
-              <span class="curr-skill">Talent Identification</span>
-              <span class="curr-skill">Specialization Pathway</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="approach-layout">
+<div class="reveal">
+<div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> The LegaXy Approach</div>
+<h2 class="section-h2" style="color:white;">We Don't Run PE Classes.<br>We Build Sports Systems.</h2>
+<p class="section-sub" style="color:rgba(255,255,255,0.5);margin-bottom:36px;">A fully managed, curriculum-based program for Classes 1–10, integrating everything a school needs — aligned with NEP 2020, NCF 2023, CBSE Physical Education strands, and Fit India School Rating requirements.</p>
+<div class="approach-features">
+<div class="a-feat"><div class="a-feat-icon">📋</div><div class="a-feat-text"><h4>Structured Curriculum</h4><p>Age-appropriate progressions designed sport-by-sport, 36-week annual curriculum per class.</p></div></div>
+<div class="a-feat"><div class="a-feat-icon">🎯</div><div class="a-feat-text"><h4>Professional Coaching</h4><p>Certified coaches delivering 80-minute integrated sports periods with measurable objectives.</p></div></div>
+<div class="a-feat"><div class="a-feat-icon">📊</div><div class="a-feat-text"><h4>Performance Tracking</h4><p>Data-driven monitoring via our app — attendance, skill scores, fitness benchmarks, parent dashboards.</p></div></div>
+<div class="a-feat"><div class="a-feat-icon">🏅</div><div class="a-feat-text"><h4>Multi-Sport Exposure</h4><p>Students rotate across 8+ sports before specializing — building complete, all-round athletes.</p></div></div>
+</div>
+</div>
+<!-- Curriculum Tabs -->
+<div class="reveal rd2">
+<div class="curriculum-panel">
+<div class="curr-tabs">
+<div class="curr-tab active" data-tab="foundation">Classes 1–3</div>
+<div class="curr-tab" data-tab="development">Classes 4–7</div>
+<div class="curr-tab" data-tab="performance">Classes 8–10</div>
+</div>
+<div class="curr-content active" id="tab-foundation">
+<div class="curr-badge foundation-badge">Foundation Stage</div>
+<h4>Movement First</h4>
+<span class="curr-classes">Ages 6 – 9 Years</span>
+<p>At this stage, we focus entirely on building physical literacy. Children explore movement, develop coordination, balance, and flexibility — all through fun, play-based sport sessions. No pressure, just joy in movement.</p>
+<div class="curr-skills">
+<span class="curr-skill">Balance & Coordination</span>
+<span class="curr-skill">Motor Skills</span>
+<span class="curr-skill">Spatial Awareness</span>
+<span class="curr-skill">Multi-Sport Play</span>
+<span class="curr-skill">Team Behavior</span>
+<span class="curr-skill">Flexibility</span>
+</div>
+</div>
+<div class="curr-content" id="tab-development">
+<div class="curr-badge development-badge">Development Stage</div>
+<h4>Skill Building</h4>
+<span class="curr-classes">Ages 9 – 12 Years</span>
+<p>Students begin rotating across multiple sports — sampling cricket, football, basketball, badminton and more. Each sport is introduced with structured technique, rules, and gameplay. Teamwork and discipline are core pillars at this stage.</p>
+<div class="curr-skills">
+<span class="curr-skill">Technique Introduction</span>
+<span class="curr-skill">Sport Rules & IQ</span>
+<span class="curr-skill">Fitness Fundamentals</span>
+<span class="curr-skill">Team Play</span>
+<span class="curr-skill">Multi-Sport Sampling</span>
+<span class="curr-skill">Competitive Exposure</span>
+</div>
+</div>
+<div class="curr-content" id="tab-performance">
+<div class="curr-badge performance-badge">Performance Stage</div>
+<h4>Excel & Compete</h4>
+<span class="curr-classes">Ages 12 – 16 Years</span>
+<p>Advanced skill refinement, sport-specific tactics, and formal competitive exposure. Students are assessed for talent identification, given pathways to school teams and inter-school tournaments, and prepared for high-performance tracks.</p>
+<div class="curr-skills">
+<span class="curr-skill">Advanced Technique</span>
+<span class="curr-skill">Tactical Play</span>
+<span class="curr-skill">S&C Integration</span>
+<span class="curr-skill">Inter-School Competitions</span>
+<span class="curr-skill">Talent Identification</span>
+<span class="curr-skill">Specialization Pathway</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ═══ SPORTS CAROUSEL ═══ -->
 <section class="cf-section snap" id="sports">
-  <div class="container">
-    <div class="cf-header reveal">
-      <div class="section-tag"><span class="tag-line"></span> A Complete Sporting Foundation</div>
-      <h2 class="section-h2">Explore. Learn. Grow.</h2>
-      <p class="section-sub">Sports rotated across the year to build all-round athletic intelligence. Students explore before they specialise.</p>
-    </div>
-  </div>
-  <div class="cf-outer" style="margin-top:20px;">
-    <div class="cf-wrap" id="sportsCF">
-      <div class="cf-track" id="sportsTrack">
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=900&auto=format&fit=crop" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?q=80&w=900&auto=format&fit=crop" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=900&auto=format&fit=crop" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=900&auto=format&fit=crop" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1617296538902-887900d9b592?q=80&w=900&auto=format&fit=crop" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=900&auto=format&fit=crop" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=900&auto=format&fit=crop" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=900&auto=format&fit=crop" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=900&auto=format&fit=crop" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
-      </div>
-    </div>
-    <button class="cf-nav cf-prev" id="sP">‹</button>
-    <button class="cf-nav cf-next" id="sN">›</button>
-  </div>
-  <div class="cf-dots" id="sDots"></div>
+<div class="container">
+<div class="cf-header reveal">
+<div class="section-tag"><span class="tag-line"></span> A Complete Sporting Foundation</div>
+<h2 class="section-h2">Explore. Learn. Grow.</h2>
+<p class="section-sub">Sports rotated across the year to build all-round athletic intelligence. Students explore before they specialise.</p>
+</div>
+</div>
+<div class="cf-outer" style="margin-top:20px;">
+<div class="cf-wrap" id="sportsCF">
+<div class="cf-track" id="sportsTrack">
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=900&auto=format&fit=crop" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?q=80&w=900&auto=format&fit=crop" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=900&auto=format&fit=crop" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=900&auto=format&fit=crop" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1617296538902-887900d9b592?q=80&w=900&auto=format&fit=crop" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=900&auto=format&fit=crop" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=900&auto=format&fit=crop" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?q=80&w=900&auto=format&fit=crop" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=900&auto=format&fit=crop" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
+</div>
+</div>
+<button class="cf-nav cf-prev" id="sP">‹</button>
+<button class="cf-nav cf-next" id="sN">›</button>
+</div>
+<div class="cf-dots" id="sDots"></div>
 </section>
 
 <!-- ═══ PROCESS ═══ -->
 <section class="process-section snap" id="process">
-  <div class="container">
-    <div class="proc-header">
-      <div class="reveal"><div class="section-tag"><span class="tag-line"></span> How It Works</div><h2 class="section-h2">A System, Not Sessions</h2></div>
-      <div class="reveal rd1"><p class="section-sub">A clear, proven process that ensures every student progresses — regardless of their starting point.</p></div>
-    </div>
-    <div class="proc-timeline" id="procTL">
-      <div class="proc-step active reveal rd1" data-step="0">
-        <div class="proc-num"><div class="n-label">01</div><div class="n-icon">🔍</div></div>
-        <h3>Assess</h3><p>Baseline evaluation of each student's fitness and skill levels.</p>
-      </div>
-      <div class="proc-step reveal rd2" data-step="1">
-        <div class="proc-num"><div class="n-label">02</div><div class="n-icon">💪</div></div>
-        <h3>Train</h3><p>Structured sessions led by expert sport-specific coaches.</p>
-      </div>
-      <div class="proc-step reveal rd3" data-step="2">
-        <div class="proc-num"><div class="n-label">03</div><div class="n-icon">📈</div></div>
-        <h3>Track</h3><p>Continuous monitoring via app — skill scores, fitness, reports.</p>
-      </div>
-      <div class="proc-step reveal rd4" data-step="3">
-        <div class="proc-num"><div class="n-label">04</div><div class="n-icon">🏆</div></div>
-        <h3>Compete</h3><p>Inter-school exposure and real competitive opportunities.</p>
-      </div>
-    </div>
-    <div class="proc-detail show" id="pd0">
-      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=600&auto=format&fit=crop" alt="Assessment">
-      <div><h4>Assess — Know Where Every Student Stands</h4><p>Before training begins, we run a comprehensive baseline evaluation covering each student's fitness, coordination, and sport skill levels. This data powers everything — ensuring no student is left behind and every session plan is personalised to the group.</p></div>
-    </div>
-    <div class="proc-detail" id="pd1">
-      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=600&auto=format&fit=crop" alt="Training">
-      <div><h4>Train — Structured Sessions, Expert Coaches</h4><p>Age-appropriate, curriculum-aligned 80-minute sessions led by certified coaches. Every session follows the LegaXy Training Blueprint — warm-up, skill focus, team activity, match play, cool-down. Every session has a measurable objective.</p></div>
-    </div>
-    <div class="proc-detail" id="pd2">
-      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=600&auto=format&fit=crop" alt="Tracking">
-      <div><h4>Track — Data That Actually Means Something</h4><p>We continuously measure progress against each student's own baseline. Schools get periodic reports, parents get visibility via the LegaXy app, and coaches use data to refine sessions. Growth becomes visible, concrete, and shareable.</p></div>
-    </div>
-    <div class="proc-detail" id="pd3">
-      <img class="proc-detail-img" src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=600&auto=format&fit=crop" alt="Competition">
-      <div><h4>Compete — Where Growth Becomes Real</h4><p>Students get inter-school exposure and competitive opportunities — School Olympics, inter-house tournaments, and external circuits. Competing builds character, confidence, and the discipline that comes from performing under real pressure.</p></div>
-    </div>
-  </div>
+<div class="container">
+<div class="proc-header">
+<div class="reveal"><div class="section-tag"><span class="tag-line"></span> How It Works</div><h2 class="section-h2">A System, Not Sessions</h2></div>
+<div class="reveal rd1"><p class="section-sub">A clear, proven process that ensures every student progresses — regardless of their starting point.</p></div>
+</div>
+<div class="proc-timeline" id="procTL">
+<div class="proc-step active reveal rd1" data-step="0">
+<div class="proc-num"><div class="n-label">01</div><div class="n-icon">🔍</div></div>
+<h3>Assess</h3><p>Baseline evaluation of each student's fitness and skill levels.</p>
+</div>
+<div class="proc-step reveal rd2" data-step="1">
+<div class="proc-num"><div class="n-label">02</div><div class="n-icon">💪</div></div>
+<h3>Train</h3><p>Structured sessions led by expert sport-specific coaches.</p>
+</div>
+<div class="proc-step reveal rd3" data-step="2">
+<div class="proc-num"><div class="n-label">03</div><div class="n-icon">📈</div></div>
+<h3>Track</h3><p>Continuous monitoring via app — skill scores, fitness, reports.</p>
+</div>
+<div class="proc-step reveal rd4" data-step="3">
+<div class="proc-num"><div class="n-label">04</div><div class="n-icon">🏆</div></div>
+<h3>Compete</h3><p>Inter-school exposure and real competitive opportunities.</p>
+</div>
+</div>
+<div class="proc-detail show" id="pd0">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=600&auto=format&fit=crop" alt="Assessment">
+<div><h4>Assess — Know Where Every Student Stands</h4><p>Before training begins, we run a comprehensive baseline evaluation covering each student's fitness, coordination, and sport skill levels. This data powers everything — ensuring no student is left behind and every session plan is personalised to the group.</p></div>
+</div>
+<div class="proc-detail" id="pd1">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=600&auto=format&fit=crop" alt="Training">
+<div><h4>Train — Structured Sessions, Expert Coaches</h4><p>Age-appropriate, curriculum-aligned 80-minute sessions led by certified coaches. Every session follows the LegaXy Training Blueprint — warm-up, skill focus, team activity, match play, cool-down. Every session has a measurable objective.</p></div>
+</div>
+<div class="proc-detail" id="pd2">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=600&auto=format&fit=crop" alt="Tracking">
+<div><h4>Track — Data That Actually Means Something</h4><p>We continuously measure progress against each student's own baseline. Schools get periodic reports, parents get visibility via the LegaXy app, and coaches use data to refine sessions. Growth becomes visible, concrete, and shareable.</p></div>
+</div>
+<div class="proc-detail" id="pd3">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=600&auto=format&fit=crop" alt="Competition">
+<div><h4>Compete — Where Growth Becomes Real</h4><p>Students get inter-school exposure and competitive opportunities — School Olympics, inter-house tournaments, and external circuits. Competing builds character, confidence, and the discipline that comes from performing under real pressure.</p></div>
+</div>
+</div>
 </section>
 
 <!-- ═══ PROGRAMS ═══ -->
 <section class="programs-section snap" id="programs">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> Our Programs</div>
-      <h2 class="section-h2" style="color:white;">A Complete Sports Ecosystem</h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.5)">From in-school curriculum to elite centres of excellence — we design, deliver, and manage it all.</p>
-    </div>
-    <div class="programs-grid">
+<div class="container">
+<div class="reveal">
+<div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> Our Programs</div>
+<h2 class="section-h2" style="color:white;">A Complete Sports Ecosystem</h2>
+<p class="section-sub" style="color:rgba(255,255,255,0.5)">From in-school curriculum to elite centres of excellence — we design, deliver, and manage it all.</p>
+</div>
+<div class="programs-grid">
 
-      <div class="prog-card reveal rd1">
-        <img class="prog-card-img" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=700&auto=format&fit=crop" alt="In-School Program">
-        <div class="prog-card-body">
-          <div class="prog-badge inschool-badge">In-School Program</div>
-          <h3>School Sports Education Program</h3>
-          <p>A fully managed, curriculum-backed sports education program delivered during school hours for all students in Classes 1–10. We replace unstructured PE with meaningful, age-appropriate training.</p>
-          <ul class="prog-bullets">
-            <li>80-minute integrated sports periods</li>
-            <li>36-week structured annual curriculum</li>
-            <li>Multi-sport exposure cycles across the year</li>
-            <li>Aligned with NEP 2020 & CBSE PE strands</li>
-            <li>Skill assessments, fitness tracking & parent reports</li>
-            <li>LegaXy Mobile App integration for coaches & parents</li>
-          </ul>
-          <div class="prog-skills"><span class="prog-skill">All Students</span><span class="prog-skill">Classes 1–10</span><span class="prog-skill">During School Hours</span><span class="prog-skill">Fully Managed</span></div>
-        </div>
-      </div>
+<div class="prog-card reveal rd1">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=700&auto=format&fit=crop" alt="In-School Program">
+<div class="prog-card-body">
+<div class="prog-badge inschool-badge">In-School Program</div>
+<h3>School Sports Education Program</h3>
+<p>A fully managed, curriculum-backed sports education program delivered during school hours for all students in Classes 1–10. We replace unstructured PE with meaningful, age-appropriate training.</p>
+<ul class="prog-bullets">
+<li>80-minute integrated sports periods</li>
+<li>36-week structured annual curriculum</li>
+<li>Multi-sport exposure cycles across the year</li>
+<li>Aligned with NEP 2020 & CBSE PE strands</li>
+<li>Skill assessments, fitness tracking & parent reports</li>
+<li>LegaXy Mobile App integration for coaches & parents</li>
+</ul>
+<div class="prog-skills"><span class="prog-skill">All Students</span><span class="prog-skill">Classes 1–10</span><span class="prog-skill">During School Hours</span><span class="prog-skill">Fully Managed</span></div>
+</div>
+</div>
 
-      <div class="prog-card reveal rd2">
-        <img class="prog-card-img" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=700&auto=format&fit=crop" alt="After-School Program">
-        <div class="prog-card-body">
-          <div class="prog-badge afterschool-badge">After-School Program</div>
-          <h3>Advanced Sport-Specific Coaching</h3>
-          <p>Designed for students who want to go deeper into a chosen sport. Small-batch, high-intensity sessions focused on technical skill, tactical development, fitness, and competitive readiness — beyond what the in-school program covers.</p>
-          <ul class="prog-bullets">
-            <li>Sport-specific advanced coaching (small batches)</li>
-            <li>Tactical, technical & strength/conditioning training</li>
-            <li>Match simulations and individual performance assessments</li>
-            <li>Pathway to school teams and external tournaments</li>
-            <li>Available for Classes 1–12</li>
-          </ul>
-          <div class="prog-skills"><span class="prog-skill">Interested Students</span><span class="prog-skill">Post School Hours</span><span class="prog-skill">Sport-Specific</span><span class="prog-skill">Small Batches</span></div>
-        </div>
-      </div>
+<div class="prog-card reveal rd2">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=700&auto=format&fit=crop" alt="After-School Program">
+<div class="prog-card-body">
+<div class="prog-badge afterschool-badge">After-School Program</div>
+<h3>Advanced Sport-Specific Coaching</h3>
+<p>Designed for students who want to go deeper into a chosen sport. Small-batch, high-intensity sessions focused on technical skill, tactical development, fitness, and competitive readiness — beyond what the in-school program covers.</p>
+<ul class="prog-bullets">
+<li>Sport-specific advanced coaching (small batches)</li>
+<li>Tactical, technical & strength/conditioning training</li>
+<li>Match simulations and individual performance assessments</li>
+<li>Pathway to school teams and external tournaments</li>
+<li>Available for Classes 1–12</li>
+</ul>
+<div class="prog-skills"><span class="prog-skill">Interested Students</span><span class="prog-skill">Post School Hours</span><span class="prog-skill">Sport-Specific</span><span class="prog-skill">Small Batches</span></div>
+</div>
+</div>
 
-      <div class="prog-card reveal rd3">
-        <img class="prog-card-img" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=700&auto=format&fit=crop" alt="Centre of Excellence">
-        <div class="prog-card-body">
-          <div class="prog-badge coe-badge">Centre of Excellence</div>
-          <h3>High-Performance Athlete Development</h3>
-          <p>Our flagship talent identification and elite development pathway. The CoE goes far beyond coaching — it's a comprehensive, science-backed ecosystem for athletes who have demonstrated potential and ambition to compete at the highest levels.</p>
-          <ul class="prog-bullets">
-            <li>Talent identification through a 4-layer scientific assessment protocol</li>
-            <li>Periodised training cycles with strength & conditioning integration</li>
-            <li>Sports science: nutrition, psychology, physiology, rehab</li>
-            <li>Structured competition pathway — district to national level</li>
-            <li>LegaXy Sports Academy App for athlete tracking and feedback</li>
-            <li>Coach Education Program for developing the next generation of coaches</li>
-          </ul>
-          <div class="prog-skills"><span class="prog-skill">Elite Athletes</span><span class="prog-skill">Age 8–18</span><span class="prog-skill">Multi-Sport</span><span class="prog-skill">Science-Backed</span></div>
-        </div>
-      </div>
+<div class="prog-card reveal rd3">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=700&auto=format&fit=crop" alt="Centre of Excellence">
+<div class="prog-card-body">
+<div class="prog-badge coe-badge">Centre of Excellence</div>
+<h3>High-Performance Athlete Development</h3>
+<p>Our flagship talent identification and elite development pathway. The CoE goes far beyond coaching — it's a comprehensive, science-backed ecosystem for athletes who have demonstrated potential and ambition to compete at the highest levels.</p>
+<ul class="prog-bullets">
+<li>Talent identification through a 4-layer scientific assessment protocol</li>
+<li>Periodised training cycles with strength & conditioning integration</li>
+<li>Sports science: nutrition, psychology, physiology, rehab</li>
+<li>Structured competition pathway — district to national level</li>
+<li>LegaXy Sports Academy App for athlete tracking and feedback</li>
+<li>Coach Education Program for developing the next generation of coaches</li>
+</ul>
+<div class="prog-skills"><span class="prog-skill">Elite Athletes</span><span class="prog-skill">Age 8–18</span><span class="prog-skill">Multi-Sport</span><span class="prog-skill">Science-Backed</span></div>
+</div>
+</div>
 
-      <div class="prog-card reveal rd4">
-        <img class="prog-card-img" src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=700&auto=format&fit=crop" alt="Infrastructure">
-        <div class="prog-card-body">
-          <div class="prog-badge infra-badge">Pay & Play + Infrastructure</div>
-          <h3>Sports Facility Development</h3>
-          <p>We help schools and institutions design, build, and activate world-class sports infrastructure — and then help them generate revenue from it through structured Pay & Play programmes. From courts to full centres of excellence.</p>
-          <ul class="prog-bullets">
-            <li>Design and execution of multi-sport courts & facilities</li>
-            <li>Basketball, football turf, cricket nets, pickleball courts, badminton halls</li>
-            <li>Professional-grade surfaces aligned with sport federation standards</li>
-            <li>Pay & Play programming: open court slots, memberships, weekend leagues</li>
-            <li>Community engagement events to activate the infrastructure</li>
-            <li>Revenue model design for financial sustainability</li>
-          </ul>
-          <div class="prog-skills"><span class="prog-skill">Schools</span><span class="prog-skill">Institutions</span><span class="prog-skill">Community Clubs</span><span class="prog-skill">Revenue-Generating</span></div>
-        </div>
-      </div>
+<div class="prog-card reveal rd4">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=700&auto=format&fit=crop" alt="Infrastructure">
+<div class="prog-card-body">
+<div class="prog-badge infra-badge">Pay & Play + Infrastructure</div>
+<h3>Sports Facility Development</h3>
+<p>We help schools and institutions design, build, and activate world-class sports infrastructure — and then help them generate revenue from it through structured Pay & Play programmes. From courts to full centres of excellence.</p>
+<ul class="prog-bullets">
+<li>Design and execution of multi-sport courts & facilities</li>
+<li>Basketball, football turf, cricket nets, pickleball courts, badminton halls</li>
+<li>Professional-grade surfaces aligned with sport federation standards</li>
+<li>Pay & Play programming: open court slots, memberships, weekend leagues</li>
+<li>Community engagement events to activate the infrastructure</li>
+<li>Revenue model design for financial sustainability</li>
+</ul>
+<div class="prog-skills"><span class="prog-skill">Schools</span><span class="prog-skill">Institutions</span><span class="prog-skill">Community Clubs</span><span class="prog-skill">Revenue-Generating</span></div>
+</div>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 <!-- ═══ OUTCOMES ═══ -->
 <section class="outcomes-section snap">
-  <div class="container">
-    <div class="outcomes-layout">
-      <div class="reveal outcomes-left">
-        <div class="section-tag"><span class="tag-line"></span> What Students Gain</div>
-        <h2 class="section-h2" style="font-size:clamp(38px,5vw,60px);">Stronger Students.<br>Stronger Schools.</h2>
-        <p>Every student who goes through LegaXy leaves with more than sport skills — they develop the character, confidence, and discipline to succeed anywhere.</p>
-        <a href="#contact" class="btn btn-orange">See the Full Program →</a>
-      </div>
-      <div class="out-grid">
-        <div class="out-card reveal rd1"><span class="out-icon">🏃</span><h4>Physical Development</h4><p>30–40% lower obesity risk. Improved agility, flexibility, and strength within 6 months.</p></div>
-        <div class="out-card reveal rd2"><span class="out-icon">🧠</span><h4>Mental Health</h4><p>50% reduction in anxiety and stress. Higher confidence and emotional stability.</p></div>
-        <div class="out-card reveal rd3"><span class="out-icon">📚</span><h4>Academic Enhancement</h4><p>10–20% better concentration and retention. Higher classroom discipline.</p></div>
-        <div class="out-card reveal rd4"><span class="out-icon">🥇</span><h4>Competitive Exposure</h4><p>Real tournaments, match play, and inter-school events that build real character.</p></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="outcomes-layout">
+<div class="reveal outcomes-left">
+<div class="section-tag"><span class="tag-line"></span> What Students Gain</div>
+<h2 class="section-h2" style="font-size:clamp(38px,5vw,60px);">Stronger Students.<br>Stronger Schools.</h2>
+<p>Every student who goes through LegaXy leaves with more than sport skills — they develop the character, confidence, and discipline to succeed anywhere.</p>
+<a href="#contact" class="btn btn-orange">See the Full Program →</a>
+</div>
+<div class="out-grid">
+<div class="out-card reveal rd1"><span class="out-icon">🏃</span><h4>Physical Development</h4><p>30–40% lower obesity risk. Improved agility, flexibility, and strength within 6 months.</p></div>
+<div class="out-card reveal rd2"><span class="out-icon">🧠</span><h4>Mental Health</h4><p>50% reduction in anxiety and stress. Higher confidence and emotional stability.</p></div>
+<div class="out-card reveal rd3"><span class="out-icon">📚</span><h4>Academic Enhancement</h4><p>10–20% better concentration and retention. Higher classroom discipline.</p></div>
+<div class="out-card reveal rd4"><span class="out-icon">🥇</span><h4>Competitive Exposure</h4><p>Real tournaments, match play, and inter-school events that build real character.</p></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ═══ WHAT SCHOOLS GET — CAROUSEL ═══ -->
 <section class="cf-section alt-bg snap" id="schools" style="padding-bottom:20px;">
-  <div class="container">
-    <div class="cf-header reveal">
-      <div class="section-tag"><span class="tag-line"></span> End-to-End Program Management</div>
-      <h2 class="section-h2">We Own It. You Benefit.</h2>
-      <p class="section-sub">We make implementation simple, seamless, and effective — for schools, students, and parents.</p>
-    </div>
-  </div>
-  <div class="cf-outer" style="margin-top:20px;">
-    <div class="cf-wrap" id="schoolsCF" style="height:380px;">
-      <div class="cf-track" id="schoolsTrack">
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1593810451137-5dc55105dace?q=80&w=900&auto=format&fit=crop" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches + Lesson Plans</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=900&auto=format&fit=crop" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Session Design</span><span class="cf-sub">Age-appropriate equipment, session plans, and curriculum delivered professionally — zero operational burden.</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=900&auto=format&fit=crop" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Assessment & Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, fitness benchmarks, and parent communication via the LegaXy app.</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=900&auto=format&fit=crop" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events & School Olympics</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League, 5K runs — we build culture, not just classes.</span></div></div>
-        <div class="cf-item"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=900&auto=format&fit=crop" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Seamless School Integration</span><span class="cf-sub">We align with your existing timetable, school operations, and academic calendar — no disruption guaranteed.</span></div></div>
-      </div>
-    </div>
-    <button class="cf-nav cf-prev" id="scP">‹</button>
-    <button class="cf-nav cf-next" id="scN">›</button>
-  </div>
-  <div class="cf-dots" id="scDots"></div>
+<div class="container">
+<div class="cf-header reveal">
+<div class="section-tag"><span class="tag-line"></span> End-to-End Program Management</div>
+<h2 class="section-h2">We Own It. You Benefit.</h2>
+<p class="section-sub">We make implementation simple, seamless, and effective — for schools, students, and parents.</p>
+</div>
+</div>
+<div class="cf-outer" style="margin-top:20px;">
+<div class="cf-wrap" id="schoolsCF" style="height:380px;">
+<div class="cf-track" id="schoolsTrack">
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1593810451137-5dc55105dace?q=80&w=900&auto=format&fit=crop" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches + Lesson Plans</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=900&auto=format&fit=crop" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Session Design</span><span class="cf-sub">Age-appropriate equipment, session plans, and curriculum delivered professionally — zero operational burden.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=900&auto=format&fit=crop" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Assessment & Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, fitness benchmarks, and parent communication via the LegaXy app.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=900&auto=format&fit=crop" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events & School Olympics</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League, 5K runs — we build culture, not just classes.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=900&auto=format&fit=crop" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Seamless School Integration</span><span class="cf-sub">We align with your existing timetable, school operations, and academic calendar — no disruption guaranteed.</span></div></div>
+</div>
+</div>
+<button class="cf-nav cf-prev" id="scP">‹</button>
+<button class="cf-nav cf-next" id="scN">›</button>
+</div>
+<div class="cf-dots" id="scDots"></div>
 </section>
 
 <!-- ═══ WHY PARTNER ═══ -->
 <section class="partner-section snap">
-  <div class="container">
-    <div class="partner-header reveal">
-      <div class="section-tag"><span class="tag-line"></span> Why Schools Choose LegaXy</div>
-      <h2 class="section-h2">Not Coaching. Not Curriculum.<br>A Complete System.</h2>
-      <p class="section-sub">We don't assist — we own and run your entire sports program. Schools get outcomes, not overhead.</p>
-    </div>
-    <div class="partner-grid">
-      <div class="part-card reveal rd1"><div class="part-icon">🎓</div><h4>No Operational Burden</h4><p>We manage everything — coaches, sessions, equipment, reporting. Your school focuses on what it does best.</p></div>
-      <div class="part-card reveal rd2"><div class="part-icon">📋</div><h4>NEP-Aligned Curriculum</h4><p>Structured, age-appropriate curriculum aligned with NEP 2020, NCF 2023, and CBSE PE frameworks.</p></div>
-      <div class="part-card reveal rd3"><div class="part-icon">📈</div><h4>Measurable Results</h4><p>Documented improvement in student fitness, skill, discipline, and participation — tracked and reported.</p></div>
-      <div class="part-card reveal rd4"><div class="part-icon">🏫</div><h4>Better School Reputation</h4><p>Stand out as a school that invests in holistic development. Attract families who value more than academics.</p></div>
-    </div>
-  </div>
+<div class="container">
+<div class="partner-header reveal">
+<div class="section-tag"><span class="tag-line"></span> Why Schools Choose LegaXy</div>
+<h2 class="section-h2">Not Coaching. Not Curriculum.<br>A Complete System.</h2>
+<p class="section-sub">We don't assist — we own and run your entire sports program. Schools get outcomes, not overhead.</p>
+</div>
+<div class="partner-grid">
+<div class="part-card reveal rd1"><div class="part-icon">🎓</div><h4>No Operational Burden</h4><p>We manage everything — coaches, sessions, equipment, reporting. Your school focuses on what it does best.</p></div>
+<div class="part-card reveal rd2"><div class="part-icon">📋</div><h4>NEP-Aligned Curriculum</h4><p>Structured, age-appropriate curriculum aligned with NEP 2020, NCF 2023, and CBSE PE frameworks.</p></div>
+<div class="part-card reveal rd3"><div class="part-icon">📈</div><h4>Measurable Results</h4><p>Documented improvement in student fitness, skill, discipline, and participation — tracked and reported.</p></div>
+<div class="part-card reveal rd4"><div class="part-icon">🏫</div><h4>Better School Reputation</h4><p>Stand out as a school that invests in holistic development. Attract families who value more than academics.</p></div>
+</div>
+</div>
 </section>
 
 <!-- ═══ ATHLETES ═══ -->
 <section class="athletes-section snap" id="athletes">
-  <div class="container">
-    <div class="athletes-layout">
-      <div class="reveal">
-        <div class="section-tag"><span class="tag-line"></span> Designed by Athletes</div>
-        <h2 class="section-h2">Built by People Who've Played the Game</h2>
-        <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:14px;">LegaXy is mentored and co-designed by elite Indian athletes who have competed at the highest levels. Their real-world experience shapes every curriculum, every coaching methodology, and every program we deliver.</p>
-        <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:28px;">We don't just understand sport. We've lived it — and we bring that edge to every school we work with.</p>
-        <a href="#contact" class="btn btn-orange">Partner With Us →</a>
-      </div>
-      <!-- Athlete Carousel -->
-      <div class="athlete-carousel reveal rd2">
-        <div class="ath-track-wrap">
-          <div class="ath-track" id="athTrack">
+<div class="container">
+<div class="athletes-layout">
+<div class="reveal">
+<div class="section-tag"><span class="tag-line"></span> Designed by Athletes</div>
+<h2 class="section-h2">Built by People Who've Played the Game</h2>
+<p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:14px;">LegaXy is mentored and co-designed by elite Indian athletes who have competed at the highest levels. Their real-world experience shapes every curriculum, every coaching methodology, and every program we deliver.</p>
+<p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:28px;">We don't just understand sport. We've lived it — and we bring that edge to every school we work with.</p>
+<a href="#contact" class="btn btn-orange">Partner With Us →</a>
+</div>
+<!-- Athlete Carousel -->
+<div class="athlete-carousel reveal rd2">
+<div class="ath-track-wrap">
+<div class="ath-track" id="athTrack">
 
-            <div class="ath-card">
-               <img src="Chahal.png" alt="Yuzvendra Chahal" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🏏 Cricket · India</span>
-                <span class="ath-name">Yuzvendra Chahal</span>
-                <span class="ath-bio">India's most capped T20I bowler, Yuzvendra Chahal is a premier wrist-spinner who has taken over 90 T20I wickets. An IPL stalwart with Rajasthan Royals, he represented India across all formats and brings rare tactical intelligence and match-reading skills that he now helps pass on through LegaXy.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Chahal.png" alt="Yuzvendra Chahal" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🏏 Cricket · India</span>
+<span class="ath-name">Yuzvendra Chahal</span>
+<span class="ath-bio">India's most capped T20I bowler, Yuzvendra Chahal is a premier wrist-spinner who has taken over 90 T20I wickets. An IPL stalwart with Rajasthan Royals, he represented India across all formats and brings rare tactical intelligence and match-reading skills that he now helps pass on through LegaXy.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-              <img src="Ishant-sharma.png" alt="Ishant Sharma" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🏏 Cricket · India</span>
-                <span class="ath-name">Ishant Sharma</span>
-                <span class="ath-bio">With over 300 Test wickets, Ishant Sharma is among India's greatest fast bowlers. His 16-year international career — including legendary spells in Australia and England — makes him a priceless resource for young pacers learning the art of sustained pressure bowling at the highest level.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Ishant-sharma.png" alt="Ishant Sharma" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🏏 Cricket · India</span>
+<span class="ath-name">Ishant Sharma</span>
+<span class="ath-bio">With over 300 Test wickets, Ishant Sharma is among India's greatest fast bowlers. His 16-year international career — including legendary spells in Australia and England — makes him a priceless resource for young pacers learning the art of sustained pressure bowling at the highest level.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-              <img src="umesh-yadav.png" alt="Umesh Yadav" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🏏 Cricket · India</span>
-                <span class="ath-name">Umesh Yadav</span>
-                <span class="ath-bio">A fearsome express pace bowler, Umesh Yadav has been one of India's most effective wicket-takers in Test cricket. Known for raw speed, reverse swing, and the ability to take big wickets under pressure, he represents everything LegaXy stands for — power, precision, and persistence.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="umesh-yadav.png" alt="Umesh Yadav" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🏏 Cricket · India</span>
+<span class="ath-name">Umesh Yadav</span>
+<span class="ath-bio">A fearsome express pace bowler, Umesh Yadav has been one of India's most effective wicket-takers in Test cricket. Known for raw speed, reverse swing, and the ability to take big wickets under pressure, he represents everything LegaXy stands for — power, precision, and persistence.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-             <img src="Harshit-rana.png" alt="Harshit Rana" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🏏 Cricket · India</span>
-                <span class="ath-name">Harshit Rana</span>
-                <span class="ath-bio">One of India's most exciting young fast bowling talents, Harshit Rana burst onto the IPL scene with Kolkata Knight Riders and has since earned India call-ups. His meteoric rise — powered by hard work and smart mentorship — is the story LegaXy exists to replicate for the next generation.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Harshit-rana.png" alt="Harshit Rana" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🏏 Cricket · India</span>
+<span class="ath-name">Harshit Rana</span>
+<span class="ath-bio">One of India's most exciting young fast bowling talents, Harshit Rana burst onto the IPL scene with Kolkata Knight Riders and has since earned India call-ups. His meteoric rise — powered by hard work and smart mentorship — is the story LegaXy exists to replicate for the next generation.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-              <img src="Puja-tomar.png" alt="Puja Tomar" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🥋 MMA · India</span>
-                <span class="ath-name">Puja Tomar</span>
-                <span class="ath-bio">India's pioneering MMA fighter and one of the most decorated female combat sports athletes in the country, Puja Tomar has fought internationally and is a trailblazer for women in Indian sports. She brings discipline, resilience, and the fighter's mentality to LegaXy's self-defense and combat programs.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Puja-tomar.png" alt="Puja Tomar" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🥋 MMA · India</span>
+<span class="ath-name">Puja Tomar</span>
+<span class="ath-bio">India's pioneering MMA fighter and one of the most decorated female combat sports athletes in the country, Puja Tomar has fought internationally and is a trailblazer for women in Indian sports. She brings discipline, resilience, and the fighter's mentality to LegaXy's self-defense and combat programs.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-              <img src="Neetu-chandra.png" alt="Neetu Chandra" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🥋 Taekwondo · India</span>
-                <span class="ath-name">Neetu Chandra</span>
-                <span class="ath-bio">A National Taekwondo Champion and Arjuna Award winner, Neetu Chandra has represented India in multiple international tournaments. As an actor and athlete, she embodies the LegaXy ethos — sport builds not just champions, but complete human beings with grace, grit, and global presence.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Neetu-chandra.png" alt="Neetu Chandra" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🥋 Taekwondo · India</span>
+<span class="ath-name">Neetu Chandra</span>
+<span class="ath-bio">A National Taekwondo Champion and Arjuna Award winner, Neetu Chandra has represented India in multiple international tournaments. As an actor and athlete, she embodies the LegaXy ethos — sport builds not just champions, but complete human beings with grace, grit, and global presence.</span>
+</div>
+</div>
 
-            <div class="ath-card">
-              <img src="Pratima-singh.png" alt="Pratima Singh" class="player-img">
-              <div class="ath-overlay">
-                <span class="ath-sport">🏀 Basketball · India</span>
-                <span class="ath-name">Pratima Singh</span>
-                <span class="ath-bio">One of India's finest basketball players and a trailblazer for the sport in the country, Pratima Singh has represented India at the international level and is a role model for young female athletes. She brings elite court intelligence and a passion for growing basketball at the grassroots level.</span>
-              </div>
-            </div>
+<div class="ath-card">
+<img src="Pratima-singh.png" alt="Pratima Singh" class="player-img">
+<div class="ath-overlay">
+<span class="ath-sport">🏀 Basketball · India</span>
+<span class="ath-name">Pratima Singh</span>
+<span class="ath-bio">One of India's finest basketball players and a trailblazer for the sport in the country, Pratima Singh has represented India at the international level and is a role model for young female athletes. She brings elite court intelligence and a passion for growing basketball at the grassroots level.</span>
+</div>
+</div>
 
-          </div>
-        </div>
-        <div class="ath-nav-wrap">
-          <div class="ath-dots" id="athDots"></div>
-          <div class="ath-btns">
-            <button class="ath-btn" id="athPrev">‹</button>
-            <button class="ath-btn" id="athNext">›</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+<div class="ath-nav-wrap">
+<div class="ath-dots" id="athDots"></div>
+<div class="ath-btns">
+<button class="ath-btn" id="athPrev">‹</button>
+<button class="ath-btn" id="athNext">›</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ═══ CTA ═══ -->
 <section class="cta-section snap" id="contact">
-  <div class="container">
-    <div class="section-tag" style="justify-content:center;color:rgba(255,106,0,0.75);"><span class="tag-line" style="background:rgba(255,106,0,0.5)"></span> Next Step</div>
-    <h2 class="section-h2" style="color:white;max-width:700px;margin:0 auto 14px;">Build a Sports Culture,<br>Not Just a Timetable</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 44px;text-align:center;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
-    <div class="cta-btns">
-      <a href="mailto:hello@legaxy.org" class="btn btn-orange">Book a Demo →</a>
-      <a href="#" class="btn btn-outline-w">Download Brochure</a>
-    </div>
-    <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:center;gap:48px;flex-wrap:wrap;">
-      <div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Rohit Bhatt</div><a href="tel:+919910550083" style="color:white;text-decoration:none;font-weight:600;">+91 99105 50083</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">rohit.b@legaxy.org</div></div>
-      <div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Ashwath R</div><a href="tel:+919941919124" style="color:white;text-decoration:none;font-weight:600;">+91 99419 19124</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">ashwath@legaxy.org</div></div>
-      <div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><a href="tel:+919986968209" style="color:white;text-decoration:none;font-weight:600;">+91 99869 68209</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">srisha@legaxy.org</div></div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-tag" style="justify-content:center;color:rgba(255,106,0,0.75);"><span class="tag-line" style="background:rgba(255,106,0,0.5)"></span> Next Step</div>
+<h2 class="section-h2" style="color:white;max-width:700px;margin:0 auto 14px;">Build a Sports Culture,<br>Not Just a Timetable</h2>
+<p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 44px;text-align:center;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
+<div class="cta-btns">
+<a href="mailto:hello@legaxy.org" class="btn btn-orange">Book a Demo →</a>
+<a href="#" class="btn btn-outline-w">Download Brochure</a>
+</div>
+<div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:center;gap:48px;flex-wrap:wrap;">
+<div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Rohit Bhatt</div><a href="tel:+919910550083" style="color:white;text-decoration:none;font-weight:600;">+91 99105 50083</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">rohit.b@legaxy.org</div></div>
+<div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Ashwath R</div><a href="tel:+919941919124" style="color:white;text-decoration:none;font-weight:600;">+91 99419 19124</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">ashwath@legaxy.org</div></div>
+<div style="text-align:center;"><div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><a href="tel:+919986968209" style="color:white;text-decoration:none;font-weight:600;">+91 99869 68209</a><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">srisha@legaxy.org</div></div>
+</div>
+</div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer class="snap">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
-        <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Programs</h5>
-        <a href="#">In-School Program (SSEP)</a>
-        <a href="#">After-School Coaching</a>
-        <a href="#">Centre of Excellence</a>
-        <a href="#">Pay & Play</a>
-        <a href="#">Infrastructure Development</a>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="#">About LegaXy</a>
-        <a href="#">LegaXy Elite</a>
-        <a href="#">LegaXy Studio</a>
-        <a href="#">LegaXy Live</a>
-        <a href="#">Careers</a>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
-        <a href="https://www.legaxy.org">www.legaxy.org</a>
-        <a href="#">Book a Demo</a>
-        <a href="#">Download Brochure</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 LegaXy Sports Academy. All rights reserved.</p>
-      <p>Spot. Train. Rise.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-inner">
+<div class="footer-brand">
+<img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+<p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
+</div>
+<div class="footer-col">
+<h5>Programs</h5>
+<a href="#">In-School Program (SSEP)</a>
+<a href="#">After-School Coaching</a>
+<a href="#">Centre of Excellence</a>
+<a href="#">Pay & Play</a>
+<a href="#">Infrastructure Development</a>
+</div>
+<div class="footer-col">
+<h5>Company</h5>
+<a href="#">About LegaXy</a>
+<a href="#">LegaXy Elite</a>
+<a href="#">LegaXy Studio</a>
+<a href="#">LegaXy Live</a>
+<a href="#">Careers</a>
+</div>
+<div class="footer-col">
+<h5>Contact</h5>
+<a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
+<a href="https://www.legaxy.org">www.legaxy.org</a>
+<a href="#">Book a Demo</a>
+<a href="#">Download Brochure</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 LegaXy Sports Academy. All rights reserved.</p>
+<p>Spot. Train. Rise.</p>
+</div>
+</div>
 </footer>
 
 <script>
 /* ── Scroll progress & navbar ── */
 window.addEventListener('scroll',()=>{
-  const s=window.scrollY,h=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('scrollBar').style.width=(s/h*100)+'%';
-  document.getElementById('navbar').classList.toggle('scrolled',s>60);
+const s=window.scrollY,h=document.body.scrollHeight-window.innerHeight;
+document.getElementById('scrollBar').style.width=(s/h*100)+'%';
+document.getElementById('navbar').classList.toggle('scrolled',s>60);
 });
 
 /* ── Reveal ── */
 const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
 /* ══════════ COVERFLOW CLASS ══════════ */
 class CF{
-  constructor(trackId,prevId,nextId,dotsId){
-    this.track=document.getElementById(trackId);
-    this.items=Array.from(this.track.children);
-    this.total=this.items.length;
-    this.cur=0;this.timer=null;
-    document.getElementById(prevId).addEventListener('click',()=>this.go(this.cur-1));
-    document.getElementById(nextId).addEventListener('click',()=>this.go(this.cur+1));
-    const dc=document.getElementById(dotsId);
-    this.dots=[];
-    this.items.forEach((_,i)=>{
-      const d=document.createElement('button');
-      d.className='cf-dot';
-      d.addEventListener('click',()=>this.go(i));
-      dc.appendChild(d);this.dots.push(d);
-    });
-    this.items.forEach((item)=>{
-      item.addEventListener('click',()=>{
-        const pos=parseInt(item.dataset.pos);
-        if(pos===-1)this.go(this.cur-1);
-        else if(pos===1)this.go(this.cur+1);
-      });
-    });
-    this.update();this.auto();
-  }
-  update(){
-    this.items.forEach((item,i)=>{
-      let d=i-this.cur;
-      if(d>this.total/2)d-=this.total;
-      if(d<-this.total/2)d+=this.total;
-      const c=Math.max(-2,Math.min(2,Math.round(d)));
-      item.dataset.pos=c;
-      item.classList.toggle('is-active',c===0);
-    });
-    this.dots.forEach((d,i)=>d.classList.toggle('active',i===this.cur));
-  }
-  go(idx){this.cur=((idx%this.total)+this.total)%this.total;this.update();clearInterval(this.timer);this.auto();}
-  auto(){this.timer=setInterval(()=>this.go(this.cur+1),4200);}
+constructor(trackId,prevId,nextId,dotsId){
+this.track=document.getElementById(trackId);
+this.items=Array.from(this.track.children);
+this.total=this.items.length;
+this.cur=0;this.timer=null;
+document.getElementById(prevId).addEventListener('click',()=>this.go(this.cur-1));
+document.getElementById(nextId).addEventListener('click',()=>this.go(this.cur+1));
+const dc=document.getElementById(dotsId);
+this.dots=[];
+this.items.forEach((_,i)=>{
+const d=document.createElement('button');
+d.className='cf-dot';
+d.addEventListener('click',()=>this.go(i));
+dc.appendChild(d);this.dots.push(d);
+});
+this.items.forEach((item)=>{
+item.addEventListener('click',()=>{
+const pos=parseInt(item.dataset.pos);
+if(pos===-1)this.go(this.cur-1);
+else if(pos===1)this.go(this.cur+1);
+});
+});
+this.update();this.auto();
+}
+update(){
+this.items.forEach((item,i)=>{
+let d=i-this.cur;
+if(d>this.total/2)d-=this.total;
+if(d<-this.total/2)d+=this.total;
+const c=Math.max(-2,Math.min(2,Math.round(d)));
+item.dataset.pos=c;
+item.classList.toggle('is-active',c===0);
+});
+this.dots.forEach((d,i)=>d.classList.toggle('active',i===this.cur));
+}
+go(idx){this.cur=((idx%this.total)+this.total)%this.total;this.update();clearInterval(this.timer);this.auto();}
+auto(){this.timer=setInterval(()=>this.go(this.cur+1),4200);}
 }
 new CF('sportsTrack','sP','sN','sDots');
 new CF('schoolsTrack','scP','scN','scDots');
 
 /* ══════════ ATHLETE CAROUSEL ══════════ */
 (function(){
-  const track=document.getElementById('athTrack');
-  const items=track.children;
-  const total=items.length;
-  let cur=0,timer=null;
-  const dotsC=document.getElementById('athDots');
-  const dots=[];
-  Array.from(items).forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='ath-dot'+(i===0?' active':'');
-    d.addEventListener('click',()=>go(i));
-    dotsC.appendChild(d);dots.push(d);
-  });
-  function update(){
-    track.style.transform=`translateX(-${cur*100}%)`;
-    dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
-  }
-  function go(idx){cur=((idx%total)+total)%total;update();clearInterval(timer);startAuto();}
-  function startAuto(){timer=setInterval(()=>go(cur+1),5000);}
-  document.getElementById('athPrev').addEventListener('click',()=>go(cur-1));
-  document.getElementById('athNext').addEventListener('click',()=>go(cur+1));
-  startAuto();
+const track=document.getElementById('athTrack');
+const items=track.children;
+const total=items.length;
+let cur=0,timer=null;
+const dotsC=document.getElementById('athDots');
+const dots=[];
+Array.from(items).forEach((_,i)=>{
+const d=document.createElement('button');
+d.className='ath-dot'+(i===0?' active':'');
+d.addEventListener('click',()=>go(i));
+dotsC.appendChild(d);dots.push(d);
+});
+function update(){
+track.style.transform=`translateX(-${cur*100}%)`;
+dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+}
+function go(idx){cur=((idx%total)+total)%total;update();clearInterval(timer);startAuto();}
+function startAuto(){timer=setInterval(()=>go(cur+1),5000);}
+document.getElementById('athPrev').addEventListener('click',()=>go(cur-1));
+document.getElementById('athNext').addEventListener('click',()=>go(cur+1));
+startAuto();
 })();
 
 /* ══════════ CURRICULUM TABS ══════════ */
 document.querySelectorAll('.curr-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    const tgt=tab.dataset.tab;
-    document.querySelectorAll('.curr-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.curr-content').forEach(c=>c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('tab-'+tgt).classList.add('active');
-  });
+tab.addEventListener('click',()=>{
+const tgt=tab.dataset.tab;
+document.querySelectorAll('.curr-tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.curr-content').forEach(c=>c.classList.remove('active'));
+tab.classList.add('active');
+document.getElementById('tab-'+tgt).classList.add('active');
+});
 });
 
 /* ══════════ PROCESS STEPS ══════════ */
 document.querySelectorAll('.proc-step').forEach(step=>{
-  step.addEventListener('click',()=>{
-    const idx=step.dataset.step;
-    document.querySelectorAll('.proc-step').forEach(s=>s.classList.remove('active'));
-    step.classList.add('active');
-    document.querySelectorAll('.proc-detail').forEach(d=>d.classList.remove('show'));
-    const pd=document.getElementById('pd'+idx);
-    if(pd)pd.classList.add('show');
-  });
+step.addEventListener('click',()=>{
+const idx=step.dataset.step;
+document.querySelectorAll('.proc-step').forEach(s=>s.classList.remove('active'));
+step.classList.add('active');
+document.querySelectorAll('.proc-detail').forEach(d=>d.classList.remove('show'));
+const pd=document.getElementById('pd'+idx);
+if(pd)pd.classList.add('show');
+});
 });
 
 /* ── Approach features hover ── */
 document.querySelectorAll('.a-feat').forEach(f=>{
-  f.addEventListener('mouseenter',()=>{
-    document.querySelectorAll('.a-feat').forEach(x=>x.classList.remove('active'));
-    f.classList.add('active');
-  });
+f.addEventListener('mouseenter',()=>{
+document.querySelectorAll('.a-feat').forEach(x=>x.classList.remove('active'));
+f.classList.add('active');
+});
 });
 
 /* ── Problem cards dim siblings ── */
 const pcards=document.querySelectorAll('.p-card');
 pcards.forEach(c=>{
-  c.addEventListener('mouseenter',()=>{pcards.forEach(x=>{if(x!==c)x.style.opacity='0.55';});});
-  c.addEventListener('mouseleave',()=>{pcards.forEach(x=>x.style.opacity='1');});
+c.addEventListener('mouseenter',()=>{pcards.forEach(x=>{if(x!==c)x.style.opacity='0.55';});});
+c.addEventListener('mouseleave',()=>{pcards.forEach(x=>x.style.opacity='1');});
 });
 </script>
 </body>
