@@ -18,7 +18,7 @@
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory; 
-    scroll-padding-top: 68px; /* Accounts for the fixed navbar */
+    scroll-padding-top: 68px;
 }
 body {
     font-family: var(--fb);
@@ -34,7 +34,7 @@ body {
     scroll-snap-stop: always;
     height: calc(100vh - 68px); 
     min-height: 600px;
-    padding: 0 !important; /* Removes massive paddings causing overflow */
+    padding: 0 !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,7 +127,7 @@ body {
 .p-card h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .p-card p{font-size:13px;color:var(--muted);line-height:1.5;}
 
-/* ══════════ APPROACH — CLASS CURRICULUM (FIXED) ══════════ */
+/* ══════════ APPROACH — CLASS CURRICULUM ══════════ */
 .approach-section{background:var(--navy);}
 .approach-section::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,106,0,0.1) 0%,transparent 70%);pointer-events:none;}
 .approach-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-top:0;}
@@ -137,7 +137,6 @@ body {
 .a-feat-icon{width:36px;height:36px;flex-shrink:0;background:linear-gradient(135deg,var(--orange),#ff8c42);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
 .a-feat-text h4{font-size:13px;font-weight:700;color:white;margin-bottom:2px;}
 .a-feat-text p{font-size:11.5px;color:rgba(255,255,255,0.5);line-height:1.4;margin:0;}
-
 .curriculum-panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;}
 .curr-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.1);}
 .curr-tab{flex:1;padding:12px 8px;text-align:center;font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.25s;border-bottom:2px solid transparent;letter-spacing:0.5px;}
@@ -294,42 +293,139 @@ body {
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;}
 .footer-bottom p{font-size:11px;color:rgba(255,255,255,0.25);}
 
-/* ══════════ RESPONSIVE ══════════ */
+/* ══════════ MOBILE & RESPONSIVE FIXES ══════════ */
 @media(max-width:1024px){
-html{scroll-snap-type:none;}
-.snap { height: auto; padding: 60px 0 !important; }
-.hero .container{flex-direction:column;padding:40px 20px;}
-.hero-right{display:none;}
-.problem-layout{grid-template-columns:1fr;gap:40px;}
-.approach-layout{grid-template-columns:1fr;}
-.programs-grid{grid-template-columns:1fr;}
-.outcomes-layout{grid-template-columns:1fr;}
-.partner-grid{grid-template-columns:1fr 1fr;}
-.athletes-layout{grid-template-columns:1fr;}
-.footer-inner{grid-template-columns:1fr 1fr;}
-.proc-timeline{grid-template-columns:1fr 1fr;gap:24px;}
-.proc-timeline::before{display:none;}
-.proc-header{grid-template-columns:1fr;}
+  /* Tablet adjustments */
+  .hero .container{flex-direction:column;padding:20px;}
+  .hero-right{display:none;}
+  .problem-layout, .approach-layout, .programs-grid, .outcomes-layout, .athletes-layout {grid-template-columns:1fr; gap:20px;}
+  .partner-grid {grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .proc-timeline{grid-template-columns:1fr 1fr;gap:16px;}
+  .proc-timeline::before{display:none;}
+  .proc-header{grid-template-columns:1fr;}
 }
+
 @media(max-width:768px){
-.navbar{padding:0 20px;}
-.nav-links{display:none;}
-.container{padding:0 20px;}
-.hero h1{font-size:36px;}
-.section-h2{font-size:28px;}
-.problem-cards{grid-template-columns:1fr;}
-.out-grid{grid-template-columns:1fr;}
-.partner-grid{grid-template-columns:1fr 1fr;}
-.hero-stats{flex-direction:column;}
-.hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
-.hero-stat:last-child{border-bottom:none;}
-.cf-wrap{height:280px;}
-.cf-item{width:80%;}
-.cf-item[data-pos="-1"]{transform:translate(-116%,-50%) scale(0.79);}
-.cf-item[data-pos="1"]{transform:translate(16%,-50%) scale(0.79);}
-.footer-inner{grid-template-columns:1fr;}
-.footer-bottom{flex-direction:column;gap:8px;text-align:center;}
-.approach-features {grid-template-columns: 1fr;}
+  /* Enforce Scroll Snap for Mobile */
+  html { scroll-snap-type: y mandatory; }
+  .snap { min-height: 100vh; height: 100vh; padding: 0 !important; overflow: hidden; }
+  
+  /* Navbar & Container */
+  .navbar { height: 60px; padding: 0 16px; }
+  body { padding-top: 60px; }
+  .nav-logo img { height: 60px; }
+  .nav-links { display: none; }
+  .container { padding: 0 16px; }
+
+  /* Typography Compression */
+  .section-h2 { font-size: 26px; margin-bottom: 8px; line-height: 1.1; }
+  .section-sub { font-size: 13px; margin-bottom: 12px; line-height: 1.4; }
+  .section-tag { margin-bottom: 8px; }
+
+  /* HERO - Re-arranged to show image as banner at bottom */
+  .hero .container { flex-direction: column; gap: 12px; justify-content: center; text-align: center; }
+  .hero-eyebrow { justify-content: center; margin-bottom: 12px; }
+  .hero h1 { font-size: 32px; margin-bottom: 12px; }
+  .hero-sub { font-size: 13px; margin: 0 auto 16px; max-width: 100%; }
+  .hero-buttons { justify-content: center; margin-bottom: 16px; gap: 8px; }
+  .btn { padding: 10px 18px; font-size: 13px; }
+  .hero-stats { margin: 0 auto 16px; width: 100%; display: flex; flex-direction: row; }
+  .hero-stat { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; flex: 1; }
+  .hero-stat-num { font-size: 20px; }
+  .hero-stat-label { font-size: 10px; }
+  .hero-right { display: flex; width: 100%; justify-content: center; margin-top: auto; }
+  .hero-img-wrap { max-width: 100%; }
+  .hero-img-wrap img { height: 160px; border-radius: 16px; }
+  .hero-badge { display: none; }
+
+  /* PROBLEM */
+  .problem-layout { gap: 12px; text-align: center; }
+  .result-callout { margin-top: 8px; padding: 12px; }
+  .problem-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .p-card.offset { margin-top: 0; }
+  .p-card { padding: 12px; border-radius: 12px; }
+  .p-card-icon { font-size: 20px; margin-bottom: 8px; }
+  .p-card h4 { font-size: 13px; }
+  .p-card p { font-size: 11px; line-height: 1.3; }
+
+  /* APPROACH */
+  .approach-layout { gap: 12px; text-align: center; }
+  .curr-content { padding: 12px; }
+  .curr-content h4 { font-size: 18px; }
+  .curr-content p { font-size: 12px; margin-bottom: 8px; }
+  .approach-features { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px;}
+  .a-feat { padding: 8px; flex-direction: column; text-align: center; gap: 8px; }
+  .a-feat-text p { display: none; }
+
+  /* SPORTS CF */
+  .cf-header { margin-bottom: 12px; }
+  .cf-wrap { height: 260px; }
+  .cf-item { width: 75%; }
+  .cf-title { font-size: 20px; }
+  .cf-sub { font-size: 11px; }
+
+  /* PROCESS (Fixes Squeezed text) */
+  .proc-header { text-align: center; margin-bottom: 12px; gap: 8px;}
+  .proc-timeline { gap: 4px; grid-template-columns: repeat(4, 1fr); }
+  .proc-num { width: 40px; height: 40px; margin-bottom: 4px; border-width: 2px;}
+  .n-icon { font-size: 16px; }
+  .proc-step h3 { font-size: 11px; margin-bottom: 0;}
+  .proc-step p { display: none; }
+  .proc-detail.show { flex-direction: column; padding: 16px; gap: 12px; text-align: center; margin-top: 12px;}
+  .proc-detail-img { width: 100%; height: 120px; border-radius: 12px; }
+  .proc-detail h4 { font-size: 18px; margin-bottom: 4px;}
+  .proc-detail p { font-size: 13px; line-height: 1.4; }
+
+  /* PROGRAMS */
+  .programs-grid { gap: 12px; margin-top: 12px; grid-template-columns: 1fr; }
+  .prog-card-img { height: 120px; }
+  .prog-card-body { padding: 16px; }
+  .prog-card h3 { font-size: 18px; margin-bottom: 4px; }
+  .prog-card p { font-size: 12px; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prog-bullets { margin-bottom: 8px; }
+  .prog-bullets li { font-size: 11px; padding: 2px 0 2px 12px; }
+  .prog-skills { display: none; }
+
+  /* OUTCOMES */
+  .outcomes-layout { gap: 16px; text-align: center; }
+  .outcomes-left p { font-size: 13px; margin-bottom: 12px; }
+  .out-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .out-card { padding: 12px; }
+  .out-icon { font-size: 20px; margin-bottom: 8px; }
+  .out-card h4 { font-size: 13px; margin-bottom: 2px;}
+  .out-card p { font-size: 11px; line-height: 1.3; }
+
+  /* SCHOOLS CF */
+  #schoolsCF { height: 260px; }
+
+  /* PARTNER */
+  .partner-header { margin-bottom: 16px; }
+  .partner-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .part-card { padding: 12px; }
+  .part-icon { width: 36px; height: 36px; font-size: 18px; margin-bottom: 8px;}
+  .part-card h4 { font-size: 13px; }
+  .part-card p { font-size: 11px; line-height: 1.3;}
+
+  /* ATHLETES */
+  .athletes-layout { gap: 16px; text-align: center;}
+  .ath-card img { height: 260px; }
+  .ath-overlay { padding: 16px; }
+  .ath-name { font-size: 20px; margin-bottom: 4px; }
+  .ath-bio { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* CTA */
+  .cta-section .section-h2 { font-size: 28px; }
+  .cta-btns { margin-bottom: 16px; }
+  .cta-section > .container > div:last-child { margin-top: 16px !important; padding-top: 16px !important; gap: 16px !important; flex-direction: column;}
+  .cta-section > .container > div:last-child > div { text-align: center; }
+
+  /* FOOTER */
+  .footer { padding: 30px 0 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center;}
+  .footer-brand .footer-logo { margin: 0 auto 8px; }
+  .footer-brand p { margin: 0 auto; }
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
 }
 </style>
 </head>
@@ -881,7 +977,7 @@ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-/* ══════════ COVERFLOW CLASS ══════════ */
+/* ══════════ COVERFLOW CLASS (WITH SWIPE SUPPORT) ══════════ */
 class CF{
 constructor(trackId,prevId,nextId,dotsId){
 this.track=document.getElementById(trackId);
@@ -905,6 +1001,16 @@ if(pos===-1)this.go(this.cur-1);
 else if(pos===1)this.go(this.cur+1);
 });
 });
+
+/* Touch Swipe Support */
+let startX = 0;
+this.track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+this.track.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+  if(startX - endX > 50) this.go(this.cur + 1); // Swipe Left -> Next
+  if(endX - startX > 50) this.go(this.cur - 1); // Swipe Right -> Prev
+});
+
 this.update();this.auto();
 }
 update(){
@@ -924,7 +1030,7 @@ auto(){this.timer=setInterval(()=>this.go(this.cur+1),4200);}
 new CF('sportsTrack','sP','sN','sDots');
 new CF('schoolsTrack','scP','scN','scDots');
 
-/* ══════════ ATHLETE CAROUSEL ══════════ */
+/* ══════════ ATHLETE CAROUSEL (WITH SWIPE SUPPORT) ══════════ */
 (function(){
 const track=document.getElementById('athTrack');
 const items=track.children;
@@ -946,6 +1052,16 @@ function go(idx){cur=((idx%total)+total)%total;update();clearInterval(timer);sta
 function startAuto(){timer=setInterval(()=>go(cur+1),5000);}
 document.getElementById('athPrev').addEventListener('click',()=>go(cur-1));
 document.getElementById('athNext').addEventListener('click',()=>go(cur+1));
+
+/* Touch Swipe Support */
+let athStartX = 0;
+track.addEventListener('touchstart', e => { athStartX = e.touches[0].clientX; }, {passive: true});
+track.addEventListener('touchend', e => {
+  let athEndX = e.changedTouches[0].clientX;
+  if(athStartX - athEndX > 50) go(cur + 1);
+  if(athEndX - athStartX > 50) go(cur - 1);
+});
+
 startAuto();
 })();
 
