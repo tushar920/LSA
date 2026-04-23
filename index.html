@@ -307,118 +307,149 @@ body {
 }
 
 /* ══════════ MOBILE CSS (STRICTLY CONFINED) ══════════ */
-@media(max-width:768px){
-  /* Fixes initial load redirect bug & secures snap */
-  html { scroll-snap-type: y mandatory; }
-  .snap { 
-    height: calc(100vh - 60px); 
-    height: calc(100dvh - 60px);
-    min-height: calc(100vh - 60px); 
-    padding: 0 !important; 
-    overflow: hidden; 
-  }
+@media(max-width: 768px){
+  /* ── Fix Initial Load / Scroll Snap ── */
+  html { scroll-snap-type: y mandatory; scroll-padding-top: 60px; }
+  .snap { min-height: calc(100vh - 60px); height: calc(100vh - 60px); padding: 0 !important; overflow: hidden; }
   
-  /* Mobile Navbar Drawer */
-  .navbar { height: 60px; padding: 0 16px; background: rgba(13,27,42,0.95); } 
+  /* ── Navbar & Container ── */
+  .navbar { height: 60px; padding: 0 16px; }
   body { padding-top: 60px; }
-  .nav-logo img { height: 45px; }
-  .menu-btn { display: block; position: relative; z-index: 1001; }
-  .nav-links { 
-    display: flex; position: fixed; top: 0; right: -100%; width: 260px; height: 100vh; height: 100dvh; 
-    background: var(--navy); flex-direction: column; justify-content: center; align-items: center; 
-    gap: 24px; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; 
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5); 
-  }
-  .nav-links.active { right: 0; }
-  .nav-links a { font-size: 18px; padding: 10px 20px; }
+  .nav-logo img { height: 60px; }
+  .nav-links { display: none; }
   .container { padding: 0 16px; }
 
-  /* Typography Compression */
+  /* ── Typography Compression ── */
   .section-h2 { font-size: 26px; margin-bottom: 8px; line-height: 1.1; }
   .section-sub { font-size: 13px; margin-bottom: 12px; line-height: 1.4; }
   .section-tag { margin-bottom: 8px; }
 
-  /* HERO */
-  .hero .container { flex-direction: column-reverse; gap: 24px; justify-content: center; text-align: center; padding-top: 20px; }
-  .hero-eyebrow { justify-content: center; margin-bottom: 12px; }
-  .hero h1 { font-size: 32px; margin-bottom: 12px; }
-  .hero-sub { font-size: 13px; margin: 0 auto 16px; max-width: 100%; }
-  .hero-buttons { justify-content: center; margin-bottom: 16px; gap: 8px; }
+  /* ════════ HERO (Reordered via Flexbox) ════════ */
+  .hero .container { display: flex; flex-direction: column; justify-content: center; text-align: center; gap: 12px; height: 100%; }
+  .hero-left { display: contents; } /* Unwraps text div so elements can be mixed with the image */
+  .hero-right { display: flex !important; order: 2; width: 100%; justify-content: center; align-items: center; margin: 0; }
+  
+  .hero-eyebrow { order: 1; justify-content: center; margin-bottom: 0; }
+  .hero-eyebrow .dot { display: none !important; } /* Removes bullet */
+  
+  .hero-img-wrap { max-width: 100%; width: 100%; display: flex; justify-content: center; }
+  .hero-img-wrap img { height: 180px; width: 90%; border-radius: 16px; margin: 0 auto; }
+  
+  .hero h1 { order: 3; font-size: 32px; margin-bottom: 8px; margin-top: 8px; }
+  .hero-sub { order: 4; font-size: 13px; margin: 0 auto 12px; max-width: 100%; }
+  .hero-buttons { order: 5; justify-content: center; margin-bottom: 16px; gap: 8px; }
+  .hero-stats { order: 6; margin: 0 auto; width: 100%; display: flex; flex-direction: row; }
+  
   .btn { padding: 10px 18px; font-size: 13px; }
-  .hero-stats { margin: 0 auto 16px; width: 100%; display: flex; flex-direction: row; }
   .hero-stat { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; flex: 1; }
   .hero-stat-num { font-size: 20px; }
   .hero-stat-label { font-size: 10px; }
-  .hero-right { display: flex; width: 100%; justify-content: center; }
-  .hero-img-wrap { max-width: 100%; }
-  .hero-img-wrap img { height: 180px; border-radius: 16px; }
   .hero-badge { display: none; }
 
-  /* PROBLEM */
-  .problem-section .container { padding-top: 30px; }
-  .problem-layout { gap: 20px; text-align: center; }
+  /* ════════ APPROACH (Split into 2 Scroll Snaps) ════════ */
+  .approach-section.snap {
+      height: auto !important; 
+      min-height: auto !important;
+      display: block;
+      scroll-snap-type: none; /* Stops the parent wrapper from snapping */
+      padding: 0 !important;
+  }
+  .approach-layout {
+      height: calc(100vh - 60px); /* Makes the top half snap individually */
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      padding: 0 16px;
+  }
+  .approach-features {
+      height: calc(100vh - 60px); /* Makes the tiles snap individually */
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      margin-top: 0;
+  }
+  .curr-content { padding: 12px; }
+  .curr-content h4 { font-size: 18px; }
+  .curr-content p { font-size: 12px; margin-bottom: 8px; }
+  .a-feat { padding: 8px; flex-direction: column; text-align: center; gap: 8px; }
+  .a-feat-text p { display: none; }
+
+  /* ════════ PROGRAMS (Added top gap) ════════ */
+  #programs .reveal { margin-top: 32px; } /* Gives the "Complete Sports Ecosystem" breathing room */
+  .programs-grid { gap: 12px; margin-top: 12px; grid-template-columns: 1fr; }
+  .prog-card-img { height: 120px; }
+  .prog-card-body { padding: 16px; }
+  .prog-card h3 { font-size: 18px; margin-bottom: 4px; }
+  .prog-card p { font-size: 12px; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .prog-bullets { margin-bottom: 8px; }
+  .prog-bullets li { font-size: 11px; padding: 2px 0 2px 12px; }
+  .prog-skills { display: none; }
+
+  /* ════════ ATHLETES (Reordered via Flexbox) ════════ */
+  .athletes-layout { display: flex; flex-direction: column; gap: 0; text-align: center; }
+  .athletes-left { display: contents; } /* Unwraps text elements to mix with carousel */
+  
+  .athletes-left > .section-tag { order: 1; justify-content: center; }
+  .athletes-left > .section-h2 { order: 2; margin-bottom: 12px; }
+  .athlete-carousel { order: 3; margin-bottom: 12px; }
+  .athletes-left > p { order: 4; font-size: 13px !important; margin-bottom: 12px !important; }
+  .athletes-left > a.btn { order: 5; margin: 0 auto 20px auto; display: inline-flex; }
+  
+  .ath-card img { height: 260px; }
+  .ath-overlay { padding: 16px; }
+  .ath-name { font-size: 20px; margin-bottom: 4px; }
+  .ath-bio { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* ── Problem ── */
+  .problem-layout { gap: 12px; text-align: center; }
   .result-callout { margin-top: 8px; padding: 12px; }
-  .problem-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .problem-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
   .p-card.offset { margin-top: 0; }
-  .p-card { padding: 16px; border-radius: 12px; }
+  .p-card { padding: 12px; border-radius: 12px; }
   .p-card-icon { font-size: 20px; margin-bottom: 8px; }
   .p-card h4 { font-size: 13px; }
   .p-card p { font-size: 11px; line-height: 1.3; }
 
-  /* APPROACH */
-  .approach-section .container { padding-top: 40px; padding-bottom: 40px; }
-  .approach-layout { gap: 12px; text-align: center; }
-  .curr-content { padding: 12px; }
-  .curr-content h4 { font-size: 18px; }
-  .curr-content p { font-size: 12px; margin-bottom: 8px; }
-  .approach-features { grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px;}
-  .a-feat { padding: 8px; flex-direction: column; text-align: center; gap: 8px; }
-  .a-feat-text p { display: none; }
-
-  /* SPORTS CF */
+  /* ── Sports Carousel ── */
   .cf-header { margin-bottom: 12px; }
-  .cf-wrap { height: 320px; }
-  .cf-item { width: 80%; }
+  .cf-wrap { height: 260px; }
+  .cf-item { width: 75%; }
   .cf-title { font-size: 20px; }
   .cf-sub { font-size: 11px; }
 
-  /* PROCESS */
-  .proc-header { text-align: center; margin-bottom: 16px; gap: 8px;}
+  /* ── Process ── */
+  .proc-header { text-align: center; margin-bottom: 12px; gap: 8px;}
   .proc-timeline { gap: 4px; grid-template-columns: repeat(4, 1fr); }
   .proc-num { width: 40px; height: 40px; margin-bottom: 4px; border-width: 2px;}
   .n-icon { font-size: 16px; }
   .proc-step h3 { font-size: 11px; margin-bottom: 0;}
   .proc-step p { display: none; }
-  .proc-detail.show { flex-direction: column; padding: 24px; gap: 16px; text-align: center; margin-top: 24px;}
-  .proc-detail-img { width: 100%; height: 160px; border-radius: 12px; }
+  .proc-detail.show { flex-direction: column; padding: 16px; gap: 12px; text-align: center; margin-top: 12px;}
+  .proc-detail-img { width: 100%; height: 120px; border-radius: 12px; }
   .proc-detail h4 { font-size: 18px; margin-bottom: 4px;}
   .proc-detail p { font-size: 13px; line-height: 1.4; }
 
-  /* PROGRAMS */
-  .programs-section#programs .container { padding-top: 40px; }
-  .programs-grid { gap: 8px; margin-top: 12px; grid-template-columns: 1fr; }
-  .prog-card-img { height: 110px; }
-  .prog-card-body { padding: 14px; }
-  .prog-card h3 { font-size: 17px; margin-bottom: 4px; }
-  .prog-card p { font-size: 11px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .prog-bullets { margin-bottom: 4px; }
-  .prog-bullets li { font-size: 10.5px; padding: 2px 0 2px 12px; }
-  .prog-skills { display: none; }
-
-  /* OUTCOMES */
-  .outcomes-layout { gap: 24px; text-align: center; }
+  /* ── Outcomes ── */
+  .outcomes-layout { gap: 16px; text-align: center; }
   .outcomes-left p { font-size: 13px; margin-bottom: 12px; }
-  .out-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .out-card { padding: 20px; }
-  .out-icon { font-size: 24px; margin-bottom: 8px; }
+  .out-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .out-card { padding: 12px; }
+  .out-icon { font-size: 20px; margin-bottom: 8px; }
   .out-card h4 { font-size: 13px; margin-bottom: 2px;}
   .out-card p { font-size: 11px; line-height: 1.3; }
 
-  /* SCHOOLS CF */
-  #schoolsCF { height: 320px; }
-  .cf-item, .prog-card, .ath-card { -webkit-backface-visibility: hidden; transform: translate3d(0, 0, 0); }
+  /* ── Schools Carousel ── */
+  #schoolsCF { height: 260px; }
 
-  /* PARTNER */
+  /* ── Partner ── */
   .partner-header { margin-bottom: 16px; }
   .partner-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .part-card { padding: 12px; }
@@ -426,32 +457,18 @@ body {
   .part-card h4 { font-size: 13px; }
   .part-card p { font-size: 11px; line-height: 1.3;}
 
-  /* ATHLETES (Reordered exactly as requested) */
-  .athletes-layout { display: flex; flex-direction: column; text-align: center; gap: 0; }
-  .athletes-left { display: contents; } 
-  .athletes-left > div.section-tag { order: 1; margin: 0 auto 12px; }
-  .athlete-carousel { order: 2; width: 100%; margin-bottom: 24px; }
-  .athletes-left > h2.section-h2 { order: 3; font-size: 24px; margin-bottom: 8px; line-height: 1.1; }
-  .athletes-left > p { order: 4; font-size: 13px; margin-bottom: 12px; }
-  .athletes-left > a.btn { order: 5; margin: 8px auto 0; width: fit-content; }
-  
-  .ath-card img { height: 260px; }
-  .ath-overlay { padding: 16px; }
-  .ath-name { font-size: 20px; margin-bottom: 4px; }
-  .ath-bio { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-  /* CTA */
+  /* ── CTA ── */
   .cta-section .section-h2 { font-size: 28px; }
   .cta-btns { margin-bottom: 16px; }
   .cta-section > .container > div:last-child { margin-top: 16px !important; padding-top: 16px !important; gap: 16px !important; flex-direction: column;}
   .cta-section > .container > div:last-child > div { text-align: center; }
 
-  /* FOOTER */
+  /* ── Footer ── */
   .footer { padding: 30px 0 20px; }
   .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center;}
   .footer-brand .footer-logo { margin: 0 auto 8px; }
   .footer-brand p { margin: 0 auto; }
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 </style>
 </head>
