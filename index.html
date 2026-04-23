@@ -181,7 +181,7 @@ body {
 .cf-track{position:relative;width:100%;height:100%;}
 
 /* ANTI-POINTY-CORNER HACK FOR CAROUSELS */
-.cf-item, .ath-card {
+.cf-item {
     position:absolute;top:50%;left:50%;width:48%;max-width:540px;
     box-shadow:0 20px 50px rgba(0,0,0,0.15);
     transition:transform 0.5s cubic-bezier(.4,0,.2,1),opacity 0.5s ease,filter 0.5s ease;
@@ -194,7 +194,7 @@ body {
     transform: translateZ(0); 
     clip-path: inset(0px round 16px); /* Forces iOS to cut the corners */
 }
-.cf-item img, .ath-card img {
+.cf-item img {
     width:100%;height:100%;object-fit:cover;display:block;
     transition:transform 0.5s ease;pointer-events:none; 
     border-radius: 16px !important;
@@ -286,7 +286,7 @@ body {
 .part-card h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .part-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
 
-/* ══════════ ATHLETES SECTION ══════════ */
+/* ══════════ ATHLETES SECTION (REVERTED TO ORIGINAL) ══════════ */
 .athletes-section{background:white;}
 .athletes-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;}
 .athletes-left .section-h2{line-height: 1.05;margin-bottom: 8px;}
@@ -294,16 +294,8 @@ body {
 .athlete-carousel{position:relative;width:100%;}
 .ath-track-wrap{overflow:hidden;border-radius:16px;}
 .ath-track{display:flex;transition:transform 0.5s cubic-bezier(.4,0,.2,1);}
-.ath-card{
-    min-width:100%;position:relative;background:var(--navy);
-    /* Mobile-safe corner clipping */
-    border-radius:16px !important; overflow:hidden !important;
-    -webkit-border-radius:16px !important;
-    -webkit-mask-image:-webkit-radial-gradient(white, black);
-    isolation:isolate; transform:translateZ(0); 
-    clip-path: inset(0 round 16px);
-}
-.ath-card img{width:100%;height:340px;object-fit:cover;display:block;opacity:0.75; border-radius:16px !important;}
+.ath-card{min-width:100%;position:relative;border-radius:16px;overflow:hidden;background:var(--navy); -webkit-mask-image:-webkit-radial-gradient(white, black);}
+.ath-card img{width:100%;height:340px;object-fit:cover;display:block;opacity:0.75; border-radius:16px;}
 .ath-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(13,27,42,0.97) 0%,rgba(13,27,42,0.6) 60%,transparent 100%); border-radius:0 0 16px 16px;}
 .ath-sport{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:6px;}
 .ath-name{font-family:var(--fd);font-size:24px;font-weight:900;color:white;display:block;margin-bottom:6px;}
@@ -388,20 +380,25 @@ body {
   .hero-stat-label { font-size: 10px; }
   .hero-badge { display: none; }
 
-  /* ════════ APPROACH (Flows Naturally, No Gaps) ════════ */
+  /* ════════ APPROACH (2 Perfect Snaps) ════════ */
   .approach-section.snap {
       display: block;
       height: auto !important; 
-      min-height: calc(100vh - 60px);
-      padding: 30px 0 !important;
+      min-height: auto;
+      padding: 0 !important;
+      scroll-snap-align: none !important; /* CRITICAL: Stops the parent from overriding the children */
   }
   .approach-layout {
-      display: flex; flex-direction: column; gap: 16px; text-align: center;
-      height: auto; scroll-snap-align: start;
+      display: flex; flex-direction: column; justify-content: center; gap: 12px; text-align: center;
+      height: calc(100vh - 60px); 
+      scroll-snap-align: start; scroll-snap-stop: always;
+      padding: 0 16px; margin: 0;
   }
   .approach-features {
-      display: flex; flex-direction: column; gap: 8px; padding: 0 16px; margin-top: 16px;
-      height: auto; scroll-snap-align: start;
+      display: flex; flex-direction: column; justify-content: center; gap: 10px;
+      height: calc(100vh - 60px); 
+      scroll-snap-align: start; scroll-snap-stop: always;
+      padding: 0 16px; margin: 0;
   }
   .curr-content { padding: 12px; }
   .curr-content h4 { font-size: 18px; }
@@ -409,7 +406,8 @@ body {
   .a-feat { padding: 12px; flex-direction: column; text-align: center; gap: 8px; margin: 0; }
   .a-feat-text p { display: none; }
 
-  /* ════════ PROGRAMS ════════ */
+  /* ════════ PROGRAMS (Added Top Padding) ════════ */
+  #programs { padding-top: 40px !important; }
   #programs .reveal { margin-top: 0px; } 
   .programs-grid { gap: 8px; margin-top: 8px; grid-template-columns: 1fr; }
   .prog-card-img { height: 90px; } 
@@ -421,15 +419,15 @@ body {
   .prog-badge { font-size: 8.5px; padding: 3px 6px; margin-bottom: 6px; }
   .prog-skills { display: none; }
 
-  /* ════════ ATHLETES (Perfected CTA Spacing) ════════ */
+  /* ════════ ATHLETES (CTA placed perfectly between Text and Carousel) ════════ */
   .athletes-layout { display: flex; flex-direction: column; gap: 0; text-align: center; }
   .athletes-left { display: contents; } 
   
   .athletes-left > .section-tag { order: 1; justify-content: center; margin-bottom: 8px; }
   .athletes-left > .section-h2 { order: 2; margin-bottom: 12px; }
   .athletes-left > p { order: 3; font-size: 13px !important; margin-bottom: 12px !important; }
-  .athlete-carousel { order: 4; margin-bottom: 0px; }
-  .athletes-left > a.btn { order: 5; margin: 24px auto 32px auto !important; display: inline-flex; } /* Fixed spacing below carousel */
+  .athletes-left > a.btn { order: 4; margin: 0 auto 24px auto !important; display: inline-flex; } /* Moved up to Order 4 */
+  .athlete-carousel { order: 5; margin-bottom: 0px; } /* Moved down to Order 5 */
   
   .ath-card img { height: 260px; }
   .ath-overlay { padding: 16px; }
