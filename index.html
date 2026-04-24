@@ -71,7 +71,24 @@ body {
 
 /* ══════════ HERO ══════════ */
 .hero{background:linear-gradient(120deg,#ff6a00 0%,#c94a00 28%,#0d1b2a 68%,#08111e 100%);color:white;display:flex;align-items:center;position:relative;overflow:hidden;}
+
+/* Original Noise Filter */
 .hero::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.055;mix-blend-mode:overlay;}
+
+/* GLASS TEXTURE OVERLAY */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Sets the texture right behind the container content */
+    pointer-events: none;
+    background-image: url('Texturelabs_Glass_154XL.jpg');
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: overlay; /* Creates the perfect blending with the gradient */
+    opacity: 0.35; /* Adjust this to make the glass effect stronger or softer */
+}
+
 .hero-orb1{position:absolute;top:-15%;left:-8%;width:55%;height:110%;background:radial-gradient(ellipse,rgba(255,140,0,0.25) 0%,transparent 65%);z-index:0;pointer-events:none;}
 .hero-orb2{position:absolute;bottom:-30%;right:0;width:45%;height:90%;background:radial-gradient(ellipse,rgba(255,106,0,0.1) 0%,transparent 65%);z-index:0;pointer-events:none;}
 .hero-dots{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,0.13) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(ellipse 70% 80% at 75% 50%,black 0%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 75% 50%,black 0%,transparent 80%);}
@@ -289,7 +306,7 @@ body {
 .part-card h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .part-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
 
-/* ══════════ ATHLETES SECTION (REVERTED TO ORIGINAL) ══════════ */
+/* ══════════ ATHLETES SECTION (ORIGINAL WORKING CODE) ══════════ */
 .athletes-section{background:white;}
 .athletes-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;}
 .athletes-left .section-h2{line-height: 1.05;margin-bottom: 8px;}
@@ -298,7 +315,6 @@ body {
 .ath-track-wrap{overflow:hidden;border-radius:16px;}
 .ath-track{display:flex;transition:transform 0.5s cubic-bezier(.4,0,.2,1);}
 
-/* ORIGINAL WORKING ATHLETE CARDS (No clip-path hack) */
 .ath-card{
     min-width:100%;position:relative;background:var(--navy);
     border-radius:16px; overflow:hidden;
@@ -356,7 +372,7 @@ body {
   /* ── Fix Initial Load / Scroll Snap ── */
   html { scroll-snap-type: y mandatory; scroll-padding-top: 60px; }
   .snap { min-height: calc(100vh - 60px); height: calc(100vh - 60px); padding: 0 !important; overflow: hidden; }
-  
+
   /* ── Navbar & Container ── */
   .navbar { height: 60px; padding: 0 16px; }
   .menu-toggle { display: block; } /* Show Hamburger */
@@ -396,19 +412,33 @@ body {
   .hero-stat-label { font-size: 10px; }
   .hero-badge { display: none; }
 
-  /* ════════ APPROACH ════════ */
+  /* ════════ APPROACH (FIXED PERFECT MOBILE SNAPPING) ════════ */
+  .approach-section.snap {
+      height: auto !important; 
+      min-height: auto !important; 
+      display: block !important; 
+      padding: 0 !important; 
+      scroll-snap-align: none !important; 
+      overflow: visible !important;
+  }
+  .approach-section .container {
+      padding: 0; display: block;
+  }
   .approach-layout {
+      height: calc(100vh - 60px); 
+      scroll-snap-align: start; 
+      scroll-snap-stop: always;
       display: flex; flex-direction: column; justify-content: center; gap: 12px; text-align: center;
-      padding: 0; margin: 0; height: auto;
+      padding: 20px 16px; margin: 0;
   }
   .approach-features {
+      height: calc(100vh - 60px); 
+      scroll-snap-align: start; 
+      scroll-snap-stop: always;
       display: flex; flex-direction: column; justify-content: center; gap: 10px;
-      padding: 0; margin: 0; height: auto;
+      padding: 20px 16px; margin: 0;
   }
-  /* Fix container centering on the split mobile sections */
-  .approach-section.hide-on-desktop .container {
-      height: 100%; display: flex; flex-direction: column; justify-content: center;
-  }
+
   .curr-content { padding: 12px; }
   .curr-content h4 { font-size: 18px; }
   .curr-content p { font-size: 12px; margin-bottom: 8px; }
@@ -416,7 +446,8 @@ body {
   .a-feat-text p { display: none; }
 
   /* ════════ PROGRAMS (Added Top Padding) ════════ */
-  #programs .reveal:first-child { margin-top: 50px; } 
+  #programs { padding-top: 60px !important; }
+  #programs .reveal:first-child { margin-top: 0px; } 
   .programs-grid { gap: 8px; margin-top: 8px; grid-template-columns: 1fr; }
   .prog-card-img { height: 90px; } 
   .prog-card-body { padding: 12px; }
@@ -435,7 +466,7 @@ body {
   .athletes-left > .section-h2 { order: 2; margin-bottom: 12px; }
   .athletes-left > p { order: 3; font-size: 13px !important; margin-bottom: 12px !important; display: block; }
   
-  /* THIS PUTS THE CTA BETWEEN TEXT AND CAROUSEL WITH 32PX SPACING */
+  /* CTA PLACED PERFECTLY BETWEEN TEXT AND CAROUSEL */
   .athletes-left > a.btn { order: 4; margin: 16px auto 32px auto !important; display: inline-flex; } 
   
   .athlete-carousel { order: 5; margin-bottom: 0px; } 
