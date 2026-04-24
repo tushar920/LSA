@@ -69,15 +69,8 @@ body {
 .mobile-nav-links a:hover { color: var(--orange); }
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
-/* ══════════ HERO ══════════ */
-.hero{background:linear-gradient(120deg,#ff6a00 0%,#c94a00 28%,#0d1b2a 68%,#08111e 100%);color:white;display:flex;align-items:center;position:relative;overflow:hidden;}
-
-/* Original Noise Filter */
-.hero::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.055;mix-blend-mode:overlay;}
-
-/* GLASS TEXTURE OVERLAY */
-.hero::after {
-    content: '';
+/* ══════════ SHARED GLASS TEXTURE FOR BLUE SECTIONS ══════════ */
+.glass-overlay {
     position: absolute;
     inset: 0;
     z-index: 1; /* Sets the texture right behind the container content */
@@ -85,9 +78,15 @@ body {
     background-image: url('Texturelabs_Glass_154XL.jpg');
     background-size: cover;
     background-position: center;
-    mix-blend-mode: overlay; /* Creates the perfect blending with the gradient */
-    opacity: 0.35; /* Adjust this to make the glass effect stronger or softer */
+    mix-blend-mode: overlay; /* Blends perfectly with dark navy and gradients */
+    opacity: 0.35;
 }
+
+/* ══════════ HERO ══════════ */
+.hero{background:linear-gradient(120deg,#ff6a00 0%,#c94a00 28%,#0d1b2a 68%,#08111e 100%);color:white;display:flex;align-items:center;position:relative;overflow:hidden;}
+
+/* Original Noise Filter */
+.hero::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.055;mix-blend-mode:overlay;}
 
 .hero-orb1{position:absolute;top:-15%;left:-8%;width:55%;height:110%;background:radial-gradient(ellipse,rgba(255,140,0,0.25) 0%,transparent 65%);z-index:0;pointer-events:none;}
 .hero-orb2{position:absolute;bottom:-30%;right:0;width:45%;height:90%;background:radial-gradient(ellipse,rgba(255,106,0,0.1) 0%,transparent 65%);z-index:0;pointer-events:none;}
@@ -132,7 +131,7 @@ body {
 .hb-text span{color:rgba(255,255,255,0.55);font-size:11px;}
 
 /* ══════════ SHARED ══════════ */
-.container{max-width:1200px;margin:0 auto;padding:0 40px;width:100%;}
+.container{max-width:1200px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:2;} /* Updated globally */
 .section-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
 .tag-line{width:20px;height:2px;background:var(--orange);display:inline-block;}
 .section-h2{font-family:var(--fd);font-size:clamp(32px,4vw,48px);font-weight:800;line-height:1.05;letter-spacing:-0.5px;margin-bottom:10px;}
@@ -146,10 +145,7 @@ body {
 .hide-on-mobile { display: flex; }
 
 /* ══════════ PROBLEM SECTION ══════════ */
-.problem-section{background-image: url('Texturelabs_Glass_154XL.jpg');
-    background-size: cover;
-    background-position: center;
-    mix-blend-mode: overlay; /* Creates the perfect blending with the gradient */
+.problem-section{background:var(--cream);}
 .problem-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;align-items:center;}
 .result-callout{display:flex;align-items:flex-start;gap:12px;padding:16px;background:rgba(255,106,0,0.07);border:1px solid rgba(255,106,0,0.22);border-left:4px solid var(--orange);border-radius:12px;margin-top:20px;}
 .result-callout p{font-size:13.5px;color:var(--orange);font-weight:600;line-height:1.5;}
@@ -165,7 +161,7 @@ body {
 
 /* ══════════ APPROACH CSS ══════════ */
 .approach-section{background:var(--navy);}
-.approach-section::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,106,0,0.1) 0%,transparent 70%);pointer-events:none;}
+.approach-section::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,106,0,0.1) 0%,transparent 70%);pointer-events:none; z-index:0;}
 .approach-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;margin-top:0;}
 .approach-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
 .a-feat{display:flex;align-items:center;gap:12px;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);transition:all 0.3s;cursor:pointer;}
@@ -267,7 +263,7 @@ body {
 
 /* ══════════ PROGRAMS ══════════ */
 .programs-section{background:var(--navy);}
-.programs-section::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,106,0,0.09) 0%,transparent 70%);pointer-events:none;}
+.programs-section::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,106,0,0.09) 0%,transparent 70%);pointer-events:none; z-index:0;}
 .programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px;}
 .prog-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:16px;overflow:hidden;transition:all 0.3s;cursor:default;position:relative; -webkit-mask-image:-webkit-radial-gradient(white, black);}
 .prog-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-6px);border-color:rgba(255,255,255,0.18);}
@@ -341,15 +337,14 @@ body {
 
 /* ══════════ CTA ══════════ */
 .cta-section{background:var(--navy);text-align:center;}
-.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(255,106,0,0.16) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 80% 50%,rgba(255,106,0,0.07) 0%,transparent 70%);pointer-events:none;}
-.cta-section .container{position:relative;z-index:2;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(255,106,0,0.16) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 80% 50%,rgba(255,106,0,0.07) 0%,transparent 70%);pointer-events:none; z-index:0;}
 .cta-section .section-tag{justify-content:center;}
 .cta-section .section-h2{color:white;max-width:700px;margin:0 auto 12px;}
 .cta-section .section-sub{color:rgba(255,255,255,0.5);margin:0 auto 28px;text-align:center;}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
 /* ══════════ FOOTER ══════════ */
-.footer{background:#060e18;padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.05); scroll-snap-align: none;}
+.footer{background:#060e18;padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.05); scroll-snap-align: none; position: relative; overflow: hidden;}
 .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
 .footer-brand .footer-logo{height:120px;width:auto;object-fit:contain;display:block;margin-bottom:8px;}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;max-width:260px;}
@@ -581,6 +576,7 @@ body {
 </div>
 
 <section class="hero snap" id="home">
+<div class="glass-overlay"></div>
 <div class="hero-orb1"></div>
 <div class="hero-orb2"></div>
 <div class="hero-dots"></div>
@@ -638,6 +634,7 @@ body {
 </section>
 
 <section class="approach-section snap hide-on-mobile">
+<div class="glass-overlay"></div>
 <div class="container">
 
 <div class="approach-layout">
@@ -737,6 +734,7 @@ A fully managed, curriculum-based program for Classes 1–10, integrating everyt
 </section>
 
 <section class="approach-section snap hide-on-desktop">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="approach-layout">
 <div class="reveal">
@@ -779,6 +777,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </section>
 
 <section class="approach-section snap hide-on-desktop" style="background:var(--navy);">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="approach-features">
 <div class="a-feat">
@@ -881,6 +880,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </section>
 
 <section class="programs-section snap" id="programs">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="reveal">
 <div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> Our Programs</div>
@@ -924,6 +924,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </section>
 
 <section class="programs-section snap">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="programs-grid" style="margin-top: 0;">
 
@@ -1112,6 +1113,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </section>
 
 <section class="cta-section snap" id="contact">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="section-tag" style="justify-content:center;color:rgba(255,106,0,0.75);"><span class="tag-line" style="background:rgba(255,106,0,0.5)"></span> Next Step</div>
 <h2 class="section-h2" style="color:white;max-width:700px;margin:0 auto 12px;">Build a Sports Culture,<br>Not Just a Timetable</h2>
@@ -1129,6 +1131,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </section>
 
 <footer class="footer">
+<div class="glass-overlay"></div>
 <div class="container">
 <div class="footer-inner">
 <div class="footer-brand">
