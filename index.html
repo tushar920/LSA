@@ -131,7 +131,7 @@ body {
 .hb-text span{color:rgba(255,255,255,0.55);font-size:11px;}
 
 /* ══════════ SHARED ══════════ */
-.container{max-width:1200px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:2;} /* Updated globally */
+.container{max-width:1200px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:2;}
 .section-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
 .tag-line{width:20px;height:2px;background:var(--orange);display:inline-block;}
 .section-h2{font-family:var(--fd);font-size:clamp(32px,4vw,48px);font-weight:800;line-height:1.05;letter-spacing:-0.5px;margin-bottom:10px;}
@@ -293,445 +293,56 @@ body {
 .out-card h4{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text);}
 .out-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
 
-/* ══════════ PARTNER SECTION ══════════ */
-.partner-section{background:var(--cream);}
-.partner-header{text-align:center;margin-bottom:32px;}
-.partner-header .section-tag{justify-content:center;}
-.partner-header .section-sub{margin:0 auto;text-align:center;}
-.partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.part-card{background:white;border-radius:16px;padding:24px 16px;border:1px solid var(--border);transition:all 0.3s;text-align:center;cursor:default;}
-.part-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:rgba(255,106,0,0.2);}
-.part-icon{width:48px;height:48px;border-radius:12px;background:rgba(255,106,0,0.09);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;}
-.part-card h4{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
-.part-card p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+/* ══════════ WHAT SCHOOLS GET — CAROUSEL ══════════ */
+.cf-section.alt-bg{background:var(--warm);}
+.cf-header{text-align:center;margin-bottom:24px;}
+.cf-header .section-tag{justify-content:center;}
+.cf-header .section-sub{margin:0 auto;text-align:center;}
+.cf-outer{position:relative;}
+.cf-wrap{position:relative;width:100%;height:360px;overflow:hidden;}
+.cf-track{position:relative;width:100%;height:100%;}
 
-/* ══════════ ATHLETES SECTION (ORIGINAL WORKING CODE) ══════════ */
-.athletes-section{background:white;}
-.athletes-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;}
-.athletes-left .section-h2{line-height: 1.05;margin-bottom: 8px;}
-.athletes-left p{font-size:15px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
-.athlete-carousel{position:relative;width:100%;}
-.ath-track-wrap{overflow:hidden;border-radius:16px;}
-.ath-track{display:flex;transition:transform 0.5s cubic-bezier(.4,0,.2,1);}
-
-.ath-card{
-    min-width:100%;position:relative;background:var(--navy);
-    border-radius:16px; overflow:hidden;
+/* SPORTS & SCHOOLS CAROUSEL (Clipped Corners) */
+.cf-item {
+    position:absolute;top:50%;left:50%;width:48%;max-width:540px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    transition:transform 0.5s cubic-bezier(.4,0,.2,1),opacity 0.5s ease,filter 0.5s ease;
+    cursor:pointer;will-change:transform; 
+    border-radius: 16px !important; 
+    overflow: hidden !important;
+    -webkit-border-radius: 16px !important;
+    -webkit-mask-image: -webkit-radial-gradient(white, black); 
+    isolation: isolate;
+    transform: translateZ(0); 
+    clip-path: inset(0px round 16px); 
 }
-.ath-card img{
-    width:100%;height:340px;object-fit:cover;display:block;
-    opacity:0.75; border-radius:16px;
-}
-
-.ath-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(13,27,42,0.97) 0%,rgba(13,27,42,0.6) 60%,transparent 100%); border-radius:0 0 16px 16px;}
-.ath-sport{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:6px;}
-.ath-name{font-family:var(--fd);font-size:24px;font-weight:900;color:white;display:block;margin-bottom:6px;}
-.ath-bio{font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.5;}
-.ath-nav-wrap{display:flex;align-items:center;justify-content:space-between;margin-top:12px;}
-.ath-dots{display:flex;gap:6px;}
-.ath-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,0.15);cursor:pointer;border:none;padding:0;transition:all 0.3s;}
-.ath-dot.active{background:var(--orange);width:16px;border-radius:4px;}
-.ath-btns{display:flex;gap:8px;}
-.ath-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--navy);transition:all 0.25s;}
-.ath-btn:hover{background:var(--orange);color:white;border-color:var(--orange);}
-
-/* ══════════ CTA ══════════ */
-.cta-section{background:var(--navy);text-align:center;}
-.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(255,106,0,0.16) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 80% 50%,rgba(255,106,0,0.07) 0%,transparent 70%);pointer-events:none; z-index:0;}
-.cta-section .section-tag{justify-content:center;}
-.cta-section .section-h2{color:white;max-width:700px;margin:0 auto 12px;}
-.cta-section .section-sub{color:rgba(255,255,255,0.5);margin:0 auto 28px;text-align:center;}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-
-/* ══════════ FOOTER ══════════ */
-.footer{background:#060e18;padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.05); scroll-snap-align: none; position: relative; overflow: hidden;}
-.footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
-.footer-brand .footer-logo{height:120px;width:auto;object-fit:contain;display:block;margin-bottom:8px;}
-.footer-brand p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;max-width:260px;}
-.footer-col h5{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:12px;}
-.footer-col a{display:block;color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;margin-bottom:8px;transition:color 0.2s;}
-.footer-col a:hover{color:white;}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;}
-.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.25);}
-
-/* ══════════ MOBILE & RESPONSIVE FIXES ══════════ */
-@media(max-width:1024px){
-  .hero .container{flex-direction:column;padding:20px;}
-  .hero-right{display:none;}
-  .problem-layout, .approach-layout, .programs-grid, .outcomes-layout, .athletes-layout {grid-template-columns:1fr; gap:20px;}
-  .partner-grid {grid-template-columns:1fr 1fr;}
-  .footer-inner{grid-template-columns:1fr 1fr;}
-  .proc-timeline{grid-template-columns:1fr 1fr;gap:16px;}
-  .proc-timeline::before{display:none;}
-  .proc-header{grid-template-columns:1fr;}
+.cf-item img {
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform 0.5s ease;pointer-events:none; 
+    border-radius: 16px !important;
 }
 
-@media(max-width:768px){
-  /* ── Fix Initial Load / Scroll Snap ── */
-  html { scroll-snap-type: y mandatory; scroll-padding-top: 60px; }
-  .snap { min-height: calc(100vh - 60px); height: calc(100vh - 60px); padding: 0 !important; overflow: hidden; }
-
-  /* ── Navbar & Container ── */
-  .navbar { height: 60px; padding: 0 16px; }
-  .menu-toggle { display: block; } /* Show Hamburger */
-  body { padding-top: 60px; }
-  .nav-logo img { height: 50px; }
-  .nav-links { display: none; }
-  .container { padding: 0 16px; }
-
-  /* visibility classes */
-  .hide-on-mobile { display: none !important; }
-  .hide-on-desktop { display: flex !important; }
-
-  /* ── Typography Compression ── */
-  .section-h2 { font-size: 26px; margin-bottom: 8px; line-height: 1.1; }
-  .section-sub { font-size: 13px; margin-bottom: 12px; line-height: 1.4; }
-  .section-tag { margin-bottom: 8px; }
-
-  /* ════════ HERO (Reordered via Flexbox) ════════ */
-  .hero .container { display: flex; flex-direction: column; justify-content: center; text-align: center; gap: 12px; height: 100%; }
-  .hero-left { display: contents; } 
-  .hero-right { display: flex !important; order: 2; width: 100%; justify-content: center; align-items: center; margin: 0; }
-  
-  .hero-eyebrow { order: 1; justify-content: center; margin-bottom: 0; }
-  .hero-eyebrow .dot { display: none !important; } 
-  
-  .hero-img-wrap { max-width: 100%; width: 100%; display: flex; justify-content: center; }
-  .hero-img-wrap img { height: 240px; width: 100%; object-fit: cover; object-position: center top; border-radius: 16px; margin: 0 auto; }
-  
-  .hero h1 { order: 3; font-size: 32px; margin-bottom: 8px; margin-top: 8px; }
-  .hero-sub { order: 4; font-size: 13px; margin: 0 auto 12px; max-width: 100%; }
-  .hero-buttons { order: 5; justify-content: center; margin-bottom: 16px; gap: 8px; }
-  .hero-stats { order: 6; margin: 0 auto; width: 100%; display: flex; flex-direction: row; }
-  
-  .btn { padding: 10px 18px; font-size: 13px; }
-  .hero-stat { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; flex: 1; }
-  .hero-stat-num { font-size: 20px; }
-  .hero-stat-label { font-size: 10px; }
-  .hero-badge { display: none; }
-
-  /* ════════ APPROACH (FIXED PERFECT MOBILE SNAPPING) ════════ */
-  .approach-section.snap {
-      height: auto !important; 
-      min-height: auto !important; 
-      display: block !important; 
-      padding: 0 !important; 
-      scroll-snap-align: none !important; 
-      overflow: visible !important;
-  }
-  .approach-section .container {
-      padding: 0; display: block;
-  }
-  .approach-layout {
-      height: calc(100vh - 60px); 
-      scroll-snap-align: start; 
-      scroll-snap-stop: always;
-      display: flex; flex-direction: column; justify-content: center; gap: 12px; text-align: center;
-      padding: 20px 16px; margin: 0;
-  }
-  .approach-features {
-      height: calc(100vh - 60px); 
-      scroll-snap-align: start; 
-      scroll-snap-stop: always;
-      display: flex; flex-direction: column; justify-content: center; gap: 10px;
-      padding: 20px 16px; margin: 0;
-  }
-
-  .curr-content { padding: 12px; }
-  .curr-content h4 { font-size: 18px; }
-  .curr-content p { font-size: 12px; margin-bottom: 8px; }
-  .a-feat { padding: 12px; flex-direction: column; text-align: center; gap: 8px; margin: 0; }
-  .a-feat-text p { display: none; }
-
-  /* ════════ PROGRAMS (Added Top Padding) ════════ */
-  #programs { padding-top: 60px !important; }
-  #programs .reveal:first-child { margin-top: 0px; } 
-  .programs-grid { gap: 8px; margin-top: 8px; grid-template-columns: 1fr; }
-  .prog-card-img { height: 90px; } 
-  .prog-card-body { padding: 12px; }
-  .prog-card h3 { font-size: 16px; margin-bottom: 2px; }
-  .prog-card p { font-size: 11px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .prog-bullets { margin-bottom: 4px; }
-  .prog-bullets li { font-size: 10.5px; padding: 2px 0 2px 12px; }
-  .prog-badge { font-size: 8.5px; padding: 3px 6px; margin-bottom: 6px; }
-  .prog-skills { display: none; }
-
-  /* ════════ ATHLETES (Perfected CTA Spacing) ════════ */
-  .athletes-layout { display: flex; flex-direction: column; gap: 0; text-align: center; }
-  .athletes-left { display: contents; } 
-  
-  .athletes-left > .section-tag { order: 1; justify-content: center; margin-bottom: 8px; }
-  .athletes-left > .section-h2 { order: 2; margin-bottom: 12px; }
-  .athletes-left > p { order: 3; font-size: 13px !important; margin-bottom: 12px !important; display: block; }
-  
-  /* CTA PLACED PERFECTLY BETWEEN TEXT AND CAROUSEL */
-  .athletes-left > a.btn { order: 4; margin: 16px auto 32px auto !important; display: inline-flex; } 
-  
-  .athlete-carousel { order: 5; margin-bottom: 0px; } 
-  
-  .ath-card img { height: 260px; }
-  .ath-overlay { padding: 16px; }
-  .ath-name { font-size: 20px; margin-bottom: 4px; }
-  .ath-bio { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-  /* ── Problem ── */
-  .problem-layout { gap: 12px; text-align: center; }
-  .result-callout { margin-top: 8px; padding: 12px; }
-  .problem-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .p-card.offset { margin-top: 0; }
-  .p-card { padding: 12px; border-radius: 12px; }
-  .p-card-icon { font-size: 20px; margin-bottom: 8px; }
-  .p-card h4 { font-size: 13px; }
-  .p-card p { font-size: 11px; line-height: 1.3; }
-
-  /* ── Sports Carousel ── */
-  .cf-header { margin-bottom: 12px; }
-  .cf-wrap { height: 260px; }
-  .cf-item { width: 75%; }
-  .cf-title { font-size: 20px; }
-  .cf-sub { font-size: 11px; }
-
-  /* ── Process ── */
-  .proc-header { text-align: center; margin-bottom: 12px; gap: 8px;}
-  .proc-timeline { gap: 4px; grid-template-columns: repeat(4, 1fr); }
-  .proc-num { width: 40px; height: 40px; margin-bottom: 4px; border-width: 2px;}
-  .n-icon { font-size: 16px; }
-  .proc-step h3 { font-size: 11px; margin-bottom: 0;}
-  .proc-step p { display: none; }
-  .proc-detail.show { flex-direction: column; padding: 16px; gap: 12px; text-align: center; margin-top: 12px;}
-  .proc-detail-img { width: 100%; height: 120px; border-radius: 12px; }
-  .proc-detail h4 { font-size: 18px; margin-bottom: 4px;}
-  .proc-detail p { font-size: 13px; line-height: 1.4; }
-
-  /* ── Outcomes ── */
-  .outcomes-layout { gap: 16px; text-align: center; }
-  .outcomes-left p { font-size: 13px; margin-bottom: 12px; }
-  .out-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .out-card { padding: 12px; }
-  .out-icon { font-size: 20px; margin-bottom: 8px; }
-  .out-card h4 { font-size: 13px; margin-bottom: 2px;}
-  .out-card p { font-size: 11px; line-height: 1.3; }
-
-  /* ── Schools Carousel ── */
-  #schoolsCF { height: 260px; }
-
-  /* ── Partner ── */
-  .partner-header { margin-bottom: 16px; }
-  .partner-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .part-card { padding: 12px; }
-  .part-icon { width: 36px; height: 36px; font-size: 18px; margin-bottom: 8px;}
-  .part-card h4 { font-size: 13px; }
-  .part-card p { font-size: 11px; line-height: 1.3;}
-
-  /* ── CTA ── */
-  .cta-section .section-h2 { font-size: 28px; }
-  .cta-btns { margin-bottom: 16px; }
-  .cta-section > .container > div:last-child { margin-top: 16px !important; padding-top: 16px !important; gap: 16px !important; flex-direction: column;}
-  .cta-section > .container > div:last-child > div { text-align: center; }
-
-  /* ── Footer ── */
-  .footer { padding: 30px 0 20px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center;}
-  .footer-brand .footer-logo { margin: 0 auto 8px; }
-  .footer-brand p { margin: 0 auto; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-}
-</style>
-</head>
-<body>
-
-<div id="scrollBar"></div>
-
-<nav class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="#" class="nav-logo">
-<img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
-</a>
-
-<button class="menu-toggle" id="menuToggle">☰</button>
-
-<ul class="nav-links">
-<li><a href="#about">About</a></li>
-<li><a href="#sports">Sports</a></li>
-<li><a href="#process">How It Works</a></li>
-<li><a href="#programs">Programs</a></li>
-<li><a href="#athletes">Our Athletes</a></li>
-<li><a href="#schools">For Schools</a></li>
-<li><a href="#contact" class="nav-cta">Get In Touch →</a></li>
-</ul>
-</div>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-<button class="menu-close" id="menuClose">✕</button>
-<ul class="mobile-nav-links">
-<li><a href="#about">About</a></li>
-<li><a href="#sports">Sports</a></li>
-<li><a href="#process">How It Works</a></li>
-<li><a href="#programs">Programs</a></li>
-<li><a href="#athletes">Our Athletes</a></li>
-<li><a href="#schools">For Schools</a></li>
-<li><a href="#contact" class="nav-cta">Get In Touch →</a></li>
-</ul>
-</div>
-
-<section class="hero snap" id="home">
-<div class="glass-overlay"></div>
-<div class="hero-orb1"></div>
-<div class="hero-orb2"></div>
-<div class="hero-dots"></div>
-<div class="container">
-<div class="hero-left reveal">
-<div class="hero-eyebrow"><span class="dot"></span> School Sports Education Program (SSEP)</div>
-<h1>Where School Sports<em>Become a System</em></h1>
-<p class="hero-sub">A structured, outcome-driven sports program that transforms physical education into measurable growth, competitive excellence, and a thriving sports culture.</p>
-<div class="hero-buttons">
-<a href="#programs" class="btn btn-primary">Explore Programs →</a>
-<a href="#schools" class="btn btn-glass">Partner With Us</a>
-</div>
-<div class="hero-stats">
-<div class="hero-stat"><div class="hero-stat-num">8<span class="acc">+</span></div><div class="hero-stat-label">Sports Offered</div></div>
-<div class="hero-stat"><div class="hero-stat-num">1<span class="acc">–10</span></div><div class="hero-stat-label">All Classes</div></div>
-<div class="hero-stat"><div class="hero-stat-num">100<span class="acc">%</span></div><div class="hero-stat-label">Fully Managed</div></div>
-</div>
-</div>
-<div class="hero-right">
-<div class="hero-img-wrap">
-<img src="hero-img.png" alt="School sports">
-<div class="hero-img-glass"></div>
-<div class="hero-badge hero-badge-1">
-<div class="hb-icon">🏆</div>
-<div class="hb-text"><strong>Compete & Grow</strong><span>Inter-school tournaments</span></div>
-</div>
-<div class="hero-badge hero-badge-2">
-<div class="hb-icon">📊</div>
-<div class="hb-text"><strong>Track Progress</strong><span>Data-driven reports</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="problem-section snap" id="about">
-<div class="container">
-<div class="problem-layout">
-<div class="reveal">
-<div class="section-tag"><span class="tag-line"></span> The Problem</div>
-<h2 class="section-h2">Why Most School Sports Don't Work</h2>
-<p class="section-sub">Despite good intentions, traditional school sports fail to create lasting impact. Students cycle through sessions with no goals, no growth, no pathway forward.</p>
-<div class="result-callout">
-<p>→ &nbsp;Result: Sports become a routine, not an opportunity.</p>
-</div>
-</div>
-<div class="problem-cards">
-<div class="p-card reveal rd1"><span class="p-card-icon">🗓️</span><h4>Unstructured PE Periods</h4><p>No clear goals, no measurable progress, no system behind the sessions.</p></div>
-<div class="p-card offset reveal rd2"><span class="p-card-icon">👥</span><h4>No Qualified Coaching</h4><p>General instruction doesn't build real sport-specific athletic skills.</p></div>
-<div class="p-card reveal rd3"><span class="p-card-icon">📈</span><h4>No Pathway to Performance</h4><p>Students don't get structured exposure to identify and nurture their talent.</p></div>
-<div class="p-card offset reveal rd4"><span class="p-card-icon">🔴</span><h4>Minimal Engagement</h4><p>Low motivation and consistency leads to low impact for everyone involved.</p></div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="approach-section snap hide-on-mobile">
-<div class="glass-overlay"></div>
-<div class="container">
-
-<div class="approach-layout">
-<div class="reveal">
-<div class="section-tag" style="color:var(--orange)"><span class="tag-line"></span> The LegaXy Approach</div>
-<h2 class="section-h2" style="color:white; margin-bottom: 8px;">We Don't Run PE Classes.<br>We Build Sports Systems.</h2>
-<p class="section-sub" style="color:rgba(255,255,255,0.5); margin-bottom: 0;">
-A fully managed, curriculum-based program for Classes 1–10, integrating everything a school needs — aligned with NEP 2020, NCF 2023, CBSE Physical Education standards, and Fit India School Rating requirements.
-</p>
-</div>
-
-<div class="reveal rd2">
-<div class="curriculum-panel">
-<div class="curr-tabs">
-<div class="curr-tab active" data-tab="foundation">Classes 1–3</div>
-<div class="curr-tab" data-tab="development">Classes 4–7</div>
-<div class="curr-tab" data-tab="performance">Classes 8–10</div>
-</div>
-<div class="curr-content active tab-foundation">
-<div class="curr-badge foundation-badge">Foundation Stage</div>
-<h4>Movement First</h4>
-<span class="curr-classes">Ages 6 – 9 Years</span>
-<p>At this stage, we focus entirely on building physical literacy. Children explore movement, develop coordination, balance, and flexibility — all through fun, play-based sport sessions. No pressure, just joy in movement.</p>
-<div class="curr-skills">
-<span class="curr-skill">Balance & Coordination</span>
-<span class="curr-skill">Motor Skills</span>
-<span class="curr-skill">Spatial Awareness</span>
-<span class="curr-skill">Multi-Sport Play</span>
-<span class="curr-skill">Team Behavior</span>
-<span class="curr-skill">Flexibility</span>
-</div>
-</div>
-<div class="curr-content tab-development">
-<div class="curr-badge development-badge">Development Stage</div>
-<h4>Skill Building</h4>
-<span class="curr-classes">Ages 9 – 12 Years</span>
-<p>Students begin rotating across multiple sports — sampling cricket, football, basketball, badminton and more. Each sport is introduced with structured technique, rules, and gameplay. Teamwork and discipline are core pillars at this stage.</p>
-<div class="curr-skills">
-<span class="curr-skill">Technique Introduction</span>
-<span class="curr-skill">Sport Rules & IQ</span>
-<span class="curr-skill">Fitness Fundamentals</span>
-<span class="curr-skill">Team Play</span>
-<span class="curr-skill">Multi-Sport Sampling</span>
-<span class="curr-skill">Competitive Exposure</span>
-</div>
-</div>
-<div class="curr-content tab-performance">
-<div class="curr-badge performance-badge">Performance Stage</div>
-<h4>Excel & Compete</h4>
-<span class="curr-classes">Ages 12 – 16 Years</span>
-<p>Advanced skill refinement, sport-specific tactics, and formal competitive exposure. Students are assessed for talent identification, given pathways to school teams and inter-school tournaments, and prepared for high-performance tracks.</p>
-<div class="curr-skills">
-<span class="curr-skill">Advanced Technique</span>
-<span class="curr-skill">Tactical Play</span>
-<span class="curr-skill">S&C Integration</span>
-<span class="curr-skill">Inter-School Competitions</span>
-<span class="curr-skill">Talent Identification</span>
-<span class="curr-skill">Specialization Pathway</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="approach-features reveal rd3">
-<div class="a-feat">
-<div class="a-feat-icon">📋</div>
-<div class="a-feat-text">
-<h4>Structured Curriculum</h4>
-<p>Age-appropriate progressions designed sport-by-sport, 36-week annual curriculum per class.</p>
-</div>
-</div>
-<div class="a-feat">
-<div class="a-feat-icon">🎯</div>
-<div class="a-feat-text">
-<h4>Professional Coaching</h4>
-<p>Certified coaches delivering 80-minute integrated sports periods with measurable objectives.</p>
-</div>
-</div>
-<div class="a-feat">
-<div class="a-feat-icon">📊</div>
-<div class="a-feat-text">
-<h4>Performance Tracking</h4>
-<p>Data-driven monitoring via our app — attendance, skill scores, fitness benchmarks, parent dashboards.</p>
-</div>
-</div>
-<div class="a-feat">
-<div class="a-feat-icon">🏅</div>
-<div class="a-feat-text">
-<h4>Multi-Sport Exposure</h4>
-<p>Students rotate across 8+ sports before specializing — building complete, all-round athletes.</p>
-</div>
-</div>
-</div>
-
-</div>
-</section>
+.cf-item.is-active img{transform:scale(1.04);}
+.cf-item:hover img{transform:scale(1.07);}
+.cf-body{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(13,27,42,0.97) 0%,rgba(13,27,42,0.6) 60%,transparent 100%);transition:opacity 0.4s; border-radius:0 0 16px 16px;}
+.cf-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:4px;}
+.cf-title{font-family:var(--fd);font-size:26px;font-weight:800;color:white;letter-spacing:0.5px;display:block;margin-bottom:4px;}
+.cf-sub{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.4;}
+.cf-item[data-pos="-2"]{transform:translate(-170%,-50%) scale(0.6);opacity:0;pointer-events:none;filter:brightness(0.4);}
+.cf-item[data-pos="-1"]{transform:translate(-108%,-50%) scale(0.79);opacity:0.7;filter:brightness(0.58);z-index:5;}
+.cf-item[data-pos="0"]{transform:translate(-50%,-50%) scale(1);opacity:1;filter:none;z-index:10;}
+.cf-item[data-pos="1"]{transform:translate(8%,-50%) scale(0.79);opacity:0.7;filter:brightness(0.58);z-index:5;}
+.cf-item[data-pos="2"]{transform:translate(70%,-50%) scale(0.6);opacity:0;pointer-events:none;filter:brightness(0.4);}
+.cf-item[data-pos="-1"] .cf-body,.cf-item[data-pos="1"] .cf-body{opacity:0;}
+.cf-item[data-pos="0"] .cf-body{opacity:1;}
+.cf-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);box-shadow:0 4px 16px rgba(0,0,0,0.1);font-size:18px;color:var(--navy);transition:all 0.25s;display:flex;align-items:center;justify-content:center;}
+.cf-nav:hover{background:white;transform:translateY(-50%) scale(1.08);box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.cf-nav:active{transform:translateY(-50%) scale(0.96);}
+.cf-prev{left:16px;}
+.cf-next{right:16px;}
+.cf-dots{display:flex;justify-content:center;gap:6px;margin-top:16px;}
+.cf-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,0.15);cursor:pointer;transition:all 0.3s;border:none;padding:0;}
+.cf-dot.active{background:var(--orange);width:20px;border-radius:4px;}
 
 <section class="approach-section snap hide-on-desktop">
 <div class="glass-overlay"></div>
@@ -818,15 +429,15 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="cf-outer">
 <div class="cf-wrap" id="sportsCF">
 <div class="cf-track" id="sportsTrack">
-<div class="cf-item"><img src="cpf_cricket.png" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
-<div class="cf-item"><img src="cpf_football.png" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
-<div class="cf-item"><img src="cpf_basketball.png" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
-<div class="cf-item"><img src="cpf_badminton.png" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
-<div class="cf-item"><img src="cpf_TT.png" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
-<div class="cf-item"><img src="cpf_pickleball.png" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
-<div class="cf-item"><img src="cpf_swimming.png" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
-<div class="cf-item"><img src="cpf_selfdef.png" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
-<div class="cf-item"><img src="cpf_movement.png" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
+<div class="cf-item"><img src="cpf_cricket.jpg" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
+<div class="cf-item"><img src="cpf_football.jpg" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
+<div class="cf-item"><img src="cpf_basketball.jpg" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
+<div class="cf-item"><img src="cpf_badminton.jpg" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
+<div class="cf-item"><img src="cpf_TT.jpg" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
+<div class="cf-item"><img src="cpf_pickleball.jpg" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
+<div class="cf-item"><img src="cpf_swimming.jpg" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
+<div class="cf-item"><img src="cpf_selfdef.jpg" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
+<div class="cf-item"><img src="cpf_movement.jpg" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
 </div>
 </div>
 <button class="cf-nav cf-prev" id="sP">‹</button>
@@ -861,19 +472,19 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 </div>
 <div class="proc-detail show" id="pd0">
-<img class="proc-detail-img" src="assess.png" alt="Assessment">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=600&auto=format&fit=crop" alt="Assessment">
 <div><h4>Assess — Know Where Every Student Stands</h4><p>Before training begins, we run a comprehensive baseline evaluation covering each student's fitness, coordination, and sport skill levels. This data powers everything — ensuring no student is left behind.</p></div>
 </div>
 <div class="proc-detail" id="pd1">
-<img class="proc-detail-img" src="training.png" alt="Training">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?q=80&w=600&auto=format&fit=crop" alt="Training">
 <div><h4>Train — Structured Sessions, Expert Coaches</h4><p>Age-appropriate, curriculum-aligned 80-minute sessions led by certified coaches. Every session follows the LegaXy Training Blueprint — warm-up, skill focus, team activity, match play, cool-down.</p></div>
 </div>
 <div class="proc-detail" id="pd2">
-<img class="proc-detail-img" src="tracking.png" alt="Tracking">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=600&auto=format&fit=crop" alt="Tracking">
 <div><h4>Track — Data That Actually Means Something</h4><p>We continuously measure progress against each student's own baseline. Schools get periodic reports, parents get visibility via the LegaXy app, and coaches use data to refine sessions.</p></div>
 </div>
 <div class="proc-detail" id="pd3">
-<img class="proc-detail-img" src="competition.png" alt="Competition">
+<img class="proc-detail-img" src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=600&auto=format&fit=crop" alt="Competition">
 <div><h4>Compete — Where Growth Becomes Real</h4><p>Students get inter-school exposure and competitive opportunities — School Olympics, inter-house tournaments, and external circuits. Competing builds character and confidence.</p></div>
 </div>
 </div>
@@ -890,7 +501,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="programs-grid">
 
 <div class="prog-card reveal rd1">
-<img class="prog-card-img" src="inschool.png" alt="In-School Program">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=700&auto=format&fit=crop" alt="In-School Program">
 <div class="prog-card-body">
 <div class="prog-badge inschool-badge">In-School Program</div>
 <h3>School Sports Education Program</h3>
@@ -905,7 +516,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="prog-card reveal rd2">
-<img class="prog-card-img" src="afterschool.png" alt="After-School Program">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=700&auto=format&fit=crop" alt="After-School Program">
 <div class="prog-card-body">
 <div class="prog-badge afterschool-badge">After-School Program</div>
 <h3>Advanced Sport-Specific Coaching</h3>
@@ -929,7 +540,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="programs-grid" style="margin-top: 0;">
 
 <div class="prog-card reveal rd1">
-<img class="prog-card-img" src="coe.png" alt="Centre of Excellence">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=700&auto=format&fit=crop" alt="Centre of Excellence">
 <div class="prog-card-body">
 <div class="prog-badge coe-badge">Centre of Excellence</div>
 <h3>High-Performance Development</h3>
@@ -944,7 +555,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="prog-card reveal rd2">
-<img class="prog-card-img" src="paynplay.png" alt="Infrastructure">
+<img class="prog-card-img" src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=700&auto=format&fit=crop" alt="Infrastructure">
 <div class="prog-card-body">
 <div class="prog-badge infra-badge">Pay & Play + Infrastructure</div>
 <h3>Sports Facility Development</h3>
@@ -991,11 +602,11 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="cf-outer">
 <div class="cf-wrap" id="schoolsCF">
 <div class="cf-track" id="schoolsTrack">
-<div class="cf-item"><img src="coaches.png" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
-<div class="cf-item"><img src="equipment.png" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Design</span><span class="cf-sub">Age-appropriate equipment and session plans delivered professionally — zero operational burden.</span></div></div>
-<div class="cf-item"><img src="mobileapp.png" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, and parent communication via the LegaXy app.</span></div></div>
-<div class="cf-item"><img src="events.png" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League — we build culture.</span></div></div>
-<div class="cf-item"><img src="training.png" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Integration</span><span class="cf-sub">We align with your existing timetable, operations, and academic calendar — no disruption.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1593810451137-5dc55105dace?q=80&w=900&auto=format&fit=crop" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=900&auto=format&fit=crop" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Design</span><span class="cf-sub">Age-appropriate equipment and session plans delivered professionally — zero operational burden.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1551958219-acbc630e2914?q=80&w=900&auto=format&fit=crop" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, and parent communication via the LegaXy app.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=900&auto=format&fit=crop" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League — we build culture.</span></div></div>
+<div class="cf-item"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=900&auto=format&fit=crop" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Integration</span><span class="cf-sub">We align with your existing timetable, operations, and academic calendar — no disruption.</span></div></div>
 </div>
 </div>
 <button class="cf-nav cf-prev" id="scP">‹</button>
@@ -1120,7 +731,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;text-align:center;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
 <div class="cta-btns">
 <a href="mailto:hello@legaxy.org" class="btn btn-orange">Book a Demo →</a>
-<a href="#" class="btn btn-outline-w">Download Brochure</a>
+<a href="Deck_LSA.pdf" download class="btn btn-outline-w">Download Brochure</a>
 </div>
 <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
 <div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Rohit Bhatt</div><a href="tel:+919910550083" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 99105 50083</a><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">rohit.b@legaxy.org</div></div>
@@ -1159,11 +770,11 @@ A fully managed, curriculum-based program for Classes 1–10.
 <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
 <a href="https://www.legaxy.org">www.legaxy.org</a>
 <a href="#">Book a Demo</a>
-<a href="#">Download Brochure</a>
+<a href="Deck_LSA.pdf" download>Download Brochure</a>
 </div>
 </div>
 <div class="footer-bottom">
-<p>© 2025 LegaXy Sports Academy. All rights reserved.</p>
+<p>© 2026 LegaXy Sports Academy. All rights reserved.</p>
 <p>Spot. Train. Rise.</p>
 </div>
 </div>
