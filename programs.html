@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ PROGRAM CARDS ══ */
+.programs-layout { display: flex; flex-direction: column; gap: 56px; margin-top: 48px; }
+.prog-block { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.prog-block.reverse { direction: rtl; }
+.prog-block.reverse > * { direction: ltr; }
+.prog-block-img { position: relative; border-radius: 20px; overflow: hidden; }
+.prog-block-img img { width: 100%; height: 340px; object-fit: cover; display: block; border-radius: 20px; transition: transform 0.5s ease; }
+.prog-block-img:hover img { transform: scale(1.04); }
+.prog-block-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(13,27,42,0.85) 0%, transparent 100%); border-radius: 0 0 20px 20px; }
+.prog-block-content h3 { font-family: var(--fd); font-size: 36px; font-weight: 900; line-height: 1.0; margin-bottom: 12px; }
+.prog-block-content p { font-size: 14.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.prog-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.prog-feature { display: flex; align-items: flex-start; gap: 10px; }
+.feat-bullet { width: 20px; height: 20px; background: rgba(255,106,0,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; color: var(--orange); font-weight: 800; }
+.prog-feature p { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+.prog-feature strong { color: var(--text); }
+
+/* ══ PROGRAMS OVERVIEW CARDS ══ */
+.overview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+.overview-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; transition: all 0.3s; cursor: pointer; }
+.overview-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,106,0,0.3); transform: translateY(-4px); }
+.overview-card .prog-badge { margin-bottom: 12px; }
+.overview-card h4 { font-family: var(--fd); font-size: 22px; font-weight: 800; color: white; margin-bottom: 6px; }
+.overview-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+/* ══ SEPARATOR ══ */
+.section-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+@media (max-width: 1024px) {
+  .prog-block, .prog-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .overview-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .prog-block-img img { height: 220px; }
+  .prog-block-content h3 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="container">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> <span>›</span> Programs</div>
+    <div class="page-hero-eyebrow"><span class="dot"></span> Our Programs</div>
+    <h1>A Complete<br><em>Sports Ecosystem.</em></h1>
+    <p class="page-hero-sub">From in-school curriculum to elite centres of excellence — we design, deliver, and manage every dimension of school sports. Four programs. One seamless system.</p>
+    <a href="demo.html" class="btn btn-primary">Book a Demo →</a>
+  </div>
+</section>
+
+<!-- PROGRAM OVERVIEW -->
+<section class="page-section" style="background:var(--navy);position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> What We Offer</div>
+      <h2 class="section-h2" style="color:white;">Four Programs. One System.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">Whether you need in-school curriculum delivery, after-hours specialisation, an elite academy pathway, or a revenue-generating sports facility — LegaXy has it covered.</p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card reveal rd1">
+        <span class="prog-badge inschool-badge">In-School Program</span>
+        <h4>School Sports Education Program (SSEP)</h4>
+        <p>Fully managed, curriculum-backed sports education delivered during school hours for Classes 1–10.</p>
+      </div>
+      <div class="overview-card reveal rd2">
+        <span class="prog-badge afterschool-badge">After-School Program</span>
+        <h4>Advanced Sport-Specific Coaching</h4>
+        <p>Small-batch, high-intensity sport-specific coaching for students who want to go deeper.</p>
+      </div>
+      <div class="overview-card reveal rd3">
+        <span class="prog-badge coe-badge">Centre of Excellence</span>
+        <h4>High-Performance Development</h4>
+        <p>Elite talent identification and development pathway — for athletes with potential and ambition.</p>
+      </div>
+      <div class="overview-card reveal rd4">
+        <span class="prog-badge infra-badge">Pay & Play + Infrastructure</span>
+        <h4>Sports Facility Development</h4>
+        <p>We help design, build, and activate revenue-generating sports infrastructure for your institution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED PROGRAMS -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Deep Dive</div>
+      <h2 class="section-h2">Everything You Need to Know</h2>
+    </div>
+
+    <div class="programs-layout">
+
+      <!-- SSEP -->
+      <div class="prog-block reveal">
+        <div class="prog-block-img">
+          <img src="inschool.png" alt="In-School Program">
+          <div class="prog-block-img-overlay">
+            <span class="prog-badge inschool-badge">In-School Program</span>
+            <div style="font-family:var(--fd);font-size:20px;font-weight:800;color:white;">Classes 1–10 · Fully Managed</div>
+          </div>
+        </div>
+        <div class="prog-block-content">
+          <span class="prog-badge inschool-badge">SSEP — School Sports Education Program</span>
+          <h3>School Sports. Fully Managed.</h3>
+          <p>The cornerstone of LegaXy's offering — a completely managed, curriculum-based sports education program running inside school hours. We bring the coaches, the curriculum, the equipment, and the reporting. Schools own the outcomes.</p>
+          <div class="prog-features">
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>80-minute integrated sports periods</strong> — 5-phase structured sessions aligned with the school timetable.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Multi-sport exposure cycles</strong> — 8+ sports rotated across the year to build all-round athletes.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>NEP 2020 & CBSE PE aligned</strong> — fully compliant with national curriculum standards and Fit India ratings.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>App integration</strong> — coaches track, parents see, schools report. All in real time.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Zero operational burden</strong> — we hire, train, and manage all coaches and resources.</p></div>
+          </div>
+          <a href="demo.html" class="btn btn-orange">Book a Demo for SSEP →</a>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- AFTER-SCHOOL -->
+      <div class="prog-block reverse reveal">
+        <div class="prog-block-img">
+          <img src="afterschool.png" alt="After-School Program">
+          <div class="prog-block-img-overlay">
+            <span class="prog-badge afterschool-badge">After-School</span>
+            <div style="font-family:var(--fd);font-size:20px;font-weight:800;color:white;">Classes 1–12 · Small Batches</div>
+          </div>
+        </div>
+        <div class="prog-block-content">
+          <span class="prog-badge afterschool-badge">After-School Program</span>
+          <h3>Go Deeper. Go Further.</h3>
+          <p>For students who want more than the in-school program delivers — advanced, sport-specific coaching in small batches with elite-trained coaches. High intensity, high impact, real results.</p>
+          <div class="prog-features">
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Sport-specific advanced coaching</strong> — small batches of 8–12 students per coach.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Match simulations and assessments</strong> — real game scenarios with coach feedback and video analysis.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Pathway to school teams</strong> — selection pipeline for inter-school tournament squads.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Available for Classes 1–12</strong> — aligned to appropriate developmental stages.</p></div>
+          </div>
+          <a href="demo.html" class="btn btn-orange">Enquire About After-School →</a>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- COE -->
+      <div class="prog-block reveal">
+        <div class="prog-block-img">
+          <img src="coe.png" alt="Centre of Excellence">
+          <div class="prog-block-img-overlay">
+            <span class="prog-badge coe-badge">Centre of Excellence</span>
+            <div style="font-family:var(--fd);font-size:20px;font-weight:800;color:white;">Elite Pathway · By Selection</div>
+          </div>
+        </div>
+        <div class="prog-block-content">
+          <span class="prog-badge coe-badge">Centre of Excellence</span>
+          <h3>Where Potential Becomes Performance.</h3>
+          <p>Our flagship talent identification and high-performance development program — designed for athletes who demonstrate exceptional potential and the hunger to match. Built around sports science and mentored by elite athletes.</p>
+          <div class="prog-features">
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>4-layer scientific assessment protocol</strong> — physical, technical, psychological, and tactical evaluation.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Sports science integration</strong> — nutrition, sports psychology, physiology, and recovery.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Structured competition pathway</strong> — district, state, and national circuit exposure.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Coach Education Program</strong> — develop in-school coaching capacity alongside athlete development.</p></div>
+          </div>
+          <a href="demo.html" class="btn btn-orange">Learn About COE →</a>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- PAY & PLAY -->
+      <div class="prog-block reverse reveal">
+        <div class="prog-block-img">
+          <img src="paynplay.png" alt="Pay & Play Infrastructure">
+          <div class="prog-block-img-overlay">
+            <span class="prog-badge infra-badge">Infrastructure</span>
+            <div style="font-family:var(--fd);font-size:20px;font-weight:800;color:white;">Revenue Generation · Facility Design</div>
+          </div>
+        </div>
+        <div class="prog-block-content">
+          <span class="prog-badge infra-badge">Pay & Play + Infrastructure</span>
+          <h3>Turn Your Campus Into a Sports Hub.</h3>
+          <p>We help schools and institutions design, build, and activate world-class sports infrastructure — then generate sustainable revenue through Pay & Play memberships, weekend leagues, and community programs.</p>
+          <div class="prog-features">
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Multi-sport court & facility design</strong> — space optimisation for maximum sport variety.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Professional-grade federation surfaces</strong> — certified surfaces for badminton, basketball, pickleball, and more.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Pay & Play revenue model</strong> — memberships, weekend leagues, community bookings managed by LegaXy.</p></div>
+            <div class="prog-feature"><div class="feat-bullet">→</div><p><strong>Revenue sustainability design</strong> — we model the economics before you invest a rupee.</p></div>
+          </div>
+          <a href="demo.html" class="btn btn-orange">Explore Infrastructure →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-section" style="background:var(--navy);text-align:center;position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Next Step</div>
+      <h2 class="section-h2" style="color:white;">Find the Right Program for Your School.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;">One conversation is all it takes. We'll help you identify the perfect program combination for your school's size, budget, and goals.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="demo.html" class="btn btn-orange">Book a Free Demo →</a>
+        <a href="Deck_LSA.pdf" download class="btn btn-outline-w">Download Brochure</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

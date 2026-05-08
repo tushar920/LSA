@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ PROCESS STEPS ══ */
+.process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+.proc-row { display: grid; grid-template-columns: 80px 1fr; gap: 0; position: relative; }
+.proc-row:not(:last-child) .proc-line { position: absolute; left: 39px; top: 80px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--orange), rgba(255,106,0,0.15)); z-index: 0; }
+.proc-num-col { display: flex; flex-direction: column; align-items: center; padding-top: 8px; }
+.proc-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(255,106,0,0.35); flex-shrink: 0; z-index: 1; position: relative; }
+.proc-circle .step-num { font-family: var(--fd); font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.8); letter-spacing: 1px; line-height: 1; }
+.proc-circle .step-ico { font-size: 20px; line-height: 1; }
+.proc-content { padding: 0 0 48px 24px; }
+.proc-content h3 { font-family: var(--fd); font-size: 32px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+.proc-content .proc-desc { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; max-width: 600px; }
+.proc-detail-box { background: white; border-radius: 16px; padding: 24px; border: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: flex-start; }
+.proc-img { width: 180px; height: 120px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.proc-detail-box h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.proc-detail-box p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.proc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.proc-tag { font-size: 11px; padding: 4px 10px; background: rgba(255,106,0,0.08); border-radius: 100px; color: var(--orange); font-weight: 600; }
+
+/* ══ SESSION ANATOMY ══ */
+.session-flow { display: flex; gap: 0; margin-top: 32px; align-items: stretch; }
+.session-phase { flex: 1; padding: 20px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); position: relative; }
+.session-phase:last-child { border-right: none; }
+.phase-time { font-family: var(--fd); font-size: 24px; font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 6px; }
+.phase-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.phase-name { font-family: var(--fd); font-size: 18px; font-weight: 800; color: white; margin-bottom: 6px; }
+.phase-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.4; }
+
+/* ══ TECH STACK ══ */
+.tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px; }
+.tech-card { background: white; border-radius: 16px; padding: 24px; border: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start; transition: all 0.3s; }
+.tech-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.07); border-color: rgba(255,106,0,0.2); transform: translateY(-3px); }
+.tech-icon { width: 44px; height: 44px; background: rgba(255,106,0,0.09); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.tech-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.tech-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* ══ ONBOARDING TIMELINE ══ */
+.onboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 32px; }
+.onboard-grid::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, var(--orange), #ffaa60); z-index: 0; }
+.onboard-step { text-align: center; padding: 0 8px; position: relative; z-index: 1; }
+.onboard-num { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); border: 3px solid var(--orange); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 22px; font-weight: 800; color: white; box-shadow: 0 6px 20px rgba(255,106,0,0.3); }
+.onboard-step h4 { font-family: var(--fd); font-size: 18px; font-weight: 800; margin-bottom: 6px; color: white; }
+.onboard-step p { font-size: 12.5px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+
+@media (max-width: 1024px) {
+  .tech-grid { grid-template-columns: 1fr; }
+  .onboard-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .onboard-grid::before { display: none; }
+  .session-flow { flex-direction: column; }
+  .session-phase { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .session-phase:last-child { border-bottom: none; }
+}
+@media (max-width: 768px) {
+  .proc-detail-box { grid-template-columns: 1fr; }
+  .proc-img { width: 100%; height: 160px; }
+  .onboard-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="container">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> <span>›</span> How It Works</div>
+    <div class="page-hero-eyebrow"><span class="dot"></span> Our Process</div>
+    <h1>A System,<br><em>Not Sessions.</em></h1>
+    <p class="page-hero-sub">A clear, proven four-step process that ensures every student progresses — regardless of their starting point. Structured, measurable, and fully managed by us.</p>
+    <a href="demo.html" class="btn btn-primary">See It in Action →</a>
+  </div>
+</section>
+
+<!-- FOUR STEPS -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> The LegaXy Process</div>
+      <h2 class="section-h2">Four Steps. One Outcome.</h2>
+      <p class="section-sub" style="margin:0 auto;">From baseline to breakthrough — every student moves through the same proven framework, executed consistently by our certified coaches.</p>
+    </div>
+    <div class="process-steps">
+
+      <div class="proc-row reveal">
+        <div class="proc-line"></div>
+        <div class="proc-num-col">
+          <div class="proc-circle"><div class="step-num">01</div><div class="step-ico">🔍</div></div>
+        </div>
+        <div class="proc-content">
+          <h3>Assess — Know Every Student</h3>
+          <p class="proc-desc">Before a single session begins, we run a comprehensive baseline evaluation covering each student's fitness, coordination, and sport-specific skill levels. This data shapes everything downstream — ensuring coaching is targeted, not generic.</p>
+          <div class="proc-detail-box">
+            <img class="proc-img" src="assess.png" alt="Assessment">
+            <div>
+              <h4>What the Baseline Covers</h4>
+              <p>Physical fitness markers (speed, strength, flexibility), coordination tests, sport aptitude, and a wellness intake. All data is captured in the LegaXy app and benchmarked against national age norms.</p>
+              <div class="proc-tags"><span class="proc-tag">Fitness Testing</span><span class="proc-tag">Skill Baseline</span><span class="proc-tag">Data Capture</span><span class="proc-tag">Age Benchmarks</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-row reveal">
+        <div class="proc-line"></div>
+        <div class="proc-num-col">
+          <div class="proc-circle"><div class="step-num">02</div><div class="step-ico">🏋️</div></div>
+        </div>
+        <div class="proc-content">
+          <h3>Train — Structured Sessions, Expert Coaches</h3>
+          <p class="proc-desc">Age-appropriate, curriculum-aligned 80-minute sessions led by certified coaches. Every session follows the LegaXy Training Blueprint — a five-phase structure designed for maximum development and engagement.</p>
+          <div class="proc-detail-box">
+            <img class="proc-img" src="training.png" alt="Training">
+            <div>
+              <h4>The LegaXy Training Blueprint</h4>
+              <p>Every session follows our proven 5-phase structure: dynamic warm-up → skill focus → drill progression → team/match play → cool-down & debrief. No two sessions are identical — each follows the 36-week annual curriculum.</p>
+              <div class="proc-tags"><span class="proc-tag">80-Minute Sessions</span><span class="proc-tag">Certified Coaches</span><span class="proc-tag">36-Week Curriculum</span><span class="proc-tag">5-Phase Blueprint</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-row reveal">
+        <div class="proc-line"></div>
+        <div class="proc-num-col">
+          <div class="proc-circle"><div class="step-num">03</div><div class="step-ico">📈</div></div>
+        </div>
+        <div class="proc-content">
+          <h3>Track — Data That Means Something</h3>
+          <p class="proc-desc">We continuously measure progress against each student's own baseline. Schools get periodic reports, parents get visibility via the LegaXy app, and coaches use data to refine sessions in real time.</p>
+          <div class="proc-detail-box">
+            <img class="proc-img" src="tracking.png" alt="Tracking">
+            <div>
+              <h4>What Gets Tracked</h4>
+              <p>Attendance, skill scores across 12+ parameters, fitness benchmarks, coach notes, injury logs, and tournament participation. All visible to schools, parents, and LegaXy management in real time.</p>
+              <div class="proc-tags"><span class="proc-tag">LegaXy App</span><span class="proc-tag">Skill Reports</span><span class="proc-tag">Parent Dashboard</span><span class="proc-tag">Periodic Reports</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-row reveal">
+        <div class="proc-num-col">
+          <div class="proc-circle"><div class="step-num">04</div><div class="step-ico">🏆</div></div>
+        </div>
+        <div class="proc-content">
+          <h3>Compete — Where Growth Becomes Real</h3>
+          <p class="proc-desc">Students get inter-school exposure and competitive opportunities — School Olympics, inter-house tournaments, and external circuits. Competition builds character, teaches resilience, and makes progress visible to the student themselves.</p>
+          <div class="proc-detail-box">
+            <img class="proc-img" src="competition.png" alt="Competition">
+            <div>
+              <h4>Competitive Ecosystem</h4>
+              <p>LegaXy manages a full competitive calendar — inter-house events, inter-school leagues, Parents Premier League, and School Olympics. Students compete at the right level for their development stage.</p>
+              <div class="proc-tags"><span class="proc-tag">Inter-School Leagues</span><span class="proc-tag">School Olympics</span><span class="proc-tag">Inter-House Events</span><span class="proc-tag">Parents League</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 80-MINUTE SESSION ANATOMY -->
+<section class="page-section" style="background:var(--navy);position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Session Design</div>
+      <h2 class="section-h2" style="color:white;">What 80 Minutes Looks Like</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">Every LegaXy session follows the same five-phase blueprint — designed for maximum development, engagement, and safety.</p>
+    </div>
+    <div class="session-flow reveal rd1">
+      <div class="session-phase">
+        <div class="phase-time">10 min</div>
+        <div class="phase-label">Phase 1</div>
+        <div class="phase-name">Dynamic Warm-Up</div>
+        <div class="phase-desc">Mobility, activation, and sport-specific movement prep</div>
+      </div>
+      <div class="session-phase">
+        <div class="phase-time">20 min</div>
+        <div class="phase-label">Phase 2</div>
+        <div class="phase-name">Skill Focus</div>
+        <div class="phase-desc">Curriculum-aligned technical skill instruction and demonstration</div>
+      </div>
+      <div class="session-phase">
+        <div class="phase-time">20 min</div>
+        <div class="phase-label">Phase 3</div>
+        <div class="phase-name">Drill Progression</div>
+        <div class="phase-desc">Progressive drills building from isolated skill to game-like scenarios</div>
+      </div>
+      <div class="session-phase">
+        <div class="phase-time">20 min</div>
+        <div class="phase-label">Phase 4</div>
+        <div class="phase-name">Match Play</div>
+        <div class="phase-desc">Structured small-sided games or full matches with tactical guidance</div>
+      </div>
+      <div class="session-phase">
+        <div class="phase-time">10 min</div>
+        <div class="phase-label">Phase 5</div>
+        <div class="phase-name">Cool-Down & Debrief</div>
+        <div class="phase-desc">Recovery, reflection, and session data capture in the LegaXy app</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH & REPORTING -->
+<section class="page-section warm">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag"><span class="tag-line"></span> Technology</div>
+      <h2 class="section-h2">Powered by the LegaXy App</h2>
+      <p class="section-sub" style="margin-bottom:0;">Our app connects coaches, schools, and parents — giving everyone the visibility they need.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card reveal rd1">
+        <div class="tech-icon">📊</div>
+        <div>
+          <h4>Coach Dashboard</h4>
+          <p>Session planning, attendance marking, skill assessments, and student progress notes — all in one place for every coach.</p>
+        </div>
+      </div>
+      <div class="tech-card reveal rd2">
+        <div class="tech-icon">👨‍👩‍👧</div>
+        <div>
+          <h4>Parent Portal</h4>
+          <p>Parents see their child's attendance, skill progress, fitness benchmarks, and upcoming events — transparent, in real time.</p>
+        </div>
+      </div>
+      <div class="tech-card reveal rd3">
+        <div class="tech-icon">🏫</div>
+        <div>
+          <h4>School Reports</h4>
+          <p>Schools receive monthly performance reports — participation rates, fitness trends, skill improvements, and competitive outcomes.</p>
+        </div>
+      </div>
+      <div class="tech-card reveal rd4">
+        <div class="tech-icon">🎯</div>
+        <div>
+          <h4>Talent Identification</h4>
+          <p>Data-driven flags identify students with exceptional athletic potential for pathway guidance and advanced programs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING TIMELINE -->
+<section class="page-section" style="background:var(--navy);position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Getting Started</div>
+      <h2 class="section-h2" style="color:white;">From Conversation to Day One</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">Our onboarding process is designed to be zero-friction for schools. We handle everything — you just say yes.</p>
+    </div>
+    <div class="onboard-grid">
+      <div class="onboard-step reveal rd1">
+        <div class="onboard-num">1</div>
+        <h4>Book a Demo</h4>
+        <p>15-minute conversation about your school's sports setup and goals.</p>
+      </div>
+      <div class="onboard-step reveal rd2">
+        <div class="onboard-num">2</div>
+        <h4>Program Design</h4>
+        <p>We customise the SSEP to your timetable, class sizes, and available facilities.</p>
+      </div>
+      <div class="onboard-step reveal rd3">
+        <div class="onboard-num">3</div>
+        <h4>Baseline & Setup</h4>
+        <p>Coaches deployed, equipment delivered, student assessments completed.</p>
+      </div>
+      <div class="onboard-step reveal rd4">
+        <div class="onboard-num">4</div>
+        <h4>Day One</h4>
+        <p>Sessions begin. Reporting live. Your school's sports culture starts here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-section alt" style="text-align:center;">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Ready to Start</div>
+      <h2 class="section-h2">From Conversation to Champions.</h2>
+      <p class="section-sub" style="margin:0 auto 28px;">It starts with a free 15-minute demo. No commitment, no complexity — just a look at what's possible for your school.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="demo.html" class="btn btn-orange">Book a Free Demo →</a>
+        <a href="programs.html" class="btn btn-outline">Explore Programs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>

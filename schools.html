@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Schools — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ WHAT WE PROVIDE ══ */
+.provide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.provide-card { background: white; border-radius: 18px; padding: 28px 22px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
+.provide-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ffaa60); transform: scaleX(0); transform-origin: left; transition: 0.35s; }
+.provide-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); border-color: transparent; }
+.provide-card:hover::before { transform: scaleX(1); }
+.provide-icon { width: 52px; height: 52px; background: rgba(255,106,0,0.09); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+.provide-card h4 { font-family: var(--fd); font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.provide-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+/* ══ BENEFITS ══ */
+.benefits-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.benefit-list { display: flex; flex-direction: column; gap: 16px; }
+.benefit-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: rgba(255,255,255,0.06); border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s; }
+.benefit-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,106,0,0.3); }
+.benefit-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--orange), #ff8c42); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.benefit-item h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 4px; }
+.benefit-item p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; margin: 0; }
+
+/* ══ OUTCOMES ══ */
+.outcome-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.outcome-stat { padding: 20px; background: rgba(255,255,255,0.05); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+.outcome-num { font-family: var(--fd); font-size: 40px; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 4px; }
+.outcome-lbl { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+
+/* ══ COMPLIANCE ══ */
+.compliance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.compliance-card { background: white; border-radius: 14px; padding: 20px 16px; border: 1px solid var(--border); text-align: center; transition: all 0.3s; }
+.compliance-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); border-color: rgba(255,106,0,0.2); }
+.compliance-icon { font-size: 28px; margin-bottom: 10px; }
+.compliance-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.compliance-card p { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* ══ FAQ ══ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.faq-item { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+.faq-q { padding: 18px 22px; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s; }
+.faq-q:hover { background: rgba(255,106,0,0.03); }
+.faq-q .arrow { font-size: 18px; color: var(--orange); transition: transform 0.3s; }
+.faq-item.open .faq-q .arrow { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 13.5px; color: var(--muted); line-height: 1.7; padding: 0 22px; }
+.faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
+
+@media (max-width: 1024px) {
+  .provide-grid { grid-template-columns: 1fr 1fr; }
+  .benefits-layout { grid-template-columns: 1fr; }
+  .compliance-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .provide-grid { grid-template-columns: 1fr; }
+  .compliance-grid { grid-template-columns: 1fr 1fr; }
+  .outcome-stat-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="container">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> <span>›</span> For Schools</div>
+    <div class="page-hero-eyebrow"><span class="dot"></span> End-to-End Program Management</div>
+    <h1>We Own It.<br><em>You Benefit.</em></h1>
+    <p class="page-hero-sub">LegaXy doesn't assist your sports program — we run it. Coaches, curriculum, reporting, events — completely managed by us. Schools get outcomes, not operational overhead.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="demo.html" class="btn btn-primary">Book a Free Demo →</a>
+      <a href="Deck_LSA.pdf" download class="btn btn-glass">Download Brochure</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE PROVIDE -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> What We Provide</div>
+      <h2 class="section-h2">Everything. Completely Managed.</h2>
+      <p class="section-sub" style="margin:0 auto;">From day one, LegaXy handles every operational aspect of your sports program. Schools focus on academics. We own sport.</p>
+    </div>
+    <div class="provide-grid">
+      <div class="provide-card reveal rd1">
+        <div class="provide-icon">👨‍🏫</div>
+        <h4>Expert Coaches</h4>
+        <p>Qualified, certified professionals trained in LegaXy methodologies. We hire, train, supervise, and manage all coaches — the school never carries this burden.</p>
+      </div>
+      <div class="provide-card reveal rd2">
+        <div class="provide-icon">📦</div>
+        <h4>Equipment & Design</h4>
+        <p>Age-appropriate equipment selected and supplied for every session. Court layouts, session setups, and facility optimisation — all handled by our team.</p>
+      </div>
+      <div class="provide-card reveal rd3">
+        <div class="provide-icon">📋</div>
+        <h4>Structured Curriculum</h4>
+        <p>A 36-week annual curriculum for each class band — from Foundation (Classes 1–3) through Performance (Classes 8–10). Age-appropriate, sport-sequenced, and fully documented.</p>
+      </div>
+      <div class="provide-card reveal rd1">
+        <div class="provide-icon">📊</div>
+        <h4>Reporting & Analytics</h4>
+        <p>Monthly school reports, per-student progress data, attendance tracking, fitness benchmarks, and parent dashboards — all delivered via the LegaXy app.</p>
+      </div>
+      <div class="provide-card reveal rd2">
+        <div class="provide-icon">🏆</div>
+        <h4>Events & Competitions</h4>
+        <p>Inter-house tournaments, School Olympics, Parents Premier League, and inter-school league exposure — we manage the entire competitive calendar.</p>
+      </div>
+      <div class="provide-card reveal rd3">
+        <div class="provide-icon">🤝</div>
+        <h4>Seamless Integration</h4>
+        <p>We design around your timetable, academic calendar, and existing operations. Zero disruption to school routine — we fit in, not the other way around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS + OUTCOMES -->
+<section class="page-section" style="background:var(--navy);position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="benefits-layout">
+      <div class="reveal">
+        <div class="section-tag"><span class="tag-line"></span> Why Schools Choose LegaXy</div>
+        <h2 class="section-h2" style="color:white;">Not Coaching.<br>Not Curriculum.<br>A Complete System.</h2>
+        <p style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">Most schools try to manage sports internally — hiring one PE teacher, buying generic equipment, hoping for the best. LegaXy replaces that approach entirely with a scalable, proven system that delivers measurable results.</p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <div class="benefit-icon">🎓</div>
+            <div><h4>No Operational Burden</h4><p>We manage everything — coaches, sessions, equipment, reporting. Your admin team does not touch sports operations.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">📋</div>
+            <div><h4>NEP-Aligned Curriculum</h4><p>Fully structured, age-appropriate curriculum aligned with NCF 2023, CBSE Physical Education standards, and Fit India School Rating requirements.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">📈</div>
+            <div><h4>Measurable Results</h4><p>Documented improvement in student fitness, sport skill, discipline, and participation — tracked and reported transparently.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🏫</div>
+            <div><h4>Better School Reputation</h4><p>Stand out as a school that invests in holistic development. Parents, admissions, and rankings — sports culture matters more than ever.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal rd2">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:32px;">
+          <div class="section-tag" style="margin-bottom:16px;"><span class="tag-line"></span> Documented Outcomes</div>
+          <div class="outcome-stat-grid">
+            <div class="outcome-stat reveal rd1"><div class="outcome-num">30–40%</div><div class="outcome-lbl">Lower obesity risk within 6 months</div></div>
+            <div class="outcome-stat reveal rd2"><div class="outcome-num">50%</div><div class="outcome-lbl">Reduction in student anxiety & stress</div></div>
+            <div class="outcome-stat reveal rd3"><div class="outcome-num">10–20%</div><div class="outcome-lbl">Better academic concentration</div></div>
+            <div class="outcome-stat reveal rd4"><div class="outcome-num">100%</div><div class="outcome-lbl">Fully managed. Zero burden on school.</div></div>
+          </div>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);">
+            <img src="mobileapp.png" alt="LegaXy App" style="width:100%;border-radius:12px;object-fit:cover;height:160px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Standards & Compliance</div>
+      <h2 class="section-h2">Fully Aligned With National Standards</h2>
+      <p class="section-sub" style="margin:0 auto;">LegaXy's SSEP curriculum is built in compliance with every major national educational and physical education standard.</p>
+    </div>
+    <div class="compliance-grid">
+      <div class="compliance-card reveal rd1">
+        <div class="compliance-icon">📜</div>
+        <h4>NEP 2020</h4>
+        <p>National Education Policy 2020 — holistic, multidisciplinary development including physical education at all levels.</p>
+      </div>
+      <div class="compliance-card reveal rd2">
+        <div class="compliance-icon">📚</div>
+        <h4>NCF 2023</h4>
+        <p>National Curriculum Framework 2023 — sport as an integral part of the foundational, preparatory, and middle school stages.</p>
+      </div>
+      <div class="compliance-card reveal rd3">
+        <div class="compliance-icon">🏛️</div>
+        <h4>CBSE PE Standards</h4>
+        <p>Aligned with CBSE Physical Education curriculum requirements for Classes 1–10, including assessment rubrics.</p>
+      </div>
+      <div class="compliance-card reveal rd4">
+        <div class="compliance-icon">🇮🇳</div>
+        <h4>Fit India Rating</h4>
+        <p>Programs are designed to help schools achieve and maintain Fit India School Rating — a national government benchmark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="page-section warm">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Common Questions</div>
+      <h2 class="section-h2">FAQs for Schools</h2>
+    </div>
+    <div class="faq-list" style="max-width:800px;margin:0 auto;">
+      <div class="faq-item reveal rd1">
+        <div class="faq-q">How does LegaXy integrate with our existing timetable? <span class="arrow">+</span></div>
+        <div class="faq-a">We design the SSEP around your existing schedule — whether that's a 40-minute period or an 80-minute block. Our team works with your academic coordinator to fit into available slots without disrupting core subjects.</div>
+      </div>
+      <div class="faq-item reveal rd2">
+        <div class="faq-q">Do we need existing sports infrastructure? <span class="arrow">+</span></div>
+        <div class="faq-a">No. We conduct a facility assessment as part of onboarding and design programs around what's available. We bring all necessary equipment and can work with any space — from large grounds to covered halls.</div>
+      </div>
+      <div class="faq-item reveal rd3">
+        <div class="faq-q">How are coaches vetted and trained? <span class="arrow">+</span></div>
+        <div class="faq-a">LegaXy coaches are certified sport-specific professionals who go through our internal LegaXy Coach Certification before deployment. All coaches are background verified, trained in child safety protocols, and supervised by our regional sports managers.</div>
+      </div>
+      <div class="faq-item reveal rd4">
+        <div class="faq-q">What does the school need to provide? <span class="arrow">+</span></div>
+        <div class="faq-a">Access to available outdoor or indoor space during allocated periods, and basic student roster and health information for baseline assessments. That's it — we handle everything else, including equipment, coaches, reporting, and events.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What's the typical contract length? <span class="arrow">+</span></div>
+        <div class="faq-a">LegaXy SSEP programs run on an academic year basis (12 months), with 36-week delivery aligned to the school calendar. Multi-year partnerships with scaling options are available for schools looking to expand across programs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-section" style="background:var(--navy);text-align:center;position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Get Started</div>
+      <h2 class="section-h2" style="color:white;">Build a Sports Culture,<br>Not Just a Timetable.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+        <a href="demo.html" class="btn btn-orange">Book a Free Demo →</a>
+        <a href="Deck_LSA.pdf" download class="btn btn-outline-w">Download Brochure</a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);">Free 15-minute program consultation. No commitment required.</p>
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+        <div style="text-align:center;"><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Tushar</div><a href="tel:+917838750317" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 78387 50317</a><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">tushar@legaxy.org</div></div>
+        <div style="text-align:center;"><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Ashwath R</div><a href="tel:+919941919124" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 99419 19124</a><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">ashwath@legaxy.org</div></div>
+        <div style="text-align:center;"><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><a href="tel:+919986968209" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 99869 68209</a><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">srisha@legaxy.org</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

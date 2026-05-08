@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get In Touch — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ CONTACT LAYOUT ══ */
+.contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: flex-start; }
+
+/* ══ CONTACT SIDEBAR ══ */
+.contact-sidebar { position: sticky; top: 88px; }
+.sidebar-intro h3 { font-family: var(--fd); font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+.sidebar-intro p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+.contact-info-block { background: var(--navy); border-radius: 16px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.contact-info-block .glass-overlay { opacity: 0.2; }
+.contact-info-block > * { position: relative; z-index: 2; }
+.contact-person { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.contact-person:last-child { border-bottom: none; padding-bottom: 0; }
+.contact-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), #ff8c42); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.contact-person-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 2px; }
+.contact-person-detail { font-size: 12px; color: rgba(255,255,255,0.5); }
+.contact-person-detail a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.contact-person-detail a:hover { color: var(--orange); }
+.why-list { display: flex; flex-direction: column; gap: 10px; }
+.why-item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--muted); }
+.why-check { width: 20px; height: 20px; background: rgba(255,106,0,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--orange); font-weight: 800; flex-shrink: 0; }
+
+/* ══ FORM ══ */
+.inquiry-form { background: white; border-radius: 20px; padding: 36px; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+.form-title { font-family: var(--fd); font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+.form-subtitle { font-size: 13.5px; color: var(--muted); margin-bottom: 28px; }
+.form-section-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; margin-top: 24px; display: block; padding-bottom: 8px; border-bottom: 1px solid rgba(255,106,0,0.1); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.form-group label .req { color: var(--orange); margin-left: 3px; }
+.form-control { width: 100%; padding: 11px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; font-family: var(--fb); font-size: 13.5px; color: var(--text); background: var(--cream); outline: none; transition: all 0.2s; }
+.form-control:focus { border-color: var(--orange); background: white; box-shadow: 0 0 0 3px rgba(255,106,0,0.1); }
+.form-control::placeholder { color: rgba(0,0,0,0.3); }
+textarea.form-control { resize: vertical; min-height: 90px; }
+select.form-control { cursor: pointer; }
+.sports-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sport-check { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 13px; transition: all 0.2s; background: var(--cream); }
+.sport-check input { width: 14px; height: 14px; accent-color: var(--orange); cursor: pointer; flex-shrink: 0; }
+.sport-check:hover { border-color: var(--orange); background: rgba(255,106,0,0.03); }
+.submit-btn { width: 100%; padding: 15px 24px; background: var(--orange); color: white; border: none; border-radius: 12px; font-family: var(--fb); font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.25s; margin-top: 24px; position: relative; overflow: hidden; }
+.submit-btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent); transform: translateX(-100%); transition: 0.55s; }
+.submit-btn:hover::after { transform: translateX(100%); }
+.submit-btn:hover { background: #ff7a1a; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,106,0,0.35); }
+.form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+/* ══ SUCCESS STATE ══ */
+.form-success { display: none; text-align: center; padding: 48px 24px; }
+.form-success.show { display: block; }
+.success-icon { font-size: 48px; margin-bottom: 16px; }
+.form-success h3 { font-family: var(--fd); font-size: 32px; font-weight: 900; margin-bottom: 8px; color: var(--text); }
+.form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 360px; margin: 0 auto; }
+
+@media (max-width: 1024px) {
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-sidebar { position: static; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .inquiry-form { padding: 24px 20px; }
+  .sports-checkboxes { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="container">
+    <div class="page-hero-breadcrumb"><a href="index.html">Home</a> <span>›</span> Get In Touch</div>
+    <div class="page-hero-eyebrow"><span class="dot"></span> Next Step</div>
+    <h1>Let's Build<br><em>Something Together.</em></h1>
+    <p class="page-hero-sub">Tell us about your school and what you're looking for. We'll get back within 24 hours with a customised program overview.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar reveal">
+        <div class="sidebar-intro">
+          <div class="section-tag" style="margin-bottom:10px;"><span class="tag-line"></span> Reach Out</div>
+          <h3>Let's Talk About Your School.</h3>
+          <p>Whether you're ready to launch or just exploring, our team is happy to walk you through what LegaXy's SSEP would look like for your specific school — curriculum, timetable, facilities, and all.</p>
+        </div>
+        <div class="why-list" style="margin-bottom:24px;">
+          <div class="why-item"><div class="why-check">✓</div><span>Free 15-minute consultation</span></div>
+          <div class="why-item"><div class="why-check">✓</div><span>No commitment required</span></div>
+          <div class="why-item"><div class="why-check">✓</div><span>Customised program overview</span></div>
+          <div class="why-item"><div class="why-check">✓</div><span>Response within 24 hours</span></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="glass-overlay"></div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact Directly</div>
+          <div class="contact-person">
+            <div class="contact-avatar">T</div>
+            <div>
+              <div class="contact-person-name">Tushar</div>
+              <div class="contact-person-detail"><a href="tel:+917838750317">+91 78387 50317</a> · <a href="mailto:tushar@legaxy.org">tushar@legaxy.org</a></div>
+            </div>
+          </div>
+          <div class="contact-person">
+            <div class="contact-avatar">A</div>
+            <div>
+              <div class="contact-person-name">Ashwath R</div>
+              <div class="contact-person-detail"><a href="tel:+919941919124">+91 99419 19124</a> · <a href="mailto:ashwath@legaxy.org">ashwath@legaxy.org</a></div>
+            </div>
+          </div>
+          <div class="contact-person">
+            <div class="contact-avatar">S</div>
+            <div>
+              <div class="contact-person-name">Srisha Bhalle</div>
+              <div class="contact-person-detail"><a href="tel:+919986968209">+91 99869 68209</a> · <a href="mailto:srisha@legaxy.org">srisha@legaxy.org</a></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:16px;font-size:13px;color:var(--muted);line-height:1.7;">
+          Or email us directly at <a href="mailto:hello@legaxy.org" style="color:var(--orange);font-weight:600;">hello@legaxy.org</a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="reveal rd2">
+        <div class="inquiry-form" id="inquiryForm">
+          <h2 class="form-title">Inquiry Form</h2>
+          <p class="form-subtitle">Fill in the details below and our team will reach out with a tailored program overview.</p>
+
+          <span class="form-section-label">School Information</span>
+          <div class="form-group">
+            <label>School Name <span class="req">*</span></label>
+            <input type="text" class="form-control" placeholder="e.g. Delhi Public School, Noida">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>City / Location <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="e.g. Delhi NCR">
+            </div>
+            <div class="form-group">
+              <label>Student Strength <span class="req">*</span></label>
+              <select class="form-control">
+                <option value="">Select range</option>
+                <option>Under 300</option>
+                <option>300 – 600</option>
+                <option>600 – 1000</option>
+                <option>1000 – 1500</option>
+                <option>1500 – 3000</option>
+                <option>3000+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Board / Affiliation</label>
+            <select class="form-control">
+              <option value="">Select board</option>
+              <option>CBSE</option>
+              <option>ICSE / CISCE</option>
+              <option>State Board</option>
+              <option>IB</option>
+              <option>Cambridge / IGCSE</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <span class="form-section-label">Contact Person</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label>Designation</label>
+              <select class="form-control">
+                <option value="">Select role</option>
+                <option>Principal</option>
+                <option>Vice Principal</option>
+                <option>Sports Teacher / HOD PE</option>
+                <option>School Administrator</option>
+                <option>Management / Trustee</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number <span class="req">*</span></label>
+              <input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX">
+            </div>
+            <div class="form-group">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" class="form-control" placeholder="you@school.edu.in">
+            </div>
+          </div>
+
+          <span class="form-section-label">Program Interest</span>
+          <div class="form-group">
+            <label>Sports You Are Interested In</label>
+            <div class="sports-checkboxes">
+              <label class="sport-check"><input type="checkbox" name="sport" value="Cricket"> 🏏 Cricket</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Football"> ⚽ Football</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Basketball"> 🏀 Basketball</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Badminton"> 🏸 Badminton</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Table Tennis"> 🏓 Table Tennis</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Pickleball"> 🏒 Pickleball</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Swimming"> 🏊 Swimming</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Self Defense"> 🥋 Self-Defense</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="Fitness"> 🏋️ Fitness & Movement</label>
+              <label class="sport-check"><input type="checkbox" name="sport" value="All Sports"> All Sports (SSEP)</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Programs You're Exploring</label>
+            <select class="form-control">
+              <option value="">Select program</option>
+              <option>In-School SSEP (Classes 1–10)</option>
+              <option>After-School Sport Coaching</option>
+              <option>Centre of Excellence</option>
+              <option>Pay & Play + Infrastructure</option>
+              <option>Multiple / Not Sure Yet</option>
+            </select>
+          </div>
+
+          <span class="form-section-label">School Setup & Requirements</span>
+          <div class="form-group">
+            <label>Existing Sports Infrastructure</label>
+            <select class="form-control">
+              <option value="">Select current setup</option>
+              <option>No dedicated sports space</option>
+              <option>Open ground / field</option>
+              <option>Covered hall / gymnasium</option>
+              <option>Multi-sport court</option>
+              <option>Multiple facilities available</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Specific Requirements or Challenges</label>
+            <textarea class="form-control" placeholder="Tell us about your current sports setup, what's working, what's not, and what you'd like to achieve..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date for Demo / Discussion</label>
+            <input type="date" class="form-control">
+          </div>
+
+          <span class="form-section-label">Additional Notes</span>
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Anything else we should know?</label>
+            <textarea class="form-control" placeholder="Any other context, questions, or priorities you'd like to share..."></textarea>
+          </div>
+
+          <button class="submit-btn" onclick="handleSubmit(event)">Submit Inquiry →</button>
+          <p class="form-note">Free consultation. No commitment. We'll respond within 24 hours.</p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🎉</div>
+          <h3>Inquiry Received!</h3>
+          <p>Thank you for reaching out. Our team will review your submission and get back to you within 24 hours with a tailored program overview.</p>
+          <div style="margin-top:24px;">
+            <a href="index.html" class="btn btn-orange" style="margin:0 auto;">Back to Home →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('inquiryForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  window.scrollTo({ top: document.querySelector('.page-section').offsetTop - 80, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
