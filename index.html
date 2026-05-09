@@ -536,6 +536,18 @@ body {
   .footer-brand p { margin: 0 auto; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+/* ══ NAVBAR ADDITIONS ══ */
+.nav-arrow{font-size:10px;opacity:0.7;transition:transform 0.25s;display:inline-block;}
+.nav-dropdown{position:relative;}
+.nav-dropdown.open .nav-arrow{transform:rotate(180deg);}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;background:var(--navy);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:6px;list-style:none;min-width:215px;box-shadow:0 16px 40px rgba(0,0,0,0.45);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 0.22s ease,transform 0.22s ease,visibility 0.22s;z-index:200;}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-dropdown-menu li a{display:block;padding:9px 14px;font-size:12.5px;color:rgba(255,255,255,0.7);border-radius:8px;background:none;transition:all 0.15s;white-space:nowrap;font-size:13px;}
+.nav-dropdown-menu li a:hover{color:white;background:rgba(255,255,255,0.08);}
+/* ── Logo bigger & more dominant ── */
+.nav-logo img{height:52px !important;}
+.footer-brand .footer-logo{height:52px !important;}
 </style>
 </head>
 <body>
@@ -551,13 +563,22 @@ body {
 <button class="menu-toggle" id="menuToggle">☰</button>
 
 <ul class="nav-links">
-<li><a href="about.html">About</a></li>
 <li><a href="sports.html">Sports</a></li>
 <li><a href="how-it-works.html">How It Works</a></li>
-<li><a href="programs.html">Programs</a></li>
+<li class="nav-dropdown">
+  <a href="programs.html" class="nav-dropdown-trigger">Programs <span class="nav-arrow">▾</span></a>
+  <ul class="nav-dropdown-menu">
+    <li><a href="programs.html#ssep">In-School Programs</a></li>
+    <li><a href="programs.html#afterschool">After-School Programs</a></li>
+    <li><a href="programs.html#coe">Centers of Excellence</a></li>
+    <li><a href="programs.html#infra">Infrastructure &amp; Consulting</a></li>
+  </ul>
+</li>
 <li><a href="athletes.html">Our Athletes</a></li>
 <li><a href="schools.html">For Schools</a></li>
-<li><a href="contact.html" class="nav-cta">Get In Touch →</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="partnerships.html">Partnerships</a></li>
+<li><a href="contact.html" class="nav-cta">Partner With Us &#8594;</a></li>
 </ul>
 </div>
 </nav>
@@ -565,13 +586,14 @@ body {
 <div class="mobile-menu" id="mobileMenu">
 <button class="menu-close" id="menuClose">✕</button>
 <ul class="mobile-nav-links">
-<li><a href="about.html">About</a></li>
 <li><a href="sports.html">Sports</a></li>
 <li><a href="how-it-works.html">How It Works</a></li>
 <li><a href="programs.html">Programs</a></li>
 <li><a href="athletes.html">Our Athletes</a></li>
 <li><a href="schools.html">For Schools</a></li>
-<li><a href="contact.html" class="nav-cta">Get In Touch →</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="partnerships.html">Partnerships</a></li>
+<li><a href="contact.html" class="nav-cta">Partner With Us &#8594;</a></li>
 </ul>
 </div>
 
@@ -587,7 +609,7 @@ body {
 <p class="hero-sub">A structured, outcome-driven sports program that transforms physical education into measurable growth, competitive excellence, and a thriving sports culture.</p>
 <div class="hero-buttons">
 <a href="programs.html" class="btn btn-primary">Explore Programs →</a>
-<a href="schools.html" class="btn btn-glass">Partner With Us</a>
+<a href="contact.html" class="btn btn-glass">Partner With Us</a>
 </div>
 <div class="hero-stats">
 <div class="hero-stat"><div class="hero-stat-num">8<span class="acc">+</span></div><div class="hero-stat-label">Sports Offered</div></div>
@@ -969,7 +991,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="section-tag"><span class="tag-line"></span> What Students Gain</div>
 <h2 class="section-h2">Stronger Students.<br>Stronger Schools.</h2>
 <p>Every student who goes through LegaXy leaves with more than sport skills — they develop the character, confidence, and discipline to succeed anywhere.</p>
-<a href="programs.html" class="btn btn-orange">See the Full Program →</a>
+<a href="contact.html" class="btn btn-orange">See the Full Program →</a>
 </div>
 <div class="out-grid">
 <div class="out-card reveal rd1"><span class="out-icon">🏃</span><h4>Physical Development</h4><p>30–40% lower obesity risk. Improved agility, flexibility, and strength within 6 months.</p></div>
@@ -1119,14 +1141,14 @@ A fully managed, curriculum-based program for Classes 1–10.
 <h2 class="section-h2" style="color:white;max-width:700px;margin:0 auto 12px;">Build a Sports Culture,<br>Not Just a Timetable</h2>
 <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;text-align:center;">Partner with LegaXy to bring structured sports education to your school. It starts with one conversation.</p>
 <div class="cta-btns">
-<a href="mailto:hello@legaxy.org" class="btn btn-orange">Book a Demo →</a>
+<a href="mailto:hello@legaxy.org" class="btn btn-orange">Partner With Us →</a>
 <a href="Deck_LSA.pdf" download class="btn btn-outline-w">Download Brochure</a>
 </div>
 <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; font-weight: 500;">Free 15-minute program consultation. No commitment required.</p>
 <div style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
-<div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Tushar</div><a href="tel:+917838750317" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 78387 50317</a><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">tushar@legaxy.org</div></div>
-<div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Ashwath R</div><a href="tel:+919941919124" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 99419 19124</a><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">ashwath@legaxy.org</div></div>
-<div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><a href="tel:+919986968209" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">+91 99869 68209</a><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">srisha@legaxy.org</div></div>
+
+
+<div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Tushar Bhaskar</div><a href="mailto:tushar@legaxy.org" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">tushar@legaxy.org</a></div><div style="text-align:center;"><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><a href="mailto:srisha@legaxy.org" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">srisha@legaxy.org</a></div>
 </div>
 </div>
 </section>
@@ -1141,15 +1163,15 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 <div class="footer-col">
 <h5>Programs</h5>
-<a href="programs.html">In-School Program (SSEP)</a>
-<a href="programs.html">After-School Coaching</a>
-<a href="programs.html">Centre of Excellence</a>
-<a href="programs.html">Pay & Play</a>
-<a href="programs.html">Infrastructure Development</a>
+<a href="#">In-School Program (SSEP)</a>
+<a href="#">After-School Coaching</a>
+<a href="#">Centre of Excellence</a>
+<a href="#">Pay & Play</a>
+<a href="#">Infrastructure Development</a>
 </div>
 <div class="footer-col">
 <h5>Company</h5>
-<a href="about.html">About LegaXy</a>
+<a href="#">About LegaXy</a>
 <a href="#">LegaXy Elite</a>
 <a href="#">LegaXy Studio</a>
 <a href="#">LegaXy Live</a>
@@ -1158,9 +1180,13 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="footer-col">
 <h5>Contact</h5>
 <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
-<a href="https://www.legaxy.org">www.legaxy.org</a>
-<a href="demo.html">Book a Demo</a>
+<a href="contact.html">Partner With Us</a>
 <a href="Deck_LSA.pdf" download>Download Brochure</a>
+<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);">
+<div style="font-size:10px;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;">Contact</div>
+<div style="margin-bottom:5px;"><span style="font-size:11px;color:rgba(255,255,255,0.35);display:block;">Tushar Bhaskar</span><a href="mailto:tushar@legaxy.org" style="color:rgba(255,255,255,0.55);font-size:12.5px;">tushar@legaxy.org</a></div>
+<div><span style="font-size:11px;color:rgba(255,255,255,0.35);display:block;">Srisha Bhalle</span><a href="mailto:srisha@legaxy.org" style="color:rgba(255,255,255,0.55);font-size:12.5px;">srisha@legaxy.org</a></div>
+</div>
 </div>
 </div>
 <div class="footer-bottom">
@@ -1331,6 +1357,14 @@ pcards.forEach(c=>{
 c.addEventListener('mouseenter',()=>{pcards.forEach(x=>{if(x!==c)x.style.opacity='0.55';});});
 c.addEventListener('mouseleave',()=>{pcards.forEach(x=>x.style.opacity='1');});
 });
+
+/* ── Programs dropdown ── */
+(function(){
+  var dl = document.querySelector('.nav-dropdown');
+  if(dl){
+    dl.addEventListener('mouseenter', function(){dl.classList.add('open');});
+    dl.addEventListener('mouseleave', function(){dl.classList.remove('open');});
+  }
+})();
+
 </script>
-</body>
-</html>
