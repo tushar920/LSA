@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partnerships — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ PARTNERSHIP TYPES ══ */
+.partner-type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.partner-type-card { background: white; border-radius: 18px; padding: 28px 22px; border: 1px solid var(--border); transition: all 0.3s; cursor: default; position: relative; overflow: hidden; }
+.partner-type-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ffaa60); transform: scaleX(0); transform-origin: left; transition: 0.35s; }
+.partner-type-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); border-color: transparent; }
+.partner-type-card:hover::after { transform: scaleX(1); }
+.partner-type-icon { width: 52px; height: 52px; background: rgba(255,106,0,0.09); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+.partner-type-card h4 { font-family: var(--fd); font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+.partner-type-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.partner-type-list { list-style: none; }
+.partner-type-list li { font-size: 13px; color: var(--muted); padding: 4px 0 4px 16px; position: relative; }
+.partner-type-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-size: 10px; }
+
+/* ══ ATHLETE PARTNERS ══ */
+.athlete-partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.athlete-partner-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; text-align: center; transition: all 0.3s; }
+.athlete-partner-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,106,0,0.3); transform: translateY(-4px); }
+.athlete-partner-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 12px; border: 2px solid rgba(255,106,0,0.3); }
+.athlete-partner-name { font-family: var(--fd); font-size: 18px; font-weight: 800; color: white; display: block; margin-bottom: 4px; }
+.athlete-partner-sport { font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--orange); }
+
+/* ══ SCHOOL PARTNER LOGOS ══ */
+.school-logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+.school-logo-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px 16px; text-align: center; transition: all 0.3s; }
+.school-logo-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); border-color: rgba(255,106,0,0.2); }
+.school-logo-placeholder { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,106,0,0.08); margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.school-logo-card h4 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.school-logo-card p { font-size: 11.5px; color: var(--muted); }
+
+/* ══ PROCESS ══ */
+.partner-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 32px; }
+.partner-process::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, var(--orange), #ffaa60); z-index: 0; }
+.pp-step { text-align: center; padding: 0 8px; position: relative; z-index: 1; }
+.pp-num { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 22px; font-weight: 800; color: white; box-shadow: 0 6px 20px rgba(255,106,0,0.3); }
+.pp-step h4 { font-family: var(--fd); font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.pp-step p { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+@media (max-width: 1024px) {
+  .partner-type-grid { grid-template-columns: 1fr 1fr; }
+  .athlete-partner-grid { grid-template-columns: 1fr 1fr; }
+  .school-logos { grid-template-columns: 1fr 1fr; }
+  .partner-process { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .partner-process::before { display: none; }
+}
+@media (max-width: 768px) {
+  .partner-type-grid { grid-template-columns: 1fr; }
+  .athlete-partner-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="page-hero-orb2"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow"><span class="dot"></span> Together We Rise</div>
+      <h1>Partnerships<br><em>That Matter.</em></h1>
+      <p class="page-hero-sub">LegaXy's impact is multiplied through the right partnerships — schools, athletes, institutions, and brands who share our belief that sport education transforms lives.</p>
+      <a href="contact.html" class="btn btn-primary">Partner With Us →</a>
+    </div>
+    <div class="page-hero-visual">
+      <div class="page-hero-img">
+        <img src="coaches.png" alt="LegaXy Partnerships" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>🤝</span><span class=\'ph-label\'>Partnerships</span></div>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP TYPES -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Who We Partner With</div>
+      <h2 class="section-h2">Built for Every Stakeholder</h2>
+      <p class="section-sub" style="margin:0 auto;">LegaXy operates at the intersection of education, sports, and community — and our partnerships reflect that breadth.</p>
+    </div>
+    <div class="partner-type-grid">
+
+      <div class="partner-type-card reveal rd1">
+        <div class="partner-type-icon">🏫</div>
+        <h4>Schools & Institutions</h4>
+        <p>Our core partnership model — we become the sports department for forward-thinking schools across India. NEP-aligned, fully managed, zero burden.</p>
+        <ul class="partner-type-list">
+          <li>Full SSEP program delivery</li>
+          <li>After-school coaching programs</li>
+          <li>Sports infrastructure development</li>
+          <li>Pay & Play revenue model</li>
+        </ul>
+      </div>
+
+      <div class="partner-type-card reveal rd2">
+        <div class="partner-type-icon">🏆</div>
+        <h4>Elite Athletes</h4>
+        <p>We co-design and deliver programs with India's best — lending their expertise, credibility, and methodology to every school we work with.</p>
+        <ul class="partner-type-list">
+          <li>Curriculum co-design</li>
+          <li>Coaching certification mentorship</li>
+          <li>Masterclass sessions</li>
+          <li>Talent identification pathway</li>
+        </ul>
+      </div>
+
+      <div class="partner-type-card reveal rd3">
+        <div class="partner-type-icon">🏢</div>
+        <h4>Corporate & Brand Partners</h4>
+        <p>Brands that believe in sports education and youth development — investing in LegaXy's ecosystem to build lasting community impact and brand equity.</p>
+        <ul class="partner-type-list">
+          <li>CSR sports education initiatives</li>
+          <li>Equipment & infrastructure sponsorship</li>
+          <li>Tournament title sponsorships</li>
+          <li>Scholarship programs</li>
+        </ul>
+      </div>
+
+      <div class="partner-type-card reveal rd1">
+        <div class="partner-type-icon">🎓</div>
+        <h4>Sports Academies & Federations</h4>
+        <p>Partnering with established sports bodies to create talent pipelines — ensuring the best young athletes get pathways to higher performance environments.</p>
+        <ul class="partner-type-list">
+          <li>Talent referral pipelines</li>
+          <li>Joint competition formats</li>
+          <li>Coach exchange programs</li>
+          <li>Federation compliance alignment</li>
+        </ul>
+      </div>
+
+      <div class="partner-type-card reveal rd2">
+        <div class="partner-type-icon">📱</div>
+        <h4>Technology Partners</h4>
+        <p>EdTech and sports-tech platforms that enhance how we track, report, and personalise the LegaXy experience for students, parents, and schools.</p>
+        <ul class="partner-type-list">
+          <li>Performance analytics integration</li>
+          <li>Parent communication platforms</li>
+          <li>Wearable tech integration</li>
+          <li>Digital curriculum delivery</li>
+        </ul>
+      </div>
+
+      <div class="partner-type-card reveal rd3">
+        <div class="partner-type-icon">🌍</div>
+        <h4>NGOs & Community Organisations</h4>
+        <p>Working with mission-driven organisations to bring LegaXy sports programs to underserved communities — making quality sports education equitable.</p>
+        <ul class="partner-type-list">
+          <li>Government school programs</li>
+          <li>Scholarship & access initiatives</li>
+          <li>Community sports events</li>
+          <li>Rural sports development</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ATHLETE PARTNERS -->
+<section class="page-section" style="background:var(--navy);position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Athlete Partners</div>
+      <h2 class="section-h2" style="color:white;">Our Elite Mentors</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">India's finest athletes who co-design and mentor LegaXy's programs.</p>
+    </div>
+    <div class="athlete-partner-grid">
+      <div class="athlete-partner-card reveal rd1">
+        <img class="athlete-partner-img" src="Chahal.png" alt="Yuzvendra Chahal">
+        <span class="athlete-partner-name">Y. Chahal</span>
+        <span class="athlete-partner-sport">🏏 Cricket</span>
+      </div>
+      <div class="athlete-partner-card reveal rd2">
+        <img class="athlete-partner-img" src="Ishant-sharma.png" alt="Ishant Sharma">
+        <span class="athlete-partner-name">I. Sharma</span>
+        <span class="athlete-partner-sport">🏏 Cricket</span>
+      </div>
+      <div class="athlete-partner-card reveal rd3">
+        <img class="athlete-partner-img" src="umesh-yadav.png" alt="Umesh Yadav">
+        <span class="athlete-partner-name">U. Yadav</span>
+        <span class="athlete-partner-sport">🏏 Cricket</span>
+      </div>
+      <div class="athlete-partner-card reveal rd4">
+        <img class="athlete-partner-img" src="Harshit-rana.png" alt="Harshit Rana">
+        <span class="athlete-partner-name">H. Rana</span>
+        <span class="athlete-partner-sport">🏏 Cricket</span>
+      </div>
+      <div class="athlete-partner-card reveal rd1">
+        <img class="athlete-partner-img" src="Puja-tomar.png" alt="Puja Tomar">
+        <span class="athlete-partner-name">P. Tomar</span>
+        <span class="athlete-partner-sport">🥋 MMA</span>
+      </div>
+      <div class="athlete-partner-card reveal rd2">
+        <img class="athlete-partner-img" src="Neetu-chandra.png" alt="Neetu Chandra">
+        <span class="athlete-partner-name">N. Chandra</span>
+        <span class="athlete-partner-sport">🥋 Taekwondo</span>
+      </div>
+      <div class="athlete-partner-card reveal rd3">
+        <img class="athlete-partner-img" src="Pratima-singh.png" alt="Pratima Singh">
+        <span class="athlete-partner-name">P. Singh</span>
+        <span class="athlete-partner-sport">🏀 Basketball</span>
+      </div>
+      <div class="athlete-partner-card reveal rd4" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+        <div style="font-size:36px;opacity:0.5;">+</div>
+        <span class="athlete-partner-name" style="font-size:14px;opacity:0.6;">More Coming</span>
+        <span class="athlete-partner-sport">Stay Tuned</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="athletes.html" class="btn btn-glass">Meet All Athletes →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO PARTNER -->
+<section class="page-section warm">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> How It Works</div>
+      <h2 class="section-h2">How to Partner With LegaXy</h2>
+      <p class="section-sub" style="margin:0 auto;">Simple, transparent, and designed to be friction-free from first conversation to program launch.</p>
+    </div>
+    <div class="partner-process">
+      <div class="pp-step reveal rd1">
+        <div class="pp-num">1</div>
+        <h4>Reach Out</h4>
+        <p>Fill in our partner inquiry form or email us directly. Tell us who you are and what kind of partnership you're exploring.</p>
+      </div>
+      <div class="pp-step reveal rd2">
+        <div class="pp-num">2</div>
+        <h4>Discovery Call</h4>
+        <p>A 30-minute conversation to understand your goals, constraints, and how LegaXy's ecosystem can add maximum value.</p>
+      </div>
+      <div class="pp-step reveal rd3">
+        <div class="pp-num">3</div>
+        <h4>Partnership Design</h4>
+        <p>We co-create a partnership structure that works for both sides — clear deliverables, timelines, and outcomes from day one.</p>
+      </div>
+      <div class="pp-step reveal rd4">
+        <div class="pp-num">4</div>
+        <h4>Launch Together</h4>
+        <p>We activate the partnership, execute, and measure impact — reporting transparently on what's working and what's next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-section" style="background:var(--navy);text-align:center;position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Let's Build Together</div>
+      <h2 class="section-h2" style="color:white;">Ready to Partner with LegaXy?</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;">Whether you're a school, a brand, an athlete, or an institution — if you believe in sport as a transformative force, we want to hear from you.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+        <a href="contact.html" class="btn btn-orange">Partner With Us →</a>
+        <a href="mailto:hello@legaxy.org" class="btn btn-outline-w">Email Us Directly</a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);">
+        <a href="mailto:tushar@legaxy.org" style="color:rgba(255,255,255,0.45);text-decoration:none;">tushar@legaxy.org</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:srisha@legaxy.org" style="color:rgba(255,255,255,0.45);text-decoration:none;">srisha@legaxy.org</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script src="shared.js"></script>
+</body>
+</html>
