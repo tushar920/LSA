@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — LegaXy Sports Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ FILTER TABS ══ */
+.gallery-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; justify-content: center; }
+.g-filter { padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--muted); transition: all 0.2s; }
+.g-filter.active, .g-filter:hover { border-color: var(--orange); color: var(--orange); background: rgba(255,106,0,0.05); }
+
+/* ══ MASONRY-STYLE GRID ══ */
+.gallery-grid { columns: 3; column-gap: 16px; }
+.gallery-item { break-inside: avoid; margin-bottom: 16px; border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item img { width: 100%; display: block; border-radius: 14px; transition: transform 0.45s ease; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,42,0.85) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s; border-radius: 14px; display: flex; align-items: flex-end; padding: 16px; }
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+.gallery-item-label { font-family: var(--fd); font-size: 16px; font-weight: 800; color: white; }
+.gallery-item-sub { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+
+/* ══ PLACEHOLDER TILES ══ */
+.gallery-placeholder { width: 100%; background: linear-gradient(135deg, rgba(255,106,0,0.12) 0%, rgba(13,27,42,0.08) 100%); border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 1px dashed rgba(255,106,0,0.2); }
+.gallery-placeholder .ph-icon { font-size: 36px; opacity: 0.6; }
+.gallery-placeholder .ph-text { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(0,0,0,0.3); }
+
+/* ══ LIGHTBOX ══ */
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; box-shadow: 0 32px 80px rgba(0,0,0,0.6); object-fit: contain; }
+.lightbox-close { position: absolute; top: 24px; right: 28px; background: none; border: none; color: white; font-size: 36px; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+.lightbox-close:hover { opacity: 1; }
+
+/* ══ SUBMIT CTA ══ */
+.gallery-submit { background: var(--navy); border-radius: 20px; padding: 40px; text-align: center; position: relative; overflow: hidden; }
+.gallery-submit .glass-overlay { opacity: 0.15; }
+
+@media (max-width: 1024px) { .gallery-grid { columns: 2; } }
+@media (max-width: 640px) { .gallery-grid { columns: 1; } }
+</style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero-orb"></div>
+  <div class="page-hero-orb2"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow"><span class="dot"></span> Visual Journey</div>
+      <h1>LegaXy in<br><em>Action.</em></h1>
+      <p class="page-hero-sub">From training sessions to School Olympics — moments that capture what happens when sports education is done right.</p>
+      <a href="contact.html" class="btn btn-primary">Partner With Us →</a>
+    </div>
+    <div class="page-hero-visual">
+      <div class="page-hero-img">
+        <img src="events.png" alt="LegaXy Gallery" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>📸</span><span class=\'ph-label\'>Gallery</span></div>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:24px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Gallery</div>
+      <h2 class="section-h2">Moments From the Field</h2>
+      <p class="section-sub" style="margin:0 auto;">Training. Competition. Community. Every frame tells the LegaXy story.</p>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="gallery-filters reveal">
+      <button class="g-filter active">All</button>
+      <button class="g-filter">Training</button>
+      <button class="g-filter">Competitions</button>
+      <button class="g-filter">Events</button>
+      <button class="g-filter">Athletes</button>
+      <button class="g-filter">Schools</button>
+    </div>
+
+    <!-- Gallery grid — replace src with real images as available -->
+    <div class="gallery-grid reveal">
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="events.png" alt="School Olympics">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">School Olympics 2024</div><div class="gallery-item-sub">Inter-school competition</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="coaches.png" alt="Coaching Session">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Expert Coaching</div><div class="gallery-item-sub">Certified LegaXy coaches</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_cricket.png" alt="Cricket Training">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Cricket — Skills Training</div><div class="gallery-item-sub">Development stage batch</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_football.png" alt="Football">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Football — Match Play</div><div class="gallery-item-sub">Classes 4–7 session</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="training.png" alt="Training">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Structured Training</div><div class="gallery-item-sub">5-phase LegaXy blueprint</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_basketball.png" alt="Basketball">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Basketball Academy</div><div class="gallery-item-sub">Performance stage</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="mobileapp.png" alt="LegaXy App">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">LegaXy App</div><div class="gallery-item-sub">Real-time tracking & reports</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_badminton.png" alt="Badminton">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Badminton Training</div><div class="gallery-item-sub">Agility & reflex drills</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="equipment.png" alt="Equipment">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Equipment & Setup</div><div class="gallery-item-sub">Professional grade, fully managed</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_TT.png" alt="Table Tennis">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Table Tennis</div><div class="gallery-item-sub">Precision & reaction training</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_selfdef.png" alt="Self Defence">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Self-Defense Program</div><div class="gallery-item-sub">Discipline. Awareness. Strength.</div></div>
+        </div>
+      </div>
+
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="cpf_swimming.png" alt="Swimming">
+        <div class="gallery-item-overlay">
+          <div><div class="gallery-item-label">Swimming</div><div class="gallery-item-sub">Technique & endurance focus</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Submit photos CTA -->
+    <div class="gallery-submit reveal" style="margin-top:48px;">
+      <div class="glass-overlay"></div>
+      <div style="position:relative;z-index:2;">
+        <div class="section-tag" style="justify-content:center;margin-bottom:8px;"><span class="tag-line"></span> Want to Share?</div>
+        <h3 style="font-family:var(--fd);font-size:28px;font-weight:900;color:white;margin-bottom:8px;">Submit Your School's Moments</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;">If you're a partner school, we'd love to feature your LegaXy moments. Send us your best action shots and we'll showcase them here.</p>
+        <a href="mailto:hello@legaxy.org" class="btn btn-orange">Send Photos →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script src="shared.js"></script>
+<script>
+// Filter tabs
+document.querySelectorAll('.g-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.g-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Lightbox
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  if (!img) return;
+  document.getElementById('lightboxImg').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
