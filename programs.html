@@ -6,7 +6,281 @@
 <title>Programs — LegaXy Sports Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
+<style>
+/* ══════════════════════════════════════════════
+   LegaXy Sports Academy — Shared Styles
+   ══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --orange: #ff6a00;
+  --navy: #0d1b2a;
+  --cream: #faf8f5;
+  --warm: #f2ede7;
+  --text: #111;
+  --muted: #6b7280;
+  --border: rgba(0,0,0,0.07);
+  --fd: 'Barlow Condensed', sans-serif;
+  --fb: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  padding-top: 68px;
+}
+
+/* ══════════ SCROLL BAR ══════════ */
+#scrollBar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--orange), #ffb347); z-index: 9999; pointer-events: none; }
+
+/* ══════════ NAVBAR ══════════ */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 68px; padding: 0 40px; display: flex; align-items: center; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); transition: box-shadow 0.4s; }
+.navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.nav-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+
+/* ── Logo: dominant and premium ── */
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+.nav-logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+.nav-links > li { position: relative; }
+.nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 12.5px; font-weight: 500; padding: 7px 11px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.09); }
+.nav-links .nav-cta { background: var(--orange); color: white !important; padding: 8px 18px !important; box-shadow: 0 4px 16px rgba(255,106,0,0.35); border-radius: 8px; }
+.nav-links .nav-cta:hover { background: #ff7d1a; transform: translateY(-1px); }
+.menu-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 5px; }
+
+/* ══════════ PROGRAMS DROPDOWN ══════════ */
+.nav-arrow { font-size: 10px; opacity: 0.7; transition: transform 0.25s; }
+.nav-dropdown.open .nav-arrow { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 6px;
+  list-style: none;
+  min-width: 210px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 100;
+}
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-menu li a {
+  display: block;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  background: none;
+  transition: all 0.15s;
+}
+.nav-dropdown-menu li a:hover {
+  color: white;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ══════════ MOBILE MENU ══════════ */
+.mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(13,27,42,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); }
+.mobile-menu.open { right: 0; }
+.menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px; }
+.mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 20px; }
+.mobile-nav-links a { color: white; font-size: 20px; text-decoration: none; font-family: var(--fd); letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+.mobile-nav-links a:hover { color: var(--orange); }
+.mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
+
+/* ══════════ GLASS OVERLAY ══════════ */
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+
+/* ══════════ SHARED LAYOUT ══════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
+.section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.tag-line { width: 20px; height: 2px; background: var(--orange); display: inline-block; }
+.section-h2 { font-family: var(--fd); font-size: clamp(32px,4vw,48px); font-weight: 800; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 10px; }
+.section-sub { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 560px; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: 0.08s; }
+.rd2 { transition-delay: 0.16s; }
+.rd3 { transition-delay: 0.24s; }
+.rd4 { transition-delay: 0.32s; }
+
+/* ══════════ BUTTONS ══════════ */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.25s ease; text-decoration: none; font-family: var(--fb); position: relative; overflow: hidden; }
+.btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); transition: 0.55s; }
+.btn:hover::after { transform: translateX(100%); }
+.btn-primary { background: white; color: var(--orange); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.3); }
+.btn-orange { background: var(--orange); color: white; box-shadow: 0 8px 24px rgba(255,106,0,0.38); }
+.btn-orange:hover { background: #ff7a1a; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,106,0,0.48); }
+.btn-outline { background: transparent; color: var(--orange); border: 1.5px solid var(--orange); }
+.btn-outline:hover { background: rgba(255,106,0,0.07); transform: translateY(-2px); }
+.btn-outline-w { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.28); }
+.btn-outline-w:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+.btn-glass { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(12px); }
+.btn-glass:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+/* ══════════ PAGE HERO (sub-pages) ══════════
+   Compact: users see content below without scrolling
+   ══════════════════════════════════════════════ */
+.page-hero {
+  background: linear-gradient(120deg, #ff6a00 0%, #c94a00 28%, #0d1b2a 68%, #08111e 100%);
+  color: white;
+  padding: 44px 0 40px;        /* was 80px / 60px */
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.055; mix-blend-mode: overlay; }
+.page-hero-orb { position: absolute; top: -20%; left: -10%; width: 50%; height: 140%; background: radial-gradient(ellipse, rgba(255,140,0,0.2) 0%, transparent 65%); z-index: 0; pointer-events: none; }
+.page-hero-orb2 { position: absolute; top: -30%; right: -5%; width: 40%; height: 160%; background: radial-gradient(ellipse, rgba(255,106,0,0.08) 0%, transparent 65%); z-index: 0; pointer-events: none; }
+
+/* ── Hero inner layout: left text + right image ── */
+.page-hero .container { position: relative; z-index: 2; display: flex; align-items: center; gap: 40px; }
+.page-hero-content { flex: 1; min-width: 0; }
+.page-hero-visual { flex: 0 0 380px; display: flex; justify-content: flex-end; }
+
+/* ── Hero image placeholder ── */
+.page-hero-img {
+  width: 100%;
+  max-width: 380px;
+  height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 8px 24px rgba(255,106,0,0.15);
+}
+.page-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  /* Replace src attribute to swap image */
+}
+.page-hero-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,106,0,0.25) 0%, rgba(13,27,42,0.6) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.page-hero-img-placeholder .ph-icon { font-size: 48px; opacity: 0.7; }
+.page-hero-img-placeholder .ph-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+/* Shimmer border on image */
+.page-hero-img::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(140deg, rgba(255,255,255,0.22) 0%, rgba(255,106,0,0.12) 50%, rgba(255,255,255,0.04) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* ── Breadcrumb: HIDDEN everywhere ── */
+.page-hero-breadcrumb { display: none !important; }
+
+.page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.page-hero-eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.7); }
+
+/* Smaller h1 than before (was clamp 40–72px) */
+.page-hero h1 { font-family: var(--fd); font-size: clamp(34px,4vw,58px); font-weight: 900; line-height: 1.0; letter-spacing: -1px; margin-bottom: 12px; }
+.page-hero h1 em { color: rgba(255,255,255,0.85); font-style: normal; }
+.page-hero-sub { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.55; max-width: 520px; margin-bottom: 22px; }
+
+/* ══════════ PAGE SECTIONS ══════════ */
+.page-section { padding: 72px 0; }
+.page-section.alt { background: white; }
+.page-section.navy { background: var(--navy); position: relative; overflow: hidden; }
+.page-section.warm { background: var(--warm); }
+
+/* ══════════ PROG BADGES ══════════ */
+.prog-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; margin-bottom: 10px; }
+.inschool-badge { background: rgba(74,222,128,0.15); color: #4ade80; }
+.afterschool-badge { background: rgba(255,106,0,0.15); color: var(--orange); }
+.coe-badge { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.infra-badge { background: rgba(56,189,248,0.15); color: #38bdf8; }
+
+/* ══════════ FOOTER ══════════ */
+.footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+.footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
+.footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: white; }
+.footer-contacts { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 8px; }
+.footer-contact-row { display: flex; flex-direction: column; gap: 2px; }
+.footer-contact-name { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; letter-spacing: 0.5px; }
+.footer-contact-row a { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-bottom: 0; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+/* ══════════ ANIMATIONS ══════════ */
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hb1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes hb2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width: 1100px) {
+  .page-hero-visual { flex: 0 0 280px; }
+  .page-hero-img { max-width: 280px; height: 200px; }
+}
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .page-hero .container { flex-direction: column; gap: 20px; }
+  .page-hero-visual { flex: none; width: 100%; }
+  .page-hero-img { max-width: 100%; height: 180px; }
+}
+@media (max-width: 768px) {
+  html { scroll-padding-top: 60px; }
+  body { padding-top: 60px; }
+  .navbar { height: 64px; padding: 0 16px; }
+  .nav-logo img { height: 48px; }
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .container { padding: 0 16px; }
+  .page-hero { padding: 32px 0 28px; }
+  .page-hero h1 { font-size: 32px; }
+  .page-hero-sub { font-size: 13.5px; }
+  .page-section { padding: 48px 0; }
+  .footer { padding: 30px 0 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .footer-brand .footer-logo { margin: 0 auto 8px; }
+  .footer-brand p { margin: 0 auto; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .footer-contacts { align-items: center; }
+}
+
+</style>
 <style>
 /* ══ PROGRAM CARDS ══ */
 .programs-layout { display: flex; flex-direction: column; gap: 56px; margin-top: 48px; }
@@ -35,6 +309,9 @@
 
 /* ══ SEPARATOR ══ */
 .section-divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+/* ══ ANCHOR OFFSET (fixed navbar compensation) ══ */
+#ssep, #afterschool, #coe, #infra { scroll-margin-top: 88px; }
 
 @media (max-width: 1024px) {
   .prog-block, .prog-block.reverse { grid-template-columns: 1fr; direction: ltr; }
@@ -111,7 +388,7 @@
     <div class="programs-layout">
 
       <!-- SSEP -->
-      <div class="prog-block reveal">
+      <div id="ssep" class="prog-block reveal">
         <div class="prog-block-img">
           <img src="inschool.png" alt="In-School Program">
           <div class="prog-block-img-overlay">
@@ -137,7 +414,7 @@
       <div class="section-divider"></div>
 
       <!-- AFTER-SCHOOL -->
-      <div class="prog-block reverse reveal">
+      <div id="afterschool" class="prog-block reverse reveal">
         <div class="prog-block-img">
           <img src="afterschool.png" alt="After-School Program">
           <div class="prog-block-img-overlay">
@@ -162,7 +439,7 @@
       <div class="section-divider"></div>
 
       <!-- COE -->
-      <div class="prog-block reveal">
+      <div id="coe" class="prog-block reveal">
         <div class="prog-block-img">
           <img src="coe.png" alt="Centre of Excellence">
           <div class="prog-block-img-overlay">
@@ -187,7 +464,7 @@
       <div class="section-divider"></div>
 
       <!-- PAY & PLAY -->
-      <div class="prog-block reverse reveal">
+      <div id="infra" class="prog-block reverse reveal">
         <div class="prog-block-img">
           <img src="paynplay.png" alt="Pay & Play Infrastructure">
           <div class="prog-block-img-overlay">
@@ -229,6 +506,169 @@
   </div>
 </section>
 
-<script src="shared.js"></script>
+<script>
+/* ══════════════════════════════════════════════
+   LegaXy Sports Academy — Shared Components
+   ══════════════════════════════════════════════ */
+
+(function() {
+
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+
+  const NAV_MAP = {
+    'sports.html':       0,
+    'how-it-works.html': 1,
+    'programs.html':     2,
+    'athletes.html':     3,
+    'schools.html':      4,
+    'gallery.html':      5,
+    'partnerships.html': 6,
+    'contact.html':      7,
+    'demo.html':         7
+  };
+
+  const navHTML = `
+<div id="scrollBar"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+    </a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <ul class="nav-links">
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li class="nav-dropdown">
+        <a href="programs.html" class="nav-dropdown-trigger">Programs <span class="nav-arrow">▾</span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="programs.html#ssep">In-School Programs</a></li>
+          <li><a href="programs.html#afterschool">After-School Programs</a></li>
+          <li><a href="programs.html#coe">Centers of Excellence</a></li>
+          <li><a href="programs.html#infra">Infrastructure & Consulting</a></li>
+        </ul>
+      </li>
+      <li><a href="athletes.html">Our Athletes</a></li>
+      <li><a href="schools.html">For Schools</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="partnerships.html">Partnerships</a></li>
+      <li><a href="contact.html" class="nav-cta">Partner With Us →</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="sports.html">Sports</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="athletes.html">Our Athletes</a></li>
+    <li><a href="schools.html">For Schools</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="partnerships.html">Partnerships</a></li>
+    <li><a href="contact.html" class="nav-cta">Partner With Us →</a></li>
+  </ul>
+</div>`;
+
+  const footerHTML = `
+<footer class="footer">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a href="programs.html">In-School Program (SSEP)</a>
+        <a href="programs.html">After-School Coaching</a>
+        <a href="programs.html">Centre of Excellence</a>
+        <a href="programs.html">Pay &amp; Play</a>
+        <a href="programs.html">Infrastructure Development</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="partnerships.html">Partnerships</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#">LegaXy Elite</a>
+        <a href="#">LegaXy Studio</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
+        <a href="contact.html">Partner With Us</a>
+        <a href="Deck_LSA.pdf" download>Download Brochure</a>
+        <div class="footer-contacts">
+          <div class="footer-contact-row">
+            <span class="footer-contact-name">Tushar Bhaskar</span>
+            <a href="mailto:tushar@legaxy.org">tushar@legaxy.org</a>
+          </div>
+          <div class="footer-contact-row">
+            <span class="footer-contact-name">Srisha Bhalle</span>
+            <a href="mailto:srisha@legaxy.org">srisha@legaxy.org</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LegaXy Sports Academy. All rights reserved.</p>
+      <p>Spot. Train. Rise.</p>
+    </div>
+  </div>
+</footer>`;
+
+  document.body.insertAdjacentHTML('afterbegin', navHTML);
+  document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+  // ── Active nav highlight ──
+  const activeIdx = NAV_MAP[path];
+  if (activeIdx !== undefined) {
+    const links = document.querySelectorAll('.nav-links > li > a:not(.nav-cta)');
+    if (links[activeIdx]) links[activeIdx].classList.add('active');
+  }
+  if (path === 'programs.html') {
+    const dt = document.querySelector('.nav-dropdown-trigger');
+    if (dt) dt.classList.add('active');
+  }
+
+  // ── Mobile menu toggle ──
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('open');
+  });
+  document.getElementById('menuClose').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+  document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  // ── Programs dropdown ──
+  const dropdownLi = document.querySelector('.nav-dropdown');
+  if (dropdownLi) {
+    dropdownLi.addEventListener('mouseenter', () => dropdownLi.classList.add('open'));
+    dropdownLi.addEventListener('mouseleave', () => dropdownLi.classList.remove('open'));
+  }
+
+  // ── Scroll progress & navbar shadow ──
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    const h = document.body.scrollHeight - window.innerHeight;
+    const bar = document.getElementById('scrollBar');
+    if (bar) bar.style.width = (s / h * 100) + '%';
+    document.getElementById('navbar').classList.toggle('scrolled', s > 60);
+  });
+
+  // ── Reveal on scroll ──
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+})();
+
+</script>
 </body>
 </html>
