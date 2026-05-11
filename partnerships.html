@@ -27,27 +27,27 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
 body {
   font-family: var(--fb);
   background: var(--cream);
   color: var(--text);
   overflow-x: hidden;
-  padding-top: 68px;
+  padding-top: 72px;
 }
 
 /* ══════════ SCROLL BAR ══════════ */
 #scrollBar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--orange), #ffb347); z-index: 9999; pointer-events: none; }
 
 /* ══════════ NAVBAR ══════════ */
-.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 68px; padding: 0 40px; display: flex; align-items: center; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); transition: box-shadow 0.4s; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px; padding: 0 40px; display: flex; align-items: center; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); transition: box-shadow 0.4s; }
 .navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 .nav-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
 
 /* ── Logo: dominant and premium ── */
 .nav-logo { text-decoration: none; display: flex; align-items: center; }
-.nav-logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+.nav-logo img { height: 58px; width: auto; object-fit: contain; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links > li { position: relative; }
@@ -230,7 +230,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand .footer-logo { height: 90px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
 .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
@@ -262,9 +262,9 @@ body {
 }
 @media (max-width: 768px) {
   html { scroll-padding-top: 60px; }
-  body { padding-top: 60px; }
-  .navbar { height: 64px; padding: 0 16px; }
-  .nav-logo img { height: 48px; }
+  body { padding-top: 68px; }
+  .navbar { height: 68px; padding: 0 16px; }
+  .nav-logo img { height: 50px; }
   .nav-links { display: none; }
   .menu-toggle { display: block; }
   .container { padding: 0 16px; }
