@@ -6,32 +6,572 @@
 <title>For Schools — LegaXy Sports Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
 <style>
-/* ══ WHAT WE PROVIDE ══ */
-.provide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-.provide-card { background: white; border-radius: 18px; padding: 28px 22px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: all 0.3s; cursor: default; }
-.provide-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), #ffaa60); transform: scaleX(0); transform-origin: left; transition: 0.35s; }
-.provide-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); border-color: transparent; }
-.provide-card:hover::before { transform: scaleX(1); }
-.provide-icon { width: 52px; height: 52px; background: rgba(255,106,0,0.09); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
-.provide-card h4 { font-family: var(--fd); font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-.provide-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+/* ══════════════════════════════════════════════
+   LegaXy Sports Academy — Shared Styles
+   ══════════════════════════════════════════════ */
 
-/* ══ BENEFITS ══ */
-.benefits-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.benefit-list { display: flex; flex-direction: column; gap: 16px; }
-.benefit-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: rgba(255,255,255,0.06); border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s; }
-.benefit-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,106,0,0.3); }
-.benefit-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--orange), #ff8c42); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-.benefit-item h4 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 4px; }
-.benefit-item p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; margin: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
-/* ══ OUTCOMES ══ */
-.outcome-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.outcome-stat { padding: 20px; background: rgba(255,255,255,0.05); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
-.outcome-num { font-family: var(--fd); font-size: 40px; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 4px; }
-.outcome-lbl { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.4; }
+:root {
+  --orange: #ff6a00;
+  --navy: #0d1b2a;
+  --cream: #faf8f5;
+  --warm: #f2ede7;
+  --text: #111;
+  --muted: #6b7280;
+  --border: rgba(0,0,0,0.07);
+  --fd: 'Barlow Condensed', sans-serif;
+  --fb: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+
+body {
+  font-family: var(--fb);
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  padding-top: 68px;
+}
+
+/* ══════════ SCROLL BAR ══════════ */
+#scrollBar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--orange), #ffb347); z-index: 9999; pointer-events: none; }
+
+/* ══════════ NAVBAR ══════════ */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 68px; padding: 0 40px; display: flex; align-items: center; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); transition: box-shadow 0.4s; }
+.navbar.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.nav-inner { max-width: 1280px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+
+/* ── Logo: dominant and premium ── */
+.nav-logo { text-decoration: none; display: flex; align-items: center; }
+.nav-logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+.nav-links > li { position: relative; }
+.nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 12.5px; font-weight: 500; padding: 7px 11px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,0.09); }
+.nav-links .nav-cta { background: var(--orange); color: white !important; padding: 8px 18px !important; box-shadow: 0 4px 16px rgba(255,106,0,0.35); border-radius: 8px; }
+.nav-links .nav-cta:hover { background: #ff7d1a; transform: translateY(-1px); }
+.menu-toggle { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 5px; }
+
+/* ══════════ PROGRAMS DROPDOWN ══════════ */
+.nav-arrow { font-size: 10px; opacity: 0.7; transition: transform 0.25s; }
+.nav-dropdown.open .nav-arrow { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 6px;
+  list-style: none;
+  min-width: 210px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 100;
+}
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-menu li a {
+  display: block;
+  padding: 9px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  background: none;
+  transition: all 0.15s;
+}
+.nav-dropdown-menu li a:hover {
+  color: white;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ══════════ MOBILE MENU ══════════ */
+.mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(13,27,42,0.98); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: right 0.4s cubic-bezier(0.4,0,0.2,1); }
+.mobile-menu.open { right: 0; }
+.menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 10px; }
+.mobile-nav-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 20px; }
+.mobile-nav-links a { color: white; font-size: 20px; text-decoration: none; font-family: var(--fd); letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+.mobile-nav-links a:hover { color: var(--orange); }
+.mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
+
+/* ══════════ GLASS OVERLAY ══════════ */
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+
+/* ══════════ SHARED LAYOUT ══════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
+.section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.tag-line { width: 20px; height: 2px; background: var(--orange); display: inline-block; }
+.section-h2 { font-family: var(--fd); font-size: clamp(32px,4vw,48px); font-weight: 800; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 10px; }
+.section-sub { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 560px; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: 0.08s; }
+.rd2 { transition-delay: 0.16s; }
+.rd3 { transition-delay: 0.24s; }
+.rd4 { transition-delay: 0.32s; }
+
+/* ══════════ BUTTONS ══════════ */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.25s ease; text-decoration: none; font-family: var(--fb); position: relative; overflow: hidden; }
+.btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); transition: 0.55s; }
+.btn:hover::after { transform: translateX(100%); }
+.btn-primary { background: white; color: var(--orange); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.3); }
+.btn-orange { background: var(--orange); color: white; box-shadow: 0 8px 24px rgba(255,106,0,0.38); }
+.btn-orange:hover { background: #ff7a1a; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,106,0,0.48); }
+.btn-outline { background: transparent; color: var(--orange); border: 1.5px solid var(--orange); }
+.btn-outline:hover { background: rgba(255,106,0,0.07); transform: translateY(-2px); }
+.btn-outline-w { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.28); }
+.btn-outline-w:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+.btn-glass { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(12px); }
+.btn-glass:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+/* ══════════ PAGE HERO (sub-pages) ══════════
+   Compact: users see content below without scrolling
+   ══════════════════════════════════════════════ */
+.page-hero {
+  background: linear-gradient(120deg, #ff6a00 0%, #c94a00 28%, #0d1b2a 68%, #08111e 100%);
+  color: white;
+  padding: 44px 0 40px;        /* was 80px / 60px */
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.055; mix-blend-mode: overlay; }
+.page-hero-orb { position: absolute; top: -20%; left: -10%; width: 50%; height: 140%; background: radial-gradient(ellipse, rgba(255,140,0,0.2) 0%, transparent 65%); z-index: 0; pointer-events: none; }
+.page-hero-orb2 { position: absolute; top: -30%; right: -5%; width: 40%; height: 160%; background: radial-gradient(ellipse, rgba(255,106,0,0.08) 0%, transparent 65%); z-index: 0; pointer-events: none; }
+
+/* ── Hero inner layout: left text + right image ── */
+.page-hero .container { position: relative; z-index: 2; display: flex; align-items: center; gap: 40px; }
+.page-hero-content { flex: 1; min-width: 0; }
+.page-hero-visual { flex: 0 0 380px; display: flex; justify-content: flex-end; }
+
+/* ── Hero image placeholder ── */
+.page-hero-img {
+  width: 100%;
+  max-width: 380px;
+  height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 8px 24px rgba(255,106,0,0.15);
+}
+.page-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+  /* Replace src attribute to swap image */
+}
+.page-hero-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,106,0,0.25) 0%, rgba(13,27,42,0.6) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.page-hero-img-placeholder .ph-icon { font-size: 48px; opacity: 0.7; }
+.page-hero-img-placeholder .ph-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+/* Shimmer border on image */
+.page-hero-img::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(140deg, rgba(255,255,255,0.22) 0%, rgba(255,106,0,0.12) 50%, rgba(255,255,255,0.04) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* ── Breadcrumb: HIDDEN everywhere ── */
+.page-hero-breadcrumb { display: none !important; }
+
+.page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+.page-hero-eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.7); }
+
+/* Smaller h1 than before (was clamp 40–72px) */
+.page-hero h1 { font-family: var(--fd); font-size: clamp(34px,4vw,58px); font-weight: 900; line-height: 1.0; letter-spacing: -1px; margin-bottom: 12px; }
+.page-hero h1 em { color: rgba(255,255,255,0.85); font-style: normal; }
+.page-hero-sub { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.55; max-width: 520px; margin-bottom: 22px; }
+
+/* ══════════ PAGE SECTIONS ══════════ */
+.page-section { padding: 72px 0; }
+.page-section.alt { background: white; }
+.page-section.navy { background: var(--navy); position: relative; overflow: hidden; }
+.page-section.warm { background: var(--warm); }
+
+/* ══════════ PROG BADGES ══════════ */
+.prog-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; margin-bottom: 10px; }
+.inschool-badge { background: rgba(74,222,128,0.15); color: #4ade80; }
+.afterschool-badge { background: rgba(255,106,0,0.15); color: var(--orange); }
+.coe-badge { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.infra-badge { background: rgba(56,189,248,0.15); color: #38bdf8; }
+
+/* ══════════ FOOTER ══════════ */
+.footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+.footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
+.footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: white; }
+.footer-contacts { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 8px; }
+.footer-contact-row { display: flex; flex-direction: column; gap: 2px; }
+.footer-contact-name { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; letter-spacing: 0.5px; }
+.footer-contact-row a { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-bottom: 0; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.25); }
+
+/* ══════════ ANIMATIONS ══════════ */
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hb1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes hb2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width: 1100px) {
+  .page-hero-visual { flex: 0 0 280px; }
+  .page-hero-img { max-width: 280px; height: 200px; }
+}
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .page-hero .container { flex-direction: column; gap: 20px; }
+  .page-hero-visual { flex: none; width: 100%; }
+  .page-hero-img { max-width: 100%; height: 180px; }
+}
+@media (max-width: 768px) {
+  html { scroll-padding-top: 60px; }
+  body { padding-top: 60px; }
+  .navbar { height: 64px; padding: 0 16px; }
+  .nav-logo img { height: 48px; }
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .container { padding: 0 16px; }
+  .page-hero { padding: 32px 0 28px; }
+  .page-hero h1 { font-size: 32px; }
+  .page-hero-sub { font-size: 13.5px; }
+  .page-section { padding: 48px 0; }
+  .footer { padding: 30px 0 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+  .footer-brand .footer-logo { margin: 0 auto 8px; }
+  .footer-brand p { margin: 0 auto; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .footer-contacts { align-items: center; }
+}
+
+</style>
+<style>
+
+/* ══ PROBLEM STRIP ══ */
+.problem-strip {
+  background: #fff8f4;
+  border-top: 3px solid var(--orange);
+  border-bottom: 1px solid rgba(255,106,0,0.12);
+  padding: 28px 0;
+}
+.problem-strip .container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.problem-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1.5px solid rgba(255,106,0,0.18);
+  border-radius: 100px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(255,106,0,0.07);
+}
+.problem-pill .pill-x { color: var(--orange); font-size: 15px; font-weight: 800; }
+.problem-strip-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+/* ══ WHAT WE HANDLE — BIG VISUAL ══ */
+.handle-section { background: white; padding: 80px 0; }
+.handle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+.handle-card {
+  background: white;
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: all 0.3s;
+  cursor: default;
+  overflow: hidden;
+}
+.handle-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--orange), #ffaa60);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.4s;
+}
+.handle-card:hover { background: #fff8f4; transform: none; box-shadow: inset 0 0 0 2px rgba(255,106,0,0.15); }
+.handle-card:hover::after { transform: scaleX(1); }
+.handle-num {
+  font-family: var(--fd);
+  font-size: 56px;
+  font-weight: 900;
+  color: rgba(255,106,0,0.12);
+  line-height: 1;
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+.handle-card:hover .handle-num { color: rgba(255,106,0,0.25); }
+.handle-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.handle-card h3 { font-family: var(--fd); font-size: 22px; font-weight: 900; margin-bottom: 8px; color: var(--text); }
+.handle-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+.handle-card .handle-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(255,106,0,0.08);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+/* ══ BEFORE / AFTER COMPARISON ══ */
+.compare-section { background: var(--navy); padding: 80px 0; position: relative; overflow: hidden; }
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin-top: 48px;
+}
+.compare-col {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.compare-col.before { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+.compare-col.after  { background: linear-gradient(135deg, rgba(255,106,0,0.15) 0%, rgba(255,106,0,0.05) 100%); border: 1.5px solid rgba(255,106,0,0.3); }
+.compare-header {
+  padding: 20px 24px;
+  font-family: var(--fd);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.compare-col.before .compare-header { color: rgba(255,255,255,0.35); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.compare-col.after  .compare-header { color: var(--orange); border-bottom: 1px solid rgba(255,106,0,0.2); }
+.compare-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.compare-col.before .compare-row { color: rgba(255,255,255,0.45); }
+.compare-col.after  .compare-row { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,106,0,0.08); }
+.compare-row:last-child { border-bottom: none; }
+.compare-icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+.compare-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vs-badge {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--orange), #ff8c42);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 16px; font-weight: 900; color: white;
+  box-shadow: 0 8px 24px rgba(255,106,0,0.4);
+  flex-shrink: 0;
+}
+
+/* ══ HOW IT WORKS — SCHOOL TIMELINE ══ */
+.timeline-section { background: var(--cream); padding: 80px 0; }
+.school-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+}
+.school-timeline::before {
+  content: '';
+  position: absolute;
+  top: 36px; left: calc(12.5%); right: calc(12.5%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), rgba(255,106,0,0.2));
+  z-index: 0;
+}
+.timeline-step {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+.timeline-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--orange);
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 8px 24px rgba(255,106,0,0.2);
+  transition: all 0.3s;
+}
+.timeline-step:hover .timeline-circle {
+  background: var(--orange);
+  transform: scale(1.08);
+}
+.timeline-step .step-num {
+  position: absolute;
+  top: -6px; right: calc(50% - 44px);
+  width: 20px; height: 20px;
+  background: var(--orange);
+  border-radius: 50%;
+  font-size: 10px; font-weight: 800; color: white;
+  display: flex; align-items: center; justify-content: center;
+}
+.timeline-step h4 { font-family: var(--fd); font-size: 20px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+.timeline-step p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.timeline-week {
+  font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--orange); display: block; margin-bottom: 8px;
+}
+
+/* ══ STAT BANNER ══ */
+.stat-banner {
+  background: linear-gradient(120deg, var(--orange) 0%, #c94a00 40%, var(--navy) 100%);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+.stat-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.06; mix-blend-mode: overlay;
+}
+.stat-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  position: relative; z-index: 2;
+}
+.stat-banner-item {
+  text-align: center;
+  padding: 20px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.stat-banner-item:last-child { border-right: none; }
+.stat-big {
+  font-family: var(--fd);
+  font-size: 52px; font-weight: 900;
+  color: white; line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-big span { color: rgba(255,255,255,0.6); font-size: 32px; }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.4; font-weight: 500; }
+
+/* ══ WHO IS THIS FOR ══ */
+.for-whom-section { background: white; padding: 80px 0; }
+.for-whom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.for-whom-card {
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.for-whom-card:hover {
+  border-color: rgba(255,106,0,0.3);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.07);
+  transform: translateY(-5px);
+}
+.for-whom-card .card-emoji { font-size: 40px; margin-bottom: 16px; display: block; }
+.for-whom-card h4 { font-family: var(--fd); font-size: 24px; font-weight: 900; margin-bottom: 10px; color: var(--text); }
+.for-whom-card .card-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.for-whom-card .card-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.for-whom-card .card-list li {
+  font-size: 13px; color: var(--muted);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.for-whom-card .card-list li::before {
+  content: '✓';
+  color: var(--orange); font-weight: 800; font-size: 12px;
+  flex-shrink: 0; margin-top: 1px;
+}
+.for-whom-card.featured {
+  background: var(--navy);
+  border-color: rgba(255,106,0,0.3);
+}
+.for-whom-card.featured h4 { color: white; }
+.for-whom-card.featured .card-desc { color: rgba(255,255,255,0.55); }
+.for-whom-card.featured .card-list li { color: rgba(255,255,255,0.7); }
+.for-whom-card.featured .card-list li::before { color: var(--orange); }
+.featured-badge {
+  position: absolute; top: 20px; right: 20px;
+  background: var(--orange);
+  color: white; font-size: 9px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+}
 
 /* ══ COMPLIANCE ══ */
 .compliance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
@@ -52,40 +592,537 @@
 .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 18px; }
 
 @media (max-width: 1024px) {
-  .provide-grid { grid-template-columns: 1fr 1fr; }
-  .benefits-layout { grid-template-columns: 1fr; }
+  .handle-grid { grid-template-columns: 1fr 1fr; }
+  .compare-grid { grid-template-columns: 1fr; gap: 16px; }
+  .compare-divider { display: none; }
+  .school-timeline { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .school-timeline::before { display: none; }
+  .stat-banner-grid { grid-template-columns: 1fr 1fr; }
+  .stat-banner-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .stat-banner-item:last-child { border-bottom: none; }
+  .for-whom-grid { grid-template-columns: 1fr 1fr; }
   .compliance-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  .provide-grid { grid-template-columns: 1fr; }
+  .handle-grid { grid-template-columns: 1fr; }
+  .school-timeline { grid-template-columns: 1fr; }
+  .stat-banner-grid { grid-template-columns: 1fr 1fr; }
+  .stat-big { font-size: 40px; }
+  .for-whom-grid { grid-template-columns: 1fr; }
   .compliance-grid { grid-template-columns: 1fr 1fr; }
-  .outcome-stat-grid { grid-template-columns: 1fr; }
+  .problem-pill { font-size: 12px; padding: 7px 14px; }
 }
 </style>
 </head>
 <body>
 
+<!-- ══ PAGE HERO ══ -->
 <section class="page-hero">
   <div class="page-hero-orb"></div>
   <div class="page-hero-orb2"></div>
   <div class="container">
     <div class="page-hero-content">
-    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">ashwath@legaxy.org</div></div>
-        <div style="text-align:center;"><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:2px;">srisha@legaxy.org</div></div>
+      <div class="page-hero-eyebrow"><span class="dot"></span> Built Exclusively for Schools</div>
+      <h1>Your School Deserves<br><em>Better Sport.</em></h1>
+      <p class="page-hero-sub">LegaXy is India's only fully managed school sports program. We bring the coaches, curriculum, equipment, and reporting — so your school gets world-class sport without the operational headache.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Get a Free Demo →</a>
+        <a href="Deck_LSA.pdf" download class="btn btn-glass">Download Brochure</a>
       </div>
-    </div>
     </div>
     <div class="page-hero-visual">
       <div class="page-hero-img">
-        <img src="coaches.png" alt="For Schools" onerror="this.parentElement.innerHTML='&lt;div class=&quot;page-hero-img-placeholder&quot;&gt;&lt;span class=&quot;ph-icon&quot;&gt;🏫&lt;/span&gt;&lt;span class=&quot;ph-label&quot;&gt;Schools&lt;/span&gt;&lt;/div&gt;'">
+        <img src="coaches.png" alt="For Schools" onerror="this.parentElement.innerHTML='<div class=&quot;page-hero-img-placeholder&quot;><span class=&quot;ph-icon&quot;>🏫</span><span class=&quot;ph-label&quot;>Schools</span></div>'">
       </div>
     </div>
   </div>
 </section>
 
-<script src="shared.js"></script>
+<!-- ══ PROBLEM STRIP — immediate hook ══ -->
+<div class="problem-strip">
+  <div class="container">
+    <span class="problem-strip-label">Sound familiar?</span>
+    <div class="problem-pill"><span class="pill-x">✗</span> One PE teacher for 800 students</div>
+    <div class="problem-pill"><span class="pill-x">✗</span> No structured sports curriculum</div>
+    <div class="problem-pill"><span class="pill-x">✗</span> Zero data on student fitness</div>
+    <div class="problem-pill"><span class="pill-x">✗</span> Sports period = free period</div>
+    <div class="problem-pill"><span class="pill-x">✗</span> Parents asking "what are you doing for PE?"</div>
+  </div>
+</div>
+
+<!-- ══ WHO THIS IS FOR ══ -->
+<section class="for-whom-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> This Is For You If…</div>
+      <h2 class="section-h2">Built for Every Kind of School</h2>
+      <p class="section-sub" style="margin:0 auto;">Whether you're a 300-student school or a 3,000-student institution, LegaXy scales to fit your needs, budget, and facilities.</p>
+    </div>
+    <div class="for-whom-grid">
+      <div class="for-whom-card reveal rd1">
+        <span class="card-emoji">🏫</span>
+        <h4>CBSE & ICSE Schools</h4>
+        <p class="card-desc">You want to tick the PE box properly — aligned with NCF 2023, NEP 2020, and CBSE standards, with reporting to prove it.</p>
+        <ul class="card-list">
+          <li>NEP 2020 & CBSE PE compliant</li>
+          <li>Fit India School Rating support</li>
+          <li>Monthly reports for management</li>
+          <li>Works within your existing timetable</li>
+        </ul>
+      </div>
+      <div class="for-whom-card featured reveal rd2">
+        <span class="featured-badge">Most Popular</span>
+        <span class="card-emoji">🎯</span>
+        <h4>Schools That Want to Stand Out</h4>
+        <p class="card-desc">You want sport to be a genuine differentiator — something parents talk about, students love, and management can measure.</p>
+        <ul class="card-list">
+          <li>8+ sports in a rotating curriculum</li>
+          <li>Inter-school tournaments & School Olympics</li>
+          <li>Athlete-mentored methodology</li>
+          <li>Parent-visible progress dashboards</li>
+        </ul>
+      </div>
+      <div class="for-whom-card reveal rd3">
+        <span class="card-emoji">📈</span>
+        <h4>Growth-Focused Institutions</h4>
+        <p class="card-desc">You're expanding and want sports infrastructure that scales — courts, coaching, programs — built to grow with your school.</p>
+        <ul class="card-list">
+          <li>Infrastructure design & development</li>
+          <li>Pay & Play revenue model</li>
+          <li>After-school & weekend programs</li>
+          <li>Talent identification pipeline</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STAT BANNER ══ -->
+<div class="stat-banner">
+  <div class="container">
+    <div class="stat-banner-grid">
+      <div class="stat-banner-item reveal rd1">
+        <div class="stat-big">8<span>+</span></div>
+        <div class="stat-label">Sports in the curriculum — cricket, football, basketball, and more</div>
+      </div>
+      <div class="stat-banner-item reveal rd2">
+        <div class="stat-big">36<span>wk</span></div>
+        <div class="stat-label">Structured annual program aligned to your academic calendar</div>
+      </div>
+      <div class="stat-banner-item reveal rd3">
+        <div class="stat-big">0</div>
+        <div class="stat-label">Operational burden on your school. We handle everything.</div>
+      </div>
+      <div class="stat-banner-item reveal rd4">
+        <div class="stat-big">1–10</div>
+        <div class="stat-label">Classes covered — age-appropriate programs for every grade</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WHAT WE HANDLE ══ -->
+<section class="handle-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> What LegaXy Handles</div>
+      <h2 class="section-h2">We Run Your Sports.<br>You Run Your School.</h2>
+      <p class="section-sub" style="margin:0 auto;">Every single operational piece — owned, managed, and delivered by LegaXy. Your staff doesn't touch any of it.</p>
+    </div>
+    <div class="handle-grid">
+      <div class="handle-card reveal rd1">
+        <div class="handle-num">01</div>
+        <span class="handle-icon">👨‍🏫</span>
+        <h3>Coaches</h3>
+        <p>We hire, train, certify, background-check, and deploy qualified coaches at your school. Coach quality, attendance, and performance — all monitored by us.</p>
+        <span class="handle-tag">Fully Staffed by LegaXy</span>
+      </div>
+      <div class="handle-card reveal rd2">
+        <div class="handle-num">02</div>
+        <span class="handle-icon">📋</span>
+        <h3>Curriculum</h3>
+        <p>A 36-week, class-wise sports curriculum — Foundation (1–3), Development (4–7), Performance (8–10). Every session planned, documented, and logged.</p>
+        <span class="handle-tag">NEP & CBSE Aligned</span>
+      </div>
+      <div class="handle-card reveal rd3">
+        <div class="handle-num">03</div>
+        <span class="handle-icon">🏏</span>
+        <h3>Equipment</h3>
+        <p>Age-appropriate, sport-specific equipment supplied and maintained. We set up courts, mark grounds, and prep every session — you do nothing.</p>
+        <span class="handle-tag">Supplied & Maintained</span>
+      </div>
+      <div class="handle-card reveal rd1">
+        <div class="handle-num">04</div>
+        <span class="handle-icon">📊</span>
+        <h3>Tracking & Reports</h3>
+        <p>Per-student fitness benchmarks, skill progress, attendance, and improvement data — visible to school management and parents via the LegaXy app.</p>
+        <span class="handle-tag">Live App + Monthly Reports</span>
+      </div>
+      <div class="handle-card reveal rd2">
+        <div class="handle-num">05</div>
+        <span class="handle-icon">🏆</span>
+        <h3>Events & Competitions</h3>
+        <p>Inter-house matches, School Olympics, Parents Premier League, and inter-school leagues — we plan, organise, and execute every event end-to-end.</p>
+        <span class="handle-tag">Full Event Management</span>
+      </div>
+      <div class="handle-card reveal rd3">
+        <div class="handle-num">06</div>
+        <span class="handle-icon">🔗</span>
+        <h3>Timetable Integration</h3>
+        <p>We fit around your existing schedule — no disruption to academics. Whether it's a 40-minute period or a double block, we make it work seamlessly.</p>
+        <span class="handle-tag">Zero Disruption</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BEFORE / AFTER ══ -->
+<section class="compare-section">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> The Difference</div>
+      <h2 class="section-h2" style="color:white;">Your School, Before & After LegaXy</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto;">This is what changes when you stop managing sport and let LegaXy run it.</p>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="compare-col before">
+        <div class="compare-header">✗ &nbsp;Without LegaXy</div>
+        <div class="compare-row"><span class="compare-icon">😓</span> One PE teacher struggling to cover all classes</div>
+        <div class="compare-row"><span class="compare-icon">📭</span> No curriculum — sessions are improvised</div>
+        <div class="compare-row"><span class="compare-icon">❓</span> No idea which students have athletic potential</div>
+        <div class="compare-row"><span class="compare-icon">📵</span> Parents have zero visibility into PE</div>
+        <div class="compare-row"><span class="compare-icon">🏚️</span> Equipment is outdated or nonexistent</div>
+        <div class="compare-row"><span class="compare-icon">📉</span> No data on student fitness or progress</div>
+        <div class="compare-row"><span class="compare-icon">🎪</span> Sports day is the only "event" all year</div>
+      </div>
+      <div class="compare-divider">
+        <div class="vs-badge">VS</div>
+      </div>
+      <div class="compare-col after">
+        <div class="compare-header">✓ &nbsp;With LegaXy</div>
+        <div class="compare-row"><span class="compare-icon">👨‍🏫</span> Certified, trained coaches for every class</div>
+        <div class="compare-row"><span class="compare-icon">📋</span> 36-week structured curriculum, every session planned</div>
+        <div class="compare-row"><span class="compare-icon">🎯</span> Data-driven talent identification across all grades</div>
+        <div class="compare-row"><span class="compare-icon">📱</span> Parents see real-time progress in the LegaXy app</div>
+        <div class="compare-row"><span class="compare-icon">🏏</span> Age-appropriate equipment, maintained by us</div>
+        <div class="compare-row"><span class="compare-icon">📈</span> Monthly reports with fitness benchmarks & skill scores</div>
+        <div class="compare-row"><span class="compare-icon">🏆</span> School Olympics, leagues & tournaments all year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT STARTS — ONBOARDING ══ -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Getting Started</div>
+      <h2 class="section-h2">From First Call to Day One —<br>In Under 4 Weeks</h2>
+      <p class="section-sub" style="margin:0 auto;">We've made onboarding as simple as possible. Your school shouldn't have to do anything heavy to get world-class sport up and running.</p>
+    </div>
+    <div class="school-timeline">
+      <div class="timeline-step reveal rd1">
+        <div class="timeline-circle" style="position:relative;">
+          <span class="step-num">1</span>
+          📞
+        </div>
+        <span class="timeline-week">Week 1</span>
+        <h4>Free Discovery Call</h4>
+        <p>15 minutes. We understand your school's size, timetable, facilities, and goals — no commitment needed.</p>
+      </div>
+      <div class="timeline-step reveal rd2">
+        <div class="timeline-circle" style="position:relative;">
+          <span class="step-num">2</span>
+          📐
+        </div>
+        <span class="timeline-week">Week 2</span>
+        <h4>Custom Program Design</h4>
+        <p>We design the SSEP specifically for your school — class sizes, timetable slots, sports selection, facilities.</p>
+      </div>
+      <div class="timeline-step reveal rd3">
+        <div class="timeline-circle" style="position:relative;">
+          <span class="step-num">3</span>
+          🏋️
+        </div>
+        <span class="timeline-week">Week 3</span>
+        <h4>Coaches & Setup</h4>
+        <p>Coaches deployed, equipment delivered, baseline assessments done. Everything ready before Day One.</p>
+      </div>
+      <div class="timeline-step reveal rd4">
+        <div class="timeline-circle" style="position:relative;">
+          <span class="step-num">4</span>
+          🚀
+        </div>
+        <span class="timeline-week">Week 4</span>
+        <h4>Program Launches</h4>
+        <p>Sessions begin. App live. Parents notified. Your school's sports culture starts here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPLIANCE ══ -->
+<section class="page-section alt">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Standards & Compliance</div>
+      <h2 class="section-h2">Tick Every Regulatory Box</h2>
+      <p class="section-sub" style="margin:0 auto;">LegaXy's SSEP is built to satisfy every national standard your school is assessed against — no extra work needed from you.</p>
+    </div>
+    <div class="compliance-grid">
+      <div class="compliance-card reveal rd1">
+        <div class="compliance-icon">📜</div>
+        <h4>NEP 2020</h4>
+        <p>Holistic, multidisciplinary development — physical education embedded at every level, as mandated.</p>
+      </div>
+      <div class="compliance-card reveal rd2">
+        <div class="compliance-icon">📚</div>
+        <h4>NCF 2023</h4>
+        <p>Sport as an integral part of foundational, preparatory, and middle school curriculum stages.</p>
+      </div>
+      <div class="compliance-card reveal rd3">
+        <div class="compliance-icon">🏛️</div>
+        <h4>CBSE PE Standards</h4>
+        <p>Curriculum, assessment rubrics, and documentation aligned to CBSE Physical Education requirements.</p>
+      </div>
+      <div class="compliance-card reveal rd4">
+        <div class="compliance-icon">🇮🇳</div>
+        <h4>Fit India Rating</h4>
+        <p>We help your school achieve and maintain Fit India School Rating — tracked, documented, and reportable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="page-section warm">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Common Questions</div>
+      <h2 class="section-h2">What Schools Ask Us</h2>
+    </div>
+    <div class="faq-list" style="max-width:800px;margin:0 auto;">
+      <div class="faq-item reveal rd1">
+        <div class="faq-q">We already have a PE teacher — do we still need LegaXy? <span class="arrow">+</span></div>
+        <div class="faq-a">Yes — and your PE teacher will thank you for it. LegaXy doesn't replace your teacher, we give them a structured framework, certified coaches, equipment, and reporting tools they didn't have before. Most schools find their PE teacher becomes far more effective with our system in place.</div>
+      </div>
+      <div class="faq-item reveal rd2">
+        <div class="faq-q">How does LegaXy fit into our existing timetable? <span class="arrow">+</span></div>
+        <div class="faq-a">We design the SSEP around your schedule — whether that's a 40-minute period or an 80-minute block. Our team works with your academic coordinator to fit seamlessly into available slots without disrupting core subjects.</div>
+      </div>
+      <div class="faq-item reveal rd3">
+        <div class="faq-q">What if we don't have proper sports facilities? <span class="arrow">+</span></div>
+        <div class="faq-a">That's fine — we start from wherever you are. We conduct a facility assessment during onboarding and design programs around your available space. We bring all equipment and can run effective sessions on open grounds, covered halls, or multi-purpose courts.</div>
+      </div>
+      <div class="faq-item reveal rd4">
+        <div class="faq-q">How do parents know what's happening in sports? <span class="arrow">+</span></div>
+        <div class="faq-a">Every parent gets visibility via the LegaXy app — their child's attendance, skill progress, fitness benchmarks, upcoming events, and coach notes. Sports becomes a transparent, reportable part of school life, not a black box.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What does the school actually need to do? <span class="arrow">+</span></div>
+        <div class="faq-a">Very little. Provide access to available space during allocated periods, and basic student roster information for baseline assessments. Everything else — coaches, equipment, curriculum, events, reporting — is owned and operated by LegaXy.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">What does it cost? <span class="arrow">+</span></div>
+        <div class="faq-a">Pricing is customised based on school size, number of classes, sports selected, and program type. We structure it to be sustainable and scale with you. Book a free call and we'll give you a transparent proposal with no hidden costs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="page-section" style="background:var(--navy);text-align:center;position:relative;overflow:hidden;">
+  <div class="glass-overlay"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;"><span class="tag-line"></span> Ready to Start?</div>
+      <h2 class="section-h2" style="color:white;">Your School's Sports Transformation<br>Starts With One Call.</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);margin:0 auto 28px;">Free 15-minute discovery call. No commitment. We'll walk you through exactly what LegaXy would look like for your school.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+        <a href="contact.html" class="btn btn-orange" style="font-size:16px;padding:16px 32px;">Get a Free Demo →</a>
+        <a href="Deck_LSA.pdf" download class="btn btn-outline-w">Download Brochure</a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);">No commitment. No sales pressure. Just a look at what's possible.</p>
+      <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:center;gap:40px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Tushar Bhaskar</div>
+          <a href="mailto:tushar@legaxy.org" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">tushar@legaxy.org</a>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Srisha Bhalle</div>
+          <a href="mailto:srisha@legaxy.org" style="color:white;text-decoration:none;font-weight:600;font-size:14px;">srisha@legaxy.org</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
-// FAQ accordion
+/* ══════════════════════════════════════════════
+   LegaXy Sports Academy — Shared Components
+   ══════════════════════════════════════════════ */
+
+(function() {
+
+  const path = window.location.pathname.split('/').pop() || 'index.html';
+
+  const NAV_MAP = {
+    'sports.html':       0,
+    'how-it-works.html': 1,
+    'programs.html':     2,
+    'athletes.html':     3,
+    'schools.html':      4,
+    'gallery.html':      5,
+    'partnerships.html': 6,
+    'contact.html':      7,
+    'demo.html':         7
+  };
+
+  const navHTML = `
+<div id="scrollBar"></div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+    </a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <ul class="nav-links">
+      <li><a href="sports.html">Sports</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li class="nav-dropdown">
+        <a href="programs.html" class="nav-dropdown-trigger">Programs <span class="nav-arrow">▾</span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="programs.html#ssep">In-School Programs</a></li>
+          <li><a href="programs.html#afterschool">After-School Programs</a></li>
+          <li><a href="programs.html#coe">Centers of Excellence</a></li>
+          <li><a href="programs.html#infra">Infrastructure & Consulting</a></li>
+        </ul>
+      </li>
+      <li><a href="athletes.html">Our Athletes</a></li>
+      <li><a href="schools.html">For Schools</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="partnerships.html">Partnerships</a></li>
+      <li><a href="contact.html" class="nav-cta">Partner With Us →</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="sports.html">Sports</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="athletes.html">Our Athletes</a></li>
+    <li><a href="schools.html">For Schools</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="partnerships.html">Partnerships</a></li>
+    <li><a href="contact.html" class="nav-cta">Partner With Us →</a></li>
+  </ul>
+</div>`;
+
+  const footerHTML = `
+<footer class="footer">
+  <div class="glass-overlay"></div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <a href="programs.html">In-School Program (SSEP)</a>
+        <a href="programs.html">After-School Coaching</a>
+        <a href="programs.html">Centre of Excellence</a>
+        <a href="programs.html">Pay &amp; Play</a>
+        <a href="programs.html">Infrastructure Development</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="partnerships.html">Partnerships</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#">LegaXy Elite</a>
+        <a href="#">LegaXy Studio</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>
+        <a href="contact.html">Partner With Us</a>
+        <a href="Deck_LSA.pdf" download>Download Brochure</a>
+        <div class="footer-contacts">
+          <div class="footer-contact-row">
+            <span class="footer-contact-name">Tushar Bhaskar</span>
+            <a href="mailto:tushar@legaxy.org">tushar@legaxy.org</a>
+          </div>
+          <div class="footer-contact-row">
+            <span class="footer-contact-name">Srisha Bhalle</span>
+            <a href="mailto:srisha@legaxy.org">srisha@legaxy.org</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LegaXy Sports Academy. All rights reserved.</p>
+      <p>Spot. Train. Rise.</p>
+    </div>
+  </div>
+</footer>`;
+
+  document.body.insertAdjacentHTML('afterbegin', navHTML);
+  document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+  // ── Active nav highlight ──
+  const activeIdx = NAV_MAP[path];
+  if (activeIdx !== undefined) {
+    const links = document.querySelectorAll('.nav-links > li > a:not(.nav-cta)');
+    if (links[activeIdx]) links[activeIdx].classList.add('active');
+  }
+  if (path === 'programs.html') {
+    const dt = document.querySelector('.nav-dropdown-trigger');
+    if (dt) dt.classList.add('active');
+  }
+
+  // ── Mobile menu toggle ──
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('open');
+  });
+  document.getElementById('menuClose').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+  document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  // ── Programs dropdown ──
+  const dropdownLi = document.querySelector('.nav-dropdown');
+  if (dropdownLi) {
+    dropdownLi.addEventListener('mouseenter', () => dropdownLi.classList.add('open'));
+    dropdownLi.addEventListener('mouseleave', () => dropdownLi.classList.remove('open'));
+  }
+
+  // ── Scroll progress & navbar shadow ──
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    const h = document.body.scrollHeight - window.innerHeight;
+    const bar = document.getElementById('scrollBar');
+    if (bar) bar.style.width = (s / h * 100) + '%';
+    document.getElementById('navbar').classList.toggle('scrolled', s > 60);
+  });
+
+  // ── Reveal on scroll ──
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+})();
+
+</script>
+<script>
 document.querySelectorAll('.faq-item').forEach(item => {
   item.querySelector('.faq-q').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
