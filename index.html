@@ -548,6 +548,22 @@ body {
 /* ── Logo bigger & more dominant ── */
 .nav-logo img{height:54px !important;}
 .footer-brand .footer-logo{height:90px;}
+/* Mobile viewport width fix */
+@media (max-width:768px){
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .snap, .hero, .navbar, .footer {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
