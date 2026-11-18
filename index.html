@@ -74,11 +74,9 @@ body {
     inset: 0;
     z-index: 1; /* Sets the texture right behind the container content */
     pointer-events: none;
-    background-image: url('glass-texture.webp');
+    background-image: url('glass-texture-alpha.webp');
     background-size: cover;
     background-position: center;
-    mix-blend-mode: overlay; /* Blends perfectly with dark navy and gradients */
-    opacity: 0.35;
 }
 
 /* ══════════ HERO ══════════ */
@@ -588,7 +586,7 @@ body {
   }
 }
 
-@media(max-width:768px){.glass-overlay{mix-blend-mode:normal;opacity:0.06;}.hero::before{display:none;}}
+.hero::before{display:none;}
 </style>
 </head>
 <body>

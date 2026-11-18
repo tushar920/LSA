@@ -107,7 +107,7 @@ body {
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
 /* ══════════ GLASS OVERLAY ══════════ */
-.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture.webp'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture-alpha.webp'); background-size: cover; background-position: center;  }
 
 /* ══════════ SHARED LAYOUT ══════════ */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
@@ -280,6 +280,7 @@ body {
   .footer-contacts { align-items: center; }
 }
 
+.page-hero::before{display:none;}
 </style>
 <style>
 /* ══ PROCESS STEPS ══ */
