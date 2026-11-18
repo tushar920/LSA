@@ -23,7 +23,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+      <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" id="navLogo">
     </a>
     <button class="menu-toggle" id="menuToggle">☰</button>
     <ul class="nav-links">
@@ -77,7 +77,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" class="footer-logo">
         <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
       </div>
       <div class="footer-col">

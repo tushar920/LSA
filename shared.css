@@ -38,7 +38,7 @@ body {
 
 /* ── Logo: bigger, more dominant ── */
 .nav-logo { text-decoration: none; display: flex; align-items: center; }
-.nav-logo img { height: 52px; width: auto; object-fit: contain; display: block; }
+.nav-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links > li { position: relative; }
@@ -98,7 +98,7 @@ body {
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
 /* ══════════ GLASS OVERLAY ══════════ */
-.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture.webp'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
 
 /* ══════════ SHARED LAYOUT ══════════ */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
@@ -221,7 +221,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-.footer-brand .footer-logo { height: 52px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
 .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }

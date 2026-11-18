@@ -50,7 +50,7 @@ body {
 .navbar.scrolled{box-shadow: 0 4px 20px rgba(0,0,0,0.4);}
 .nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-logo{text-decoration:none;display:flex;align-items:center;}
-.nav-logo img{height:54px;width:auto;object-fit:contain;display:block;}
+.nav-logo img{height:48px;width:auto;object-fit:contain;display:block;}
 .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:13px;font-weight:500;padding:7px 13px;border-radius:8px;transition:all 0.2s;}
 .nav-links a:hover{color:white;background:rgba(255,255,255,0.09);}
@@ -75,7 +75,7 @@ body {
     inset: 0;
     z-index: 1; /* Sets the texture right behind the container content */
     pointer-events: none;
-    background-image: url('Texturelabs_Glass_154XL.jpg');
+    background-image: url('glass-texture.webp');
     background-size: cover;
     background-position: center;
     mix-blend-mode: overlay; /* Blends perfectly with dark navy and gradients */
@@ -346,7 +346,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer{background:#060e18;padding:40px 0 20px;border-top:1px solid rgba(255,255,255,0.05); scroll-snap-align: none; position: relative; overflow: hidden;}
 .footer-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
-.footer-brand .footer-logo{height:90px;width:auto;object-fit:contain;display:block;margin-bottom:8px;}
+.footer-brand .footer-logo{height:64px;width:auto;object-fit:contain;display:block;margin-bottom:8px;}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;max-width:260px;}
 .footer-col h5{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:12px;}
 .footer-col a{display:block;color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;margin-bottom:8px;transition:color 0.2s;}
@@ -375,7 +375,7 @@ body {
   .navbar { height: 68px; padding: 0 16px; }
   .menu-toggle { display: block; } /* Show Hamburger */
   body { padding-top: 68px; }
-  .nav-logo img { height: 46px; }
+  .nav-logo img { height: 40px; }
   .nav-links { display: none; }
   .container { padding: 0 16px; }
 
@@ -546,8 +546,8 @@ body {
 .nav-dropdown-menu li a{display:block;padding:9px 14px;font-size:12.5px;color:rgba(255,255,255,0.7);border-radius:8px;background:none;transition:all 0.15s;white-space:nowrap;font-size:13px;}
 .nav-dropdown-menu li a:hover{color:white;background:rgba(255,255,255,0.08);}
 /* ── Logo bigger & more dominant ── */
-.nav-logo img{height:54px !important;}
-.footer-brand .footer-logo{height:90px;}
+.nav-logo img{height:48px !important;}
+.footer-brand .footer-logo{height:64px;}
 /* Mobile viewport width fix — prevent any mobile containing block from narrowing the page */
 @media (max-width:768px){
   html {
@@ -600,7 +600,7 @@ body {
 <nav class="navbar" id="navbar">
 <div class="nav-inner">
 <a href="#" class="nav-logo">
-<img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+<img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" id="navLogo">
 </a>
 
 <button class="menu-toggle" id="menuToggle">☰</button>
@@ -673,7 +673,7 @@ body {
 </div>
 <div class="hero-right">
 <div class="hero-img-wrap">
-<img src="hero-img.png" alt="School sports">
+<img decoding="async" src="hero-img.webp" alt="School sports">
 <div class="hero-img-glass"></div>
 <div class="hero-badge hero-badge-1">
 <div class="hb-icon">🏆</div>
@@ -894,15 +894,15 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="cf-outer">
 <div class="cf-wrap" id="sportsCF">
 <div class="cf-track" id="sportsTrack">
-<div class="cf-item"><img src="cpf_cricket.png" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
-<div class="cf-item"><img src="cpf_football.png" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
-<div class="cf-item"><img src="cpf_basketball.png" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
-<div class="cf-item"><img src="cpf_badminton.png" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
-<div class="cf-item"><img src="cpf_TT.png" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
-<div class="cf-item"><img src="cpf_pickleball.png" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
-<div class="cf-item"><img src="cpf_swimming.png" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
-<div class="cf-item"><img src="cpf_selfdef.png" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
-<div class="cf-item"><img src="cpf_movement.png" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_cricket.webp" alt="Cricket"><div class="cf-body"><span class="cf-tag">🏏 Sport</span><span class="cf-title">Cricket</span><span class="cf-sub">Batting · Bowling · Match Awareness · Team Strategy</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_football.webp" alt="Football"><div class="cf-body"><span class="cf-tag">⚽ Sport</span><span class="cf-title">Football</span><span class="cf-sub">Dribbling · Passing · Game IQ · Positioning</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_basketball.webp" alt="Basketball"><div class="cf-body"><span class="cf-tag">🏀 Sport</span><span class="cf-title">Basketball</span><span class="cf-sub">Shooting · Defense · Court Vision · Teamwork</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_badminton.webp" alt="Badminton"><div class="cf-body"><span class="cf-tag">🏸 Sport</span><span class="cf-title">Badminton</span><span class="cf-sub">Agility · Reflexes · Shot Control · Footwork</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_TT.webp" alt="Table Tennis"><div class="cf-body"><span class="cf-tag">🏓 Sport</span><span class="cf-title">Table Tennis</span><span class="cf-sub">Spin · Reflex · Placement · Tactical Play</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_pickleball.webp" alt="Pickleball"><div class="cf-body"><span class="cf-tag">🏒 Sport</span><span class="cf-title">Pickleball</span><span class="cf-sub">Strategy · Agility · Court Smarts · Fast Reactions</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_swimming.webp" alt="Swimming"><div class="cf-body"><span class="cf-tag">🏊 Sport</span><span class="cf-title">Swimming</span><span class="cf-sub">Technique · Endurance · Breathing · Strokes</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_selfdef.webp" alt="Self Defence"><div class="cf-body"><span class="cf-tag">🥋 Sport</span><span class="cf-title">Self-Defense</span><span class="cf-sub">Discipline · Awareness · Strength · Confidence</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="cpf_movement.webp" alt="Fitness"><div class="cf-body"><span class="cf-tag">🏋️ Sport</span><span class="cf-title">Fitness & Movement</span><span class="cf-sub">Strength · Coordination · Mobility · Endurance</span></div></div>
 </div>
 </div>
 <button class="cf-nav cf-prev" id="sP">‹</button>
@@ -937,19 +937,19 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 </div>
 <div class="proc-detail show" id="pd0">
-<img class="proc-detail-img" src="assess.png" alt="Assessment">
+<img loading="lazy" decoding="async" class="proc-detail-img" src="assess.webp" alt="Assessment">
 <div><h4>Assess — Know Where Every Student Stands</h4><p>Before training begins, we run a comprehensive baseline evaluation covering each student's fitness, coordination, and sport skill levels. This data powers everything — ensuring no student is left behind.</p></div>
 </div>
 <div class="proc-detail" id="pd1">
-<img class="proc-detail-img" src="training.png" alt="Training">
+<img loading="lazy" decoding="async" class="proc-detail-img" src="training.webp" alt="Training">
 <div><h4>Train — Structured Sessions, Expert Coaches</h4><p>Age-appropriate, curriculum-aligned 80-minute sessions led by certified coaches. Every session follows the LegaXy Training Blueprint — warm-up, skill focus, team activity, match play, cool-down.</p></div>
 </div>
 <div class="proc-detail" id="pd2">
-<img class="proc-detail-img" src="tracking.png" alt="Tracking">
+<img loading="lazy" decoding="async" class="proc-detail-img" src="tracking.webp" alt="Tracking">
 <div><h4>Track — Data That Actually Means Something</h4><p>We continuously measure progress against each student's own baseline. Schools get periodic reports, parents get visibility via the LegaXy app, and coaches use data to refine sessions.</p></div>
 </div>
 <div class="proc-detail" id="pd3">
-<img class="proc-detail-img" src="competition.png" alt="Competition">
+<img loading="lazy" decoding="async" class="proc-detail-img" src="competition.webp" alt="Competition">
 <div><h4>Compete — Where Growth Becomes Real</h4><p>Students get inter-school exposure and competitive opportunities — School Olympics, inter-house tournaments, and external circuits. Competing builds character and confidence.</p></div>
 </div>
 </div>
@@ -966,7 +966,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="programs-grid">
 
 <div class="prog-card reveal rd1">
-<img class="prog-card-img" src="inschool.png" alt="In-School Program">
+<img loading="lazy" decoding="async" class="prog-card-img" src="inschool.webp" alt="In-School Program">
 <div class="prog-card-body">
 <div class="prog-badge inschool-badge">In-School Program</div>
 <h3>School Sports Education Program</h3>
@@ -981,7 +981,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="prog-card reveal rd2">
-<img class="prog-card-img" src="afterschool.png" alt="After-School Program">
+<img loading="lazy" decoding="async" class="prog-card-img" src="afterschool.webp" alt="After-School Program">
 <div class="prog-card-body">
 <div class="prog-badge afterschool-badge">After-School Program</div>
 <h3>Advanced Sport-Specific Coaching</h3>
@@ -1005,7 +1005,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="programs-grid" style="margin-top: 0;">
 
 <div class="prog-card reveal rd1">
-<img class="prog-card-img" src="coe.png" alt="Centre of Excellence">
+<img loading="lazy" decoding="async" class="prog-card-img" src="coe.webp" alt="Centre of Excellence">
 <div class="prog-card-body">
 <div class="prog-badge coe-badge">Centre of Excellence</div>
 <h3>High-Performance Development</h3>
@@ -1020,7 +1020,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="prog-card reveal rd2">
-<img class="prog-card-img" src="paynplay.png" alt="Infrastructure">
+<img loading="lazy" decoding="async" class="prog-card-img" src="paynplay.webp" alt="Infrastructure">
 <div class="prog-card-body">
 <div class="prog-badge infra-badge">Pay & Play + Infrastructure</div>
 <h3>Sports Facility Development</h3>
@@ -1067,11 +1067,11 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="cf-outer">
 <div class="cf-wrap" id="schoolsCF">
 <div class="cf-track" id="schoolsTrack">
-<div class="cf-item"><img src="coaches.png" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
-<div class="cf-item"><img src="equipment.png" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Design</span><span class="cf-sub">Age-appropriate equipment and session plans delivered professionally — zero operational burden.</span></div></div>
-<div class="cf-item"><img src="mobileapp.png" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, and parent communication via the LegaXy app.</span></div></div>
-<div class="cf-item"><img src="events.png" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League — we build culture.</span></div></div>
-<div class="cf-item"><img src="training.png" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Integration</span><span class="cf-sub">We align with your existing timetable, operations, and academic calendar — no disruption.</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="coaches.webp" alt="Coaches"><div class="cf-body"><span class="cf-tag">👨‍🏫 What We Provide</span><span class="cf-title">Expert Coaches</span><span class="cf-sub">Qualified professionals trained to teach, engage, and inspire every student every session.</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="equipment.webp" alt="Equipment"><div class="cf-body"><span class="cf-tag">📦 What We Provide</span><span class="cf-title">Equipment & Design</span><span class="cf-sub">Age-appropriate equipment and session plans delivered professionally — zero operational burden.</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="mobileapp.webp" alt="Reporting"><div class="cf-body"><span class="cf-tag">📊 What We Provide</span><span class="cf-title">Reporting</span><span class="cf-sub">Attendance tracking, skill assessments, and parent communication via the LegaXy app.</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="events.webp" alt="Events"><div class="cf-body"><span class="cf-tag">🏆 What We Provide</span><span class="cf-title">Events</span><span class="cf-sub">Inter-house tournaments, School Olympics, Parents Premier League — we build culture.</span></div></div>
+<div class="cf-item"><img loading="lazy" decoding="async" src="training.webp" alt="Integration"><div class="cf-body"><span class="cf-tag">🤝 What We Provide</span><span class="cf-title">Integration</span><span class="cf-sub">We align with your existing timetable, operations, and academic calendar — no disruption.</span></div></div>
 </div>
 </div>
 <button class="cf-nav cf-prev" id="scP">‹</button>
@@ -1112,7 +1112,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="ath-track" id="athTrack">
 
 <div class="ath-card">
-<img src="Chahal.png" alt="Yuzvendra Chahal" class="player-img">
+<img loading="lazy" decoding="async" src="Chahal.webp" alt="Yuzvendra Chahal" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🏏 Cricket · India</span>
 <span class="ath-name">Yuzvendra Chahal</span>
@@ -1121,7 +1121,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="Ishant-sharma.png" alt="Ishant Sharma" class="player-img">
+<img loading="lazy" decoding="async" src="Ishant-sharma.webp" alt="Ishant Sharma" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🏏 Cricket · India</span>
 <span class="ath-name">Ishant Sharma</span>
@@ -1130,7 +1130,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="umesh-yadav.png" alt="Umesh Yadav" class="player-img">
+<img loading="lazy" decoding="async" src="umesh-yadav.webp" alt="Umesh Yadav" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🏏 Cricket · India</span>
 <span class="ath-name">Umesh Yadav</span>
@@ -1139,7 +1139,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="Harshit-rana.png" alt="Harshit Rana" class="player-img">
+<img loading="lazy" decoding="async" src="Harshit-rana.webp" alt="Harshit Rana" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🏏 Cricket · India</span>
 <span class="ath-name">Harshit Rana</span>
@@ -1148,7 +1148,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="Puja-tomar.png" alt="Puja Tomar" class="player-img">
+<img loading="lazy" decoding="async" src="Puja-tomar.webp" alt="Puja Tomar" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🥋 MMA · India</span>
 <span class="ath-name">Puja Tomar</span>
@@ -1157,7 +1157,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="Neetu-chandra.png" alt="Neetu Chandra" class="player-img">
+<img loading="lazy" decoding="async" src="Neetu-chandra.webp" alt="Neetu Chandra" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🥋 Taekwondo · India</span>
 <span class="ath-name">Neetu Chandra</span>
@@ -1166,7 +1166,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 </div>
 
 <div class="ath-card">
-<img src="Pratima-singh.png" alt="Pratima Singh" class="player-img">
+<img loading="lazy" decoding="async" src="Pratima-singh.webp" alt="Pratima Singh" class="player-img">
 <div class="ath-overlay">
 <span class="ath-sport">🏀 Basketball · India</span>
 <span class="ath-name">Pratima Singh</span>
@@ -1212,7 +1212,7 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="container">
 <div class="footer-inner">
 <div class="footer-brand">
-<img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+<img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" class="footer-logo">
 <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
 </div>
 <div class="footer-col">

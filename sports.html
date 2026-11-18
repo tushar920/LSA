@@ -47,7 +47,7 @@ body {
 
 /* ── Logo: dominant and premium ── */
 .nav-logo { text-decoration: none; display: flex; align-items: center; }
-.nav-logo img { height: 58px; width: auto; object-fit: contain; display: block; }
+.nav-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links > li { position: relative; }
@@ -107,7 +107,7 @@ body {
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
 /* ══════════ GLASS OVERLAY ══════════ */
-.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture.webp'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
 
 /* ══════════ SHARED LAYOUT ══════════ */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
@@ -230,7 +230,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-.footer-brand .footer-logo { height: 90px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
 .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
@@ -264,7 +264,7 @@ body {
   html { scroll-padding-top: 60px; }
   body { padding-top: 68px; }
   .navbar { height: 68px; padding: 0 16px; }
-  .nav-logo img { height: 50px; }
+  .nav-logo img { height: 48px; }
   .nav-links { display: none; }
   .menu-toggle { display: block; }
   .container { padding: 0 16px; }
@@ -340,7 +340,7 @@ body {
     </div>
     <div class="page-hero-visual">
       <div class="page-hero-img">
-        <img src="cpf_cricket.png" alt="LegaXy Sports" onerror="this.parentElement.innerHTML='&lt;div class=&quot;page-hero-img-placeholder&quot;&gt;&lt;span class=&quot;ph-icon&quot;&gt;⚽&lt;/span&gt;&lt;span class=&quot;ph-label&quot;&gt;Sports&lt;/span&gt;&lt;/div&gt;'">
+        <img decoding="async" src="cpf_cricket.webp" alt="LegaXy Sports" onerror="this.parentElement.innerHTML='&lt;div class=&quot;page-hero-img-placeholder&quot;&gt;&lt;span class=&quot;ph-icon&quot;&gt;⚽&lt;/span&gt;&lt;span class=&quot;ph-label&quot;&gt;Sports&lt;/span&gt;&lt;/div&gt;'">
       </div>
     </div>
   </div>
@@ -356,7 +356,7 @@ body {
     </div>
     <div class="sports-grid">
       <div class="sport-card reveal rd1">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_cricket.png" alt="Cricket"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_cricket.webp" alt="Cricket"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏏</span>
           <span class="sport-tag">Bat-Ball · Team</span>
@@ -366,7 +366,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd2">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_football.png" alt="Football"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_football.webp" alt="Football"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">⚽</span>
           <span class="sport-tag">Field · Team</span>
@@ -376,7 +376,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd3">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_basketball.png" alt="Basketball"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_basketball.webp" alt="Basketball"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏀</span>
           <span class="sport-tag">Court · Team</span>
@@ -386,7 +386,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd1">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_badminton.png" alt="Badminton"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_badminton.webp" alt="Badminton"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏸</span>
           <span class="sport-tag">Racket · Individual/Pairs</span>
@@ -396,7 +396,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd2">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_TT.png" alt="Table Tennis"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_TT.webp" alt="Table Tennis"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏓</span>
           <span class="sport-tag">Racket · Individual</span>
@@ -406,7 +406,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd3">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_pickleball.png" alt="Pickleball"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_pickleball.webp" alt="Pickleball"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏒</span>
           <span class="sport-tag">Racket · Pairs</span>
@@ -416,7 +416,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd1">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_swimming.png" alt="Swimming"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_swimming.webp" alt="Swimming"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏊</span>
           <span class="sport-tag">Aquatic · Individual</span>
@@ -426,7 +426,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd2">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_selfdef.png" alt="Self Defence"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_selfdef.webp" alt="Self Defence"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🥋</span>
           <span class="sport-tag">Martial Arts · Individual</span>
@@ -436,7 +436,7 @@ body {
         </div>
       </div>
       <div class="sport-card reveal rd3">
-        <div class="sport-card-img-wrap"><img class="sport-card-img" src="cpf_movement.png" alt="Fitness & Movement"></div>
+        <div class="sport-card-img-wrap"><img loading="lazy" decoding="async" class="sport-card-img" src="cpf_movement.webp" alt="Fitness & Movement"></div>
         <div class="sport-card-body">
           <span class="sport-emoji">🏋️</span>
           <span class="sport-tag">Fitness · Foundation</span>
@@ -473,7 +473,7 @@ body {
         </div>
       </div>
       <div class="reveal rd2">
-        <img src="hero-img.png" alt="Multi-sport exposure" style="width:100%;border-radius:20px;object-fit:cover;height:460px;box-shadow:0 24px 60px rgba(0,0,0,0.12);">
+        <img decoding="async" src="hero-img.webp" alt="Multi-sport exposure" style="width:100%;border-radius:20px;object-fit:cover;height:460px;box-shadow:0 24px 60px rgba(0,0,0,0.12);">
       </div>
     </div>
   </div>
@@ -552,7 +552,7 @@ body {
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+      <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" id="navLogo">
     </a>
     <button class="menu-toggle" id="menuToggle">☰</button>
     <ul class="nav-links">
@@ -606,7 +606,7 @@ body {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" class="footer-logo">
         <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
       </div>
       <div class="footer-col">

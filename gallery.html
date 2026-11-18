@@ -47,7 +47,7 @@ body {
 
 /* ── Logo: dominant and premium ── */
 .nav-logo { text-decoration: none; display: flex; align-items: center; }
-.nav-logo img { height: 58px; width: auto; object-fit: contain; display: block; }
+.nav-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links > li { position: relative; }
@@ -107,7 +107,7 @@ body {
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
 /* ══════════ GLASS OVERLAY ══════════ */
-.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture.webp'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
 
 /* ══════════ SHARED LAYOUT ══════════ */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
@@ -230,7 +230,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-.footer-brand .footer-logo { height: 90px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
 .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
@@ -264,7 +264,7 @@ body {
   html { scroll-padding-top: 60px; }
   body { padding-top: 68px; }
   .navbar { height: 68px; padding: 0 16px; }
-  .nav-logo img { height: 50px; }
+  .nav-logo img { height: 48px; }
   .nav-links { display: none; }
   .menu-toggle { display: block; }
   .container { padding: 0 16px; }
@@ -331,7 +331,7 @@ body {
     </div>
     <div class="page-hero-visual">
       <div class="page-hero-img">
-        <img src="events.png" alt="LegaXy Gallery" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>📸</span><span class=\'ph-label\'>Gallery</span></div>'">
+        <img decoding="async" src="events.webp" alt="LegaXy Gallery" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>📸</span><span class=\'ph-label\'>Gallery</span></div>'">
       </div>
     </div>
   </div>
@@ -360,84 +360,84 @@ body {
     <div class="gallery-grid reveal">
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="events.png" alt="School Olympics">
+        <img loading="lazy" decoding="async" src="events.webp" alt="School Olympics">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">School Olympics 2024</div><div class="gallery-item-sub">Inter-school competition</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="coaches.png" alt="Coaching Session">
+        <img loading="lazy" decoding="async" src="coaches.webp" alt="Coaching Session">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Expert Coaching</div><div class="gallery-item-sub">Certified LegaXy coaches</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_cricket.png" alt="Cricket Training">
+        <img loading="lazy" decoding="async" src="cpf_cricket.webp" alt="Cricket Training">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Cricket — Skills Training</div><div class="gallery-item-sub">Development stage batch</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_football.png" alt="Football">
+        <img loading="lazy" decoding="async" src="cpf_football.webp" alt="Football">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Football — Match Play</div><div class="gallery-item-sub">Classes 4–7 session</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="training.png" alt="Training">
+        <img loading="lazy" decoding="async" src="training.webp" alt="Training">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Structured Training</div><div class="gallery-item-sub">5-phase LegaXy blueprint</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_basketball.png" alt="Basketball">
+        <img loading="lazy" decoding="async" src="cpf_basketball.webp" alt="Basketball">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Basketball Academy</div><div class="gallery-item-sub">Performance stage</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="mobileapp.png" alt="LegaXy App">
+        <img loading="lazy" decoding="async" src="mobileapp.webp" alt="LegaXy App">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">LegaXy App</div><div class="gallery-item-sub">Real-time tracking & reports</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_badminton.png" alt="Badminton">
+        <img loading="lazy" decoding="async" src="cpf_badminton.webp" alt="Badminton">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Badminton Training</div><div class="gallery-item-sub">Agility & reflex drills</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="equipment.png" alt="Equipment">
+        <img loading="lazy" decoding="async" src="equipment.webp" alt="Equipment">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Equipment & Setup</div><div class="gallery-item-sub">Professional grade, fully managed</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_TT.png" alt="Table Tennis">
+        <img loading="lazy" decoding="async" src="cpf_TT.webp" alt="Table Tennis">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Table Tennis</div><div class="gallery-item-sub">Precision & reaction training</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_selfdef.png" alt="Self Defence">
+        <img loading="lazy" decoding="async" src="cpf_selfdef.webp" alt="Self Defence">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Self-Defense Program</div><div class="gallery-item-sub">Discipline. Awareness. Strength.</div></div>
         </div>
       </div>
 
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="cpf_swimming.png" alt="Swimming">
+        <img loading="lazy" decoding="async" src="cpf_swimming.webp" alt="Swimming">
         <div class="gallery-item-overlay">
           <div><div class="gallery-item-label">Swimming</div><div class="gallery-item-sub">Technique & endurance focus</div></div>
         </div>
@@ -490,7 +490,7 @@ body {
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+      <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" id="navLogo">
     </a>
     <button class="menu-toggle" id="menuToggle">☰</button>
     <ul class="nav-links">
@@ -544,7 +544,7 @@ body {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" class="footer-logo">
         <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
       </div>
       <div class="footer-col">

@@ -47,7 +47,7 @@ body {
 
 /* ── Logo: dominant and premium ── */
 .nav-logo { text-decoration: none; display: flex; align-items: center; }
-.nav-logo img { height: 58px; width: auto; object-fit: contain; display: block; }
+.nav-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-links > li { position: relative; }
@@ -107,7 +107,7 @@ body {
 .mobile-nav-links .nav-cta { color: var(--orange); font-weight: 800; margin-top: 10px; display: inline-block; }
 
 /* ══════════ GLASS OVERLAY ══════════ */
-.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('Texturelabs_Glass_154XL.jpg'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
+.glass-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: url('glass-texture.webp'); background-size: cover; background-position: center; mix-blend-mode: overlay; opacity: 0.35; }
 
 /* ══════════ SHARED LAYOUT ══════════ */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; position: relative; z-index: 2; }
@@ -230,7 +230,7 @@ body {
 /* ══════════ FOOTER ══════════ */
 .footer { background: #060e18; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
 .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
-.footer-brand .footer-logo { height: 90px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
+.footer-brand .footer-logo { height: 64px; width: auto; object-fit: contain; display: block; margin-bottom: 8px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; max-width: 260px; }
 .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
@@ -264,7 +264,7 @@ body {
   html { scroll-padding-top: 60px; }
   body { padding-top: 68px; }
   .navbar { height: 68px; padding: 0 16px; }
-  .nav-logo img { height: 50px; }
+  .nav-logo img { height: 48px; }
   .nav-links { display: none; }
   .menu-toggle { display: block; }
   .container { padding: 0 16px; }
@@ -406,7 +406,7 @@ body {
     </div>
     <div class="page-hero-visual">
       <div class="page-hero-img">
-        <img src="Chahal.png" alt="LegaXy Athletes" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>🏆</span><span class=\'ph-label\'>Our Athletes</span></div>'">
+        <img decoding="async" src="Chahal.webp" alt="LegaXy Athletes" onerror="this.parentElement.innerHTML='<div class=\'page-hero-img-placeholder\'><span class=\'ph-icon\'>🏆</span><span class=\'ph-label\'>Our Athletes</span></div>'">
       </div>
     </div>
   </div>
@@ -427,7 +427,7 @@ body {
       <div class="ath-cf-track" id="athCfTrack">
 
         <div class="ath-cf-item">
-          <img src="Chahal.png" alt="Yuzvendra Chahal">
+          <img loading="lazy" decoding="async" src="Chahal.webp" alt="Yuzvendra Chahal">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🏏 Cricket · India</span>
             <span class="ath-cf-name">Yuzvendra Chahal</span>
@@ -437,7 +437,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="Ishant-sharma.png" alt="Ishant Sharma">
+          <img loading="lazy" decoding="async" src="Ishant-sharma.webp" alt="Ishant Sharma">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🏏 Cricket · India</span>
             <span class="ath-cf-name">Ishant Sharma</span>
@@ -447,7 +447,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="umesh-yadav.png" alt="Umesh Yadav">
+          <img loading="lazy" decoding="async" src="umesh-yadav.webp" alt="Umesh Yadav">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🏏 Cricket · India</span>
             <span class="ath-cf-name">Umesh Yadav</span>
@@ -457,7 +457,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="Harshit-rana.png" alt="Harshit Rana">
+          <img loading="lazy" decoding="async" src="Harshit-rana.webp" alt="Harshit Rana">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🏏 Cricket · India</span>
             <span class="ath-cf-name">Harshit Rana</span>
@@ -467,7 +467,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="Puja-tomar.png" alt="Puja Tomar">
+          <img loading="lazy" decoding="async" src="Puja-tomar.webp" alt="Puja Tomar">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🥋 MMA · India</span>
             <span class="ath-cf-name">Puja Tomar</span>
@@ -477,7 +477,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="Neetu-chandra.png" alt="Neetu Chandra">
+          <img loading="lazy" decoding="async" src="Neetu-chandra.webp" alt="Neetu Chandra">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🥋 Taekwondo · India</span>
             <span class="ath-cf-name">Neetu Chandra</span>
@@ -487,7 +487,7 @@ body {
         </div>
 
         <div class="ath-cf-item">
-          <img src="Pratima-singh.png" alt="Pratima Singh">
+          <img loading="lazy" decoding="async" src="Pratima-singh.webp" alt="Pratima Singh">
           <div class="ath-cf-body">
             <span class="ath-cf-sport">🏀 Basketball · India</span>
             <span class="ath-cf-name">Pratima Singh</span>
@@ -579,7 +579,7 @@ body {
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" id="navLogo">
+      <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" id="navLogo">
     </a>
     <button class="menu-toggle" id="menuToggle">☰</button>
     <ul class="nav-links">
@@ -633,7 +633,7 @@ body {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="lsa-logo-white.png" alt="LegaXy Sports Academy" class="footer-logo">
+        <img decoding="async" src="lsa-logo-white.webp" alt="LegaXy Sports Academy" class="footer-logo">
         <p>Next-gen sportainment ecosystem. Spot. Train. Rise. — Building India's most modern, athlete-led school sports ecosystem.</p>
       </div>
       <div class="footer-col">
