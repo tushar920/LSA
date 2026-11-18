@@ -621,8 +621,14 @@ body {
 <li><a href="schools.html">For Schools</a></li>
 <li><a href="gallery.html">Gallery</a></li>
 <li><a href="partnerships.html">Partnerships</a></li>
-<li><a href="privacy-policy.html">Privacy Policy</a></li>
-<li><a href="terms-of-use.html">Terms of Use</a></li>
+<li class="nav-dropdown">
+  <a href="terms-and-conditions.html" class="nav-dropdown-trigger">Policies <span class="nav-arrow">▾</span></a>
+  <ul class="nav-dropdown-menu" style="left:auto;right:0;">
+    <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="refund-and-cancellation-policy.html">Refund &amp; Cancellation Policy</a></li>
+  </ul>
+</li>
 <li><a href="contact.html" class="nav-cta">Partner With Us &#8594;</a></li>
 </ul>
 </div>
@@ -638,8 +644,9 @@ body {
 <li><a href="schools.html">For Schools</a></li>
 <li><a href="gallery.html">Gallery</a></li>
 <li><a href="partnerships.html">Partnerships</a></li>
-<li><a href="privacy-policy.html">Privacy Policy</a></li>
-<li><a href="terms-of-use.html">Terms of Use</a></li>
+<li><a href="terms-and-conditions.html" style="font-size:14px;letter-spacing:1px;opacity:0.75;">Terms &amp; Conditions</a></li>
+<li><a href="privacy-policy.html" style="font-size:14px;letter-spacing:1px;opacity:0.75;">Privacy Policy</a></li>
+<li><a href="refund-and-cancellation-policy.html" style="font-size:14px;letter-spacing:1px;opacity:0.75;">Refund &amp; Cancellation Policy</a></li>
 <li><a href="contact.html" class="nav-cta">Partner With Us &#8594;</a></li>
 </ul>
 </div>
@@ -1239,9 +1246,10 @@ A fully managed, curriculum-based program for Classes 1–10.
 <div class="footer-bottom">
 <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
 <p>© 2026 LegaXy Sports Academy. All rights reserved.</p>
-<div style="display:flex;gap:16px;flex-wrap:wrap;">
+<div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+<a href="terms-and-conditions.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:11px;">Terms &amp; Conditions</a>
 <a href="privacy-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:11px;">Privacy Policy</a>
-<a href="terms-of-use.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:11px;">Terms of Use</a>
+<a href="refund-and-cancellation-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:11px;">Refund &amp; Cancellation Policy</a>
 </div>
 </div>
 <p>Spot. Train. Rise.</p>
@@ -1413,11 +1421,10 @@ c.addEventListener('mouseleave',()=>{pcards.forEach(x=>x.style.opacity='1');});
 
 /* ── Programs dropdown ── */
 (function(){
-  var dl = document.querySelector('.nav-dropdown');
-  if(dl){
+  document.querySelectorAll('.nav-dropdown').forEach(function(dl){
     dl.addEventListener('mouseenter', function(){dl.classList.add('open');});
     dl.addEventListener('mouseleave', function(){dl.classList.remove('open');});
-  }
+  });
 })();
 
 </script>

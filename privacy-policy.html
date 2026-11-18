@@ -10,42 +10,146 @@
 :root{--orange:#ff6a00;--navy:#0d1b2a;--cream:#faf8f5;--text:#111;--muted:#626b76;--border:rgba(0,0,0,.08);--fd:'Barlow Condensed',sans-serif;--fb:'Plus Jakarta Sans',sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--text);font-family:var(--fb);padding-top:72px}
 .navbar{position:fixed;top:0;left:0;right:0;height:72px;background:var(--navy);z-index:1000;border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1200px;height:100%;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}.nav-logo img{height:54px;width:auto;display:block}.nav-links{display:flex;gap:5px;align-items:center}.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;padding:8px 13px;border-radius:8px}.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}.nav-links .cta{background:var(--orange);color:#fff}
-.hero{background:linear-gradient(120deg,#ff6a00,#c94a00 30%,#0d1b2a 72%,#08111e);color:#fff;padding:78px 40px 72px}.hero-inner{max-width:960px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:2.5px;font-size:11px;font-weight:700;opacity:.75;margin-bottom:12px}.hero h1{font-family:var(--fd);font-size:clamp(44px,7vw,76px);line-height:1;margin:0 0 14px}.hero p{margin:0;color:rgba(255,255,255,.72);font-size:14px}
-.content{max-width:960px;margin:0 auto;padding:60px 40px 90px}.notice{background:#fff3e9;border:1px solid rgba(255,106,0,.2);border-left:4px solid var(--orange);padding:18px 20px;border-radius:12px;margin-bottom:34px;font-size:13px;line-height:1.65;color:#4b5563}.content h2{font-family:var(--fd);font-size:30px;margin:40px 0 10px}.content h3{font-size:16px;margin:24px 0 7px}.content p,.content li{font-size:14px;line-height:1.75;color:var(--muted)}.content ul{padding-left:22px}.content a{color:var(--orange);text-decoration:none}.content a:hover{text-decoration:underline}.footer{background:var(--navy);color:#fff;padding:34px 40px}.footer-inner{max-width:960px;margin:auto;display:flex;justify-content:space-between;gap:30px;align-items:center}.footer img{height:42px}.footer p{font-size:11px;color:rgba(255,255,255,.45);margin:0}.footer-links{display:flex;gap:18px}.footer-links a{color:rgba(255,255,255,.6);font-size:11px;text-decoration:none}.footer-links a:hover{color:#fff}
-@media(max-width:700px){.nav-inner{padding:0 20px}.nav-links a:not(.cta){display:none}.hero{padding:60px 20px}.content{padding:40px 20px 70px}.footer{padding:28px 20px}.footer-inner{flex-direction:column;align-items:flex-start}.footer-links{flex-wrap:wrap}}
+.nav-inner{max-width:1200px;height:100%;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}.nav-logo img{height:54px;width:auto;display:block}.nav-links{display:flex;gap:5px;align-items:center}.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;padding:8px 13px;border-radius:8px;white-space:nowrap}.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.08)}.nav-links .cta{background:var(--orange);color:#fff}
+.hero{background:linear-gradient(120deg,#ff6a00,#c94a00 30%,#0d1b2a 72%,#08111e);color:#fff;padding:78px 40px 72px}.hero-inner{max-width:960px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:2.5px;font-size:11px;font-weight:700;opacity:.75;margin-bottom:12px}.hero h1{font-family:var(--fd);font-size:clamp(40px,7vw,76px);line-height:1;margin:0 0 14px}.hero p{margin:0;color:rgba(255,255,255,.72);font-size:14px}
+.content{max-width:960px;margin:0 auto;padding:44px 40px 90px}
+.policy-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}.policy-tabs a{font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none}.policy-tabs a:hover{border-color:var(--orange);text-decoration:none}.policy-tabs a.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.content h2{font-family:var(--fd);font-size:30px;margin:40px 0 10px}.content p,.content li,.content td{font-size:14px;line-height:1.75;color:var(--muted)}.content ul,.content ol{padding-left:22px}.content li{margin-bottom:4px}.content a{color:var(--orange);text-decoration:none}.content a:hover{text-decoration:underline}
+.table-wrap{overflow-x:auto;margin:18px 0 22px;border:1px solid var(--border);border-radius:12px;background:#fff}.content table{width:100%;border-collapse:collapse;min-width:480px}.content th{text-align:left;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--navy);padding:12px 16px}.content td{padding:12px 16px;border-top:1px solid var(--border);vertical-align:top}.content td:first-child{color:var(--text);font-weight:600}
+.footer{background:var(--navy);color:#fff;padding:34px 40px}.footer-inner{max-width:960px;margin:auto;display:flex;justify-content:space-between;gap:30px;align-items:center}.footer img{height:42px}.footer p{font-size:11px;color:rgba(255,255,255,.45);margin:0}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links a{color:rgba(255,255,255,.6);font-size:11px;text-decoration:none}.footer-links a:hover{color:#fff}
+@media(max-width:900px){.nav-links a:not(.cta){display:none}}
+@media(max-width:700px){.nav-inner{padding:0 20px}.hero{padding:60px 20px}.content{padding:32px 20px 70px}.footer{padding:28px 20px}.footer-inner{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
-<nav class="navbar"><div class="nav-inner"><a class="nav-logo" href="index.html"><img src="lsa-logo-white.png" alt="LegaXy Sports Academy"></a><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a><a href="contact.html" class="cta">Partner With Us →</a></div></div></nav>
-<header class="hero"><div class="hero-inner"><div class="eyebrow">Legal</div><h1>Privacy Policy</h1><p>Last updated: September 24, 2026</p></div></header>
+<nav class="navbar"><div class="nav-inner"><a class="nav-logo" href="index.html"><img src="lsa-logo-white.png" alt="LegaXy Sports Academy"></a><div class="nav-links"><a href="index.html">Home</a><a href="programs.html">Programs</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html" class="active">Privacy Policy</a><a href="refund-and-cancellation-policy.html">Refund &amp; Cancellation</a><a href="contact.html" class="cta">Partner With Us →</a></div></div></nav>
+<header class="hero"><div class="hero-inner"><div class="eyebrow">Legal</div><h1>Privacy Policy</h1><p>Last updated: 17 November 2026</p></div></header>
 <main class="content">
-<div class="notice"><strong>Important:</strong> This Privacy Policy explains how LegaXy Sports Academy collects, uses, stores, and protects information when you visit our website, contact us, or use our services. Please read it together with our Terms of Use.</div>
-<h2>1. About this Policy</h2>
-<p>LegaXy Sports Academy ("LegaXy", "we", "us", or "our") respects your privacy. This policy applies to information collected through our website, forms, communications, and services operated by LegaXy.</p>
-<h2>2. Information We Collect</h2>
-<h3>Information you provide</h3><p>We may collect information you voluntarily provide, such as your name, email address, phone number, school or organisation, designation, and information included in an enquiry or partnership request.</p>
-<h3>Information collected automatically</h3><p>When you visit our website, limited technical information may be collected automatically, including browser type, device information, approximate location, pages visited, referring pages, and usage information. This information may be collected through hosting, analytics, or similar technologies.</p>
-<h2>3. How We Use Information</h2>
-<ul><li>To respond to enquiries and partnership requests.</li><li>To provide, operate, and improve our programs and website.</li><li>To communicate with schools, parents, students, coaches, partners, and other stakeholders where relevant to our services.</li><li>To maintain security, prevent misuse, and troubleshoot technical issues.</li><li>To comply with applicable legal and regulatory obligations.</li></ul>
-<h2>4. Cookies and Similar Technologies</h2>
-<p>Our website may use cookies or similar technologies to support functionality, understand website usage, and improve user experience. You can control cookies through your browser settings. Disabling certain cookies may affect website functionality.</p>
-<h2>5. Sharing of Information</h2>
-<p>We do not sell your personal information. We may share information with service providers that help us operate our website, communications, analytics, technology, or other business functions, where reasonably necessary. We may also disclose information when required by law or to protect our rights, users, or the security of our services.</p>
-<h2>6. Data Security</h2>
-<p>We use reasonable administrative, technical, and organisational safeguards designed to protect information from unauthorised access, alteration, disclosure, or destruction. No internet transmission or storage system can be guaranteed to be completely secure.</p>
-<h2>7. Data Retention</h2>
-<p>We retain information for as long as reasonably necessary for the purposes described in this policy, to provide services, maintain business records, resolve disputes, enforce agreements, or meet legal obligations.</p>
-<h2>8. Your Rights</h2>
-<p>Depending on applicable law, you may have rights relating to access, correction, updating, or deletion of your personal information, as well as the ability to withdraw certain consents. To make a request, contact us using the details below. We may need to verify your identity before processing a request.</p>
-<h2>9. Children's Privacy</h2>
-<p>Our sports programs may involve children and students through schools, academies, or authorised parents and guardians. We do not knowingly use this website to directly solicit personal information from children. Where information relating to students is processed as part of a program, it should be provided through the relevant school, parent, guardian, or authorised institution in accordance with applicable requirements.</p>
-<h2>10. Third-Party Links</h2>
-<p>Our website may contain links to third-party websites or services. We are not responsible for the privacy practices, content, or security of those third parties. We encourage you to review their privacy policies before providing information.</p>
-<h2>11. Changes to this Policy</h2>
-<p>We may update this Privacy Policy from time to time. The revised version will be posted on this page with an updated effective date. Your continued use of the website after an update constitutes use subject to the revised policy.</p>
-<h2>12. Contact Us</h2>
-<p>For privacy questions or requests, contact us at <a href="mailto:hello@legaxy.org">hello@legaxy.org</a>.</p>
+<div class="policy-tabs"><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html" class="active">Privacy Policy</a><a href="refund-and-cancellation-policy.html">Refund &amp; Cancellation Policy</a></div>
+<p>This Privacy Policy explains how Pickle Pros Private Limited
+("Company", "we", "us", "our"), operating under the brand Legaxy Sports
+Academy/Pickle Pros, collects, uses, shares and protects your personal
+data when you use <a href="https://legaxysportsacademy.com">https://legaxysportsacademy.com</a> ("Website"), book a
+pickleball court, or visit our venue. Registered office: House No. 560,
+Sector-9, Gurgaon, Sadar Bazar, Haryana, India, 122001.</p>
+<p>We handle personal data in line with the Information Technology Act,
+2000, the Information Technology (Reasonable Security Practices and
+Procedures and Sensitive Personal Data or Information) Rules, 2011, and
+the Digital Personal Data Protection Act, 2023 and its Rules, as they
+apply. By using the Website or our services, you agree to this
+policy.</p>
+<h2>1. Personal data we collect</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Category</th><th>What it includes</th><th>When we collect it</th></tr></thead><tbody>
+<tr><td>Identity and contact</td><td>Name, mobile number, email address</td><td>When you book a court, create an account, or contact us</td></tr>
+<tr><td>Booking details</td><td>Court, date, time slot, number of players, booking history</td><td>When you make or change a booking</td></tr>
+<tr><td>Payment details</td><td>Amount, payment mode, transaction ID, payment status</td><td>When you pay online or at the venue</td></tr>
+<tr><td>Device and usage</td><td>IP address, browser and device type, pages viewed, cookies</td><td>When you browse the Website</td></tr>
+<tr><td>Venue records</td><td>Visitor entry records, CCTV footage, incident or injury reports</td><td>When you visit the venue</td></tr>
+<tr><td>Communications</td><td>Emails, messages, call details, feedback</td><td>When you write to or call us</td></tr>
+</tbody></table></div>
+<p>We do not store your card number, CVV, UPI PIN or net-banking
+password. Online payments are processed by our payment gateway partner,
+Razorpay, under its own privacy policy.</p>
+<h2>2. Why we use your personal data</h2>
+<p>We use your personal data to:</p>
+<ul>
+<li>create and manage your booking and account;</li>
+<li>collect payments and process cancellations and refunds;</li>
+<li>send booking confirmations, reminders and service messages by
+SMS, email or WhatsApp;</li>
+<li>answer your questions and resolve complaints;</li>
+<li>keep the venue safe and secure, and deal with incidents;</li>
+<li>improve the Website and our services;</li>
+<li>meet legal, tax and accounting requirements;</li>
+<li>send offers and updates, only where you have agreed to receive
+them.</li>
+</ul>
+<h2>3. Consent and withdrawal</h2>
+<p>We process your personal data on the basis of your consent, or for
+other uses the law permits, such as meeting a legal obligation. You may
+withdraw consent at any time by writing to us at the contact details in
+clause 12. If you withdraw consent, we may not be able to provide
+bookings or other services that need that data. You can opt out of
+promotional messages at any time by following the instruction in the
+message or by writing to us.</p>
+<h2>4. Who we share personal data with</h2>
+<p>We do not sell or rent your personal data. We share it only with:</p>
+<ul>
+<li>payment gateways, banks and payment processors, to complete
+payments and refunds;</li>
+<li>service providers who work for us, such as booking software,
+website hosting, SMS, email and WhatsApp messaging, and accounting
+providers, under confidentiality obligations;</li>
+<li>government authorities, courts and law enforcement agencies,
+where the law requires it;</li>
+<li>professional advisers, auditors and insurers, where
+needed;</li>
+<li>a buyer or successor, if our business is merged, sold or
+reorganised.</li>
+</ul>
+<h2>5. Cookies</h2>
+<p>The Website uses cookies and similar technologies to keep the Website
+working, remember your preferences and understand how visitors use it.
+You can block or delete cookies in your browser settings. Some parts of
+the Website may not work properly without them.</p>
+<h2>6. How long we keep personal data</h2>
+<p>We keep personal data only as long as needed for the purposes in this
+policy or as the law requires. Booking and payment records are kept for
+the period required under tax and accounting laws. CCTV footage is
+normally kept for up to 30 days, unless needed for an investigation or
+a legal claim. When data is no longer needed, we delete or anonymise
+it.</p>
+<h2>7. Security</h2>
+<p>We use reasonable technical and organisational safeguards to protect
+personal data, including encrypted connections (HTTPS), access controls
+and restricted staff access. No method of transmission or storage is
+fully secure, so we cannot guarantee absolute security. If a personal
+data breach affects you, we will inform you and the authorities as the
+law requires.</p>
+<h2>8. Your rights</h2>
+<p>Subject to applicable law, you may ask us to:</p>
+<ul>
+<li>confirm what personal data we hold about you and give you a
+summary of it;</li>
+<li>correct, complete or update your personal data;</li>
+<li>erase personal data that we no longer need to keep;</li>
+<li>record your withdrawal of consent;</li>
+<li>register a nominee who can exercise your rights if you die or
+become incapacitated;</li>
+<li>resolve a grievance about how we handle your personal
+data.</li>
+</ul>
+<p>To use these rights, or to delete your account, write to the
+Grievance Officer in clause 12. We may need to verify your identity
+before acting on a request.</p>
+<h2>9. Children</h2>
+<p>A parent or legal guardian must make bookings for anyone under 18
+years of age and give consent for that child's personal data. We do not
+knowingly collect personal data directly from children without such
+consent. We do not track children's behaviour or target advertising at
+them.</p>
+<h2>10. Third-party links</h2>
+<p>The Website may link to third-party websites and services, including
+payment pages and social media. Their privacy practices are their own,
+and we are not responsible for them.</p>
+<h2>11. Changes to this policy</h2>
+<p>We may update this policy from time to time. The updated version will
+be posted on this page with a new "Last updated" date. Please review it
+periodically.</p>
+<h2>12. Grievance Officer and contact</h2>
+<p>For any question, request or complaint about your personal data,
+contact our Grievance Officer:</p>
+<p>Name: Pankaj Rawat<br>
+Pickle Pros Private Limited (Legaxy Sports Academy/Pickle Pros)<br>
+House No. 560, Sector-9, Gurgaon, Sadar Bazar, Haryana, India,
+122001<br>
+Email: <a href="mailto:hello@legaxy.org">hello@legaxy.org</a><br>
+Phone: <a href="tel:+919667084900">+91 9667084900</a></p>
+<p>We will acknowledge your complaint promptly and aim to resolve it
+within 30 days of receipt. If you are not satisfied with our response,
+you may approach the Data Protection Board of India as the law
+provides.</p>
 </main>
-<footer class="footer"><div class="footer-inner"><div><img src="lsa-logo-white.png" alt="LegaXy Sports Academy"><p>© 2026 LegaXy Sports Academy. All rights reserved.</p></div><div class="footer-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-use.html">Terms of Use</a><a href="contact.html">Contact</a></div></div></footer>
+<footer class="footer"><div class="footer-inner"><div><img src="lsa-logo-white.png" alt="LegaXy Sports Academy"><p>© 2026 LegaXy Sports Academy. All rights reserved.</p></div><div class="footer-links"><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="refund-and-cancellation-policy.html">Refund &amp; Cancellation Policy</a><a href="contact.html">Contact</a></div></div></footer>
 </body></html>
