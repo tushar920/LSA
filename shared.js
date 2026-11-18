@@ -159,13 +159,16 @@
   });
 
   // ── Scroll progress & navbar shadow ──
-  window.addEventListener('scroll', () => {
-    const s = window.scrollY;
-    const h = document.body.scrollHeight - window.innerHeight;
-    const bar = document.getElementById('scrollBar');
-    if (bar) bar.style.width = (s / h * 100) + '%';
-    document.getElementById('navbar').classList.toggle('scrolled', s > 60);
-  });
+  let scrollTick = false;
+    function onScrollFrame() {
+      scrollTick = false;
+      const s = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const bar = document.getElementById('scrollBar');
+      if (bar) bar.style.width = (h > 0 ? Math.min(s / h, 1) * 100 : 0) + '%';
+      document.getElementById('navbar').classList.toggle('scrolled', s > 60);
+    }
+    window.addEventListener('scroll', () => { if (!scrollTick) { scrollTick = true; requestAnimationFrame(onScrollFrame); } }, { passive: true });
 
   // ── Reveal on scroll ──
   const revObs = new IntersectionObserver(entries => {
